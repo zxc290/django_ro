@@ -15,7 +15,11 @@ Including another URLconf
 """
 from django.contrib import admin
 from django.urls import path
+from ro_operations.views import login, get_channel_list, get_appid_list
 
 urlpatterns = [
     path('admin/', admin.site.urls),
+    path('login', login),
+    path('channels', get_channel_list),
+    path('appids', get_appid_list)
 ]

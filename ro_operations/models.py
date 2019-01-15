@@ -6,11 +6,11 @@
 #   * Remove `managed = False` lines if you wish to allow Django to create, modify, and delete the table
 # Feel free to rename the models, but don't rename db_table values or field names.
 from django.db import models
-from .model_managers import AppManagementManager
+from .model_managers import AppManagementManager, ServerManagementManager
 
 
 class AppManage(models.Model):
-    # id = models.AutoField()
+    id = models.AutoField(primary_key=True, verbose_name='id')
     gametypeno = models.IntegerField(db_column='GameTypeno', verbose_name='游戏类型id')  # Field name made lowercase.
     gametype = models.CharField(db_column='GameType', max_length=50, verbose_name='游戏类型')  # Field name made lowercase.
     ptid = models.IntegerField(db_column='Ptid', verbose_name='平台id')  # Field name made lowercase.
@@ -37,7 +37,7 @@ class AppManage(models.Model):
 
 
 class ServerList(models.Model):
-    # id = models.AutoField()
+    id = models.AutoField(primary_key=True, verbose_name='id')
     uniconid = models.CharField(max_length=50, blank=True, null=True, verbose_name='uniconid')
     gametypeno = models.IntegerField(verbose_name='游戏类型id')
     pid = models.IntegerField(blank=True, null=True, verbose_name='平台id')
@@ -70,7 +70,7 @@ class ServerList(models.Model):
 
 
 class VersionInfo(models.Model):
-    # id = models.AutoField()
+    id = models.AutoField(primary_key=True, verbose_name='id')
     appidx = models.IntegerField(verbose_name='appidx')
     gametypeno = models.IntegerField(verbose_name='游戏类型id')
     ptid = models.IntegerField(verbose_name='平台id')
@@ -130,3 +130,49 @@ class User(models.Model):
         verbose_name_plural = verbose_name
         managed = False
         db_table = 'User'
+
+
+class AppChannelList(models.Model):
+    cid = models.IntegerField(db_column='CID', primary_key=True)  # Field name made lowercase.
+    cname = models.CharField(db_column='CName', max_length=50, blank=True, null=True)  # Field name made lowercase.
+    cinfo = models.CharField(db_column='CInfo', max_length=512, blank=True, null=True)  # Field name made lowercase.
+    pid = models.IntegerField(db_column='PID', blank=True, null=True)  # Field name made lowercase.
+    gid = models.IntegerField(db_column='GID', blank=True, null=True)  # Field name made lowercase.
+    pcid = models.IntegerField(db_column='PCID', blank=True, null=True)  # Field name made lowercase.
+
+    objects = ServerManagementManager()
+
+    def __str__(self):
+        return self.cname
+
+    class Meta:
+        verbose_name = '渠道'
+        verbose_name_plural = verbose_name
+        managed = False
+        db_table = 'App_Channel_list'
+
+
+class AppServerChannel(models.Model):
+    id = models.AutoField(primary_key=True, verbose_name='id')
+    gid = models.IntegerField(db_column='GID')  # Field name made lowercase.
+    zoneidx = models.IntegerField()
+    zonename = models.CharField(max_length=50, blank=True, null=True)
+    pid = models.IntegerField(db_column='PID', blank=True, null=True)  # Field name made lowercase.
+    cid = models.IntegerField(db_column='CID')  # Field name made lowercase.
+    appid = models.CharField(max_length=50, blank=True, null=True)
+    version = models.CharField(max_length=50, blank=True, null=True)
+    statu = models.IntegerField()
+    server_statu = models.IntegerField()
+    server_suggest = models.IntegerField()
+    is_delete = models.IntegerField()
+
+    objects = ServerManagementManager()
+
+    def __str__(self):
+        return self.appid + '_' + str(self.zoneidx) + '_' + str(self.cid)
+
+    class Meta:
+        verbose_name = '应用服务渠道'
+        verbose_name_plural = verbose_name
+        managed = False
+        db_table = 'App_Server_Channel'
