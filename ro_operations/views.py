@@ -4,127 +4,269 @@ from django.shortcuts import render
 from django.conf import settings
 from django.db import connections
 from rest_framework.decorators import api_view
+from rest_framework.views import APIView
 from rest_framework.response import Response
+from rest_framework.renderers import JSONRenderer
+from rest_framework.parsers import JSONParser
+from rest_framework import status
 from itsdangerous import TimedJSONWebSignatureSerializer
-from .models import User, AppChannelList, AppServerChannel, AppManage
+from .models import User, AppChannelList, AppManage, AppServerList, AppPlatformCfg, WelfareManagement
+from .serializers import UserSerializer, AppChannelListSerializer, AppManageSerializer, AppServerListSerializer, AppPlatformCfgSerializer, WelfareManagementSerializer
+from django.contrib.auth.decorators import login_required
+from .tokens import gen_json_web_token
+from .decorators import token_required
+from .dbtools import dict_fetchall
 # Create your views here.
 
-
-def dict_fetchall(cursor):
-    "Returns all rows from a cursor as a dict"
-    desc = cursor.description
-    return [
-        dict(zip([col[0] for col in desc], row))
-        for row in cursor.fetchall()
-    ]
-
-
-def gen_json_web_token(user_info):
-    s = TimedJSONWebSignatureSerializer(settings.SECRET_KEY, 8 * 60 * 60)
-    timestamp = time.time()
-    user_info['iat'] = timestamp
-    token = s.dumps(user_info)
-    return token
-
-
-def verify_token(token):
-    s = TimedJSONWebSignatureSerializer(settings.SECRET_KEY, 8 * 60 * 60)
-    try:
-        user_auth = s.loads(token)
-    except:
-        return
-    if ('user_id' not in user_auth) or ('username' not in user_auth):
-        return
-    return user_auth
 
 
 @api_view(['POST'])
 def login(request):
-    data = json.loads(request.body)
+    data = JSONParser().parse(request)
+    # data = json.loads(request.body)
     username = data.get('username')
     password = data.get('password')
-
     try:
         user = User.objects.get(useridentity=username, password=password)
-        with connections['default'].cursor() as admin_cursor:
-            # sql = "SELECT * FROM dbo.NAuth({user_id}, 2) WHERE PID > 0 AND AID=50".format(user_id=user.userid)
-            sql = "SELECT DISTINCT CID FROM dbo.NAuth(27, 2) WHERE PID > 0 AND AID=50 AND FID=4"
-            # sql = "SELECT * FROM dbo.NAuth({user_id}, 2) WHERE PID > 0 AND AID=50 AND FID IN {fid_permission} ".format(user_id=user.userid, fid_permission=settings.FID_PERMISSION)
-            admin_cursor.execute(sql)
-            admin_db_result = dict_fetchall(admin_cursor)
-        if not admin_db_result:
-            message = '该用户没有此权限'
-            return Response({'code': 0, 'message': message})
-
-        permission_dict = dict()
-        result = admin_db_result[0]
-
-        permission_dict['uid'] = result.get('UID')
-        permission_dict['aid'] = result.get('AID')
-        permission_dict['cid'] = result.get('CID')
-        permission_dict['pid'] = result.get('PID')
-        permission_dict['fid'] = result.get('FID')
-        permission_dict['gname'] = result.get('GName')
-        permission_dict['pname'] = result.get('PName')
-        permission_dict['fname'] = result.get('FName')
-
         user_info = dict()
-        user_info['user_id'] = user.userid
-        user_info['username'] = username
-        user_info['permission'] = permission_dict
-
+        user_info['userid'] = user.userid
+        user_info['username'] = user.useridentity
         token = gen_json_web_token(user_info)
         message = '登录成功'
-        return Response({'code': 1, 'username': username, 'token': token, 'message': message})
+        return Response({'code': 1, 'message': message, 'user_id': user.userid, 'username': user.useridentity, 'token': token})
     except:
         message = '用户名或密码错误'
         return Response({'code': 0, 'message': message})
 
 
-@api_view(['POST'])
-def get_channel_list(request):
-    data = json.loads(request.body)
-    gid = data.get('gid')
-    cid = data.get('cid')
-    if cid > 0:
-        channel_list = AppChannelList.objects.filter(gid=gid, cid=cid)
-    else:
-        channel_list = AppChannelList.objects.filter(gid=gid)
-    # cid = data.get('cid')
-    # channel_list = AppChannelList.objects.filter(gid=gid, cid=cid)
-    channel_dict = {each.cid: each.cname for each in channel_list}
-    return Response(channel_dict)
+@api_view(['GET'])
+@token_required
+def user_permission(request, id):
+    try:
+        user = User.objects.get(userid=id)
+    except:
+        message = '用户不存在'
+        return Response({'code': 0, 'message': message})
+
+    if request.method == 'GET':
+        # uid, aid, fid = id, 50, 4
+        try:
+            admin_cursor = connections['default'].cursor()
+            sql = "SELECT * FROM dbo.NAuth({uid}, 2) WHERE PID > 0 AND AID=50 AND FID=4".format(uid=id)
+            admin_cursor.execute(sql)
+            admin_db_result = dict_fetchall(admin_cursor)
+            cid = admin_db_result[0]['CID']
+            if cid > 0:
+                channel = AppChannelList.objects.filter(cid=cid, gid=50)
+                channel_serializer = AppChannelListSerializer(channel, many=True)
+                app = AppManage.objects.filter(channelid=cid, gametypeno=50)
+                app_serializer = AppManageSerializer(app, many=True)
+            else:
+                channel = AppChannelList.objects.filter(gid=50)
+                channel_serializer = AppManageSerializer(channel, many=True)
+                app = AppManage.objects.filter(gametypeno=50)
+                app_serializer = AppManageSerializer(app, many=True)
+            message = '获取权限成功'
+            return Response({'code': 1, 'message': message, 'channel_list': channel_serializer.data, 'app_list': app_serializer.data})
+        except:
+            message = '用户权限查询错误'
+            return Response({'code': 0, 'message': message})
 
 
 @api_view(['POST'])
-def get_appid_list(request):
-    data = json.loads(request.body)
-    gid = data.get('gid')
-    cid = data.get('cid')
-    appid_list = AppManage.objects.filter(gametypeno=gid, channelid=cid)
-    appid_dict = {each.appname: each.appid for each in appid_list}
-    return Response(appid_dict)
-
-
-@api_view(['POST'])
-def get_server_table(request):
-    data = json.loads(request.body)
+# @token_required
+def server_list(request):
+    data = JSONParser().parse(request)
     gid = data.get('gid')
     cid = data.get('cid')
     appid = data.get('appid')
+    if request.method == 'POST':
+        try:
+            server_management_cursor = connections['server_management'].cursor()
+            sql = "SELECT * FROM ServerManagementRo.dbo.[GetServerTable] (51, 1) WHERE appid='com.dkm.tlsj.tlsj'"
+            # sql = "SELECT * FROM ServerManagementRo.dbo.[GetServerTable] ({gid}, {cid}) WHERE appid='{appid}'".format(gid=gid, cid=cid, appid=appid)
+            server_management_cursor.execute(sql)
+            server_management_db_result = dict_fetchall(server_management_cursor)
+            # server_list = JSONRenderer().render(server_management_db_result)
+            # print(type(server_list))
+            message = '查询成功'
+            return Response({'code':1, 'message': message, 'server_list': server_management_db_result})
+        except:
+            message = '查询失败'
+            return Response({'code': 0, 'message': message})
 
-    try:
-        admin_cursor = connections['default'].cursor()
-        sql = "SELECT * FROM ServerManagement.dbo.[GetServerTable] ({gid},{cid}) WHERE appid='{appid}'".format(gid=gid, cid=cid, appid=appid)
-        admin_cursor.execute(sql)
-        admin_db_result = dict_fetchall(admin_cursor)
-        server_list = []
-        for each in admin_db_result:
-            pass
 
-    except:
-        message = '服务器列表查询失败'
-        return Response({'code': 0, 'message': message})
+class AppPlatformCfgList(APIView):
+    '''
+    列出所有的AppPlatformCfg
+    '''
+    def get(self, request, format=None):
+        app_platform_cfg =  AppPlatformCfg.objects.all()
+        serializer = AppPlatformCfgSerializer(app_platform_cfg, many=True)
+        return Response(serializer.data)
+
+
+class AppServerListList(APIView):
+    '''
+    列出所有的AppServer
+    '''
+    def get(self, request, format=None):
+        app_server_list =  AppServerList.objects.all()
+        serializer = AppServerListSerializer(app_server_list, many=True)
+        return Response(serializer.data, status=status.HTTP_201_CREATED)
+
+
+class WelfareManagementList(APIView):
+    '''
+    列出所有的WelfareManagement或新增一个Welfare
+    '''
+    def get(self, request, format=None):
+        welfare_management =  WelfareManagement.objects.all()
+        serializer = WelfareManagementSerializer(welfare_management, many=True)
+        return Response(serializer.data)
+
+    def post(self, request, format=None):
+        print(request.data)
+        data = request.data
+        pid = data.get('pid')
+        zid = data.get('zid')
+        platform = AppPlatformCfg.objects.get(gid=50, pid=pid)
+        pname = platform.pname
+        server = AppServerList.objects.get(gid=50, pid=pid, sid=zid)
+        zname = server.sname
+        data.update(pname=pname, zname=zname)
+        serializer = WelfareManagementSerializer(data=data)
+        if serializer.is_valid():
+            serializer.save()
+            return Response(serializer.data, status=status.HTTP_201_CREATED)
+        print(serializer.errors)
+        print(serializer.error_messages)
+        return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
+
+
+# @api_view(['POST'])
+# def login(request):
+#     data = json.loads(request.body)
+#     username = data.get('username')
+#     password = data.get('password')
+#
+#     try:
+#         user = User.objects.get(useridentity=username, password=password)
+#         with connections['default'].cursor() as admin_cursor:
+#             # sql = "SELECT * FROM dbo.NAuth({user_id}, 2) WHERE PID > 0 AND AID=50".format(user_id=user.userid)
+#             sql = "SELECT DISTINCT CID FROM dbo.NAuth(27, 2) WHERE PID > 0 AND AID=50 AND FID=4"
+#             # sql = "SELECT * FROM dbo.NAuth({user_id}, 2) WHERE PID > 0 AND AID=50 AND FID IN {fid_permission} ".format(user_id=user.userid, fid_permission=settings.FID_PERMISSION)
+#             admin_cursor.execute(sql)
+#             admin_db_result = dict_fetchall(admin_cursor)
+#         if not admin_db_result:
+#             message = '该用户没有此权限'
+#             return Response({'code': 0, 'message': message})
+#
+#         permission_dict = dict()
+#         result = admin_db_result[0]
+#
+#         permission_dict['uid'] = result.get('UID')
+#         permission_dict['aid'] = result.get('AID')
+#         permission_dict['cid'] = result.get('CID')
+#         permission_dict['pid'] = result.get('PID')
+#         permission_dict['fid'] = result.get('FID')
+#         permission_dict['gname'] = result.get('GName')
+#         permission_dict['pname'] = result.get('PName')
+#         permission_dict['fname'] = result.get('FName')
+#
+#         user_info = dict()
+#         user_info['user_id'] = user.userid
+#         user_info['username'] = username
+#         user_info['permission'] = permission_dict
+#
+#         token = gen_json_web_token(user_info)
+#         message = '登录成功'
+#
+#         app_manages = AppManage.objects.all()
+#         app_manages_serializer = AppManageSerializer(app_manages, many=True)
+#         # app_server_channels = AppServerChannel.objects.all()
+#         # app_server_channels_serializer = AppServerChannelSerializer(app_server_channels, many=True)
+#
+#         app_channel_list = AppChannelList.objects.all()
+#         app_channel_list_serializer = AppChannelListSerializer(app_channel_list, many=True)
+#
+#         return Response({
+#             'code': 1,
+#             'username': username,
+#             'token': token,
+#             'message': message,
+#             'app_manages': app_manages_serializer.data,
+#             'app_channel_list': app_channel_list_serializer.data
+#         })
+#     except:
+#         message = '用户名或密码错误'
+#         return Response({'code': 0, 'message': message})
+
+
+# @api_view(['POST'])
+# def get_channel_list(request):
+#     data = json.loads(request.body)
+#     gid = data.get('gid')
+#     cid = data.get('cid')
+#     if cid > 0:
+#         channel_list = AppChannelList.objects.filter(gid=gid, cid=cid)
+#     else:
+#         channel_list = AppChannelList.objects.filter(gid=gid)
+#     # cid = data.get('cid')
+#     # channel_list = AppChannelList.objects.filter(gid=gid, cid=cid)
+#     channel_dict = {each.cid: each.cname for each in channel_list}
+#     return Response(channel_dict)
+#
+#
+# @api_view(['POST'])
+# def get_appid_list(request):
+#     data = json.loads(request.body)
+#     gid = data.get('gid')
+#     cid = data.get('cid')
+#     appid_list = AppManage.objects.filter(gametypeno=gid, channelid=cid)
+#     appid_dict = {each.appname: each.appid for each in appid_list}
+#     return Response(appid_dict)
+
+
+# @api_view(['POST'])
+# def get_server_table(request):
+#     data = json.loads(request.body)
+#     gid = data.get('gid')
+#     cid = data.get('cid')
+#     appid = data.get('appid')
+#
+#     try:
+#         admin_cursor = connections['default'].cursor()
+#         sql = "SELECT * FROM ServerManagement.dbo.[GetServerTable] ({gid},{cid}) WHERE appid='{appid}'".format(gid=gid, cid=cid, appid=appid)
+#         admin_cursor.execute(sql)
+#         admin_db_result = dict_fetchall(admin_cursor)
+#         server_list = []
+#         for each in admin_db_result:
+#             pass
+#
+#     except:
+#         message = '服务器列表查询失败'
+#         return Response({'code': 0, 'message': message})
+
+
+
+@api_view(['GET', 'POST'])
+@token_required
+def test1(request):
+    if request.method == 'GET':
+        print('333')
+        app_manages = AppManage.objects.all()
+        app_manages_serializer = AppManageSerializer(app_manages, many=True)
+        return Response(app_manages_serializer.data)
+    elif request.method == 'POST':
+        print('222')
+        return Response({'t': 't1'})
+
+
+@token_required
+def test2(request):
+    return Response({'t2': 't2'})
+
 
     # with connections['default'].cursor() as admin_cursor:
     #     admin_cursor.execute(

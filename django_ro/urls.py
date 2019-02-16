@@ -15,11 +15,18 @@ Including another URLconf
 """
 from django.contrib import admin
 from django.urls import path
-from ro_operations.views import login, get_channel_list, get_appid_list
+# from ro_operations.views import login, user_permission, server_list, test1
+from ro_operations import views
 
 urlpatterns = [
     path('admin/', admin.site.urls),
-    path('login', login),
-    path('channels', get_channel_list),
-    path('appids', get_appid_list)
+    path('login', views.login),
+    # path('channels', get_channel_list),
+    # path('appids', get_appid_list),
+    path('permissions/<int:id>', views.user_permission),
+    path('servers', views.server_list),
+    path('tests', views.test1),
+    path('app_platforms', views.AppPlatformCfgList.as_view()),
+    path('app_servers', views.AppServerListList.as_view()),
+    path('welfares/', views.WelfareManagementList.as_view())
 ]

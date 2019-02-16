@@ -45,6 +45,7 @@ INSTALLED_APPS = [
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
     'django.contrib.sessions.middleware.SessionMiddleware',
+    'corsheaders.middleware.CorsMiddleware',
     'django.middleware.common.CommonMiddleware',
     'django.middleware.csrf.CsrfViewMiddleware',
     'django.contrib.auth.middleware.AuthenticationMiddleware',
@@ -78,35 +79,17 @@ WSGI_APPLICATION = 'django_ro.wsgi.application'
 # https://docs.djangoproject.com/en/2.1/ref/settings/#databases
 
 DATABASES = {
-    # 'default': {
-    #     # 数据库引擎设置
-    #     'ENGINE': 'sql_server.pyodbc',
-    #     # 要连接的数据库名
-    #     'NAME': 'ServerAdmin',
-    #     # 数据库用户名
-    #     'USER': 'DB_rwAccount!QAZ',
-    #     # 数据库密码
-    #     'PASSWORD': 'DB_dhJ15*edqdI',
-    #     # 数据库主机地址
-    #     'HOST': 'auth.xgd666.com,10097',
-    #     # 数据库端口号，默认可以不写
-    #     'PORT': '',
-    #     # 选项，这个要先在操作系统上完成ODBC的连接创建，并连接成功，注意10.0这个地方，要和自己的ODBC版本一致
-    #     'OPTIONS': {
-    #         'driver': 'SQL Server Native Client 10.0',
-    #     },
-    # },
     'default': {
         # 数据库引擎设置
         'ENGINE': 'sql_server.pyodbc',
         # 要连接的数据库名
-        'NAME': 'ServerAdminRo',
+        'NAME': 'ServerAdmin',
         # 数据库用户名
-        'USER': 'sa',
+        'USER': 'DB_rwAccount!QAZ',
         # 数据库密码
-        'PASSWORD': '7cool_7COOL_7cool',
+        'PASSWORD': 'DB_dhJ15*edqdI',
         # 数据库主机地址
-        'HOST': '127.0.0.1',
+        'HOST': 'auth.xgd666.com,10097',
         # 数据库端口号，默认可以不写
         'PORT': '',
         # 选项，这个要先在操作系统上完成ODBC的连接创建，并连接成功，注意10.0这个地方，要和自己的ODBC版本一致
@@ -114,17 +97,53 @@ DATABASES = {
             'driver': 'SQL Server Native Client 10.0',
         },
     },
+    # 'default': {
+    #     # 数据库引擎设置
+    #     'ENGINE': 'sql_server.pyodbc',
+    #     # 要连接的数据库名
+    #     'NAME': 'ServerAdminRo',
+    #     # 数据库用户名
+    #     'USER': 'sa',
+    #     # 数据库密码
+    #     'PASSWORD': '7cool_7COOL_7cool',
+    #     # 数据库主机地址
+    #     'HOST': '127.0.0.1',
+    #     # 数据库端口号，默认可以不写
+    #     'PORT': '',
+    #     # 选项，这个要先在操作系统上完成ODBC的连接创建，并连接成功，注意10.0这个地方，要和自己的ODBC版本一致
+    #     'OPTIONS': {
+    #         'driver': 'SQL Server Native Client 10.0',
+    #     },
+    # },
+    # 'server_management': {
+    #     # 数据库引擎设置
+    #     'ENGINE': 'sql_server.pyodbc',
+    #     # 要连接的数据库名
+    #     'NAME': 'ServerManagementRo',
+    #     # 数据库用户名
+    #     'USER': 'sa',
+    #     # 数据库密码
+    #     'PASSWORD': '7cool_7COOL_7cool',
+    #     # 数据库主机地址
+    #     'HOST': '127.0.0.1',
+    #     # 数据库端口号，默认可以不写
+    #     'PORT': '',
+    #     # 选项，这个要先在操作系统上完成ODBC的连接创建，并连接成功，注意10.0这个地方，要和自己的ODBC版本一致
+    #     'OPTIONS': {
+    #         'driver': 'SQL Server Native Client 10.0',
+    #     },
+    # },
     'server_management': {
         # 数据库引擎设置
         'ENGINE': 'sql_server.pyodbc',
         # 要连接的数据库名
-        'NAME': 'ServerManagementRo',
+        'NAME': 'ServerManagement',
         # 数据库用户名
-        'USER': 'sa',
+        'USER': 'DB_rwAccount!QAZ',
         # 数据库密码
-        'PASSWORD': '7cool_7COOL_7cool',
+        'PASSWORD': 'DB_dhJ15*edqdI',
         # 数据库主机地址
-        'HOST': '127.0.0.1',
+        'HOST': 'auth.xgd666.com,10097',
         # 数据库端口号，默认可以不写
         'PORT': '',
         # 选项，这个要先在操作系统上完成ODBC的连接创建，并连接成功，注意10.0这个地方，要和自己的ODBC版本一致
@@ -136,7 +155,25 @@ DATABASES = {
          # 数据库引擎设置
         'ENGINE': 'sql_server.pyodbc',
         # 要连接的数据库名
-        'NAME': 'AppidManagementRo',
+        'NAME': 'AppidManagement',
+        # 数据库用户名
+        'USER': 'DB_rwAccount!QAZ',
+        # 数据库密码
+        'PASSWORD': 'DB_dhJ15*edqdI',
+        # 数据库主机地址
+        'HOST': 'auth.xgd666.com,10097',
+        # 数据库端口号，默认可以不写
+        'PORT': '',
+        # 选项，这个要先在操作系统上完成ODBC的连接创建，并连接成功，注意10.0这个地方，要和自己的ODBC版本一致
+        'OPTIONS': {
+            'driver': 'SQL Server Native Client 10.0',
+        },
+    },
+    'django_ro': {
+        # 数据库引擎设置
+        'ENGINE': 'sql_server.pyodbc',
+        # 要连接的数据库名
+        'NAME': 'DjangoRo',
         # 数据库用户名
         'USER': 'sa',
         # 数据库密码
@@ -149,16 +186,9 @@ DATABASES = {
         'OPTIONS': {
             'driver': 'SQL Server Native Client 10.0',
         },
-    }
+    },
 }
 
-# DATABASE_ROUTERS = ['django_ro.database_router.DatabaseAppsRouter']
-# DATABASE_APPS_MAPPING = {
-#     # example:
-#     #'app_name':'database_name',
-#     # 'server_admin': 'server_admin',
-#     'appid_management': 'appid_management',
-# }
 
 # Password validation
 # https://docs.djangoproject.com/en/2.1/ref/settings/#auth-password-validators
@@ -203,4 +233,4 @@ STATIC_URL = '/static/'
 CORS_ORIGIN_ALLOW_ALL = True
 
 
-FID_PERMISSION = '(196)'
+# FID_PERMISSION = '(196)'

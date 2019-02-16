@@ -6,7 +6,7 @@
 #   * Remove `managed = False` lines if you wish to allow Django to create, modify, and delete the table
 # Feel free to rename the models, but don't rename db_table values or field names.
 from django.db import models
-from .model_managers import AppManagementManager, ServerManagementManager
+from .model_managers import AppManagementManager, ServerManagementManager, WelfareManagementManager
 
 
 class AppManage(models.Model):
@@ -132,6 +132,75 @@ class User(models.Model):
         db_table = 'User'
 
 
+class AppPlatformCfg(models.Model):
+    idx = models.AutoField(primary_key=True)
+    gid = models.IntegerField(db_column='GID', blank=True, null=True)  # Field name made lowercase.
+    pid = models.IntegerField(db_column='PID', blank=True, null=True)  # Field name made lowercase.
+    pname = models.CharField(db_column='PName', max_length=50, blank=True, null=True)  # Field name made lowercase.
+    createdate = models.DateField(db_column='CreateDate', blank=True, null=True)  # Field name made lowercase.
+    onlinedate = models.DateField(db_column='OnlineDate', blank=True, null=True)  # Field name made lowercase.
+    offlinedate = models.DateField(db_column='OfflineDate', blank=True, null=True)  # Field name made lowercase.
+    company = models.CharField(db_column='Company', max_length=50, blank=True, null=True)  # Field name made lowercase.
+
+    objects = ServerManagementManager()
+
+    class Meta:
+        verbose_name = '平台配置'
+        verbose_name_plural = verbose_name
+        managed = False
+        db_table = 'App_Platform_cfg'
+
+
+class AppServerList(models.Model):
+    sid = models.IntegerField(db_column='SID', blank=True, null=True)  # Field name made lowercase.
+    sname = models.CharField(db_column='SName', max_length=512, blank=True, null=True)  # Field name made lowercase.
+    pid = models.IntegerField(db_column='PID', blank=True, null=True)  # Field name made lowercase.
+    gid = models.IntegerField(db_column='GID', blank=True, null=True)  # Field name made lowercase.
+    apid = models.IntegerField(db_column='APID', blank=True, null=True)  # Field name made lowercase.
+    display = models.IntegerField(db_column='Display', blank=True, null=True)  # Field name made lowercase.
+    devid = models.IntegerField(db_column='DevID', blank=True, null=True)  # Field name made lowercase.
+    dn = models.CharField(db_column='DN', max_length=50, blank=True, null=True)  # Field name made lowercase.
+    vid = models.IntegerField(db_column='VID', blank=True, null=True)  # Field name made lowercase.
+    type = models.IntegerField(db_column='Type', blank=True, null=True)  # Field name made lowercase.
+    status = models.IntegerField(db_column='Status', blank=True, null=True)  # Field name made lowercase.
+    prostatus = models.IntegerField(db_column='ProStatus', blank=True, null=True)  # Field name made lowercase.
+    opendate = models.DateField(db_column='OpenDate')  # Field name made lowercase.
+    mergedate = models.DateField(db_column='MergeDate')  # Field name made lowercase.
+    mergeid = models.IntegerField(db_column='MergeID')  # Field name made lowercase.
+    mergeidx = models.IntegerField(db_column='MergeIdx')  # Field name made lowercase.
+    serverid = models.IntegerField(db_column='ServerID', blank=True, null=True)  # Field name made lowercase.
+    gslist = models.CharField(db_column='GSList', max_length=50, blank=True, null=True)  # Field name made lowercase.
+    dbsvr_in = models.CharField(db_column='DBSvr_in', max_length=50, blank=True, null=True)  # Field name made lowercase.
+    dbname_in = models.CharField(db_column='DBName_in', max_length=50, blank=True, null=True)  # Field name made lowercase.
+    dbqueryid_in = models.IntegerField(db_column='DBQueryId_in', blank=True, null=True)  # Field name made lowercase.
+    dbsvr_out = models.CharField(db_column='DBSvr_out', max_length=50, blank=True, null=True)  # Field name made lowercase.
+    dbname_out = models.CharField(db_column='DBName_out', max_length=50, blank=True, null=True)  # Field name made lowercase.
+    dbqueryid_out = models.IntegerField(db_column='DBQueryId_out', blank=True, null=True)  # Field name made lowercase.
+    serverpath = models.CharField(db_column='ServerPath', max_length=50, blank=True, null=True)  # Field name made lowercase.
+    smport = models.IntegerField(db_column='SMPort')  # Field name made lowercase.
+    loginport = models.CharField(db_column='LoginPort', max_length=50, blank=True, null=True)  # Field name made lowercase.
+    rmbport = models.IntegerField(db_column='RmbPort', blank=True, null=True)  # Field name made lowercase.
+    db_svrcfg = models.CharField(max_length=50, blank=True, null=True)
+    db_player = models.CharField(max_length=50, blank=True, null=True)
+    db_login = models.CharField(max_length=50, blank=True, null=True)
+    db_super = models.CharField(max_length=50, blank=True, null=True)
+    db_rmb = models.CharField(max_length=50, blank=True, null=True)
+    db_param = models.CharField(max_length=50, blank=True, null=True)
+    trigger_flag = models.CharField(max_length=50, blank=True, null=True)
+
+    objects = ServerManagementManager()
+
+    def __str__(self):
+        return self.sid
+
+    class Meta:
+        verbose_name = '应用服务器'
+        verbose_name_plural = verbose_name
+        managed = False
+        db_table = 'App_Server_List'
+        unique_together = (('sid', 'pid', 'gid'),)
+
+
 class AppChannelList(models.Model):
     cid = models.IntegerField(db_column='CID', primary_key=True)  # Field name made lowercase.
     cname = models.CharField(db_column='CName', max_length=50, blank=True, null=True)  # Field name made lowercase.
@@ -165,6 +234,8 @@ class AppServerChannel(models.Model):
     server_statu = models.IntegerField()
     server_suggest = models.IntegerField()
     is_delete = models.IntegerField()
+    player_highlines = models.IntegerField(blank=True, null=True)
+    server_weight = models.IntegerField(blank=True, null=True)
 
     objects = ServerManagementManager()
 
@@ -176,3 +247,35 @@ class AppServerChannel(models.Model):
         verbose_name_plural = verbose_name
         managed = False
         db_table = 'App_Server_Channel'
+
+
+class WelfareManagement(models.Model):
+    choices = (
+        (0, '审核中、'),
+        (1, '已通过'),
+        (2, '未通过'),
+    )
+
+    pid = models.IntegerField(verbose_name='游戏平台id')
+    pname = models.CharField(max_length=100, verbose_name='游戏平台名')
+    zid = models.IntegerField(verbose_name='游戏区服id')
+    zname = models.CharField(max_length=100, verbose_name='游戏区服名')
+    role_name = models.CharField(max_length=100, blank=True, null=True, verbose_name='申请角色名')
+    amount = models.IntegerField(verbose_name='申请数额')
+    is_regular = models.BooleanField(default=False, verbose_name='是否固定发放')
+    regular_period = models.IntegerField(null=True, verbose_name='固定发放周期')
+    applicant = models.CharField(max_length=100, verbose_name='申请人')
+    created_date = models.DateTimeField(auto_now_add=True, verbose_name='申请时间')
+    status = models.IntegerField(choices=choices, default=0, verbose_name='审核状态')
+    approver = models.CharField(max_length=100, blank=True, null=True, verbose_name='审核人')
+    approve_date = models.DateTimeField(null=True, verbose_name='审核时间')
+
+
+    objects = WelfareManagementManager()
+
+    # def __str__(self):
+    #     return '_'.join([str(self.pid), self.zid, self.role_name, str(self.amount)])
+
+    class Meta:
+        verbose_name = '福利发放管理'
+        verbose_name_plural = verbose_name

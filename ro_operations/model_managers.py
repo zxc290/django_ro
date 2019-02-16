@@ -10,3 +10,7 @@ class ServerManagementManager(models.Manager):
     def get_queryset(self):
         return super().get_queryset().using('server_management')
 
+
+class WelfareManagementManager(models.Manager):
+    def get_queryset(self):
+        return super().get_queryset().using('django_ro')
