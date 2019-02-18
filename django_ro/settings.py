@@ -232,5 +232,14 @@ STATIC_URL = '/static/'
 # 跨域设置
 CORS_ORIGIN_ALLOW_ALL = True
 
+# 功能id
+FUNCTION_ID = 2
 
-# FID_PERMISSION = '(196)'
+# 提审权限
+APPLICANT_PERMISSION = 215
+
+# 审批权限
+APPROVE_PERMISSION = 216
+
+# 权限集合
+FID_PERMISSION = '(215, 216)'

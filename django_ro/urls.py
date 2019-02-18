@@ -28,5 +28,6 @@ urlpatterns = [
     path('tests', views.test1),
     path('app_platforms', views.AppPlatformCfgList.as_view()),
     path('app_servers', views.AppServerListList.as_view()),
-    path('welfares/', views.WelfareManagementList.as_view())
+    path('welfares/', views.WelfareManagementList.as_view()),
+    path('welfares/<int:id>/', views.WelfareManagementDetail.as_view()),
 ]

@@ -5,8 +5,11 @@
 #   * Make sure each ForeignKey has `on_delete` set to the desired behavior.
 #   * Remove `managed = False` lines if you wish to allow Django to create, modify, and delete the table
 # Feel free to rename the models, but don't rename db_table values or field names.
-from django.db import models
+import hashlib
+from django.db import models, connections
+from django.conf import settings
 from .model_managers import AppManagementManager, ServerManagementManager, WelfareManagementManager
+from .dbtools import dict_fetchall
 
 
 class AppManage(models.Model):
@@ -111,16 +114,50 @@ class User(models.Model):
     useridentity = models.CharField(db_column='userIdentity', max_length=50, verbose_name='用户身份')
     password = models.CharField(db_column='passWord', max_length=50, blank=True, null=True, verbose_name='密码')
     emailaddress = models.CharField(db_column='emailAddress', max_length=32, blank=True, null=True, verbose_name='邮件地址')
-    # phonenumber = models.CharField(db_column='phoneNumber', max_length=11, blank=True, null=True)
-    # ipaddress = models.CharField(db_column='ipAddress', max_length=16, blank=True, null=True)
-    # mac = models.CharField(max_length=32, blank=True, null=True)
-    # username = models.CharField(db_column='userName', max_length=50, blank=True, null=True)
-    # admin = models.IntegerField(blank=True, null=True)
-    # failcount = models.IntegerField(db_column='failCount', blank=True, null=True)
-    # lastlogintime = models.IntegerField(db_column='lastLoginTime', blank=True, null=True)
-    # token = models.CharField(max_length=32, blank=True, null=True)
+    phonenumber = models.CharField(db_column='phoneNumber', max_length=11, blank=True, null=True)
+    ipaddress = models.CharField(db_column='ipAddress', max_length=16, blank=True, null=True)
+    mac = models.CharField(max_length=32, blank=True, null=True)
+    username = models.CharField(db_column='userName', max_length=50, blank=True, null=True)
+    admin = models.IntegerField(blank=True, null=True)
+    failcount = models.IntegerField(db_column='failCount', blank=True, null=True)
+    lastlogintime = models.IntegerField(db_column='lastLoginTime', blank=True, null=True)
+    token = models.CharField(max_length=32, blank=True, null=True)
 
     # objects = UserWithEmailManager()
+
+    def check_password(self, password):
+        return hashlib.md5(password.encode()).hexdigest().upper() == self.password
+
+    def is_applicant(self):
+        sql = "SELECT * FROM dbo.NAuth({user_id}, {function_id}) WHERE PID > 0 and FID = {permission}".format(user_id=self.userid, function_id=settings.FUNCTION_ID, permission=settings.APPLICANT_PERMISSION)
+        try:
+            admin_cursor = connections['default'].cursor()
+            admin_cursor.execute(sql)
+            result = dict_fetchall(admin_cursor)
+            return result
+        except:
+            return False
+
+    def is_approver(self):
+        sql = "SELECT * FROM dbo.NAuth({user_id}, {function_id}) WHERE PID > 0 and FID = {permission}".format(user_id=self.userid, function_id=settings.FUNCTION_ID, permission=settings.APPROVE_PERMISSION)
+        try:
+            admin_cursor = connections['default'].cursor()
+            admin_cursor.execute(sql)
+            result = dict_fetchall(admin_cursor)
+            return result
+        except:
+            return False
+
+    # def get_user_permission(self):
+    #     sql = "SELECT * FROM dbo.NAuth({user_id}, {function_id}) WHERE PID > 0 and FID IN {fid_permission}".format(user_id=self.userid, function_id=settings.FUNCTION_ID, fid_permission=settings.FID_PERMISSION)
+    #
+    #     try:
+    #         admin_cursor = connections['default'].cursor()
+    #         admin_cursor.execute(sql)
+    #         result = dict_fetchall(admin_cursor)
+    #         return result
+    #     except:
+    #         return False
 
     def __str__(self):
         return self.useridentity
@@ -250,12 +287,6 @@ class AppServerChannel(models.Model):
 
 
 class WelfareManagement(models.Model):
-    choices = (
-        (0, '审核中、'),
-        (1, '已通过'),
-        (2, '未通过'),
-    )
-
     pid = models.IntegerField(verbose_name='游戏平台id')
     pname = models.CharField(max_length=100, verbose_name='游戏平台名')
     zid = models.IntegerField(verbose_name='游戏区服id')
@@ -266,7 +297,7 @@ class WelfareManagement(models.Model):
     regular_period = models.IntegerField(null=True, verbose_name='固定发放周期')
     applicant = models.CharField(max_length=100, verbose_name='申请人')
     created_date = models.DateTimeField(auto_now_add=True, verbose_name='申请时间')
-    status = models.IntegerField(choices=choices, default=0, verbose_name='审核状态')
+    status = models.IntegerField(default=0, verbose_name='审核状态')
     approver = models.CharField(max_length=100, blank=True, null=True, verbose_name='审核人')
     approve_date = models.DateTimeField(null=True, verbose_name='审核时间')
 
@@ -279,3 +310,4 @@ class WelfareManagement(models.Model):
     class Meta:
         verbose_name = '福利发放管理'
         verbose_name_plural = verbose_name
+

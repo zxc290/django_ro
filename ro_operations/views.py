@@ -1,8 +1,10 @@
 import json
 import time
+from datetime import datetime, timedelta
 from django.shortcuts import render
 from django.conf import settings
 from django.db import connections
+from django.http import Http404
 from rest_framework.decorators import api_view
 from rest_framework.views import APIView
 from rest_framework.response import Response
@@ -20,22 +22,67 @@ from .dbtools import dict_fetchall
 
 
 
+# @api_view(['POST'])
+# def login(request):
+#     data = JSONParser().parse(request)
+#     # data = json.loads(request.body)
+#     username = data.get('username')
+#     password = data.get('password')
+#     try:
+#         user = User.objects.get(useridentity=username, password=password)
+#         user_info = dict()
+#         user_info['userid'] = user.userid
+#         user_info['username'] = user.useridentity
+#         token = gen_json_web_token(user_info)
+#         message = '登录成功'
+#         return Response({'code': 1, 'message': message, 'user_id': user.userid, 'username': user.useridentity, 'token': token})
+#     except:
+#         message = '用户名或密码错误'
+#         return Response({'code': 0, 'message': message})
+
+
 @api_view(['POST'])
 def login(request):
-    data = JSONParser().parse(request)
-    # data = json.loads(request.body)
+    data = request.data
     username = data.get('username')
     password = data.get('password')
+    now = datetime.now()
     try:
-        user = User.objects.get(useridentity=username, password=password)
-        user_info = dict()
-        user_info['userid'] = user.userid
-        user_info['username'] = user.useridentity
-        token = gen_json_web_token(user_info)
-        message = '登录成功'
-        return Response({'code': 1, 'message': message, 'user_id': user.userid, 'username': user.useridentity, 'token': token})
-    except:
-        message = '用户名或密码错误'
+        user = User.objects.get(useridentity=username)
+        user.lastlogintime = int(now.timestamp())
+        if user.check_password(password):
+            user.failcount = 0
+            user.save()
+
+            user_info = dict()
+            user_info['user_id'] = user.userid
+            user_info['username'] = user.useridentity
+            user_info['is_applicant'] = True if user.is_applicant() else False
+            user_info['is_approver'] = True if user.is_approver() else False
+
+            if user_info.get('is_applicant') == user_info.get('is_approver') == True:
+                # 提审 审核无法共存，此时应禁止登陆
+                pass
+
+            token = gen_json_web_token(user_info)
+            message = '登录成功'
+            # logger.info('登录成功')
+            return Response({'code': 1, 'user_info': user_info, 'token': token, 'message': message})
+        else:
+            last_login_time = datetime.fromtimestamp(user.lastlogintime)
+            past_time = now - last_login_time
+            if past_time > timedelta(hours=1):
+                user.failcount = 0
+            user.failcount += 1
+            user.save()
+            if user.failcount >= 5:
+                message = '用户冻结中，请稍后重试'
+            else:
+                message = '密码错误，剩余{0}次尝试次数'.format(str(5 - user.failcount))
+            return Response({'code': 0, 'message': message})
+    except BaseException as e:
+        print(e)
+        message = '该用户不存在'
         return Response({'code': 0, 'message': message})
 
 
@@ -121,8 +168,8 @@ class WelfareManagementList(APIView):
     列出所有的WelfareManagement或新增一个Welfare
     '''
     def get(self, request, format=None):
-        welfare_management =  WelfareManagement.objects.all()
-        serializer = WelfareManagementSerializer(welfare_management, many=True)
+        welfare_managements =  WelfareManagement.objects.all()
+        serializer = WelfareManagementSerializer(welfare_managements, many=True)
         return Response(serializer.data)
 
     def post(self, request, format=None):
@@ -142,6 +189,40 @@ class WelfareManagementList(APIView):
         print(serializer.errors)
         print(serializer.error_messages)
         return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
+
+
+class WelfareManagementDetail(APIView):
+    """
+    检索，更新或删除一个WelfareManagement
+    """
+    def get_object(self, id):
+        try:
+            return WelfareManagement.objects.get(id=id)
+        except WelfareManagement.DoesNotExist:
+            raise Http404
+
+    def put(self, request, id, format=None):
+        welfare_management = self.get_object(id)
+        data = request.data
+        now = datetime.now()
+        approver = '审核员1'
+        data.update(approver=approver, approve_date=now)
+        serializer = WelfareManagementSerializer(welfare_management, data=data)
+        if serializer.is_valid():
+            serializer.save()
+            return Response(serializer.data)
+        print(serializer.errors)
+        return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
+
+
+    def delete(self, request, id, format=None):
+        welfare_management = self.get_object(id)
+        if welfare_management.status == 0:
+            welfare_management.delete()
+            return Response(status=status.HTTP_204_NO_CONTENT)
+        else:
+            message = '只能撤销审核中的申请'
+            return Response(message, status=status.HTTP_202_ACCEPTED)
 
 
 # @api_view(['POST'])
@@ -335,13 +416,4 @@ def test2(request):
     #         message = '用户名或密码错误'
     #         logger.info('用户名或密码错误，登录失败')
     #         return Response({'code': 0, 'message': message})
-# a = {'user_id': 28, 'username': 'guchengdong', 'permission': {50: {'GName': '仙境传说', 1: {'PName': '畅梦测试', 100: {'FName': '分时段数据'}, 107: {'FName': '客服查询'}, 4: {'FName': '渠道管理'}, 75: {'F
-# Name': '汇总'}, 76: {'FName': '罗盘'}, 77: {'FName': '注册收入比'}, 78: {'FName': 'LTV'}, 79: {'FName': '运营数据分析'}, 80: {'FName': '前端点击功能'}, 81: {'FName': '产出消耗汇总'}, 88: {'FName': '元
-# 宝消耗'}, 89: {'FName': '元宝商城'}, 90: {'FName': '绑定元宝消耗'}, 91: {'FName': '绑定元宝商城'}, 92: {'FName': '特殊道具使用销售'}, 93: {'FName': '特殊道具产出'}, 94: {'FName': '寻宝'}, 95: {'FName'
-# : '地图传送统计'}, 96: {'FName': '平台最高在线'}, 97: {'FName': '各时间段消费比例'}, 98: {'FName': '在线人数分析'}, 99: {'FName': '在线时长'}, 101: {'FName': '等级分布'}, 102: {'FName': '转生等级分布'
-# }, 103: {'FName': '收入分析'}, 104: {'FName': '付费构成'}, 106: {'FName': '激活用户'}, 108: {'FName': '充值排行'}, 109: {'FName': '充值金额查询'}, 110: {'FName': '充值记录'}, 111: {'FName': '各渠道新
-# 增充值'}, 112: {'FName': '消费记录'}, 114: {'FName': '活动数据查询'}, 115: {'FName': '元宝消耗排行'}, 116: {'FName': '玩家角色账号互查'}, 117: {'FName': '基本信息'}, 118: {'FName': '死亡记录'}, 119: {
-# 'FName': '任务记录'}, 120: {'FName': '元宝记录(点数变化)'}, 121: {'FName': '物品记录'}, 122: {'FName': '升级记录'}, 123: {'FName': '道具交易'}, 124: {'FName': '邮件信息'}, 125: {'FName': 'Boss掉落'},
-# 128: {'FName': '激活码查询'}, 129: {'FName': '战斗力排行'}, 135: {'FName': '玩家登录信息'}, 136: {'FName': '合区列表'}, 138: {'FName': '金币记录'}, 139: {'FName': '绑金记录'}, 140: {'FName': '绑元记录
-# '}, 141: {'FName': '在线分析'}, 146: {'FName': '配置区服信息'}, 148: {'FName': '手游管理(渠道)'}, 149: {'FName': '包管理(渠道)'}, 150: {'FName': '公告管理(渠道)'}, 151: {'FName': '区服管理(渠道)'}, 15
-# 8: {'FName': '留存分析'}, 162: {'FName': '行会公告'}}}}
+
