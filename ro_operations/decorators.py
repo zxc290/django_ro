@@ -1,5 +1,6 @@
 import json
 from rest_framework.response import Response
+from rest_framework import status
 from .tokens import verify_token
 
 
@@ -8,7 +9,7 @@ def token_required(func):
         token = request.META.get('HTTP_AUTHORIZATION')
         user_auth = verify_token(token)
         if user_auth is None:
-            message = 'token验证失败'
-            return Response({'code': 2, 'message': message})
+            message = 'token验证过期，请重新登陆'
+            return Response(message, status=status.HTTP_403_FORBIDDEN)
         return func(request, *args, **kwargs)
     return wrapper

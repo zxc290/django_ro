@@ -8,7 +8,7 @@
 import hashlib
 from django.db import models, connections
 from django.conf import settings
-from .model_managers import AppManagementManager, ServerManagementManager, WelfareManagementManager
+from .model_managers import AppManagementManager, ServerManagementManager, DjangoRoManager
 from .dbtools import dict_fetchall
 
 
@@ -140,6 +140,16 @@ class User(models.Model):
 
     def is_approver(self):
         sql = "SELECT * FROM dbo.NAuth({user_id}, {function_id}) WHERE PID > 0 and FID = {permission}".format(user_id=self.userid, function_id=settings.FUNCTION_ID, permission=settings.APPROVE_PERMISSION)
+        try:
+            admin_cursor = connections['default'].cursor()
+            admin_cursor.execute(sql)
+            result = dict_fetchall(admin_cursor)
+            return result
+        except:
+            return False
+
+    def is_role_manager(self):
+        sql = "SELECT * FROM dbo.NAuth({user_id}, {function_id}) WHERE PID > 0 and FID = {permission}".format(user_id=self.userid, function_id=settings.FUNCTION_ID, permission=settings.USER_ROLE_PERMISSION)
         try:
             admin_cursor = connections['default'].cursor()
             admin_cursor.execute(sql)
@@ -295,19 +305,36 @@ class WelfareManagement(models.Model):
     amount = models.IntegerField(verbose_name='申请数额')
     is_regular = models.BooleanField(default=False, verbose_name='是否固定发放')
     regular_period = models.IntegerField(null=True, verbose_name='固定发放周期')
-    applicant = models.CharField(max_length=100, verbose_name='申请人')
+    applicant_id = models.IntegerField(verbose_name='申请人id')
+    applicant_name = models.CharField(max_length=100, verbose_name='申请人')
     created_date = models.DateTimeField(auto_now_add=True, verbose_name='申请时间')
     status = models.IntegerField(default=0, verbose_name='审核状态')
-    approver = models.CharField(max_length=100, blank=True, null=True, verbose_name='审核人')
+    approver_id = models.IntegerField( blank=True, null=True, verbose_name='审批人id')
+    approver_name = models.CharField(max_length=100, blank=True, null=True, verbose_name='审核人')
     approve_date = models.DateTimeField(null=True, verbose_name='审核时间')
 
-
-    objects = WelfareManagementManager()
-
-    # def __str__(self):
-    #     return '_'.join([str(self.pid), self.zid, self.role_name, str(self.amount)])
+    objects = DjangoRoManager()
 
     class Meta:
         verbose_name = '福利发放管理'
         verbose_name_plural = verbose_name
 
+
+class RolePlayerManagement(models.Model):
+    pid = models.IntegerField(verbose_name='游戏平台id')
+    pname = models.CharField(max_length=100, verbose_name='游戏平台名')
+    zid = models.IntegerField(verbose_name='游戏区服id')
+    zname = models.CharField(max_length=100, verbose_name='游戏区服名')
+    role_name = models.CharField(max_length=100, verbose_name='角色名')
+    user_name = models.CharField(max_length=100, verbose_name='使用人姓名')
+    is_active = models.BooleanField(default=True, verbose_name='是否激活')
+    created_date = models.DateTimeField(auto_now_add=True, verbose_name='创建时间')
+    modify_date = models.DateTimeField(auto_now=True, verbose_name='修改时间')
+    creator_id = models.IntegerField(verbose_name='创建者id')
+    creator_name = models.CharField(max_length=100, verbose_name='创建者姓名')
+
+    objects = DjangoRoManager()
+
+    class Meta:
+        verbose_name = '人员角色管理'
+        verbose_name_plural = verbose_name

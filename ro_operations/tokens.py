@@ -5,6 +5,7 @@ from itsdangerous import TimedJSONWebSignatureSerializer
 
 def gen_json_web_token(user_info):
     s = TimedJSONWebSignatureSerializer(settings.SECRET_KEY, 8 * 60 * 60)
+    # s = TimedJSONWebSignatureSerializer(settings.SECRET_KEY, 5)
     timestamp = time.time()
     user_info['iat'] = timestamp
     token = s.dumps(user_info)

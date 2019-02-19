@@ -1,5 +1,5 @@
 from rest_framework import serializers
-from .models import User, AppChannelList, AppManage, AppServerList, AppPlatformCfg, WelfareManagement
+from .models import User, AppChannelList, AppManage, AppServerList, AppPlatformCfg, WelfareManagement, RolePlayerManagement
 
 
 class UserSerializer(serializers.ModelSerializer):
@@ -34,7 +34,13 @@ class AppServerListSerializer(serializers.ModelSerializer):
 class WelfareManagementSerializer(serializers.ModelSerializer):
     class Meta:
         model = WelfareManagement
-        exclude = ('applicant', )
+        fields = '__all__'
+
+
+class RolePlayerManagementSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = RolePlayerManagement
+        fields = '__all__'
 
 
 class ServerTableSerializer(serializers.Serializer):

@@ -5,6 +5,7 @@ from django.shortcuts import render
 from django.conf import settings
 from django.db import connections
 from django.http import Http404
+from django.utils.decorators import method_decorator
 from rest_framework.decorators import api_view
 from rest_framework.views import APIView
 from rest_framework.response import Response
@@ -12,8 +13,8 @@ from rest_framework.renderers import JSONRenderer
 from rest_framework.parsers import JSONParser
 from rest_framework import status
 from itsdangerous import TimedJSONWebSignatureSerializer
-from .models import User, AppChannelList, AppManage, AppServerList, AppPlatformCfg, WelfareManagement
-from .serializers import UserSerializer, AppChannelListSerializer, AppManageSerializer, AppServerListSerializer, AppPlatformCfgSerializer, WelfareManagementSerializer
+from .models import User, AppChannelList, AppManage, AppServerList, AppPlatformCfg, WelfareManagement, RolePlayerManagement
+from .serializers import UserSerializer, AppChannelListSerializer, AppManageSerializer, AppServerListSerializer, AppPlatformCfgSerializer, WelfareManagementSerializer, RolePlayerManagementSerializer
 from django.contrib.auth.decorators import login_required
 from .tokens import gen_json_web_token
 from .decorators import token_required
@@ -59,10 +60,11 @@ def login(request):
             user_info['username'] = user.useridentity
             user_info['is_applicant'] = True if user.is_applicant() else False
             user_info['is_approver'] = True if user.is_approver() else False
+            user_info['is_role_manager'] = True if user.is_role_manager() else False
 
-            if user_info.get('is_applicant') == user_info.get('is_approver') == True:
-                # 提审 审核无法共存，此时应禁止登陆
-                pass
+            # if user_info.get('is_applicant') == user_info.get('is_approver') == True:
+            #     # 提审 审核无法共存，此时应禁止登陆
+            #     pass
 
             token = gen_json_web_token(user_info)
             message = '登录成功'
@@ -163,6 +165,7 @@ class AppServerListList(APIView):
         return Response(serializer.data, status=status.HTTP_201_CREATED)
 
 
+@method_decorator(token_required, name='dispatch')
 class WelfareManagementList(APIView):
     '''
     列出所有的WelfareManagement或新增一个Welfare
@@ -173,15 +176,23 @@ class WelfareManagementList(APIView):
         return Response(serializer.data)
 
     def post(self, request, format=None):
-        print(request.data)
         data = request.data
+        print(data)
         pid = data.get('pid')
         zid = data.get('zid')
-        platform = AppPlatformCfg.objects.get(gid=50, pid=pid)
-        pname = platform.pname
-        server = AppServerList.objects.get(gid=50, pid=pid, sid=zid)
-        zname = server.sname
-        data.update(pname=pname, zname=zname)
+        applicant_id = data.get('applicant_id')
+        is_regular = data.get('is_regular')
+        regular_period = data.get('regular_period')
+
+        pname = AppPlatformCfg.objects.get(gid=50, pid=pid).pname
+        zname = AppServerList.objects.get(gid=50, pid=pid, sid=zid).sname
+        applicant_name = User.objects.get(userid=applicant_id).username
+
+        # 判断是否常规发放，决定是否传入固定周期字段
+        if is_regular:
+            data.update(pname=pname, zname=zname, applicant_name=applicant_name, regular_period=regular_period)
+        else:
+            data.update(pname=pname, zname=zname, applicant_name=applicant_name)
         serializer = WelfareManagementSerializer(data=data)
         if serializer.is_valid():
             serializer.save()
@@ -191,6 +202,7 @@ class WelfareManagementList(APIView):
         return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
 
 
+@method_decorator(token_required, name='dispatch')
 class WelfareManagementDetail(APIView):
     """
     检索，更新或删除一个WelfareManagement
@@ -204,9 +216,11 @@ class WelfareManagementDetail(APIView):
     def put(self, request, id, format=None):
         welfare_management = self.get_object(id)
         data = request.data
+        approver_id = data.get('approver_id')
+        approver_name = User.objects.get(userid=approver_id).username
+        print(data)
         now = datetime.now()
-        approver = '审核员1'
-        data.update(approver=approver, approve_date=now)
+        data.update(approver_id=approver_id, approver_name=approver_name, approve_date=now)
         serializer = WelfareManagementSerializer(welfare_management, data=data)
         if serializer.is_valid():
             serializer.save()
@@ -214,6 +228,78 @@ class WelfareManagementDetail(APIView):
         print(serializer.errors)
         return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
 
+    def delete(self, request, id, format=None):
+        welfare_management = self.get_object(id)
+        if welfare_management.status == 0:
+            welfare_management.delete()
+            return Response(status=status.HTTP_204_NO_CONTENT)
+        else:
+            message = '只能撤销审核中的申请'
+            return Response(message, status=status.HTTP_202_ACCEPTED)
+
+
+@method_decorator(token_required, name='dispatch')
+class RolePlayerManagementList(APIView):
+    '''
+    列出所有的RolePlayerManagement或新增一个RolePlayerManagement
+    '''
+    def get(self, request, format=None):
+        role_player_list = RolePlayerManagement.objects.all()
+        serializer = RolePlayerManagementSerializer(role_player_list, many=True)
+        return Response(serializer.data)
+
+    def post(self, request, format=None):
+        data = request.data
+        print(data)
+        pid = data.get('pid')
+        zid = data.get('zid')
+        applicant_id = data.get('applicant_id')
+        is_regular = data.get('is_regular')
+        regular_period = data.get('regular_period')
+
+        pname = AppPlatformCfg.objects.get(gid=50, pid=pid).pname
+        zname = AppServerList.objects.get(gid=50, pid=pid, sid=zid).sname
+        applicant_name = User.objects.get(userid=applicant_id).username
+
+        # 判断是否常规发放，决定是否传入固定周期字段
+        if is_regular:
+            data.update(pname=pname, zname=zname, applicant_name=applicant_name, regular_period=regular_period)
+        else:
+            data.update(pname=pname, zname=zname, applicant_name=applicant_name)
+        serializer = WelfareManagementSerializer(data=data)
+        if serializer.is_valid():
+            serializer.save()
+            return Response(serializer.data, status=status.HTTP_201_CREATED)
+        print(serializer.errors)
+        print(serializer.error_messages)
+        return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
+
+
+@method_decorator(token_required, name='dispatch')
+class RolePlayerManagementDetail(APIView):
+    """
+    检索，更新或删除一个WelfareManagement
+    """
+    def get_object(self, id):
+        try:
+            return RolePlayerManagement.objects.get(id=id)
+        except RolePlayerManagement.DoesNotExist:
+            raise Http404
+
+    def put(self, request, id, format=None):
+        welfare_management = self.get_object(id)
+        data = request.data
+        approver_id = data.get('approver_id')
+        approver_name = User.objects.get(userid=approver_id).username
+        print(data)
+        now = datetime.now()
+        data.update(approver_id=approver_id, approver_name=approver_name, approve_date=now)
+        serializer = WelfareManagementSerializer(welfare_management, data=data)
+        if serializer.is_valid():
+            serializer.save()
+            return Response(serializer.data)
+        print(serializer.errors)
+        return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
 
     def delete(self, request, id, format=None):
         welfare_management = self.get_object(id)

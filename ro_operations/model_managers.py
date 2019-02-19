@@ -11,6 +11,6 @@ class ServerManagementManager(models.Manager):
         return super().get_queryset().using('server_management')
 
 
-class WelfareManagementManager(models.Manager):
+class DjangoRoManager(models.Manager):
     def get_queryset(self):
         return super().get_queryset().using('django_ro')

@@ -30,4 +30,6 @@ urlpatterns = [
     path('app_servers', views.AppServerListList.as_view()),
     path('welfares/', views.WelfareManagementList.as_view()),
     path('welfares/<int:id>/', views.WelfareManagementDetail.as_view()),
+    path('role_players/', views.RolePlayerManagementList.as_view()),
+    path('role_players/<int:id>/', views.RolePlayerManagementDetail.as_view()),
 ]
