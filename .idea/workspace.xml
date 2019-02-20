@@ -4,12 +4,8 @@
     <list default="true" id="f5af020a-addd-477c-b6df-5f39772c4131" name="Default" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/django_ro/settings.py" beforeDir="false" afterPath="$PROJECT_DIR$/django_ro/settings.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/django_ro/urls.py" beforeDir="false" afterPath="$PROJECT_DIR$/django_ro/urls.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/ro_operations/decorators.py" beforeDir="false" afterPath="$PROJECT_DIR$/ro_operations/decorators.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/ro_operations/model_managers.py" beforeDir="false" afterPath="$PROJECT_DIR$/ro_operations/model_managers.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/ro_operations/models.py" beforeDir="false" afterPath="$PROJECT_DIR$/ro_operations/models.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/ro_operations/serializers.py" beforeDir="false" afterPath="$PROJECT_DIR$/ro_operations/serializers.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/ro_operations/tokens.py" beforeDir="false" afterPath="$PROJECT_DIR$/ro_operations/tokens.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/ro_operations/views.py" beforeDir="false" afterPath="$PROJECT_DIR$/ro_operations/views.py" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
@@ -27,7 +23,7 @@
         <entry file="file://$PROJECT_DIR$/django_ro/settings.py">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="456">
-              <caret line="244" selection-start-line="244" selection-end-line="244" selection-end-column="9" />
+              <caret line="247" column="6" selection-start-line="247" selection-start-column="6" selection-end-line="247" selection-end-column="6" />
             </state>
           </provider>
         </entry>
@@ -35,8 +31,8 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/ro_operations/models.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="328">
-              <caret line="333" column="52" selection-start-line="333" selection-start-column="52" selection-end-line="333" selection-end-column="52" />
+            <state relative-caret-position="304">
+              <caret line="160" column="25" selection-start-line="160" selection-start-column="8" selection-end-line="160" selection-end-column="25" />
               <folding>
                 <element signature="e#468#482#0" expanded="true" />
               </folding>
@@ -56,8 +52,8 @@
       <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/ro_operations/views.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="190">
-              <caret line="258" lean-forward="true" selection-start-line="258" selection-end-line="258" />
+            <state relative-caret-position="323">
+              <caret line="67" column="22" lean-forward="true" selection-start-line="67" selection-start-column="22" selection-end-line="67" selection-end-column="22" />
               <folding>
                 <element signature="e#0#11#0" expanded="true" />
               </folding>
@@ -68,7 +64,7 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/ro_operations/serializers.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="665">
+            <state relative-caret-position="437">
               <caret line="50" column="38" lean-forward="true" selection-start-line="50" selection-start-column="38" selection-end-line="50" selection-end-column="38" />
               <folding>
                 <element signature="e#0#38#0" expanded="true" />
@@ -93,7 +89,7 @@
         <entry file="file://$PROJECT_DIR$/ro_operations/decorators.py">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="247">
-              <caret line="13" column="20" selection-start-line="13" selection-start-column="20" selection-end-line="13" selection-end-column="20" />
+              <caret line="13" column="30" selection-start-line="13" selection-start-column="30" selection-end-line="13" selection-end-column="30" />
               <folding>
                 <element signature="e#0#11#0" expanded="true" />
               </folding>
@@ -139,13 +135,13 @@
         <option value="$PROJECT_DIR$/mytest/models.py" />
         <option value="$PROJECT_DIR$/ro_operations/dbtools.py" />
         <option value="$PROJECT_DIR$/ro_operations/tokens.py" />
-        <option value="$PROJECT_DIR$/ro_operations/decorators.py" />
-        <option value="$PROJECT_DIR$/django_ro/settings.py" />
         <option value="$PROJECT_DIR$/ro_operations/model_managers.py" />
         <option value="$PROJECT_DIR$/ro_operations/serializers.py" />
         <option value="$PROJECT_DIR$/django_ro/urls.py" />
-        <option value="$PROJECT_DIR$/ro_operations/views.py" />
+        <option value="$PROJECT_DIR$/ro_operations/decorators.py" />
+        <option value="$PROJECT_DIR$/django_ro/settings.py" />
         <option value="$PROJECT_DIR$/ro_operations/models.py" />
+        <option value="$PROJECT_DIR$/ro_operations/views.py" />
       </list>
     </option>
   </component>
@@ -249,12 +245,12 @@
       <updated>1547003297725</updated>
       <workItem from="1548054357122" duration="5415000" />
       <workItem from="1549012248619" duration="598000" />
-      <workItem from="1550106921686" duration="58704000" />
+      <workItem from="1550106921686" duration="68907000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="64717000" />
+    <option name="totallyTimeSpent" value="74920000" />
   </component>
   <component name="TodoView">
     <todo-panel id="selected-file">
@@ -348,13 +344,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/django_ro/settings.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="456">
-          <caret line="244" selection-start-line="244" selection-end-line="244" selection-end-column="9" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/ro_operations/model_managers.py">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="247">
@@ -362,22 +351,22 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/ro_operations/serializers.py">
+    <entry file="file://$PROJECT_DIR$/ro_operations/decorators.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="665">
-          <caret line="50" column="38" lean-forward="true" selection-start-line="50" selection-start-column="38" selection-end-line="50" selection-end-column="38" />
+        <state relative-caret-position="247">
+          <caret line="13" column="30" selection-start-line="13" selection-start-column="30" selection-end-line="13" selection-end-column="30" />
           <folding>
-            <element signature="e#0#38#0" expanded="true" />
+            <element signature="e#0#11#0" expanded="true" />
           </folding>
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/ro_operations/decorators.py">
+    <entry file="file://$PROJECT_DIR$/ro_operations/serializers.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="247">
-          <caret line="13" column="20" selection-start-line="13" selection-start-column="20" selection-end-line="13" selection-end-column="20" />
+        <state relative-caret-position="437">
+          <caret line="50" column="38" lean-forward="true" selection-start-line="50" selection-start-column="38" selection-end-line="50" selection-end-column="38" />
           <folding>
-            <element signature="e#0#11#0" expanded="true" />
+            <element signature="e#0#38#0" expanded="true" />
           </folding>
         </state>
       </provider>
@@ -392,10 +381,17 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/django_ro/settings.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="456">
+          <caret line="247" column="6" selection-start-line="247" selection-start-column="6" selection-end-line="247" selection-end-column="6" />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/ro_operations/models.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="328">
-          <caret line="333" column="52" selection-start-line="333" selection-start-column="52" selection-end-line="333" selection-end-column="52" />
+        <state relative-caret-position="304">
+          <caret line="160" column="25" selection-start-line="160" selection-start-column="8" selection-end-line="160" selection-end-column="25" />
           <folding>
             <element signature="e#468#482#0" expanded="true" />
           </folding>
@@ -404,8 +400,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/ro_operations/views.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="190">
-          <caret line="258" lean-forward="true" selection-start-line="258" selection-end-line="258" />
+        <state relative-caret-position="323">
+          <caret line="67" column="22" lean-forward="true" selection-start-line="67" selection-start-column="22" selection-end-line="67" selection-end-column="22" />
           <folding>
             <element signature="e#0#11#0" expanded="true" />
           </folding>

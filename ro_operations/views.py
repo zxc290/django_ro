@@ -61,6 +61,7 @@ def login(request):
             user_info['is_applicant'] = True if user.is_applicant() else False
             user_info['is_approver'] = True if user.is_approver() else False
             user_info['is_role_manager'] = True if user.is_role_manager() else False
+            user_info['is_record_checker'] = True if user.is_record_checker() else False
 
             # if user_info.get('is_applicant') == user_info.get('is_approver') == True:
             #     # 提审 审核无法共存，此时应禁止登陆
@@ -165,16 +166,18 @@ class AppServerListList(APIView):
         return Response(serializer.data, status=status.HTTP_201_CREATED)
 
 
-@method_decorator(token_required, name='dispatch')
+# @method_decorator(token_required, name='dispatch')
 class WelfareManagementList(APIView):
     '''
     列出所有的WelfareManagement或新增一个Welfare
     '''
+    @token_required
     def get(self, request, format=None):
         welfare_managements =  WelfareManagement.objects.all()
         serializer = WelfareManagementSerializer(welfare_managements, many=True)
         return Response(serializer.data)
 
+    @token_required
     def post(self, request, format=None):
         data = request.data
         print(data)
@@ -202,7 +205,7 @@ class WelfareManagementList(APIView):
         return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
 
 
-@method_decorator(token_required, name='dispatch')
+# @method_decorator(token_required, name='dispatch')
 class WelfareManagementDetail(APIView):
     """
     检索，更新或删除一个WelfareManagement
@@ -213,6 +216,7 @@ class WelfareManagementDetail(APIView):
         except WelfareManagement.DoesNotExist:
             raise Http404
 
+    @token_required
     def put(self, request, id, format=None):
         welfare_management = self.get_object(id)
         data = request.data
@@ -228,6 +232,7 @@ class WelfareManagementDetail(APIView):
         print(serializer.errors)
         return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
 
+    @token_required
     def delete(self, request, id, format=None):
         welfare_management = self.get_object(id)
         if welfare_management.status == 0:
@@ -238,35 +243,38 @@ class WelfareManagementDetail(APIView):
             return Response(message, status=status.HTTP_202_ACCEPTED)
 
 
-@method_decorator(token_required, name='dispatch')
+# @method_decorator(token_required, name='dispatch')
 class RolePlayerManagementList(APIView):
     '''
     列出所有的RolePlayerManagement或新增一个RolePlayerManagement
     '''
+    @token_required
     def get(self, request, format=None):
         role_player_list = RolePlayerManagement.objects.all()
         serializer = RolePlayerManagementSerializer(role_player_list, many=True)
         return Response(serializer.data)
 
+    @token_required
     def post(self, request, format=None):
         data = request.data
         print(data)
         pid = data.get('pid')
         zid = data.get('zid')
-        applicant_id = data.get('applicant_id')
-        is_regular = data.get('is_regular')
-        regular_period = data.get('regular_period')
+        creator_id = data.get('creator_id')
+        role_name = data.get('role_name')
 
         pname = AppPlatformCfg.objects.get(gid=50, pid=pid).pname
         zname = AppServerList.objects.get(gid=50, pid=pid, sid=zid).sname
-        applicant_name = User.objects.get(userid=applicant_id).username
+        creator_name = User.objects.get(userid=creator_id).username
 
-        # 判断是否常规发放，决定是否传入固定周期字段
-        if is_regular:
-            data.update(pname=pname, zname=zname, applicant_name=applicant_name, regular_period=regular_period)
-        else:
-            data.update(pname=pname, zname=zname, applicant_name=applicant_name)
-        serializer = WelfareManagementSerializer(data=data)
+        is_existed = RolePlayerManagement.objects.filter(pid=pid, zid=zid, role_name=role_name).exists()
+        if is_existed:
+            message = '该人员角色已存在，请勿重复添加'
+            return Response(message, status=status.HTTP_202_ACCEPTED)
+
+        data.update(pname=pname, zname=zname, creator_name=creator_name)
+
+        serializer = RolePlayerManagementSerializer(data=data)
         if serializer.is_valid():
             serializer.save()
             return Response(serializer.data, status=status.HTTP_201_CREATED)
@@ -275,7 +283,7 @@ class RolePlayerManagementList(APIView):
         return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
 
 
-@method_decorator(token_required, name='dispatch')
+# @method_decorator(token_required, name='dispatch')
 class RolePlayerManagementDetail(APIView):
     """
     检索，更新或删除一个WelfareManagement
@@ -286,29 +294,41 @@ class RolePlayerManagementDetail(APIView):
         except RolePlayerManagement.DoesNotExist:
             raise Http404
 
+    @token_required
     def put(self, request, id, format=None):
-        welfare_management = self.get_object(id)
+        role_player = self.get_object(id)
         data = request.data
-        approver_id = data.get('approver_id')
-        approver_name = User.objects.get(userid=approver_id).username
         print(data)
-        now = datetime.now()
-        data.update(approver_id=approver_id, approver_name=approver_name, approve_date=now)
-        serializer = WelfareManagementSerializer(welfare_management, data=data)
+        pid = data.get('pid')
+        zid = data.get('zid')
+        creator_id = data.get('creator_id')
+        role_name = data.get('role_name')
+
+        pname = AppPlatformCfg.objects.get(gid=50, pid=pid).pname
+        zname = AppServerList.objects.get(gid=50, pid=pid, sid=zid).sname
+        creator_name = User.objects.get(userid=creator_id).username
+
+        is_existed = RolePlayerManagement.objects.filter(pid=pid, zid=zid, role_name=role_name).exclude(id=id).exists()
+        if is_existed:
+            # role_player_obj = RolePlayerManagement.objects.get(pid=pid, zid=zid, role_name=role_name, user_name=user_name)
+            # if role_player_obj.is_active == is_active:
+            message = '已有用户使用此角色'
+            return Response(message, status=status.HTTP_202_ACCEPTED)
+
+        data.update(pname=pname, zname=zname, creator_name=creator_name)
+        serializer = RolePlayerManagementSerializer(role_player, data=data)
         if serializer.is_valid():
             serializer.save()
             return Response(serializer.data)
         print(serializer.errors)
         return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
 
+    @token_required
     def delete(self, request, id, format=None):
-        welfare_management = self.get_object(id)
-        if welfare_management.status == 0:
-            welfare_management.delete()
-            return Response(status=status.HTTP_204_NO_CONTENT)
-        else:
-            message = '只能撤销审核中的申请'
-            return Response(message, status=status.HTTP_202_ACCEPTED)
+        role_player = self.get_object(id)
+        role_player.delete()
+        return Response(status=status.HTTP_204_NO_CONTENT)
+
 
 
 # @api_view(['POST'])

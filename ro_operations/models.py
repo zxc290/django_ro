@@ -158,6 +158,16 @@ class User(models.Model):
         except:
             return False
 
+    def is_record_checker(self):
+        sql = "SELECT * FROM dbo.NAuth({user_id}, {function_id}) WHERE PID > 0 and FID = {permission}".format(user_id=self.userid, function_id=settings.FUNCTION_ID, permission=settings.RECORD_CHECK_PERMISSION)
+        try:
+            admin_cursor = connections['default'].cursor()
+            admin_cursor.execute(sql)
+            result = dict_fetchall(admin_cursor)
+            return result
+        except:
+            return False
+
     # def get_user_permission(self):
     #     sql = "SELECT * FROM dbo.NAuth({user_id}, {function_id}) WHERE PID > 0 and FID IN {fid_permission}".format(user_id=self.userid, function_id=settings.FUNCTION_ID, fid_permission=settings.FID_PERMISSION)
     #
@@ -328,7 +338,6 @@ class RolePlayerManagement(models.Model):
     role_name = models.CharField(max_length=100, verbose_name='角色名')
     user_name = models.CharField(max_length=100, verbose_name='使用人姓名')
     is_active = models.BooleanField(default=True, verbose_name='是否激活')
-    created_date = models.DateTimeField(auto_now_add=True, verbose_name='创建时间')
     modify_date = models.DateTimeField(auto_now=True, verbose_name='修改时间')
     creator_id = models.IntegerField(verbose_name='创建者id')
     creator_name = models.CharField(max_length=100, verbose_name='创建者姓名')
