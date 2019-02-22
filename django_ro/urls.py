@@ -20,16 +20,13 @@ from ro_operations import views
 
 urlpatterns = [
     path('admin/', admin.site.urls),
+    path('', views.index),
     path('login', views.login),
-    # path('channels', get_channel_list),
-    # path('appids', get_appid_list),
-    path('permissions/<int:id>', views.user_permission),
-    path('servers', views.server_list),
-    path('tests', views.test1),
     path('app_platforms', views.AppPlatformCfgList.as_view()),
     path('app_servers', views.AppServerListList.as_view()),
     path('welfares/', views.WelfareManagementList.as_view()),
     path('welfares/<int:id>/', views.WelfareManagementDetail.as_view()),
     path('role_players/', views.RolePlayerManagementList.as_view()),
     path('role_players/<int:id>/', views.RolePlayerManagementDetail.as_view()),
+    path('server_managements/', views.ServerManagementList.as_view())
 ]

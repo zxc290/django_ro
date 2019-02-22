@@ -1,11 +1,12 @@
 from rest_framework import serializers
-from .models import User, AppChannelList, AppManage, AppServerList, AppPlatformCfg, WelfareManagement, RolePlayerManagement
+from .models import User, AppChannelList, AppManage, AppServerList, AppPlatformCfg, AppServerChannel, WelfareManagement, RolePlayerManagement
 
 
 class UserSerializer(serializers.ModelSerializer):
     class Meta:
         model = User
         fields = '__all__'
+
 
 class AppChannelListSerializer(serializers.ModelSerializer):
     class Meta:
@@ -31,6 +32,12 @@ class AppServerListSerializer(serializers.ModelSerializer):
         fields = ('id', 'sid', 'sname', 'pid', 'gid')
 
 
+class AppServerChannelSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = AppServerChannel
+        fields = '__all__'
+
+
 class WelfareManagementSerializer(serializers.ModelSerializer):
     class Meta:
         model = WelfareManagement
@@ -43,7 +50,7 @@ class RolePlayerManagementSerializer(serializers.ModelSerializer):
         fields = '__all__'
 
 
-class ServerTableSerializer(serializers.Serializer):
+class ServerManagementSerializer(serializers.Serializer):
     id = serializers.IntegerField()
     GID = serializers.IntegerField()
     CID = serializers.IntegerField()
@@ -66,13 +73,19 @@ class ServerTableSerializer(serializers.Serializer):
     CT_ipadd = serializers.CharField()
     domain = serializers.CharField()
     appid = serializers.CharField()
-    version = serializers.CharField()
     LoginPort = serializers.CharField()
-    player_highlines = serializers.IntegerField()
+    max_users = serializers.IntegerField()
     server_weight = serializers.IntegerField()
+    autoOpenTime = serializers.IntegerField()
 
 
 # class AppServerChannelSerializer(serializers.ModelSerializer):
 #     class Meta:
 #         model = AppServerChannel
 #         fields = '__all__'
+
+
+class TestSerializer(serializers.Serializer):
+    a = serializers.CharField()
+    b = serializers.CharField()
+    c = serializers.CharField()

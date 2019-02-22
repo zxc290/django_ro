@@ -2,10 +2,24 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="f5af020a-addd-477c-b6df-5f39772c4131" name="Default" comment="">
+      <change afterPath="$PROJECT_DIR$/frontend/dist/index.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/frontend/dist/static/css/app.1873006806a722ea9dfba063a1992461.css" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/frontend/dist/static/css/app.1873006806a722ea9dfba063a1992461.css.map" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/frontend/dist/static/fonts/element-icons.6f0a763.ttf" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/frontend/dist/static/js/app.c62e7bc7dc7aedaa98e8.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/frontend/dist/static/js/app.c62e7bc7dc7aedaa98e8.js.map" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/frontend/dist/static/js/manifest.2ae2e69a05c33dfc65f8.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/frontend/dist/static/js/manifest.2ae2e69a05c33dfc65f8.js.map" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/frontend/dist/static/js/vendor.50e2459b6dddbb30416f.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/frontend/dist/static/js/vendor.50e2459b6dddbb30416f.js.map" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/django_ro/settings.py" beforeDir="false" afterPath="$PROJECT_DIR$/django_ro/settings.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/django_ro/urls.py" beforeDir="false" afterPath="$PROJECT_DIR$/django_ro/urls.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/models.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/requirements.txt" beforeDir="false" afterPath="$PROJECT_DIR$/requirements.txt" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/ro_operations/decorators.py" beforeDir="false" afterPath="$PROJECT_DIR$/ro_operations/decorators.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/ro_operations/models.py" beforeDir="false" afterPath="$PROJECT_DIR$/ro_operations/models.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/ro_operations/serializers.py" beforeDir="false" afterPath="$PROJECT_DIR$/ro_operations/serializers.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/ro_operations/views.py" beforeDir="false" afterPath="$PROJECT_DIR$/ro_operations/views.py" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
@@ -20,27 +34,6 @@
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="375">
       <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/django_ro/settings.py">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="456">
-              <caret line="247" column="6" selection-start-line="247" selection-start-column="6" selection-end-line="247" selection-end-column="6" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/ro_operations/models.py">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="304">
-              <caret line="160" column="25" selection-start-line="160" selection-start-column="8" selection-end-line="160" selection-end-column="25" />
-              <folding>
-                <element signature="e#468#482#0" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/ro_operations/model_managers.py">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="247">
@@ -49,37 +42,48 @@
           </provider>
         </entry>
       </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/django_ro/settings.py">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="323">
+              <caret line="245" lean-forward="true" selection-start-line="246" selection-end-line="246" selection-end-column="28" />
+            </state>
+          </provider>
+        </entry>
+      </file>
       <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/ro_operations/views.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="323">
-              <caret line="67" column="22" lean-forward="true" selection-start-line="67" selection-start-column="22" selection-end-line="67" selection-end-column="22" />
+            <state relative-caret-position="305">
+              <caret line="150" column="27" selection-start-line="150" selection-start-column="27" selection-end-line="150" selection-end-column="27" />
               <folding>
-                <element signature="e#0#11#0" expanded="true" />
+                <element signature="e#0#14#0" expanded="true" />
               </folding>
             </state>
           </provider>
         </entry>
       </file>
       <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/ro_operations/serializers.py">
+        <entry file="file://$PROJECT_DIR$/log/script.log">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="437">
-              <caret line="50" column="38" lean-forward="true" selection-start-line="50" selection-start-column="38" selection-end-line="50" selection-end-column="38" />
-              <folding>
-                <element signature="e#0#38#0" expanded="true" />
-              </folding>
-            </state>
+            <state relative-caret-position="-1405" />
           </provider>
         </entry>
       </file>
       <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/ro_operations/tokens.py">
+        <entry file="file://$PROJECT_DIR$/log/info.log">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="418">
-              <caret line="22" column="17" lean-forward="true" selection-start-line="22" selection-start-column="17" selection-end-line="22" selection-end-column="17" />
+            <state relative-caret-position="-7285" />
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/ro_operations/models.py">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="190">
+              <caret line="263" column="20" selection-start-line="263" selection-start-column="6" selection-end-line="263" selection-end-column="20" />
               <folding>
-                <element signature="e#0#11#0" expanded="true" />
+                <element signature="e#468#482#0" expanded="true" />
               </folding>
             </state>
           </provider>
@@ -88,11 +92,8 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/ro_operations/decorators.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="247">
-              <caret line="13" column="30" selection-start-line="13" selection-start-column="30" selection-end-line="13" selection-end-column="30" />
-              <folding>
-                <element signature="e#0#11#0" expanded="true" />
-              </folding>
+            <state>
+              <caret column="11" selection-start-column="11" selection-end-column="11" />
             </state>
           </provider>
         </entry>
@@ -100,10 +101,22 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/django_ro/urls.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="456">
-              <caret line="33" column="67" selection-start-line="33" selection-start-column="67" selection-end-line="33" selection-end-column="67" />
+            <state relative-caret-position="513">
+              <caret line="30" column="28" selection-start-line="30" selection-start-column="10" selection-end-line="30" selection-end-column="28" />
               <folding>
                 <element signature="e#633#665#0" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/ro_operations/serializers.py">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="247">
+              <caret line="34" column="32" selection-start-line="34" selection-start-column="6" selection-end-line="34" selection-end-column="32" />
+              <folding>
+                <element signature="e#0#38#0" expanded="true" />
               </folding>
             </state>
           </provider>
@@ -123,6 +136,9 @@
       <find>url</find>
       <find>json</find>
       <find>print</find>
+      <find>getserver</find>
+      <find>Appchaa</find>
+      <find>AppChannelList</find>
     </findStrings>
   </component>
   <component name="Git.Settings">
@@ -131,16 +147,16 @@
   <component name="IdeDocumentHistory">
     <option name="CHANGED_PATHS">
       <list>
-        <option value="$PROJECT_DIR$/models.py" />
         <option value="$PROJECT_DIR$/mytest/models.py" />
         <option value="$PROJECT_DIR$/ro_operations/dbtools.py" />
         <option value="$PROJECT_DIR$/ro_operations/tokens.py" />
         <option value="$PROJECT_DIR$/ro_operations/model_managers.py" />
-        <option value="$PROJECT_DIR$/ro_operations/serializers.py" />
-        <option value="$PROJECT_DIR$/django_ro/urls.py" />
         <option value="$PROJECT_DIR$/ro_operations/decorators.py" />
+        <option value="$PROJECT_DIR$/models.py" />
+        <option value="$PROJECT_DIR$/django_ro/urls.py" />
         <option value="$PROJECT_DIR$/django_ro/settings.py" />
         <option value="$PROJECT_DIR$/ro_operations/models.py" />
+        <option value="$PROJECT_DIR$/ro_operations/serializers.py" />
         <option value="$PROJECT_DIR$/ro_operations/views.py" />
       </list>
     </option>
@@ -175,6 +191,16 @@
             <path>
               <item name="django_ro" type="b2602c69:ProjectViewProjectNode" />
               <item name="django_ro" type="462c0819:PsiDirectoryNode" />
+              <item name="frontend" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="django_ro" type="b2602c69:ProjectViewProjectNode" />
+              <item name="django_ro" type="462c0819:PsiDirectoryNode" />
+              <item name="log" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="django_ro" type="b2602c69:ProjectViewProjectNode" />
+              <item name="django_ro" type="462c0819:PsiDirectoryNode" />
               <item name="ro_operations" type="462c0819:PsiDirectoryNode" />
             </path>
           </expand>
@@ -185,13 +211,15 @@
   </component>
   <component name="PropertiesComponent">
     <property name="WebServerToolWindowFactoryState" value="false" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$/../django_vue_alarm" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/../django_vue_navicat" />
     <property name="nodejs_interpreter_path.stuck_in_default_project" value="undefined stuck path" />
     <property name="nodejs_npm_path_reset_for_default_project" value="true" />
     <property name="settings.editor.selected.configurable" value="com.jetbrains.python.configuration.PyActiveSdkModuleConfigurable" />
   </component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
+      <recent name="E:\workspace\project\django_ro\django_ro" />
+      <recent name="E:\workspace\project\django_ro\frontend" />
       <recent name="F:\workspace\project\django_ro\django_ro" />
     </key>
   </component>
@@ -245,12 +273,14 @@
       <updated>1547003297725</updated>
       <workItem from="1548054357122" duration="5415000" />
       <workItem from="1549012248619" duration="598000" />
-      <workItem from="1550106921686" duration="68907000" />
+      <workItem from="1550106921686" duration="70484000" />
+      <workItem from="1550655091202" duration="80000" />
+      <workItem from="1550718173791" duration="19119000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="74920000" />
+    <option name="totallyTimeSpent" value="95696000" />
   </component>
   <component name="TodoView">
     <todo-panel id="selected-file">
@@ -265,11 +295,11 @@
     <frame x="-8" y="-8" width="1936" height="1056" extended-state="6" />
     <editor active="true" />
     <layout>
-      <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.10927505" />
+      <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.11140725" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
       <window_info id="Favorites" order="2" side_tool="true" />
       <window_info anchor="bottom" id="Message" order="0" />
-      <window_info anchor="bottom" id="Find" order="1" />
+      <window_info anchor="bottom" id="Find" order="1" weight="0.329718" />
       <window_info anchor="bottom" id="Run" order="2" />
       <window_info anchor="bottom" id="Debug" order="3" weight="0.3991323" />
       <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
@@ -279,21 +309,43 @@
       <window_info anchor="bottom" id="Database Changes" order="8" show_stripe_button="false" />
       <window_info active="true" anchor="bottom" id="Terminal" order="9" sideWeight="0.4989339" visible="true" weight="0.3275488" />
       <window_info anchor="bottom" id="Event Log" order="10" sideWeight="0.5010661" side_tool="true" weight="0.3275488" />
-      <window_info anchor="bottom" id="Version Control" order="11" weight="0.32960895" />
-      <window_info anchor="bottom" id="Python Console" order="12" weight="0.32922733" />
+      <window_info anchor="bottom" id="Python Console" order="11" weight="0.3286334" />
+      <window_info anchor="bottom" id="Version Control" order="12" weight="0.3286334" />
       <window_info anchor="right" id="Commander" internal_type="SLIDING" order="0" type="SLIDING" weight="0.4" />
       <window_info anchor="right" id="Ant Build" order="1" weight="0.25" />
       <window_info anchor="right" content_ui="combo" id="Hierarchy" order="2" weight="0.25" />
       <window_info anchor="right" id="SciView" order="3" />
       <window_info anchor="right" id="Database" order="4" />
     </layout>
+    <layout-to-restore>
+      <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.11140725" />
+      <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
+      <window_info id="Favorites" order="2" side_tool="true" />
+      <window_info anchor="bottom" id="Message" order="0" />
+      <window_info anchor="bottom" id="Find" order="1" weight="0.329718" />
+      <window_info anchor="bottom" id="Run" order="2" />
+      <window_info anchor="bottom" id="Debug" order="3" weight="0.3991323" />
+      <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
+      <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
+      <window_info anchor="bottom" id="TODO" order="6" weight="0.32960895" />
+      <window_info anchor="bottom" id="Docker" order="7" show_stripe_button="false" />
+      <window_info anchor="bottom" id="Database Changes" order="8" show_stripe_button="false" />
+      <window_info active="true" anchor="bottom" id="Terminal" order="9" sideWeight="0.4989339" visible="true" weight="0.3275488" />
+      <window_info anchor="bottom" id="Event Log" order="10" sideWeight="0.5010661" side_tool="true" weight="0.3275488" />
+      <window_info anchor="bottom" id="Python Console" order="11" weight="0.3286334" />
+      <window_info anchor="bottom" id="Version Control" order="12" weight="0.3286334" />
+      <window_info anchor="right" id="Commander" internal_type="SLIDING" order="0" type="SLIDING" weight="0.4" />
+      <window_info anchor="right" id="Ant Build" order="1" weight="0.25" />
+      <window_info anchor="right" content_ui="combo" id="Hierarchy" order="2" weight="0.25" />
+      <window_info anchor="right" id="SciView" order="3" />
+      <window_info anchor="right" id="Database" order="4" />
+    </layout-to-restore>
   </component>
   <component name="TypeScriptGeneratedFilesManager">
     <option name="version" value="1" />
   </component>
   <component name="editorHistoryManager">
     <entry file="file://$PROJECT_DIR$/venv/Lib/site-packages/django/db/models/manager.py" />
-    <entry file="file://$PROJECT_DIR$/django_ro/database_router.py" />
     <entry file="file://$PROJECT_DIR$/ro_operations/apps.py">
       <provider selected="true" editor-type-id="text-editor" />
     </entry>
@@ -313,13 +365,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/models.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="190">
-          <caret line="10" selection-start-line="10" selection-end-line="22" selection-end-column="37" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/../../venv/django_ro_venv/Lib/site-packages/rest_framework/response.py">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="198">
@@ -334,15 +379,33 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/frontend/dist/static/js/app.16ab47d9817472ac3cfe.js" />
+    <entry file="file://$PROJECT_DIR$/frontend/dist/static/js/app.c62e7bc7dc7aedaa98e8.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="19">
+          <caret line="1" column="26" selection-start-line="1" selection-start-column="26" selection-end-line="1" selection-end-column="26" />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/ro_operations/tokens.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="418">
-          <caret line="22" column="17" lean-forward="true" selection-start-line="22" selection-start-column="17" selection-end-line="22" selection-end-column="17" />
+        <state relative-caret-position="380">
+          <caret line="22" column="17" selection-start-line="22" selection-start-column="17" selection-end-line="22" selection-end-column="17" />
           <folding>
             <element signature="e#0#11#0" expanded="true" />
           </folding>
         </state>
       </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/ro_operations/decorators.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state>
+          <caret column="11" selection-start-column="11" selection-end-column="11" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/frontend/dist/index.html">
+      <provider selected="true" editor-type-id="text-editor" />
     </entry>
     <entry file="file://$PROJECT_DIR$/ro_operations/model_managers.py">
       <provider selected="true" editor-type-id="text-editor">
@@ -351,47 +414,63 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/ro_operations/decorators.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="247">
-          <caret line="13" column="30" selection-start-line="13" selection-start-column="30" selection-end-line="13" selection-end-column="30" />
-          <folding>
-            <element signature="e#0#11#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
+    <entry file="file://$PROJECT_DIR$/models">
+      <provider selected="true" editor-type-id="text-editor" />
     </entry>
-    <entry file="file://$PROJECT_DIR$/ro_operations/serializers.py">
+    <entry file="file://$PROJECT_DIR$/django_ro/database_router.py">
+      <provider selected="true" editor-type-id="text-editor" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/log/err.log">
+      <provider selected="true" editor-type-id="text-editor" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/django_ro/settings.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="437">
-          <caret line="50" column="38" lean-forward="true" selection-start-line="50" selection-start-column="38" selection-end-line="50" selection-end-column="38" />
-          <folding>
-            <element signature="e#0#38#0" expanded="true" />
-          </folding>
+        <state relative-caret-position="323">
+          <caret line="245" lean-forward="true" selection-start-line="246" selection-end-line="246" selection-end-column="28" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/django_ro/urls.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="456">
-          <caret line="33" column="67" selection-start-line="33" selection-start-column="67" selection-end-line="33" selection-end-column="67" />
+        <state relative-caret-position="513">
+          <caret line="30" column="28" selection-start-line="30" selection-start-column="10" selection-end-line="30" selection-end-column="28" />
           <folding>
             <element signature="e#633#665#0" expanded="true" />
           </folding>
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/django_ro/settings.py">
+    <entry file="file://$PROJECT_DIR$/log/info.log">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="456">
-          <caret line="247" column="6" selection-start-line="247" selection-start-column="6" selection-end-line="247" selection-end-column="6" />
+        <state relative-caret-position="-7285" />
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/log/script.log">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-1405" />
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/models.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="266">
+          <caret line="14" column="39" lean-forward="true" selection-start-line="14" selection-start-column="39" selection-end-line="14" selection-end-column="39" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/ro_operations/serializers.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="247">
+          <caret line="34" column="32" selection-start-line="34" selection-start-column="6" selection-end-line="34" selection-end-column="32" />
+          <folding>
+            <element signature="e#0#38#0" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/ro_operations/models.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="304">
-          <caret line="160" column="25" selection-start-line="160" selection-start-column="8" selection-end-line="160" selection-end-column="25" />
+        <state relative-caret-position="190">
+          <caret line="263" column="20" selection-start-line="263" selection-start-column="6" selection-end-line="263" selection-end-column="20" />
           <folding>
             <element signature="e#468#482#0" expanded="true" />
           </folding>
@@ -400,10 +479,10 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/ro_operations/views.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="323">
-          <caret line="67" column="22" lean-forward="true" selection-start-line="67" selection-start-column="22" selection-end-line="67" selection-end-column="22" />
+        <state relative-caret-position="305">
+          <caret line="150" column="27" selection-start-line="150" selection-start-column="27" selection-end-line="150" selection-end-column="27" />
           <folding>
-            <element signature="e#0#11#0" expanded="true" />
+            <element signature="e#0#14#0" expanded="true" />
           </folding>
         </state>
       </provider>

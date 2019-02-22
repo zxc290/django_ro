@@ -1,0 +1,172 @@
+2019-02-22 13:45:06,009 [Thread-2:11284] [django.request:228] [log:log_response] [WARNING]- Forbidden: /server_managements/
+2019-02-22 13:45:07,441 [Thread-2:11284] [django.request:228] [log:log_response] [WARNING]- Forbidden: /server_managements/
+2019-02-22 13:51:00,277 [Thread-4:14480] [django.request:228] [log:log_response] [WARNING]- Forbidden: /server_managements/
+2019-02-22 13:51:01,389 [Thread-4:14480] [django.request:228] [log:log_response] [WARNING]- Forbidden: /server_managements/
+2019-02-22 13:55:52,221 [Thread-2:12212] [django.request:228] [log:log_response] [ERROR]- Internal Server Error: /server_managements/
+Traceback (most recent call last):
+  File "E:\workspace\venv\django_ro_venv\lib\site-packages\rest_framework\fields.py", line 454, in get_attribute
+    return get_attribute(instance, self.source_attrs)
+  File "E:\workspace\venv\django_ro_venv\lib\site-packages\rest_framework\fields.py", line 100, in get_attribute
+    instance = instance[attr]
+KeyError: 'max_users'
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "E:\workspace\venv\django_ro_venv\lib\site-packages\django\core\handlers\exception.py", line 34, in inner
+    response = get_response(request)
+  File "E:\workspace\venv\django_ro_venv\lib\site-packages\django\core\handlers\base.py", line 126, in _get_response
+    response = self.process_exception_by_middleware(e, request)
+  File "E:\workspace\venv\django_ro_venv\lib\site-packages\django\core\handlers\base.py", line 124, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "E:\workspace\venv\django_ro_venv\lib\site-packages\django\views\decorators\csrf.py", line 54, in wrapped_view
+    return view_func(*args, **kwargs)
+  File "E:\workspace\venv\django_ro_venv\lib\site-packages\django\views\generic\base.py", line 68, in view
+    return self.dispatch(request, *args, **kwargs)
+  File "E:\workspace\venv\django_ro_venv\lib\site-packages\rest_framework\views.py", line 495, in dispatch
+    response = self.handle_exception(exc)
+  File "E:\workspace\venv\django_ro_venv\lib\site-packages\rest_framework\views.py", line 455, in handle_exception
+    self.raise_uncaught_exception(exc)
+  File "E:\workspace\venv\django_ro_venv\lib\site-packages\rest_framework\views.py", line 492, in dispatch
+    response = handler(request, *args, **kwargs)
+  File "E:\workspace\project\django_ro\ro_operations\views.py", line 158, in get
+    return Response(serializer.data)
+  File "E:\workspace\venv\django_ro_venv\lib\site-packages\rest_framework\serializers.py", line 768, in data
+    ret = super(ListSerializer, self).data
+  File "E:\workspace\venv\django_ro_venv\lib\site-packages\rest_framework\serializers.py", line 262, in data
+    self._data = self.to_representation(self.instance)
+  File "E:\workspace\venv\django_ro_venv\lib\site-packages\rest_framework\serializers.py", line 686, in to_representation
+    self.child.to_representation(item) for item in iterable
+  File "E:\workspace\venv\django_ro_venv\lib\site-packages\rest_framework\serializers.py", line 686, in <listcomp>
+    self.child.to_representation(item) for item in iterable
+  File "E:\workspace\venv\django_ro_venv\lib\site-packages\rest_framework\serializers.py", line 517, in to_representation
+    attribute = field.get_attribute(instance)
+  File "E:\workspace\venv\django_ro_venv\lib\site-packages\rest_framework\fields.py", line 475, in get_attribute
+    raise type(exc)(msg)
+KeyError: "Got KeyError when attempting to get a value for field `max_users` on serializer `ServerManagementSerializer`.\nThe serializer field might be named incorrectly and not match any attribute or key on the `dict` instance.\nOriginal exception text was: 'max_users'."
+2019-02-22 13:55:56,096 [Thread-2:12212] [django.request:228] [log:log_response] [ERROR]- Internal Server Error: /server_managements/
+Traceback (most recent call last):
+  File "E:\workspace\venv\django_ro_venv\lib\site-packages\rest_framework\fields.py", line 454, in get_attribute
+    return get_attribute(instance, self.source_attrs)
+  File "E:\workspace\venv\django_ro_venv\lib\site-packages\rest_framework\fields.py", line 100, in get_attribute
+    instance = instance[attr]
+KeyError: 'max_users'
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "E:\workspace\venv\django_ro_venv\lib\site-packages\django\core\handlers\exception.py", line 34, in inner
+    response = get_response(request)
+  File "E:\workspace\venv\django_ro_venv\lib\site-packages\django\core\handlers\base.py", line 126, in _get_response
+    response = self.process_exception_by_middleware(e, request)
+  File "E:\workspace\venv\django_ro_venv\lib\site-packages\django\core\handlers\base.py", line 124, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "E:\workspace\venv\django_ro_venv\lib\site-packages\django\views\decorators\csrf.py", line 54, in wrapped_view
+    return view_func(*args, **kwargs)
+  File "E:\workspace\venv\django_ro_venv\lib\site-packages\django\views\generic\base.py", line 68, in view
+    return self.dispatch(request, *args, **kwargs)
+  File "E:\workspace\venv\django_ro_venv\lib\site-packages\rest_framework\views.py", line 495, in dispatch
+    response = self.handle_exception(exc)
+  File "E:\workspace\venv\django_ro_venv\lib\site-packages\rest_framework\views.py", line 455, in handle_exception
+    self.raise_uncaught_exception(exc)
+  File "E:\workspace\venv\django_ro_venv\lib\site-packages\rest_framework\views.py", line 492, in dispatch
+    response = handler(request, *args, **kwargs)
+  File "E:\workspace\project\django_ro\ro_operations\views.py", line 158, in get
+    return Response(serializer.data)
+  File "E:\workspace\venv\django_ro_venv\lib\site-packages\rest_framework\serializers.py", line 768, in data
+    ret = super(ListSerializer, self).data
+  File "E:\workspace\venv\django_ro_venv\lib\site-packages\rest_framework\serializers.py", line 262, in data
+    self._data = self.to_representation(self.instance)
+  File "E:\workspace\venv\django_ro_venv\lib\site-packages\rest_framework\serializers.py", line 686, in to_representation
+    self.child.to_representation(item) for item in iterable
+  File "E:\workspace\venv\django_ro_venv\lib\site-packages\rest_framework\serializers.py", line 686, in <listcomp>
+    self.child.to_representation(item) for item in iterable
+  File "E:\workspace\venv\django_ro_venv\lib\site-packages\rest_framework\serializers.py", line 517, in to_representation
+    attribute = field.get_attribute(instance)
+  File "E:\workspace\venv\django_ro_venv\lib\site-packages\rest_framework\fields.py", line 475, in get_attribute
+    raise type(exc)(msg)
+KeyError: "Got KeyError when attempting to get a value for field `max_users` on serializer `ServerManagementSerializer`.\nThe serializer field might be named incorrectly and not match any attribute or key on the `dict` instance.\nOriginal exception text was: 'max_users'."
+2019-02-22 14:04:01,814 [Thread-2:6972] [django.request:228] [log:log_response] [ERROR]- Internal Server Error: /server_managements/
+Traceback (most recent call last):
+  File "E:\workspace\venv\django_ro_venv\lib\site-packages\rest_framework\fields.py", line 454, in get_attribute
+    return get_attribute(instance, self.source_attrs)
+  File "E:\workspace\venv\django_ro_venv\lib\site-packages\rest_framework\fields.py", line 100, in get_attribute
+    instance = instance[attr]
+KeyError: 'max_users'
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "E:\workspace\venv\django_ro_venv\lib\site-packages\django\core\handlers\exception.py", line 34, in inner
+    response = get_response(request)
+  File "E:\workspace\venv\django_ro_venv\lib\site-packages\django\core\handlers\base.py", line 126, in _get_response
+    response = self.process_exception_by_middleware(e, request)
+  File "E:\workspace\venv\django_ro_venv\lib\site-packages\django\core\handlers\base.py", line 124, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "E:\workspace\venv\django_ro_venv\lib\site-packages\django\views\decorators\csrf.py", line 54, in wrapped_view
+    return view_func(*args, **kwargs)
+  File "E:\workspace\venv\django_ro_venv\lib\site-packages\django\views\generic\base.py", line 68, in view
+    return self.dispatch(request, *args, **kwargs)
+  File "E:\workspace\venv\django_ro_venv\lib\site-packages\rest_framework\views.py", line 495, in dispatch
+    response = self.handle_exception(exc)
+  File "E:\workspace\venv\django_ro_venv\lib\site-packages\rest_framework\views.py", line 455, in handle_exception
+    self.raise_uncaught_exception(exc)
+  File "E:\workspace\venv\django_ro_venv\lib\site-packages\rest_framework\views.py", line 492, in dispatch
+    response = handler(request, *args, **kwargs)
+  File "E:\workspace\project\django_ro\ro_operations\views.py", line 158, in get
+    return Response(serializer.data)
+  File "E:\workspace\venv\django_ro_venv\lib\site-packages\rest_framework\serializers.py", line 768, in data
+    ret = super(ListSerializer, self).data
+  File "E:\workspace\venv\django_ro_venv\lib\site-packages\rest_framework\serializers.py", line 262, in data
+    self._data = self.to_representation(self.instance)
+  File "E:\workspace\venv\django_ro_venv\lib\site-packages\rest_framework\serializers.py", line 686, in to_representation
+    self.child.to_representation(item) for item in iterable
+  File "E:\workspace\venv\django_ro_venv\lib\site-packages\rest_framework\serializers.py", line 686, in <listcomp>
+    self.child.to_representation(item) for item in iterable
+  File "E:\workspace\venv\django_ro_venv\lib\site-packages\rest_framework\serializers.py", line 517, in to_representation
+    attribute = field.get_attribute(instance)
+  File "E:\workspace\venv\django_ro_venv\lib\site-packages\rest_framework\fields.py", line 475, in get_attribute
+    raise type(exc)(msg)
+KeyError: "Got KeyError when attempting to get a value for field `max_users` on serializer `ServerManagementSerializer`.\nThe serializer field might be named incorrectly and not match any attribute or key on the `dict` instance.\nOriginal exception text was: 'max_users'."
+2019-02-22 14:04:52,661 [Thread-2:9464] [django.request:228] [log:log_response] [ERROR]- Internal Server Error: /server_managements/
+Traceback (most recent call last):
+  File "E:\workspace\venv\django_ro_venv\lib\site-packages\rest_framework\fields.py", line 454, in get_attribute
+    return get_attribute(instance, self.source_attrs)
+  File "E:\workspace\venv\django_ro_venv\lib\site-packages\rest_framework\fields.py", line 100, in get_attribute
+    instance = instance[attr]
+KeyError: 'max_users'
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "E:\workspace\venv\django_ro_venv\lib\site-packages\django\core\handlers\exception.py", line 34, in inner
+    response = get_response(request)
+  File "E:\workspace\venv\django_ro_venv\lib\site-packages\django\core\handlers\base.py", line 126, in _get_response
+    response = self.process_exception_by_middleware(e, request)
+  File "E:\workspace\venv\django_ro_venv\lib\site-packages\django\core\handlers\base.py", line 124, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "E:\workspace\venv\django_ro_venv\lib\site-packages\django\views\decorators\csrf.py", line 54, in wrapped_view
+    return view_func(*args, **kwargs)
+  File "E:\workspace\venv\django_ro_venv\lib\site-packages\django\views\generic\base.py", line 68, in view
+    return self.dispatch(request, *args, **kwargs)
+  File "E:\workspace\venv\django_ro_venv\lib\site-packages\rest_framework\views.py", line 495, in dispatch
+    response = self.handle_exception(exc)
+  File "E:\workspace\venv\django_ro_venv\lib\site-packages\rest_framework\views.py", line 455, in handle_exception
+    self.raise_uncaught_exception(exc)
+  File "E:\workspace\venv\django_ro_venv\lib\site-packages\rest_framework\views.py", line 492, in dispatch
+    response = handler(request, *args, **kwargs)
+  File "E:\workspace\project\django_ro\ro_operations\views.py", line 159, in get
+    return Response(serializer.data)
+  File "E:\workspace\venv\django_ro_venv\lib\site-packages\rest_framework\serializers.py", line 768, in data
+    ret = super(ListSerializer, self).data
+  File "E:\workspace\venv\django_ro_venv\lib\site-packages\rest_framework\serializers.py", line 262, in data
+    self._data = self.to_representation(self.instance)
+  File "E:\workspace\venv\django_ro_venv\lib\site-packages\rest_framework\serializers.py", line 686, in to_representation
+    self.child.to_representation(item) for item in iterable
+  File "E:\workspace\venv\django_ro_venv\lib\site-packages\rest_framework\serializers.py", line 686, in <listcomp>
+    self.child.to_representation(item) for item in iterable
+  File "E:\workspace\venv\django_ro_venv\lib\site-packages\rest_framework\serializers.py", line 517, in to_representation
+    attribute = field.get_attribute(instance)
+  File "E:\workspace\venv\django_ro_venv\lib\site-packages\rest_framework\fields.py", line 475, in get_attribute
+    raise type(exc)(msg)
+KeyError: "Got KeyError when attempting to get a value for field `max_users` on serializer `ServerManagementSerializer`.\nThe serializer field might be named incorrectly and not match any attribute or key on the `dict` instance.\nOriginal exception text was: 'max_users'."

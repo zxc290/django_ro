@@ -59,6 +59,7 @@ TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
         'DIRS': [os.path.join(BASE_DIR, 'templates')]
+        # 'DIRS': [os.path.join(BASE_DIR, 'frontend/dist')]
         ,
         'APP_DIRS': True,
         'OPTIONS': {
@@ -97,17 +98,17 @@ DATABASES = {
             'driver': 'SQL Server Native Client 10.0',
         },
     },
-    # 'default': {
+    # 'server_management': {
     #     # 数据库引擎设置
     #     'ENGINE': 'sql_server.pyodbc',
     #     # 要连接的数据库名
-    #     'NAME': 'ServerAdminRo',
+    #     'NAME': 'ServerManagement',
     #     # 数据库用户名
-    #     'USER': 'sa',
+    #     'USER': 'DB_rwAccount!QAZ',
     #     # 数据库密码
-    #     'PASSWORD': '7cool_7COOL_7cool',
+    #     'PASSWORD': 'DB_dhJ15*edqdI',
     #     # 数据库主机地址
-    #     'HOST': '127.0.0.1',
+    #     'HOST': 'auth.xgd666.com,10097',
     #     # 数据库端口号，默认可以不写
     #     'PORT': '',
     #     # 选项，这个要先在操作系统上完成ODBC的连接创建，并连接成功，注意10.0这个地方，要和自己的ODBC版本一致
@@ -115,17 +116,17 @@ DATABASES = {
     #         'driver': 'SQL Server Native Client 10.0',
     #     },
     # },
-    # 'server_management': {
-    #     # 数据库引擎设置
+    # 'appid_management': {
+    #      # 数据库引擎设置
     #     'ENGINE': 'sql_server.pyodbc',
     #     # 要连接的数据库名
-    #     'NAME': 'ServerManagementRo',
+    #     'NAME': 'AppidManagement',
     #     # 数据库用户名
-    #     'USER': 'sa',
+    #     'USER': 'DB_rwAccount!QAZ',
     #     # 数据库密码
-    #     'PASSWORD': '7cool_7COOL_7cool',
+    #     'PASSWORD': 'DB_dhJ15*edqdI',
     #     # 数据库主机地址
-    #     'HOST': '127.0.0.1',
+    #     'HOST': 'auth.xgd666.com,10097',
     #     # 数据库端口号，默认可以不写
     #     'PORT': '',
     #     # 选项，这个要先在操作系统上完成ODBC的连接创建，并连接成功，注意10.0这个地方，要和自己的ODBC版本一致
@@ -139,11 +140,11 @@ DATABASES = {
         # 要连接的数据库名
         'NAME': 'ServerManagement',
         # 数据库用户名
-        'USER': 'DB_rwAccount!QAZ',
+        'USER': 'sa',
         # 数据库密码
-        'PASSWORD': 'DB_dhJ15*edqdI',
+        'PASSWORD': '7cool_7COOL_7cool',
         # 数据库主机地址
-        'HOST': 'auth.xgd666.com,10097',
+        'HOST': '127.0.0.1',
         # 数据库端口号，默认可以不写
         'PORT': '',
         # 选项，这个要先在操作系统上完成ODBC的连接创建，并连接成功，注意10.0这个地方，要和自己的ODBC版本一致
@@ -152,16 +153,16 @@ DATABASES = {
         },
     },
     'appid_management': {
-         # 数据库引擎设置
+        # 数据库引擎设置
         'ENGINE': 'sql_server.pyodbc',
         # 要连接的数据库名
         'NAME': 'AppidManagement',
         # 数据库用户名
-        'USER': 'DB_rwAccount!QAZ',
+        'USER': 'sa',
         # 数据库密码
-        'PASSWORD': 'DB_dhJ15*edqdI',
+        'PASSWORD': '7cool_7COOL_7cool',
         # 数据库主机地址
-        'HOST': 'auth.xgd666.com,10097',
+        'HOST': '127.0.0.1',
         # 数据库端口号，默认可以不写
         'PORT': '',
         # 选项，这个要先在操作系统上完成ODBC的连接创建，并连接成功，注意10.0这个地方，要和自己的ODBC版本一致
@@ -189,6 +190,15 @@ DATABASES = {
     },
 }
 
+# DATABASE_ROUTERS = ['django_ro.database_router.DatabaseAppsRouter']
+# DATABASE_APPS_MAPPING = {
+#     # example:
+#     #'app_name':'database_name',
+#     # 'server_admin': 'server_admin',
+#     'server_management': 'server_management',
+#     'appid_management': 'appid_management',
+#     'django_ro': 'django_ro',
+# }
 
 # Password validation
 # https://docs.djangoproject.com/en/2.1/ref/settings/#auth-password-validators
@@ -227,9 +237,13 @@ USE_TZ = False
 # https://docs.djangoproject.com/en/2.1/howto/static-files/
 
 STATIC_URL = '/static/'
-
+STATIC_ROOT = os.path.join(BASE_DIR, 'static')
+STATICFILES_DIRS = [
+    os.path.join(BASE_DIR, "frontend/dist/static"),
+]
 
 # 跨域设置
+
 CORS_ORIGIN_ALLOW_ALL = True
 
 # 功能id
@@ -249,3 +263,88 @@ RECORD_CHECK_PERMISSION = 218
 
 # 权限集合
 FID_PERMISSION = '(215, 216, 217, 218)'
+
+# 日志
+BASE_LOG_DIR = os.path.join(BASE_DIR, "log")
+LOGGING = {
+    'version': 1,
+    'disable_existing_loggers': False,
+    'formatters': {
+        'standard': {
+            'format': '%(asctime)s [%(threadName)s:%(thread)d] [%(name)s:%(lineno)d] [%(module)s:%(funcName)s] [%(levelname)s]- %(message)s'}
+    # 日志格式
+    },
+    'filters': {
+    },
+    'handlers': {
+        'mail_admins': {
+            'level': 'ERROR',
+            'class': 'django.utils.log.AdminEmailHandler',
+            'include_html': True,
+        },
+        'default': {
+            'level': 'DEBUG',
+            'class': 'logging.handlers.RotatingFileHandler',
+            'filename': os.path.join(BASE_LOG_DIR, "info.log"),  # 日志输出文件
+            'maxBytes': 1024 * 1024 * 5,  # 文件大小
+            'backupCount': 5,  # 备份份数
+            'formatter': 'standard',  # 使用哪种formatters日志格式
+        },
+        'error': {
+            'level': 'ERROR',
+            'class': 'logging.handlers.RotatingFileHandler',
+            'filename': os.path.join(BASE_LOG_DIR, "err.log"),
+            'maxBytes': 1024 * 1024 * 5,
+            'backupCount': 5,
+            'formatter': 'standard',
+        },
+        'console': {
+            'level': 'DEBUG',
+            'class': 'logging.StreamHandler',
+            'formatter': 'standard'
+        },
+        'request_handler': {
+            'level': 'DEBUG',
+            'class': 'logging.handlers.RotatingFileHandler',
+            'filename': os.path.join(BASE_LOG_DIR, "script.log"),
+            'maxBytes': 1024 * 1024 * 5,
+            'backupCount': 5,
+            'formatter': 'standard',
+        },
+        'scprits_handler': {
+            'level': 'DEBUG',
+            'class': 'logging.handlers.RotatingFileHandler',
+            'filename': os.path.join(BASE_LOG_DIR, "script.log"),
+            'maxBytes': 1024 * 1024 * 5,
+            'backupCount': 5,
+            'formatter': 'standard',
+        }
+    },
+    'loggers': {
+        'django': {
+            'handlers': ['default', 'console'],
+            'level': 'DEBUG',
+            'propagate': False
+        },
+        'django.request': {
+            'handlers': ['request_handler'],
+            'level': 'DEBUG',
+            'propagate': False,
+        },
+        'scripts': {
+            'handlers': ['scprits_handler'],
+            'level': 'INFO',
+            'propagate': False
+        },
+        'sourceDns.webdns.views': {
+            'handlers': ['default', 'error'],
+            'level': 'DEBUG',
+            'propagate': True
+        },
+        'sourceDns.webdns.util': {
+            'handlers': ['error'],
+            'level': 'ERROR',
+            'propagate': True
+        }
+    }
+}

@@ -13,7 +13,7 @@ from .dbtools import dict_fetchall
 
 
 class AppManage(models.Model):
-    id = models.AutoField(primary_key=True, verbose_name='id')
+    id = models.IntegerField(primary_key=True, verbose_name='id')
     gametypeno = models.IntegerField(db_column='GameTypeno', verbose_name='游戏类型id')  # Field name made lowercase.
     gametype = models.CharField(db_column='GameType', max_length=50, verbose_name='游戏类型')  # Field name made lowercase.
     ptid = models.IntegerField(db_column='Ptid', verbose_name='平台id')  # Field name made lowercase.
@@ -30,7 +30,7 @@ class AppManage(models.Model):
     objects = AppManagementManager()
 
     def __str__(self):
-        return self.appid
+        return self.id
 
     class Meta:
         verbose_name = 'APP管理'
@@ -100,7 +100,7 @@ class VersionInfo(models.Model):
     objects = AppManagementManager()
 
     def __str__(self):
-        return str(self.gametypeno) + '_' + self.appid + '_' + self.version
+        return self.id
 
     class Meta:
         verbose_name = '版本信息'
@@ -190,7 +190,7 @@ class User(models.Model):
 
 
 class AppPlatformCfg(models.Model):
-    idx = models.AutoField(primary_key=True)
+    idx = models.IntegerField(primary_key=True)
     gid = models.IntegerField(db_column='GID', blank=True, null=True)  # Field name made lowercase.
     pid = models.IntegerField(db_column='PID', blank=True, null=True)  # Field name made lowercase.
     pname = models.CharField(db_column='PName', max_length=50, blank=True, null=True)  # Field name made lowercase.
@@ -200,6 +200,9 @@ class AppPlatformCfg(models.Model):
     company = models.CharField(db_column='Company', max_length=50, blank=True, null=True)  # Field name made lowercase.
 
     objects = ServerManagementManager()
+
+    def __str__(self):
+        return self.idx
 
     class Meta:
         verbose_name = '平台配置'
@@ -279,7 +282,7 @@ class AppChannelList(models.Model):
 
 
 class AppServerChannel(models.Model):
-    id = models.AutoField(primary_key=True, verbose_name='id')
+    id = models.IntegerField(primary_key=True, verbose_name='id')
     gid = models.IntegerField(db_column='GID')  # Field name made lowercase.
     zoneidx = models.IntegerField()
     zonename = models.CharField(max_length=50, blank=True, null=True)
@@ -291,13 +294,14 @@ class AppServerChannel(models.Model):
     server_statu = models.IntegerField()
     server_suggest = models.IntegerField()
     is_delete = models.IntegerField()
-    player_highlines = models.IntegerField(blank=True, null=True)
-    server_weight = models.IntegerField(blank=True, null=True)
+    max_users = models.IntegerField()
+    server_weight = models.IntegerField()
+    autoopentime = models.DateTimeField()
 
     objects = ServerManagementManager()
 
     def __str__(self):
-        return self.appid + '_' + str(self.zoneidx) + '_' + str(self.cid)
+        return self.id
 
     class Meta:
         verbose_name = '应用服务渠道'
@@ -325,6 +329,9 @@ class WelfareManagement(models.Model):
 
     objects = DjangoRoManager()
 
+    def __str__(self):
+        return self.id
+
     class Meta:
         verbose_name = '福利发放管理'
         verbose_name_plural = verbose_name
@@ -343,6 +350,9 @@ class RolePlayerManagement(models.Model):
     creator_name = models.CharField(max_length=100, verbose_name='创建者姓名')
 
     objects = DjangoRoManager()
+
+    def __str__(self):
+        return self.id
 
     class Meta:
         verbose_name = '人员角色管理'
