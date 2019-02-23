@@ -176,6 +176,17 @@ class ServerManagementList(APIView):
             return Response(message)
 
 
+class AppServerChannelList(APIView):
+    '''
+    列出所有的AppServerChannel
+    '''
+    def get(self, request, format=None):
+        app_server_channel_list = AppServerChannel.objects.all().filter(gid=50)
+        serializer = AppServerChannelSerializer(app_server_channel_list, many=True)
+        logger.info('获取应用服务器渠道列表')
+        return Response(serializer.data)
+
+
 class AppServerChannelDetail(APIView):
     """
     检索，更新或删除一个AppServerChannel
@@ -427,7 +438,3 @@ class RolePlayerManagementDetail(APIView):
         role_player.delete()
         logger.info('删除人员角色成功')
         return Response(status=status.HTTP_204_NO_CONTENT)
-
-
-
-

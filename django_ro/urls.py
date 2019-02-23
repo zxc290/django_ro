@@ -24,9 +24,12 @@ urlpatterns = [
     path('login', views.login),
     path('app_platforms', views.AppPlatformCfgList.as_view()),
     path('app_servers', views.AppServerListList.as_view()),
+    path('app_channels/', views.AppChannelListList.as_view()),
+    path('app_server_channels/', views.AppServerChannelList.as_view()),
     path('welfares/', views.WelfareManagementList.as_view()),
     path('welfares/<int:id>/', views.WelfareManagementDetail.as_view()),
     path('role_players/', views.RolePlayerManagementList.as_view()),
     path('role_players/<int:id>/', views.RolePlayerManagementDetail.as_view()),
     path('server_managements/', views.ServerManagementList.as_view())
 ]
+

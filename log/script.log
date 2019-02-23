@@ -170,3 +170,301 @@ Traceback (most recent call last):
   File "E:\workspace\venv\django_ro_venv\lib\site-packages\rest_framework\fields.py", line 475, in get_attribute
     raise type(exc)(msg)
 KeyError: "Got KeyError when attempting to get a value for field `max_users` on serializer `ServerManagementSerializer`.\nThe serializer field might be named incorrectly and not match any attribute or key on the `dict` instance.\nOriginal exception text was: 'max_users'."
+2019-02-23 14:57:19,253 [Thread-2:3540] [django.request:228] [log:log_response] [WARNING]- Forbidden: /welfares/
+2019-02-23 15:19:46,118 [Thread-2:16880] [django.request:228] [log:log_response] [WARNING]- Not Found: /server_managements/app_channels
+2019-02-23 15:57:22,381 [Thread-2:2236] [django.request:228] [log:log_response] [ERROR]- Internal Server Error: /app_server_channels/
+Traceback (most recent call last):
+  File "E:\workspace\venv\django_ro_venv\lib\site-packages\django\core\handlers\exception.py", line 34, in inner
+    response = get_response(request)
+  File "E:\workspace\venv\django_ro_venv\lib\site-packages\django\core\handlers\base.py", line 126, in _get_response
+    response = self.process_exception_by_middleware(e, request)
+  File "E:\workspace\venv\django_ro_venv\lib\site-packages\django\core\handlers\base.py", line 124, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "E:\workspace\venv\django_ro_venv\lib\site-packages\django\views\decorators\csrf.py", line 54, in wrapped_view
+    return view_func(*args, **kwargs)
+  File "E:\workspace\venv\django_ro_venv\lib\site-packages\django\views\generic\base.py", line 68, in view
+    return self.dispatch(request, *args, **kwargs)
+  File "E:\workspace\venv\django_ro_venv\lib\site-packages\rest_framework\views.py", line 495, in dispatch
+    response = self.handle_exception(exc)
+  File "E:\workspace\venv\django_ro_venv\lib\site-packages\rest_framework\views.py", line 455, in handle_exception
+    self.raise_uncaught_exception(exc)
+  File "E:\workspace\venv\django_ro_venv\lib\site-packages\rest_framework\views.py", line 492, in dispatch
+    response = handler(request, *args, **kwargs)
+  File "E:\workspace\project\django_ro\ro_operations\views.py", line 187, in get
+    return Response(serializer.data)
+  File "E:\workspace\venv\django_ro_venv\lib\site-packages\rest_framework\serializers.py", line 768, in data
+    ret = super(ListSerializer, self).data
+  File "E:\workspace\venv\django_ro_venv\lib\site-packages\rest_framework\serializers.py", line 262, in data
+    self._data = self.to_representation(self.instance)
+  File "E:\workspace\venv\django_ro_venv\lib\site-packages\rest_framework\serializers.py", line 686, in to_representation
+    self.child.to_representation(item) for item in iterable
+  File "E:\workspace\venv\django_ro_venv\lib\site-packages\rest_framework\serializers.py", line 686, in <listcomp>
+    self.child.to_representation(item) for item in iterable
+  File "E:\workspace\venv\django_ro_venv\lib\site-packages\rest_framework\serializers.py", line 530, in to_representation
+    ret[field.field_name] = field.to_representation(attribute)
+  File "E:\workspace\venv\django_ro_venv\lib\site-packages\rest_framework\fields.py", line 1233, in to_representation
+    value = self.enforce_timezone(value)
+  File "E:\workspace\venv\django_ro_venv\lib\site-packages\rest_framework\fields.py", line 1190, in enforce_timezone
+    elif (field_timezone is None) and timezone.is_aware(value):
+  File "E:\workspace\venv\django_ro_venv\lib\site-packages\django\utils\timezone.py", line 242, in is_aware
+    return value.utcoffset() is not None
+AttributeError: 'int' object has no attribute 'utcoffset'
+2019-02-23 15:57:24,706 [Thread-2:2236] [django.request:228] [log:log_response] [ERROR]- Internal Server Error: /app_server_channels/
+Traceback (most recent call last):
+  File "E:\workspace\venv\django_ro_venv\lib\site-packages\django\core\handlers\exception.py", line 34, in inner
+    response = get_response(request)
+  File "E:\workspace\venv\django_ro_venv\lib\site-packages\django\core\handlers\base.py", line 126, in _get_response
+    response = self.process_exception_by_middleware(e, request)
+  File "E:\workspace\venv\django_ro_venv\lib\site-packages\django\core\handlers\base.py", line 124, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "E:\workspace\venv\django_ro_venv\lib\site-packages\django\views\decorators\csrf.py", line 54, in wrapped_view
+    return view_func(*args, **kwargs)
+  File "E:\workspace\venv\django_ro_venv\lib\site-packages\django\views\generic\base.py", line 68, in view
+    return self.dispatch(request, *args, **kwargs)
+  File "E:\workspace\venv\django_ro_venv\lib\site-packages\rest_framework\views.py", line 495, in dispatch
+    response = self.handle_exception(exc)
+  File "E:\workspace\venv\django_ro_venv\lib\site-packages\rest_framework\views.py", line 455, in handle_exception
+    self.raise_uncaught_exception(exc)
+  File "E:\workspace\venv\django_ro_venv\lib\site-packages\rest_framework\views.py", line 492, in dispatch
+    response = handler(request, *args, **kwargs)
+  File "E:\workspace\project\django_ro\ro_operations\views.py", line 187, in get
+    return Response(serializer.data)
+  File "E:\workspace\venv\django_ro_venv\lib\site-packages\rest_framework\serializers.py", line 768, in data
+    ret = super(ListSerializer, self).data
+  File "E:\workspace\venv\django_ro_venv\lib\site-packages\rest_framework\serializers.py", line 262, in data
+    self._data = self.to_representation(self.instance)
+  File "E:\workspace\venv\django_ro_venv\lib\site-packages\rest_framework\serializers.py", line 686, in to_representation
+    self.child.to_representation(item) for item in iterable
+  File "E:\workspace\venv\django_ro_venv\lib\site-packages\rest_framework\serializers.py", line 686, in <listcomp>
+    self.child.to_representation(item) for item in iterable
+  File "E:\workspace\venv\django_ro_venv\lib\site-packages\rest_framework\serializers.py", line 530, in to_representation
+    ret[field.field_name] = field.to_representation(attribute)
+  File "E:\workspace\venv\django_ro_venv\lib\site-packages\rest_framework\fields.py", line 1233, in to_representation
+    value = self.enforce_timezone(value)
+  File "E:\workspace\venv\django_ro_venv\lib\site-packages\rest_framework\fields.py", line 1190, in enforce_timezone
+    elif (field_timezone is None) and timezone.is_aware(value):
+  File "E:\workspace\venv\django_ro_venv\lib\site-packages\django\utils\timezone.py", line 242, in is_aware
+    return value.utcoffset() is not None
+AttributeError: 'int' object has no attribute 'utcoffset'
+2019-02-23 15:57:33,973 [Thread-2:16196] [django.request:228] [log:log_response] [ERROR]- Internal Server Error: /app_server_channels/
+Traceback (most recent call last):
+  File "E:\workspace\venv\django_ro_venv\lib\site-packages\django\core\handlers\exception.py", line 34, in inner
+    response = get_response(request)
+  File "E:\workspace\venv\django_ro_venv\lib\site-packages\django\core\handlers\base.py", line 126, in _get_response
+    response = self.process_exception_by_middleware(e, request)
+  File "E:\workspace\venv\django_ro_venv\lib\site-packages\django\core\handlers\base.py", line 124, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "E:\workspace\venv\django_ro_venv\lib\site-packages\django\views\decorators\csrf.py", line 54, in wrapped_view
+    return view_func(*args, **kwargs)
+  File "E:\workspace\venv\django_ro_venv\lib\site-packages\django\views\generic\base.py", line 68, in view
+    return self.dispatch(request, *args, **kwargs)
+  File "E:\workspace\venv\django_ro_venv\lib\site-packages\rest_framework\views.py", line 495, in dispatch
+    response = self.handle_exception(exc)
+  File "E:\workspace\venv\django_ro_venv\lib\site-packages\rest_framework\views.py", line 455, in handle_exception
+    self.raise_uncaught_exception(exc)
+  File "E:\workspace\venv\django_ro_venv\lib\site-packages\rest_framework\views.py", line 492, in dispatch
+    response = handler(request, *args, **kwargs)
+  File "E:\workspace\project\django_ro\ro_operations\views.py", line 187, in get
+    return Response(serializer.data)
+  File "E:\workspace\venv\django_ro_venv\lib\site-packages\rest_framework\serializers.py", line 768, in data
+    ret = super(ListSerializer, self).data
+  File "E:\workspace\venv\django_ro_venv\lib\site-packages\rest_framework\serializers.py", line 262, in data
+    self._data = self.to_representation(self.instance)
+  File "E:\workspace\venv\django_ro_venv\lib\site-packages\rest_framework\serializers.py", line 686, in to_representation
+    self.child.to_representation(item) for item in iterable
+  File "E:\workspace\venv\django_ro_venv\lib\site-packages\rest_framework\serializers.py", line 686, in <listcomp>
+    self.child.to_representation(item) for item in iterable
+  File "E:\workspace\venv\django_ro_venv\lib\site-packages\rest_framework\serializers.py", line 530, in to_representation
+    ret[field.field_name] = field.to_representation(attribute)
+  File "E:\workspace\venv\django_ro_venv\lib\site-packages\rest_framework\fields.py", line 1233, in to_representation
+    value = self.enforce_timezone(value)
+  File "E:\workspace\venv\django_ro_venv\lib\site-packages\rest_framework\fields.py", line 1190, in enforce_timezone
+    elif (field_timezone is None) and timezone.is_aware(value):
+  File "E:\workspace\venv\django_ro_venv\lib\site-packages\django\utils\timezone.py", line 242, in is_aware
+    return value.utcoffset() is not None
+AttributeError: 'int' object has no attribute 'utcoffset'
+2019-02-23 15:58:04,870 [Thread-2:16196] [django.request:228] [log:log_response] [ERROR]- Internal Server Error: /app_server_channels/
+Traceback (most recent call last):
+  File "E:\workspace\venv\django_ro_venv\lib\site-packages\django\core\handlers\exception.py", line 34, in inner
+    response = get_response(request)
+  File "E:\workspace\venv\django_ro_venv\lib\site-packages\django\core\handlers\base.py", line 126, in _get_response
+    response = self.process_exception_by_middleware(e, request)
+  File "E:\workspace\venv\django_ro_venv\lib\site-packages\django\core\handlers\base.py", line 124, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "E:\workspace\venv\django_ro_venv\lib\site-packages\django\views\decorators\csrf.py", line 54, in wrapped_view
+    return view_func(*args, **kwargs)
+  File "E:\workspace\venv\django_ro_venv\lib\site-packages\django\views\generic\base.py", line 68, in view
+    return self.dispatch(request, *args, **kwargs)
+  File "E:\workspace\venv\django_ro_venv\lib\site-packages\rest_framework\views.py", line 495, in dispatch
+    response = self.handle_exception(exc)
+  File "E:\workspace\venv\django_ro_venv\lib\site-packages\rest_framework\views.py", line 455, in handle_exception
+    self.raise_uncaught_exception(exc)
+  File "E:\workspace\venv\django_ro_venv\lib\site-packages\rest_framework\views.py", line 492, in dispatch
+    response = handler(request, *args, **kwargs)
+  File "E:\workspace\project\django_ro\ro_operations\views.py", line 187, in get
+    return Response(serializer.data)
+  File "E:\workspace\venv\django_ro_venv\lib\site-packages\rest_framework\serializers.py", line 768, in data
+    ret = super(ListSerializer, self).data
+  File "E:\workspace\venv\django_ro_venv\lib\site-packages\rest_framework\serializers.py", line 262, in data
+    self._data = self.to_representation(self.instance)
+  File "E:\workspace\venv\django_ro_venv\lib\site-packages\rest_framework\serializers.py", line 686, in to_representation
+    self.child.to_representation(item) for item in iterable
+  File "E:\workspace\venv\django_ro_venv\lib\site-packages\rest_framework\serializers.py", line 686, in <listcomp>
+    self.child.to_representation(item) for item in iterable
+  File "E:\workspace\venv\django_ro_venv\lib\site-packages\rest_framework\serializers.py", line 530, in to_representation
+    ret[field.field_name] = field.to_representation(attribute)
+  File "E:\workspace\venv\django_ro_venv\lib\site-packages\rest_framework\fields.py", line 1233, in to_representation
+    value = self.enforce_timezone(value)
+  File "E:\workspace\venv\django_ro_venv\lib\site-packages\rest_framework\fields.py", line 1190, in enforce_timezone
+    elif (field_timezone is None) and timezone.is_aware(value):
+  File "E:\workspace\venv\django_ro_venv\lib\site-packages\django\utils\timezone.py", line 242, in is_aware
+    return value.utcoffset() is not None
+AttributeError: 'int' object has no attribute 'utcoffset'
+2019-02-23 15:58:14,992 [Thread-2:16196] [django.request:228] [log:log_response] [ERROR]- Internal Server Error: /app_server_channels/
+Traceback (most recent call last):
+  File "E:\workspace\venv\django_ro_venv\lib\site-packages\django\core\handlers\exception.py", line 34, in inner
+    response = get_response(request)
+  File "E:\workspace\venv\django_ro_venv\lib\site-packages\django\core\handlers\base.py", line 126, in _get_response
+    response = self.process_exception_by_middleware(e, request)
+  File "E:\workspace\venv\django_ro_venv\lib\site-packages\django\core\handlers\base.py", line 124, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "E:\workspace\venv\django_ro_venv\lib\site-packages\django\views\decorators\csrf.py", line 54, in wrapped_view
+    return view_func(*args, **kwargs)
+  File "E:\workspace\venv\django_ro_venv\lib\site-packages\django\views\generic\base.py", line 68, in view
+    return self.dispatch(request, *args, **kwargs)
+  File "E:\workspace\venv\django_ro_venv\lib\site-packages\rest_framework\views.py", line 495, in dispatch
+    response = self.handle_exception(exc)
+  File "E:\workspace\venv\django_ro_venv\lib\site-packages\rest_framework\views.py", line 455, in handle_exception
+    self.raise_uncaught_exception(exc)
+  File "E:\workspace\venv\django_ro_venv\lib\site-packages\rest_framework\views.py", line 492, in dispatch
+    response = handler(request, *args, **kwargs)
+  File "E:\workspace\project\django_ro\ro_operations\views.py", line 187, in get
+    return Response(serializer.data)
+  File "E:\workspace\venv\django_ro_venv\lib\site-packages\rest_framework\serializers.py", line 768, in data
+    ret = super(ListSerializer, self).data
+  File "E:\workspace\venv\django_ro_venv\lib\site-packages\rest_framework\serializers.py", line 262, in data
+    self._data = self.to_representation(self.instance)
+  File "E:\workspace\venv\django_ro_venv\lib\site-packages\rest_framework\serializers.py", line 686, in to_representation
+    self.child.to_representation(item) for item in iterable
+  File "E:\workspace\venv\django_ro_venv\lib\site-packages\rest_framework\serializers.py", line 686, in <listcomp>
+    self.child.to_representation(item) for item in iterable
+  File "E:\workspace\venv\django_ro_venv\lib\site-packages\rest_framework\serializers.py", line 530, in to_representation
+    ret[field.field_name] = field.to_representation(attribute)
+  File "E:\workspace\venv\django_ro_venv\lib\site-packages\rest_framework\fields.py", line 1233, in to_representation
+    value = self.enforce_timezone(value)
+  File "E:\workspace\venv\django_ro_venv\lib\site-packages\rest_framework\fields.py", line 1190, in enforce_timezone
+    elif (field_timezone is None) and timezone.is_aware(value):
+  File "E:\workspace\venv\django_ro_venv\lib\site-packages\django\utils\timezone.py", line 242, in is_aware
+    return value.utcoffset() is not None
+AttributeError: 'int' object has no attribute 'utcoffset'
+2019-02-23 15:58:22,382 [Thread-2:16196] [django.request:228] [log:log_response] [ERROR]- Internal Server Error: /app_server_channels/
+Traceback (most recent call last):
+  File "E:\workspace\venv\django_ro_venv\lib\site-packages\django\core\handlers\exception.py", line 34, in inner
+    response = get_response(request)
+  File "E:\workspace\venv\django_ro_venv\lib\site-packages\django\core\handlers\base.py", line 126, in _get_response
+    response = self.process_exception_by_middleware(e, request)
+  File "E:\workspace\venv\django_ro_venv\lib\site-packages\django\core\handlers\base.py", line 124, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "E:\workspace\venv\django_ro_venv\lib\site-packages\django\views\decorators\csrf.py", line 54, in wrapped_view
+    return view_func(*args, **kwargs)
+  File "E:\workspace\venv\django_ro_venv\lib\site-packages\django\views\generic\base.py", line 68, in view
+    return self.dispatch(request, *args, **kwargs)
+  File "E:\workspace\venv\django_ro_venv\lib\site-packages\rest_framework\views.py", line 495, in dispatch
+    response = self.handle_exception(exc)
+  File "E:\workspace\venv\django_ro_venv\lib\site-packages\rest_framework\views.py", line 455, in handle_exception
+    self.raise_uncaught_exception(exc)
+  File "E:\workspace\venv\django_ro_venv\lib\site-packages\rest_framework\views.py", line 492, in dispatch
+    response = handler(request, *args, **kwargs)
+  File "E:\workspace\project\django_ro\ro_operations\views.py", line 187, in get
+    return Response(serializer.data)
+  File "E:\workspace\venv\django_ro_venv\lib\site-packages\rest_framework\serializers.py", line 768, in data
+    ret = super(ListSerializer, self).data
+  File "E:\workspace\venv\django_ro_venv\lib\site-packages\rest_framework\serializers.py", line 262, in data
+    self._data = self.to_representation(self.instance)
+  File "E:\workspace\venv\django_ro_venv\lib\site-packages\rest_framework\serializers.py", line 686, in to_representation
+    self.child.to_representation(item) for item in iterable
+  File "E:\workspace\venv\django_ro_venv\lib\site-packages\rest_framework\serializers.py", line 686, in <listcomp>
+    self.child.to_representation(item) for item in iterable
+  File "E:\workspace\venv\django_ro_venv\lib\site-packages\rest_framework\serializers.py", line 530, in to_representation
+    ret[field.field_name] = field.to_representation(attribute)
+  File "E:\workspace\venv\django_ro_venv\lib\site-packages\rest_framework\fields.py", line 1233, in to_representation
+    value = self.enforce_timezone(value)
+  File "E:\workspace\venv\django_ro_venv\lib\site-packages\rest_framework\fields.py", line 1190, in enforce_timezone
+    elif (field_timezone is None) and timezone.is_aware(value):
+  File "E:\workspace\venv\django_ro_venv\lib\site-packages\django\utils\timezone.py", line 242, in is_aware
+    return value.utcoffset() is not None
+AttributeError: 'int' object has no attribute 'utcoffset'
+2019-02-23 16:01:32,790 [Thread-2:16196] [django.request:228] [log:log_response] [ERROR]- Internal Server Error: /app_server_channels/
+Traceback (most recent call last):
+  File "E:\workspace\venv\django_ro_venv\lib\site-packages\django\core\handlers\exception.py", line 34, in inner
+    response = get_response(request)
+  File "E:\workspace\venv\django_ro_venv\lib\site-packages\django\core\handlers\base.py", line 126, in _get_response
+    response = self.process_exception_by_middleware(e, request)
+  File "E:\workspace\venv\django_ro_venv\lib\site-packages\django\core\handlers\base.py", line 124, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "E:\workspace\venv\django_ro_venv\lib\site-packages\django\views\decorators\csrf.py", line 54, in wrapped_view
+    return view_func(*args, **kwargs)
+  File "E:\workspace\venv\django_ro_venv\lib\site-packages\django\views\generic\base.py", line 68, in view
+    return self.dispatch(request, *args, **kwargs)
+  File "E:\workspace\venv\django_ro_venv\lib\site-packages\rest_framework\views.py", line 495, in dispatch
+    response = self.handle_exception(exc)
+  File "E:\workspace\venv\django_ro_venv\lib\site-packages\rest_framework\views.py", line 455, in handle_exception
+    self.raise_uncaught_exception(exc)
+  File "E:\workspace\venv\django_ro_venv\lib\site-packages\rest_framework\views.py", line 492, in dispatch
+    response = handler(request, *args, **kwargs)
+  File "E:\workspace\project\django_ro\ro_operations\views.py", line 187, in get
+    return Response(serializer.data)
+  File "E:\workspace\venv\django_ro_venv\lib\site-packages\rest_framework\serializers.py", line 768, in data
+    ret = super(ListSerializer, self).data
+  File "E:\workspace\venv\django_ro_venv\lib\site-packages\rest_framework\serializers.py", line 262, in data
+    self._data = self.to_representation(self.instance)
+  File "E:\workspace\venv\django_ro_venv\lib\site-packages\rest_framework\serializers.py", line 686, in to_representation
+    self.child.to_representation(item) for item in iterable
+  File "E:\workspace\venv\django_ro_venv\lib\site-packages\rest_framework\serializers.py", line 686, in <listcomp>
+    self.child.to_representation(item) for item in iterable
+  File "E:\workspace\venv\django_ro_venv\lib\site-packages\rest_framework\serializers.py", line 530, in to_representation
+    ret[field.field_name] = field.to_representation(attribute)
+  File "E:\workspace\venv\django_ro_venv\lib\site-packages\rest_framework\fields.py", line 1233, in to_representation
+    value = self.enforce_timezone(value)
+  File "E:\workspace\venv\django_ro_venv\lib\site-packages\rest_framework\fields.py", line 1190, in enforce_timezone
+    elif (field_timezone is None) and timezone.is_aware(value):
+  File "E:\workspace\venv\django_ro_venv\lib\site-packages\django\utils\timezone.py", line 242, in is_aware
+    return value.utcoffset() is not None
+AttributeError: 'int' object has no attribute 'utcoffset'
+2019-02-23 16:01:33,833 [Thread-2:16196] [django.request:228] [log:log_response] [ERROR]- Internal Server Error: /app_server_channels/
+Traceback (most recent call last):
+  File "E:\workspace\venv\django_ro_venv\lib\site-packages\django\core\handlers\exception.py", line 34, in inner
+    response = get_response(request)
+  File "E:\workspace\venv\django_ro_venv\lib\site-packages\django\core\handlers\base.py", line 126, in _get_response
+    response = self.process_exception_by_middleware(e, request)
+  File "E:\workspace\venv\django_ro_venv\lib\site-packages\django\core\handlers\base.py", line 124, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "E:\workspace\venv\django_ro_venv\lib\site-packages\django\views\decorators\csrf.py", line 54, in wrapped_view
+    return view_func(*args, **kwargs)
+  File "E:\workspace\venv\django_ro_venv\lib\site-packages\django\views\generic\base.py", line 68, in view
+    return self.dispatch(request, *args, **kwargs)
+  File "E:\workspace\venv\django_ro_venv\lib\site-packages\rest_framework\views.py", line 495, in dispatch
+    response = self.handle_exception(exc)
+  File "E:\workspace\venv\django_ro_venv\lib\site-packages\rest_framework\views.py", line 455, in handle_exception
+    self.raise_uncaught_exception(exc)
+  File "E:\workspace\venv\django_ro_venv\lib\site-packages\rest_framework\views.py", line 492, in dispatch
+    response = handler(request, *args, **kwargs)
+  File "E:\workspace\project\django_ro\ro_operations\views.py", line 187, in get
+    return Response(serializer.data)
+  File "E:\workspace\venv\django_ro_venv\lib\site-packages\rest_framework\serializers.py", line 768, in data
+    ret = super(ListSerializer, self).data
+  File "E:\workspace\venv\django_ro_venv\lib\site-packages\rest_framework\serializers.py", line 262, in data
+    self._data = self.to_representation(self.instance)
+  File "E:\workspace\venv\django_ro_venv\lib\site-packages\rest_framework\serializers.py", line 686, in to_representation
+    self.child.to_representation(item) for item in iterable
+  File "E:\workspace\venv\django_ro_venv\lib\site-packages\rest_framework\serializers.py", line 686, in <listcomp>
+    self.child.to_representation(item) for item in iterable
+  File "E:\workspace\venv\django_ro_venv\lib\site-packages\rest_framework\serializers.py", line 530, in to_representation
+    ret[field.field_name] = field.to_representation(attribute)
+  File "E:\workspace\venv\django_ro_venv\lib\site-packages\rest_framework\fields.py", line 1233, in to_representation
+    value = self.enforce_timezone(value)
+  File "E:\workspace\venv\django_ro_venv\lib\site-packages\rest_framework\fields.py", line 1190, in enforce_timezone
+    elif (field_timezone is None) and timezone.is_aware(value):
+  File "E:\workspace\venv\django_ro_venv\lib\site-packages\django\utils\timezone.py", line 242, in is_aware
+    return value.utcoffset() is not None
+AttributeError: 'int' object has no attribute 'utcoffset'

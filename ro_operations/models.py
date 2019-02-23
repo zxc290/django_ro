@@ -296,7 +296,7 @@ class AppServerChannel(models.Model):
     is_delete = models.IntegerField()
     max_users = models.IntegerField()
     server_weight = models.IntegerField()
-    autoopentime = models.DateTimeField()
+    autoopentime = models.IntegerField()
 
     objects = ServerManagementManager()
 
