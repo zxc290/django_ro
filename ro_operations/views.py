@@ -9,7 +9,7 @@ from rest_framework.response import Response
 from rest_framework.parsers import JSONParser
 from rest_framework import status
 from .models import User, AppChannelList, AppManage, AppServerList, AppPlatformCfg, AppServerChannel, WelfareManagement, RolePlayerManagement
-from .serializers import UserSerializer, AppChannelListSerializer, AppManageSerializer, AppServerListSerializer, AppPlatformCfgSerializer, AppServerChannelSerializer, ServerManagementSerializer, WelfareManagementSerializer, RolePlayerManagementSerializer
+from .serializers import UserSerializer, AppChannelListSerializer, AppManageSerializer, AppServerListSerializer, AppPlatformCfgSerializer, AppServerChannelSerializer, AppServerChannelUpdateSerializer ,ServerManagementSerializer, WelfareManagementSerializer, RolePlayerManagementSerializer
 from .tokens import gen_json_web_token
 from .decorators import token_required
 from .dbtools import dict_fetchall
@@ -158,9 +158,18 @@ class ServerManagementList(APIView):
     '''
     # @token_required
     def get(self, request, format=None):
+        data = request.GET
+        cid = data.get('cid')
+        appid = data.get('appid')
+        print(cid, appid)
+
         try:
             server_management_cursor = connections['server_management'].cursor()
-            sql = "SELECT * FROM ServerManagement.dbo.[GetServerTableTest] (50, 12)"
+            if appid:
+                sql = "SELECT * FROM ServerManagement.dbo.[GetServerTableTest] (50, {cid}) WHERE appid='{appid}'".format(cid=cid, appid=appid)
+            else:
+                sql = "SELECT * FROM ServerManagement.dbo.[GetServerTableTest] (50, {cid})".format(cid=cid)
+            # sql = "SELECT * FROM ServerManagement.dbo.[GetServerTableTest] (50, 12)"
             # sql = "SELECT * FROM ServerManagement.dbo.[GetServerTableTest] (50, 12) WHERE appid='com.dkm.tlsj.tlsj'"
             # sql = "SELECT * FROM ServerManagementRo.dbo.[GetServerTableTest] ({gid}, {cid}) WHERE appid='{appid}'".format(gid=gid, cid=cid, appid=appid)
             server_management_cursor.execute(sql)
@@ -174,6 +183,17 @@ class ServerManagementList(APIView):
             message = '获取服务器管理列表失败'
             logger.info(message)
             return Response(message)
+
+
+class AppManageList(APIView):
+    '''
+    列出所有的AppManage
+    '''
+    def get(self, request, format=None):
+        app_manage_list = AppManage.objects.all().filter(gametypeno=50)
+        serializer = AppManageSerializer(app_manage_list, many=True)
+        logger.info('获取应用服务器渠道列表')
+        return Response(serializer.data)
 
 
 class AppServerChannelList(APIView):
@@ -197,23 +217,48 @@ class AppServerChannelDetail(APIView):
         except AppServerChannel.DoesNotExist:
             raise Http404
 
-    @token_required
-    def put(self, request, id, format=None):
-        app_server_channel = self.get_object(id)
-        data = request.data
-        # approver_id = data.get('approver_id')
-        # approver_name = User.objects.get(userid=approver_id).username
-        # now = datetime.now()
-        # data.update(approver_id=approver_id, approver_name=approver_name, approve_date=now)
-        serializer = AppServerChannelSerializer(app_server_channel, data=data)
-        if serializer.is_valid():
-            serializer.save()
-            logger.info('修改应用服务器成功')
-            return Response(serializer.data)
-        logger.info('修改应用服务器失败')
-        return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
+    # def get_object_list(self, appid):
+    #     return AppServerChannel.objects.filter(appid=appid)
 
-    @token_required
+    def put(self, request, id, format=None):
+        data = request.data
+        by_zone = data.get('by_zone')
+        app_server_channel = self.get_object(id)
+        # 如果是按区更新，多条更新
+        if by_zone:
+            zoneidx = app_server_channel.zoneidx
+            app_server_channel_list = AppServerChannel.objects.filter(zoneidx=zoneidx)
+            for each in app_server_channel_list:
+                # 更新序列器
+                update_serializer = AppServerChannelUpdateSerializer(each, data=data)
+                if update_serializer.is_valid():
+                    update_serializer.save()
+                    logger.info('更新多条应用服务器之一成功, id为{each_id}'.format(each_id=each.id))
+                else:
+                    print(update_serializer.errors)
+                    logger.info('更新多条应用服务器之一失败, id为{each_id}'.format(each_id=each.id))
+                    return Response(update_serializer.errors, status=status.HTTP_400_BAD_REQUEST)
+            # 获取序列器
+            serializer = AppServerChannelSerializer(app_server_channel_list, many=True)
+            logger.info('更新多条应用服务器成功')
+            return Response(serializer.data)
+
+        else:
+            # 更新序列器
+            update_serializer = AppServerChannelUpdateSerializer(app_server_channel, data=data)
+            if update_serializer.is_valid():
+                update_serializer.save()
+                logger.info('更新单条应用服务器成功')
+                # 获取序列器
+                serializer = AppServerChannelSerializer(app_server_channel)
+                print('222')
+                print(serializer.data)
+                print('333')
+                return Response(serializer.data)
+            print(update_serializer.errors)
+            logger.info('更新单条应用服务器失败')
+            return Response(update_serializer.errors, status=status.HTTP_400_BAD_REQUEST)
+
     def delete(self, request, id, format=None):
         app_server_channel = self.get_object(id)
         app_server_channel.delete()

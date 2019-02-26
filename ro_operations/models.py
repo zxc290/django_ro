@@ -289,14 +289,14 @@ class AppServerChannel(models.Model):
     pid = models.IntegerField(db_column='PID', blank=True, null=True)  # Field name made lowercase.
     cid = models.IntegerField(db_column='CID')  # Field name made lowercase.
     appid = models.CharField(max_length=50, blank=True, null=True)
-    version = models.CharField(max_length=50, blank=True, null=True)
+    # version = models.CharField(max_length=50, blank=True, null=True)
     statu = models.IntegerField()
     server_statu = models.IntegerField()
     server_suggest = models.IntegerField()
     is_delete = models.IntegerField()
     max_users = models.IntegerField()
     server_weight = models.IntegerField()
-    autoopentime = models.IntegerField()
+    autoOpenTime = models.IntegerField()
 
     objects = ServerManagementManager()
 

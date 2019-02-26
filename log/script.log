@@ -468,3 +468,59 @@ Traceback (most recent call last):
   File "E:\workspace\venv\django_ro_venv\lib\site-packages\django\utils\timezone.py", line 242, in is_aware
     return value.utcoffset() is not None
 AttributeError: 'int' object has no attribute 'utcoffset'
+2019-02-25 10:55:14,374 [Thread-3:1336] [django.request:228] [log:log_response] [WARNING]- Forbidden: /welfares/
+2019-02-25 11:06:17,130 [Thread-2:15112] [django.request:228] [log:log_response] [ERROR]- Internal Server Error: /app_managements/
+Traceback (most recent call last):
+  File "E:\workspace\venv\django_ro_venv\lib\site-packages\django\core\handlers\exception.py", line 34, in inner
+    response = get_response(request)
+  File "E:\workspace\venv\django_ro_venv\lib\site-packages\django\core\handlers\base.py", line 126, in _get_response
+    response = self.process_exception_by_middleware(e, request)
+  File "E:\workspace\venv\django_ro_venv\lib\site-packages\django\core\handlers\base.py", line 124, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "E:\workspace\venv\django_ro_venv\lib\site-packages\django\views\decorators\csrf.py", line 54, in wrapped_view
+    return view_func(*args, **kwargs)
+  File "E:\workspace\venv\django_ro_venv\lib\site-packages\django\views\generic\base.py", line 68, in view
+    return self.dispatch(request, *args, **kwargs)
+  File "E:\workspace\venv\django_ro_venv\lib\site-packages\rest_framework\views.py", line 495, in dispatch
+    response = self.handle_exception(exc)
+  File "E:\workspace\venv\django_ro_venv\lib\site-packages\rest_framework\views.py", line 455, in handle_exception
+    self.raise_uncaught_exception(exc)
+  File "E:\workspace\venv\django_ro_venv\lib\site-packages\rest_framework\views.py", line 492, in dispatch
+    response = handler(request, *args, **kwargs)
+  File "E:\workspace\project\django_ro\ro_operations\views.py", line 184, in get
+    app_manage_list = AppManage.objects.all.filter(gametypeno=50)
+AttributeError: 'function' object has no attribute 'filter'
+2019-02-25 17:06:39,398 [Thread-2:11616] [django.request:228] [log:log_response] [WARNING]- Bad Request: /app_server_channels/39347/
+2019-02-25 17:07:08,505 [Thread-2:13788] [django.request:228] [log:log_response] [WARNING]- Bad Request: /app_server_channels/39347/
+2019-02-25 17:17:18,935 [Thread-4:1516] [django.request:228] [log:log_response] [WARNING]- Bad Request: /app_server_channels/39347/
+2019-02-25 17:21:09,795 [Thread-2:13180] [django.request:228] [log:log_response] [WARNING]- Bad Request: /app_server_channels/39347/
+2019-02-25 17:25:59,935 [Thread-2:5996] [django.request:228] [log:log_response] [WARNING]- Bad Request: /app_server_channels/39347/
+2019-02-25 17:26:44,646 [Thread-2:888] [django.request:228] [log:log_response] [ERROR]- Internal Server Error: /app_server_channels/39347/
+Traceback (most recent call last):
+  File "E:\workspace\venv\django_ro_venv\lib\site-packages\django\core\handlers\exception.py", line 34, in inner
+    response = get_response(request)
+  File "E:\workspace\venv\django_ro_venv\lib\site-packages\django\core\handlers\base.py", line 126, in _get_response
+    response = self.process_exception_by_middleware(e, request)
+  File "E:\workspace\venv\django_ro_venv\lib\site-packages\django\core\handlers\base.py", line 124, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "E:\workspace\venv\django_ro_venv\lib\site-packages\django\views\decorators\csrf.py", line 54, in wrapped_view
+    return view_func(*args, **kwargs)
+  File "E:\workspace\venv\django_ro_venv\lib\site-packages\django\views\generic\base.py", line 68, in view
+    return self.dispatch(request, *args, **kwargs)
+  File "E:\workspace\venv\django_ro_venv\lib\site-packages\rest_framework\views.py", line 495, in dispatch
+    response = self.handle_exception(exc)
+  File "E:\workspace\venv\django_ro_venv\lib\site-packages\rest_framework\views.py", line 455, in handle_exception
+    self.raise_uncaught_exception(exc)
+  File "E:\workspace\venv\django_ro_venv\lib\site-packages\rest_framework\views.py", line 492, in dispatch
+    response = handler(request, *args, **kwargs)
+  File "E:\workspace\project\django_ro\ro_operations\views.py", line 236, in put
+    print(serializer.errors)
+UnboundLocalError: local variable 'serializer' referenced before assignment
+2019-02-25 17:27:23,959 [Thread-2:12248] [django.request:228] [log:log_response] [WARNING]- Bad Request: /app_server_channels/39347/
+2019-02-26 10:58:41,734 [Thread-6:7128] [django.request:228] [log:log_response] [WARNING]- Forbidden: /welfares/
+2019-02-26 16:11:35,839 [Thread-2:12680] [django.request:228] [log:log_response] [WARNING]- Bad Request: /app_server_channels/39347/
+2019-02-26 16:18:38,059 [Thread-5:8652] [django.request:228] [log:log_response] [WARNING]- Bad Request: /app_server_channels/39347/
+2019-02-26 16:21:08,327 [Thread-5:8652] [django.request:228] [log:log_response] [WARNING]- Bad Request: /app_server_channels/39347/
+2019-02-26 16:36:38,423 [Thread-5:8652] [django.request:228] [log:log_response] [WARNING]- Bad Request: /app_server_channels/39347/
+2019-02-26 16:38:29,334 [Thread-2:6904] [django.request:228] [log:log_response] [WARNING]- Bad Request: /app_server_channels/39347/
+2019-02-26 16:59:19,292 [Thread-4:7540] [django.request:228] [log:log_response] [WARNING]- Bad Request: /app_server_channels/39347/

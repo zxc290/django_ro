@@ -38,6 +38,18 @@ class AppServerChannelSerializer(serializers.ModelSerializer):
         fields = '__all__'
 
 
+class AppServerChannelUpdateSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = AppServerChannel
+        fields = ('server_suggest', 'max_users', 'server_weight', 'autoOpenTime')
+
+
+# class AppServerChannelSerializer(serializers.ModelSerializer):
+#     class Meta:
+#         model = AppServerChannel
+#         fields = '__all__'
+
+
 class WelfareManagementSerializer(serializers.ModelSerializer):
     class Meta:
         model = WelfareManagement
