@@ -294,9 +294,11 @@ class AppServerChannel(models.Model):
     server_statu = models.IntegerField()
     server_suggest = models.IntegerField()
     is_delete = models.IntegerField()
-    max_users = models.IntegerField()
-    server_weight = models.IntegerField()
-    autoOpenTime = models.IntegerField()
+    open_type = models.IntegerField()
+    open_type_value = models.IntegerField()
+    # max_users = models.IntegerField()
+    # server_weight = models.IntegerField()
+    # autoOpenTime = models.IntegerField()
 
     objects = ServerManagementManager()
 

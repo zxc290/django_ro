@@ -41,7 +41,8 @@ class AppServerChannelSerializer(serializers.ModelSerializer):
 class AppServerChannelUpdateSerializer(serializers.ModelSerializer):
     class Meta:
         model = AppServerChannel
-        fields = ('server_suggest', 'max_users', 'server_weight', 'autoOpenTime')
+        # fields = ('server_suggest', 'max_users', 'server_weight', 'autoOpenTime')
+        fields = ('open_type', 'open_type_value')
 
 
 # class AppServerChannelSerializer(serializers.ModelSerializer):
@@ -86,9 +87,11 @@ class ServerManagementSerializer(serializers.Serializer):
     domain = serializers.CharField()
     appid = serializers.CharField()
     LoginPort = serializers.CharField()
-    max_users = serializers.IntegerField()
-    server_weight = serializers.IntegerField()
-    autoOpenTime = serializers.IntegerField()
+    open_type = serializers.IntegerField()
+    open_type_value = serializers.IntegerField()
+    # max_users = serializers.IntegerField()
+    # server_weight = serializers.IntegerField()
+    # autoOpenTime = serializers.IntegerField()
 
 
 # class AppServerChannelSerializer(serializers.ModelSerializer):

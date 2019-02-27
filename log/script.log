@@ -524,3 +524,76 @@ UnboundLocalError: local variable 'serializer' referenced before assignment
 2019-02-26 16:36:38,423 [Thread-5:8652] [django.request:228] [log:log_response] [WARNING]- Bad Request: /app_server_channels/39347/
 2019-02-26 16:38:29,334 [Thread-2:6904] [django.request:228] [log:log_response] [WARNING]- Bad Request: /app_server_channels/39347/
 2019-02-26 16:59:19,292 [Thread-4:7540] [django.request:228] [log:log_response] [WARNING]- Bad Request: /app_server_channels/39347/
+2019-02-27 10:57:20,970 [Thread-2:4388] [django.request:228] [log:log_response] [WARNING]- Forbidden: /welfares/
+2019-02-27 15:26:30,615 [Thread-2:1436] [django.request:228] [log:log_response] [ERROR]- Internal Server Error: /set_open/
+Traceback (most recent call last):
+  File "E:\workspace\venv\django_ro_venv\lib\site-packages\django\core\handlers\exception.py", line 34, in inner
+    response = get_response(request)
+  File "E:\workspace\venv\django_ro_venv\lib\site-packages\django\core\handlers\base.py", line 126, in _get_response
+    response = self.process_exception_by_middleware(e, request)
+  File "E:\workspace\venv\django_ro_venv\lib\site-packages\django\core\handlers\base.py", line 124, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "E:\workspace\venv\django_ro_venv\lib\site-packages\django\views\decorators\csrf.py", line 54, in wrapped_view
+    return view_func(*args, **kwargs)
+  File "E:\workspace\venv\django_ro_venv\lib\site-packages\django\views\generic\base.py", line 68, in view
+    return self.dispatch(request, *args, **kwargs)
+  File "E:\workspace\venv\django_ro_venv\lib\site-packages\rest_framework\views.py", line 495, in dispatch
+    response = self.handle_exception(exc)
+  File "E:\workspace\venv\django_ro_venv\lib\site-packages\rest_framework\views.py", line 455, in handle_exception
+    self.raise_uncaught_exception(exc)
+  File "E:\workspace\venv\django_ro_venv\lib\site-packages\rest_framework\views.py", line 492, in dispatch
+    response = handler(request, *args, **kwargs)
+  File "E:\workspace\venv\django_ro_venv\lib\site-packages\rest_framework\decorators.py", line 54, in handler
+    return func(*args, **kwargs)
+  File "E:\workspace\project\django_ro\ro_operations\views.py", line 134, in set_open
+    id_list = [each.id for each in selected_zone]
+TypeError: 'NoneType' object is not iterable
+2019-02-27 15:27:45,873 [Thread-3:13440] [django.request:228] [log:log_response] [ERROR]- Internal Server Error: /set_open/
+Traceback (most recent call last):
+  File "E:\workspace\venv\django_ro_venv\lib\site-packages\django\core\handlers\exception.py", line 34, in inner
+    response = get_response(request)
+  File "E:\workspace\venv\django_ro_venv\lib\site-packages\django\core\handlers\base.py", line 126, in _get_response
+    response = self.process_exception_by_middleware(e, request)
+  File "E:\workspace\venv\django_ro_venv\lib\site-packages\django\core\handlers\base.py", line 124, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "E:\workspace\venv\django_ro_venv\lib\site-packages\django\views\decorators\csrf.py", line 54, in wrapped_view
+    return view_func(*args, **kwargs)
+  File "E:\workspace\venv\django_ro_venv\lib\site-packages\django\views\generic\base.py", line 68, in view
+    return self.dispatch(request, *args, **kwargs)
+  File "E:\workspace\venv\django_ro_venv\lib\site-packages\rest_framework\views.py", line 495, in dispatch
+    response = self.handle_exception(exc)
+  File "E:\workspace\venv\django_ro_venv\lib\site-packages\rest_framework\views.py", line 455, in handle_exception
+    self.raise_uncaught_exception(exc)
+  File "E:\workspace\venv\django_ro_venv\lib\site-packages\rest_framework\views.py", line 492, in dispatch
+    response = handler(request, *args, **kwargs)
+  File "E:\workspace\venv\django_ro_venv\lib\site-packages\rest_framework\decorators.py", line 54, in handler
+    return func(*args, **kwargs)
+  File "E:\workspace\project\django_ro\ro_operations\views.py", line 134, in set_open
+    id_list = [each.id for each in selected_zone]
+TypeError: 'NoneType' object is not iterable
+2019-02-27 15:28:42,510 [Thread-3:13440] [django.request:228] [log:log_response] [ERROR]- Internal Server Error: /set_open/
+Traceback (most recent call last):
+  File "E:\workspace\venv\django_ro_venv\lib\site-packages\django\core\handlers\exception.py", line 34, in inner
+    response = get_response(request)
+  File "E:\workspace\venv\django_ro_venv\lib\site-packages\django\core\handlers\base.py", line 126, in _get_response
+    response = self.process_exception_by_middleware(e, request)
+  File "E:\workspace\venv\django_ro_venv\lib\site-packages\django\core\handlers\base.py", line 124, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "E:\workspace\venv\django_ro_venv\lib\site-packages\django\views\decorators\csrf.py", line 54, in wrapped_view
+    return view_func(*args, **kwargs)
+  File "E:\workspace\venv\django_ro_venv\lib\site-packages\django\views\generic\base.py", line 68, in view
+    return self.dispatch(request, *args, **kwargs)
+  File "E:\workspace\venv\django_ro_venv\lib\site-packages\rest_framework\views.py", line 495, in dispatch
+    response = self.handle_exception(exc)
+  File "E:\workspace\venv\django_ro_venv\lib\site-packages\rest_framework\views.py", line 455, in handle_exception
+    self.raise_uncaught_exception(exc)
+  File "E:\workspace\venv\django_ro_venv\lib\site-packages\rest_framework\views.py", line 492, in dispatch
+    response = handler(request, *args, **kwargs)
+  File "E:\workspace\venv\django_ro_venv\lib\site-packages\rest_framework\decorators.py", line 54, in handler
+    return func(*args, **kwargs)
+  File "E:\workspace\project\django_ro\ro_operations\views.py", line 134, in set_open
+    id_list = [each.id for each in selected_zone]
+  File "E:\workspace\project\django_ro\ro_operations\views.py", line 134, in <listcomp>
+    id_list = [each.id for each in selected_zone]
+AttributeError: 'dict' object has no attribute 'id'
+2019-02-27 15:30:57,130 [Thread-2:13172] [django.request:228] [log:log_response] [WARNING]- Bad Request: /set_open/

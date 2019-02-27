@@ -32,6 +32,7 @@ urlpatterns = [
     path('welfares/<int:id>/', views.WelfareManagementDetail.as_view()),
     path('role_players/', views.RolePlayerManagementList.as_view()),
     path('role_players/<int:id>/', views.RolePlayerManagementDetail.as_view()),
-    path('server_managements/', views.ServerManagementList.as_view())
+    path('server_managements/', views.ServerManagementList.as_view()),
+    path('set_open/', views.set_open)
 ]
 
