@@ -151,6 +151,40 @@ def set_open(request):
     return Response(serializer.data)
 
 
+
+# @api_view(['POST'])
+# def set_open(request):
+#     data = request.data
+#     open_type = data.get('open_type')
+#     by_zone = data.get('by_zone')
+#     selected_zone = data.get('selected_zone')
+#     if open_type == 0:
+#         data.update(open_type_value=0)
+#     elif open_type == 1:
+#         data.update(open_type_value=data.get('max_users'))
+#     elif open_type == 2:
+#         data.update(open_type_value=data.get('autoOpenTime'))
+#
+#     id_list = [each.get('id') for each in selected_zone]
+#     zoneidx_list = [each.get('zoneidx') for each in selected_zone]
+#
+#     app_server_channel_list = AppServerChannel.objects.filter(zoneidx__in=zoneidx_list) if by_zone else AppServerChannel.objects.filter(id__in=id_list)
+#     for each in app_server_channel_list:
+#         # 更新序列器
+#         update_serializer = AppServerChannelUpdateSerializer(each, data=data)
+#         if update_serializer.is_valid():
+#             update_serializer.save()
+#             logger.info('设置开区服务器成功, 服务器id{each_id}'.format(each_id=each.id))
+#         else:
+#             print(update_serializer.errors)
+#             logger.info('设置开区服务器失败, 服务器id{each_id}'.format(each_id=each.id))
+#             return Response(update_serializer.errors, status=status.HTTP_400_BAD_REQUEST)
+#     # 获取序列器
+#     serializer = AppServerChannelSerializer(app_server_channel_list, many=True)
+#     logger.info('更新多条应用服务器成功')
+#     return Response(serializer.data)
+
+
 class AppPlatformCfgList(APIView):
     '''
     列出所有的AppPlatformCfg

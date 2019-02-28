@@ -597,3 +597,4 @@ Traceback (most recent call last):
     id_list = [each.id for each in selected_zone]
 AttributeError: 'dict' object has no attribute 'id'
 2019-02-27 15:30:57,130 [Thread-2:13172] [django.request:228] [log:log_response] [WARNING]- Bad Request: /set_open/
+2019-02-28 13:32:30,398 [Thread-5:11112] [django.request:228] [log:log_response] [WARNING]- Forbidden: /welfares/

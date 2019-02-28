@@ -3,11 +3,8 @@
   <component name="ChangeListManager">
     <list default="true" id="f5af020a-addd-477c-b6df-5f39772c4131" name="Default" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/django_ro/urls.py" beforeDir="false" afterPath="$PROJECT_DIR$/django_ro/urls.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/log/info.log" beforeDir="false" afterPath="$PROJECT_DIR$/log/info.log" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/log/script.log" beforeDir="false" afterPath="$PROJECT_DIR$/log/script.log" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/ro_operations/models.py" beforeDir="false" afterPath="$PROJECT_DIR$/ro_operations/models.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/ro_operations/serializers.py" beforeDir="false" afterPath="$PROJECT_DIR$/ro_operations/serializers.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/ro_operations/views.py" beforeDir="false" afterPath="$PROJECT_DIR$/ro_operations/views.py" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
@@ -42,8 +39,8 @@
       <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/ro_operations/views.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="-969">
-              <caret line="134" column="37" selection-start-line="134" selection-start-column="37" selection-end-line="134" selection-end-column="37" />
+            <state relative-caret-position="646">
+              <caret line="150" column="36" selection-start-line="150" selection-start-column="36" selection-end-line="150" selection-end-column="36" />
               <folding>
                 <element signature="e#0#14#0" expanded="true" />
               </folding>
@@ -133,6 +130,7 @@
       <find>AppServerChannelUpdateSerializer</find>
       <find>服务器管理列表</find>
       <find>selectd_zone</find>
+      <find>by_zone</find>
     </findStrings>
   </component>
   <component name="Git.Settings">
@@ -205,7 +203,7 @@
   </component>
   <component name="PropertiesComponent">
     <property name="WebServerToolWindowFactoryState" value="false" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$/../django_vue_navicat" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/../django_vue_alarm" />
     <property name="nodejs_interpreter_path.stuck_in_default_project" value="undefined stuck path" />
     <property name="nodejs_npm_path_reset_for_default_project" value="true" />
     <property name="settings.editor.selected.configurable" value="com.jetbrains.python.configuration.PyActiveSdkModuleConfigurable" />
@@ -270,12 +268,12 @@
       <workItem from="1550106921686" duration="70484000" />
       <workItem from="1550655091202" duration="80000" />
       <workItem from="1550718173791" duration="40110000" />
-      <workItem from="1551158479231" duration="10285000" />
+      <workItem from="1551158479231" duration="14928000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="126972000" />
+    <option name="totallyTimeSpent" value="131615000" />
   </component>
   <component name="TodoView">
     <todo-panel id="selected-file">
@@ -467,8 +465,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/ro_operations/views.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-969">
-          <caret line="134" column="37" selection-start-line="134" selection-start-column="37" selection-end-line="134" selection-end-column="37" />
+        <state relative-caret-position="646">
+          <caret line="150" column="36" selection-start-line="150" selection-start-column="36" selection-end-line="150" selection-end-column="36" />
           <folding>
             <element signature="e#0#14#0" expanded="true" />
           </folding>
