@@ -6940,3 +6940,719 @@ django.template.base.VariableDoesNotExist: Failed lookup for key [name] in <URLR
 2019-02-28 17:44:52,682 [Thread-3:13476] [django.db.backends:111] [utils:execute] [DEBUG]- (0.144) QUERY = "SELECT * FROM ServerManagement.dbo.[GetServerTableTest] (50, 12) WHERE appid='xjcs.com.nb'" - PARAMS = (); args=None
 2019-02-28 17:44:52,684 [Thread-3:13476] [django:246] [views:get] [INFO]- 获取服务器管理列表成功
 2019-02-28 17:44:52,686 [Thread-3:13476] [django.server:154] [basehttp:log_message] [INFO]- "GET /server_managements/?cid=12&appid=xjcs.com.nb HTTP/1.1" 200 1747
+2019-03-01 10:38:12,376 [Dummy-1:9628] [django.db.backends:111] [utils:execute] [DEBUG]- (0.015) QUERY = 'SELECT TABLE_NAME, TABLE_TYPE FROM INFORMATION_SCHEMA.TABLES WHERE TABLE_SCHEMA = SCHEMA_NAME()' - PARAMS = (); args=None
+2019-03-01 10:42:23,761 [Thread-2:13916] [django.server:154] [basehttp:log_message] [INFO]- "OPTIONS /app_channels/ HTTP/1.1" 200 0
+2019-03-01 10:42:23,807 [Thread-2:13916] [django:218] [views:get] [INFO]- 获取应用渠道列表
+2019-03-01 10:42:23,872 [Thread-2:13916] [django.db.backends:111] [utils:execute] [DEBUG]- (0.000) QUERY = "SELECT CAST(SERVERPROPERTY('ProductVersion') AS varchar)" - PARAMS = (); args=None
+2019-03-01 10:42:23,924 [Thread-2:13916] [django.db.backends:111] [utils:execute] [DEBUG]- (0.036) QUERY = 'SELECT [App_Channel_list].[CID], [App_Channel_list].[CName], [App_Channel_list].[CInfo], [App_Channel_list].[PID], [App_Channel_list].[GID], [App_Channel_list].[PCID] FROM [App_Channel_list] WHERE [App_Channel_list].[GID] = %s' - PARAMS = (50,); args=(50,)
+2019-03-01 10:42:23,931 [Thread-2:13916] [django.server:154] [basehttp:log_message] [INFO]- "GET /app_channels/ HTTP/1.1" 200 82
+2019-03-01 10:42:23,961 [Thread-2:13916] [django.server:154] [basehttp:log_message] [INFO]- "OPTIONS /server_managements?cid=12&appid= HTTP/1.1" 200 0
+2019-03-01 10:42:23,972 [Thread-2:13916] [django.server:154] [basehttp:log_message] [INFO]- "OPTIONS /server_managements/?cid=12&appid= HTTP/1.1" 200 0
+2019-03-01 10:42:24,049 [Thread-3:12960] [django:218] [views:get] [INFO]- 获取应用渠道列表
+2019-03-01 10:42:24,068 [Thread-3:12960] [django.db.backends:111] [utils:execute] [DEBUG]- (0.001) QUERY = 'SELECT [App_Channel_list].[CID], [App_Channel_list].[CName], [App_Channel_list].[CInfo], [App_Channel_list].[PID], [App_Channel_list].[GID], [App_Channel_list].[PCID] FROM [App_Channel_list] WHERE [App_Channel_list].[GID] = %s' - PARAMS = (50,); args=(50,)
+2019-03-01 10:42:24,077 [Thread-3:12960] [django.server:154] [basehttp:log_message] [INFO]- "GET /app_channels/ HTTP/1.1" 200 82
+2019-03-01 10:42:24,347 [Thread-2:13916] [django.db.backends:111] [utils:execute] [DEBUG]- (0.364) QUERY = 'SELECT * FROM ServerManagement.dbo.[GetServerTableTest] (50, 12)' - PARAMS = (); args=None
+2019-03-01 10:42:24,351 [Thread-2:13916] [django:246] [views:get] [INFO]- 获取服务器管理列表成功
+2019-03-01 10:42:24,357 [Thread-2:13916] [django.server:154] [basehttp:log_message] [INFO]- "GET /server_managements/?cid=12&appid= HTTP/1.1" 200 14184
+2019-03-01 10:42:24,384 [Thread-2:13916] [django:218] [views:get] [INFO]- 获取应用渠道列表
+2019-03-01 10:42:24,387 [Thread-2:13916] [django.db.backends:111] [utils:execute] [DEBUG]- (0.000) QUERY = 'SELECT [App_Channel_list].[CID], [App_Channel_list].[CName], [App_Channel_list].[CInfo], [App_Channel_list].[PID], [App_Channel_list].[GID], [App_Channel_list].[PCID] FROM [App_Channel_list] WHERE [App_Channel_list].[GID] = %s' - PARAMS = (50,); args=(50,)
+2019-03-01 10:42:24,393 [Thread-2:13916] [django.server:154] [basehttp:log_message] [INFO]- "GET /app_channels/ HTTP/1.1" 200 82
+2019-03-01 10:42:24,577 [Thread-2:13916] [django.db.backends:111] [utils:execute] [DEBUG]- (0.132) QUERY = 'SELECT * FROM ServerManagement.dbo.[GetServerTableTest] (50, 12)' - PARAMS = (); args=None
+2019-03-01 10:42:24,579 [Thread-2:13916] [django:246] [views:get] [INFO]- 获取服务器管理列表成功
+2019-03-01 10:42:24,584 [Thread-2:13916] [django.server:154] [basehttp:log_message] [INFO]- "GET /server_managements/?cid=12&appid= HTTP/1.1" 200 14184
+2019-03-01 10:42:24,948 [Thread-2:13916] [django:218] [views:get] [INFO]- 获取应用渠道列表
+2019-03-01 10:42:24,964 [Thread-2:13916] [django.db.backends:111] [utils:execute] [DEBUG]- (0.003) QUERY = 'SELECT [App_Channel_list].[CID], [App_Channel_list].[CName], [App_Channel_list].[CInfo], [App_Channel_list].[PID], [App_Channel_list].[GID], [App_Channel_list].[PCID] FROM [App_Channel_list] WHERE [App_Channel_list].[GID] = %s' - PARAMS = (50,); args=(50,)
+2019-03-01 10:42:24,976 [Thread-2:13916] [django.server:154] [basehttp:log_message] [INFO]- "GET /app_channels/ HTTP/1.1" 200 82
+2019-03-01 10:42:25,597 [Thread-2:13916] [django:218] [views:get] [INFO]- 获取应用渠道列表
+2019-03-01 10:42:25,604 [Thread-2:13916] [django.db.backends:111] [utils:execute] [DEBUG]- (0.002) QUERY = 'SELECT [App_Channel_list].[CID], [App_Channel_list].[CName], [App_Channel_list].[CInfo], [App_Channel_list].[PID], [App_Channel_list].[GID], [App_Channel_list].[PCID] FROM [App_Channel_list] WHERE [App_Channel_list].[GID] = %s' - PARAMS = (50,); args=(50,)
+2019-03-01 10:42:25,619 [Thread-2:13916] [django.server:154] [basehttp:log_message] [INFO]- "GET /app_channels/ HTTP/1.1" 200 82
+2019-03-01 10:42:25,995 [Thread-2:13916] [django:218] [views:get] [INFO]- 获取应用渠道列表
+2019-03-01 10:42:25,998 [Thread-2:13916] [django.db.backends:111] [utils:execute] [DEBUG]- (0.001) QUERY = 'SELECT [App_Channel_list].[CID], [App_Channel_list].[CName], [App_Channel_list].[CInfo], [App_Channel_list].[PID], [App_Channel_list].[GID], [App_Channel_list].[PCID] FROM [App_Channel_list] WHERE [App_Channel_list].[GID] = %s' - PARAMS = (50,); args=(50,)
+2019-03-01 10:42:26,004 [Thread-2:13916] [django.server:154] [basehttp:log_message] [INFO]- "GET /app_channels/ HTTP/1.1" 200 82
+2019-03-01 10:42:26,292 [Thread-2:13916] [django.db.backends:111] [utils:execute] [DEBUG]- (0.233) QUERY = 'SELECT * FROM ServerManagement.dbo.[GetServerTableTest] (50, 12)' - PARAMS = (); args=None
+2019-03-01 10:42:26,296 [Thread-2:13916] [django:246] [views:get] [INFO]- 获取服务器管理列表成功
+2019-03-01 10:42:26,303 [Thread-2:13916] [django.server:154] [basehttp:log_message] [INFO]- "GET /server_managements/?cid=12&appid= HTTP/1.1" 200 14184
+2019-03-01 10:42:26,619 [Thread-2:13916] [django:218] [views:get] [INFO]- 获取应用渠道列表
+2019-03-01 10:42:26,626 [Thread-2:13916] [django.db.backends:111] [utils:execute] [DEBUG]- (0.004) QUERY = 'SELECT [App_Channel_list].[CID], [App_Channel_list].[CName], [App_Channel_list].[CInfo], [App_Channel_list].[PID], [App_Channel_list].[GID], [App_Channel_list].[PCID] FROM [App_Channel_list] WHERE [App_Channel_list].[GID] = %s' - PARAMS = (50,); args=(50,)
+2019-03-01 10:42:26,632 [Thread-2:13916] [django.server:154] [basehttp:log_message] [INFO]- "GET /app_channels/ HTTP/1.1" 200 82
+2019-03-01 10:42:27,679 [Thread-2:13916] [django:218] [views:get] [INFO]- 获取应用渠道列表
+2019-03-01 10:42:27,685 [Thread-2:13916] [django.db.backends:111] [utils:execute] [DEBUG]- (0.001) QUERY = 'SELECT [App_Channel_list].[CID], [App_Channel_list].[CName], [App_Channel_list].[CInfo], [App_Channel_list].[PID], [App_Channel_list].[GID], [App_Channel_list].[PCID] FROM [App_Channel_list] WHERE [App_Channel_list].[GID] = %s' - PARAMS = (50,); args=(50,)
+2019-03-01 10:42:27,691 [Thread-2:13916] [django.server:154] [basehttp:log_message] [INFO]- "GET /app_channels/ HTTP/1.1" 200 82
+2019-03-01 10:42:28,027 [Thread-2:13916] [django:218] [views:get] [INFO]- 获取应用渠道列表
+2019-03-01 10:42:28,030 [Thread-2:13916] [django.db.backends:111] [utils:execute] [DEBUG]- (0.000) QUERY = 'SELECT [App_Channel_list].[CID], [App_Channel_list].[CName], [App_Channel_list].[CInfo], [App_Channel_list].[PID], [App_Channel_list].[GID], [App_Channel_list].[PCID] FROM [App_Channel_list] WHERE [App_Channel_list].[GID] = %s' - PARAMS = (50,); args=(50,)
+2019-03-01 10:42:28,038 [Thread-2:13916] [django.server:154] [basehttp:log_message] [INFO]- "GET /app_channels/ HTTP/1.1" 200 82
+2019-03-01 10:42:28,223 [Thread-2:13916] [django.db.backends:111] [utils:execute] [DEBUG]- (0.154) QUERY = 'SELECT * FROM ServerManagement.dbo.[GetServerTableTest] (50, 12)' - PARAMS = (); args=None
+2019-03-01 10:42:28,227 [Thread-2:13916] [django:246] [views:get] [INFO]- 获取服务器管理列表成功
+2019-03-01 10:42:28,232 [Thread-2:13916] [django.server:154] [basehttp:log_message] [INFO]- "GET /server_managements/?cid=12&appid= HTTP/1.1" 200 14184
+2019-03-01 10:42:29,948 [Thread-2:13916] [django:218] [views:get] [INFO]- 获取应用渠道列表
+2019-03-01 10:42:29,955 [Thread-2:13916] [django.db.backends:111] [utils:execute] [DEBUG]- (0.002) QUERY = 'SELECT [App_Channel_list].[CID], [App_Channel_list].[CName], [App_Channel_list].[CInfo], [App_Channel_list].[PID], [App_Channel_list].[GID], [App_Channel_list].[PCID] FROM [App_Channel_list] WHERE [App_Channel_list].[GID] = %s' - PARAMS = (50,); args=(50,)
+2019-03-01 10:42:29,964 [Thread-2:13916] [django.server:154] [basehttp:log_message] [INFO]- "GET /app_channels/ HTTP/1.1" 200 82
+2019-03-01 10:42:31,488 [Thread-2:13916] [django.server:154] [basehttp:log_message] [INFO]- "OPTIONS /app_managements/ HTTP/1.1" 200 0
+2019-03-01 10:42:31,496 [Thread-2:13916] [django:262] [views:get] [INFO]- 获取应用服务器渠道列表
+2019-03-01 10:42:31,539 [Thread-2:13916] [django.db.backends:111] [utils:execute] [DEBUG]- (0.001) QUERY = "SELECT CAST(SERVERPROPERTY('ProductVersion') AS varchar)" - PARAMS = (); args=None
+2019-03-01 10:42:31,552 [Thread-2:13916] [django.db.backends:111] [utils:execute] [DEBUG]- (0.012) QUERY = 'SELECT [app_manage].[id], [app_manage].[GameTypeno], [app_manage].[GameType], [app_manage].[Ptid], [app_manage].[ChannelId], [app_manage].[Appid], [app_manage].[Appname], [app_manage].[CallbackUrl], [app_manage].[os], [app_manage].[lable], [app_manage].[mix], [app_manage].[app_parameter], [app_manage].[del] FROM [app_manage] WHERE [app_manage].[GameTypeno] = %s' - PARAMS = (50,); args=(50,)
+2019-03-01 10:42:31,559 [Thread-2:13916] [django.server:154] [basehttp:log_message] [INFO]- "GET /app_managements/ HTTP/1.1" 200 3066
+2019-03-01 10:42:32,698 [Thread-2:13916] [django.server:154] [basehttp:log_message] [INFO]- "OPTIONS /server_managements?cid=12&appid=xjcs.com.nb HTTP/1.1" 200 0
+2019-03-01 10:42:32,713 [Thread-2:13916] [django.server:154] [basehttp:log_message] [INFO]- "OPTIONS /server_managements/?cid=12&appid=xjcs.com.nb HTTP/1.1" 200 0
+2019-03-01 10:42:32,961 [Thread-2:13916] [django.db.backends:111] [utils:execute] [DEBUG]- (0.216) QUERY = "SELECT * FROM ServerManagement.dbo.[GetServerTableTest] (50, 12) WHERE appid='xjcs.com.nb'" - PARAMS = (); args=None
+2019-03-01 10:42:32,963 [Thread-2:13916] [django:246] [views:get] [INFO]- 获取服务器管理列表成功
+2019-03-01 10:42:32,965 [Thread-2:13916] [django.server:154] [basehttp:log_message] [INFO]- "GET /server_managements/?cid=12&appid=xjcs.com.nb HTTP/1.1" 200 1747
+2019-03-01 10:46:19,159 [Thread-2:13916] [django:218] [views:get] [INFO]- 获取应用渠道列表
+2019-03-01 10:46:19,171 [Thread-2:13916] [django.db.backends:111] [utils:execute] [DEBUG]- (0.000) QUERY = 'SELECT [App_Channel_list].[CID], [App_Channel_list].[CName], [App_Channel_list].[CInfo], [App_Channel_list].[PID], [App_Channel_list].[GID], [App_Channel_list].[PCID] FROM [App_Channel_list] WHERE [App_Channel_list].[GID] = %s' - PARAMS = (50,); args=(50,)
+2019-03-01 10:46:19,181 [Thread-2:13916] [django.server:154] [basehttp:log_message] [INFO]- "GET /app_channels/ HTTP/1.1" 200 82
+2019-03-01 10:46:20,968 [Thread-2:13916] [django:262] [views:get] [INFO]- 获取应用服务器渠道列表
+2019-03-01 10:46:20,975 [Thread-2:13916] [django.db.backends:111] [utils:execute] [DEBUG]- (0.000) QUERY = 'SELECT [app_manage].[id], [app_manage].[GameTypeno], [app_manage].[GameType], [app_manage].[Ptid], [app_manage].[ChannelId], [app_manage].[Appid], [app_manage].[Appname], [app_manage].[CallbackUrl], [app_manage].[os], [app_manage].[lable], [app_manage].[mix], [app_manage].[app_parameter], [app_manage].[del] FROM [app_manage] WHERE [app_manage].[GameTypeno] = %s' - PARAMS = (50,); args=(50,)
+2019-03-01 10:46:20,986 [Thread-2:13916] [django.server:154] [basehttp:log_message] [INFO]- "GET /app_managements/ HTTP/1.1" 200 3066
+2019-03-01 10:46:22,379 [Thread-2:13916] [django.db.backends:111] [utils:execute] [DEBUG]- (0.221) QUERY = "SELECT * FROM ServerManagement.dbo.[GetServerTableTest] (50, 12) WHERE appid='xjcs.com.nb'" - PARAMS = (); args=None
+2019-03-01 10:46:22,381 [Thread-2:13916] [django:246] [views:get] [INFO]- 获取服务器管理列表成功
+2019-03-01 10:46:22,384 [Thread-2:13916] [django.server:154] [basehttp:log_message] [INFO]- "GET /server_managements/?cid=12&appid=xjcs.com.nb HTTP/1.1" 200 1747
+2019-03-01 10:51:01,477 [Dummy-1:2956] [django.db.backends:111] [utils:execute] [DEBUG]- (0.015) QUERY = 'SELECT TABLE_NAME, TABLE_TYPE FROM INFORMATION_SCHEMA.TABLES WHERE TABLE_SCHEMA = SCHEMA_NAME()' - PARAMS = (); args=None
+2019-03-01 10:51:58,939 [Dummy-1:5896] [django.db.backends:111] [utils:execute] [DEBUG]- (0.015) QUERY = 'SELECT TABLE_NAME, TABLE_TYPE FROM INFORMATION_SCHEMA.TABLES WHERE TABLE_SCHEMA = SCHEMA_NAME()' - PARAMS = (); args=None
+2019-03-01 11:07:47,280 [Dummy-1:13592] [django.db.backends:111] [utils:execute] [DEBUG]- (0.014) QUERY = 'SELECT TABLE_NAME, TABLE_TYPE FROM INFORMATION_SCHEMA.TABLES WHERE TABLE_SCHEMA = SCHEMA_NAME()' - PARAMS = (); args=None
+2019-03-01 11:07:51,529 [Thread-2:13496] [django.server:154] [basehttp:log_message] [INFO]- "OPTIONS /app_channels/ HTTP/1.1" 200 0
+2019-03-01 11:07:51,974 [Thread-2:13496] [django:224] [views:get] [INFO]- 获取应用渠道列表
+2019-03-01 11:07:52,029 [Thread-2:13496] [django.db.backends:111] [utils:execute] [DEBUG]- (0.002) QUERY = "SELECT CAST(SERVERPROPERTY('ProductVersion') AS varchar)" - PARAMS = (); args=None
+2019-03-01 11:07:52,038 [Thread-2:13496] [django.db.backends:111] [utils:execute] [DEBUG]- (0.000) QUERY = 'SELECT [App_Channel_list].[CID], [App_Channel_list].[CName], [App_Channel_list].[CInfo], [App_Channel_list].[PID], [App_Channel_list].[GID], [App_Channel_list].[PCID] FROM [App_Channel_list] WHERE [App_Channel_list].[GID] = %s' - PARAMS = (50,); args=(50,)
+2019-03-01 11:07:52,048 [Thread-2:13496] [django.server:154] [basehttp:log_message] [INFO]- "GET /app_channels/ HTTP/1.1" 200 82
+2019-03-01 11:07:53,601 [Thread-2:13496] [django.server:154] [basehttp:log_message] [INFO]- "OPTIONS /app_managements/ HTTP/1.1" 200 0
+2019-03-01 11:07:53,610 [Thread-2:13496] [django:268] [views:get] [INFO]- 获取应用服务器渠道列表
+2019-03-01 11:07:53,621 [Thread-2:13496] [django.db.backends:111] [utils:execute] [DEBUG]- (0.000) QUERY = "SELECT CAST(SERVERPROPERTY('ProductVersion') AS varchar)" - PARAMS = (); args=None
+2019-03-01 11:07:53,623 [Thread-2:13496] [django.db.backends:111] [utils:execute] [DEBUG]- (0.000) QUERY = 'SELECT [app_manage].[id], [app_manage].[GameTypeno], [app_manage].[GameType], [app_manage].[Ptid], [app_manage].[ChannelId], [app_manage].[Appid], [app_manage].[Appname], [app_manage].[CallbackUrl], [app_manage].[os], [app_manage].[lable], [app_manage].[mix], [app_manage].[app_parameter], [app_manage].[del] FROM [app_manage] WHERE [app_manage].[GameTypeno] = %s' - PARAMS = (50,); args=(50,)
+2019-03-01 11:07:53,639 [Thread-2:13496] [django.server:154] [basehttp:log_message] [INFO]- "GET /app_managements/ HTTP/1.1" 200 3066
+2019-03-01 11:07:55,015 [Thread-2:13496] [django.server:154] [basehttp:log_message] [INFO]- "OPTIONS /server_managements?cid=12&appid=xjcs.com.nb HTTP/1.1" 200 0
+2019-03-01 11:07:55,027 [Thread-2:13496] [django.server:154] [basehttp:log_message] [INFO]- "OPTIONS /server_managements/?cid=12&appid=xjcs.com.nb HTTP/1.1" 200 0
+2019-03-01 11:07:55,255 [Thread-2:13496] [django.db.backends:111] [utils:execute] [DEBUG]- (0.218) QUERY = "SELECT * FROM ServerManagement.dbo.[GetServerTableTest] (50, 12) WHERE appid='xjcs.com.nb'" - PARAMS = (); args=None
+2019-03-01 11:07:55,257 [Thread-2:13496] [django:252] [views:get] [INFO]- 获取服务器管理列表成功
+2019-03-01 11:07:55,259 [Thread-2:13496] [django.server:154] [basehttp:log_message] [INFO]- "GET /server_managements/?cid=12&appid=xjcs.com.nb HTTP/1.1" 200 1747
+2019-03-01 11:09:10,784 [Dummy-1:3980] [django.db.backends:111] [utils:execute] [DEBUG]- (0.013) QUERY = 'SELECT TABLE_NAME, TABLE_TYPE FROM INFORMATION_SCHEMA.TABLES WHERE TABLE_SCHEMA = SCHEMA_NAME()' - PARAMS = (); args=None
+2019-03-01 11:11:47,699 [Dummy-1:2212] [django.db.backends:111] [utils:execute] [DEBUG]- (0.012) QUERY = 'SELECT TABLE_NAME, TABLE_TYPE FROM INFORMATION_SCHEMA.TABLES WHERE TABLE_SCHEMA = SCHEMA_NAME()' - PARAMS = (); args=None
+2019-03-01 11:12:31,975 [Dummy-1:3160] [django.db.backends:111] [utils:execute] [DEBUG]- (0.013) QUERY = 'SELECT TABLE_NAME, TABLE_TYPE FROM INFORMATION_SCHEMA.TABLES WHERE TABLE_SCHEMA = SCHEMA_NAME()' - PARAMS = (); args=None
+2019-03-01 11:12:53,031 [Dummy-1:13400] [django.db.backends:111] [utils:execute] [DEBUG]- (0.013) QUERY = 'SELECT TABLE_NAME, TABLE_TYPE FROM INFORMATION_SCHEMA.TABLES WHERE TABLE_SCHEMA = SCHEMA_NAME()' - PARAMS = (); args=None
+2019-03-01 11:13:13,625 [Dummy-1:6760] [django.db.backends:111] [utils:execute] [DEBUG]- (0.015) QUERY = 'SELECT TABLE_NAME, TABLE_TYPE FROM INFORMATION_SCHEMA.TABLES WHERE TABLE_SCHEMA = SCHEMA_NAME()' - PARAMS = (); args=None
+2019-03-01 11:13:43,065 [Dummy-1:2796] [django.db.backends:111] [utils:execute] [DEBUG]- (0.015) QUERY = 'SELECT TABLE_NAME, TABLE_TYPE FROM INFORMATION_SCHEMA.TABLES WHERE TABLE_SCHEMA = SCHEMA_NAME()' - PARAMS = (); args=None
+2019-03-01 11:14:04,161 [Dummy-1:14640] [django.db.backends:111] [utils:execute] [DEBUG]- (0.012) QUERY = 'SELECT TABLE_NAME, TABLE_TYPE FROM INFORMATION_SCHEMA.TABLES WHERE TABLE_SCHEMA = SCHEMA_NAME()' - PARAMS = (); args=None
+2019-03-01 11:14:21,125 [Dummy-1:468] [django.db.backends:111] [utils:execute] [DEBUG]- (0.018) QUERY = 'SELECT TABLE_NAME, TABLE_TYPE FROM INFORMATION_SCHEMA.TABLES WHERE TABLE_SCHEMA = SCHEMA_NAME()' - PARAMS = (); args=None
+2019-03-01 11:14:45,831 [Dummy-1:6548] [django.db.backends:111] [utils:execute] [DEBUG]- (0.013) QUERY = 'SELECT TABLE_NAME, TABLE_TYPE FROM INFORMATION_SCHEMA.TABLES WHERE TABLE_SCHEMA = SCHEMA_NAME()' - PARAMS = (); args=None
+2019-03-01 11:20:13,353 [Dummy-1:8552] [django.db.backends:111] [utils:execute] [DEBUG]- (0.014) QUERY = 'SELECT TABLE_NAME, TABLE_TYPE FROM INFORMATION_SCHEMA.TABLES WHERE TABLE_SCHEMA = SCHEMA_NAME()' - PARAMS = (); args=None
+2019-03-01 11:20:50,904 [Dummy-1:3636] [django.db.backends:111] [utils:execute] [DEBUG]- (0.012) QUERY = 'SELECT TABLE_NAME, TABLE_TYPE FROM INFORMATION_SCHEMA.TABLES WHERE TABLE_SCHEMA = SCHEMA_NAME()' - PARAMS = (); args=None
+2019-03-01 11:21:39,001 [Thread-2:3952] [django.server:154] [basehttp:log_message] [INFO]- "OPTIONS /server_managements?cid=12&appid=aa.123 HTTP/1.1" 200 0
+2019-03-01 11:21:39,014 [Thread-2:3952] [django.server:154] [basehttp:log_message] [INFO]- "OPTIONS /server_managements/?cid=12&appid=aa.123 HTTP/1.1" 200 0
+2019-03-01 11:21:39,243 [Thread-2:3952] [django.db.backends:111] [utils:execute] [DEBUG]- (0.184) QUERY = "SELECT * FROM ServerManagement.dbo.[GetServerTableTest] (50, 12) WHERE appid='aa.123'" - PARAMS = (); args=None
+2019-03-01 11:21:39,268 [Thread-2:3952] [django:265] [views:get] [INFO]- 获取服务器管理列表成功
+2019-03-01 11:21:39,271 [Thread-2:3952] [django.server:154] [basehttp:log_message] [INFO]- "GET /server_managements/?cid=12&appid=aa.123 HTTP/1.1" 200 1303
+2019-03-01 11:25:37,027 [Dummy-1:13316] [django.db.backends:111] [utils:execute] [DEBUG]- (0.014) QUERY = 'SELECT TABLE_NAME, TABLE_TYPE FROM INFORMATION_SCHEMA.TABLES WHERE TABLE_SCHEMA = SCHEMA_NAME()' - PARAMS = (); args=None
+2019-03-01 11:25:37,193 [Thread-2:11308] [django.server:154] [basehttp:log_message] [INFO]- "OPTIONS /server_managements?cid=12&appid=xjcs.com.nb HTTP/1.1" 200 0
+2019-03-01 11:25:37,205 [Thread-2:11308] [django.server:154] [basehttp:log_message] [INFO]- "OPTIONS /server_managements/?cid=12&appid=xjcs.com.nb HTTP/1.1" 200 0
+2019-03-01 11:25:37,477 [Thread-2:11308] [django.db.backends:111] [utils:execute] [DEBUG]- (0.218) QUERY = "SELECT * FROM ServerManagement.dbo.[GetServerTableTest] (50, 12) WHERE appid='xjcs.com.nb'" - PARAMS = (); args=None
+2019-03-01 11:25:37,478 [Thread-2:11308] [django:283] [views:get] [INFO]- 获取服务器管理列表成功
+2019-03-01 11:25:37,481 [Thread-2:11308] [django.server:154] [basehttp:log_message] [INFO]- "GET /server_managements/?cid=12&appid=xjcs.com.nb HTTP/1.1" 200 1747
+2019-03-01 11:26:58,710 [Dummy-1:15300] [django.db.backends:111] [utils:execute] [DEBUG]- (0.012) QUERY = 'SELECT TABLE_NAME, TABLE_TYPE FROM INFORMATION_SCHEMA.TABLES WHERE TABLE_SCHEMA = SCHEMA_NAME()' - PARAMS = (); args=None
+2019-03-01 12:14:51,412 [Thread-2:13520] [django.server:154] [basehttp:log_message] [INFO]- "OPTIONS /server_managements?cid=12&appid=aaa HTTP/1.1" 200 0
+2019-03-01 12:14:51,424 [Thread-2:13520] [django.server:154] [basehttp:log_message] [INFO]- "GET /server_managements?cid=12&appid=aaa HTTP/1.1" 301 0
+2019-03-01 12:14:51,430 [Thread-2:13520] [django.server:154] [basehttp:log_message] [INFO]- "OPTIONS /server_managements/?cid=12&appid=aaa HTTP/1.1" 200 0
+2019-03-01 12:14:51,678 [Thread-2:13520] [django.db.backends:111] [utils:execute] [DEBUG]- (0.196) QUERY = "SELECT * FROM ServerManagement.dbo.[GetServerTableTest] (50, 12) WHERE appid='aaa'" - PARAMS = (); args=None
+2019-03-01 12:14:51,680 [Thread-2:13520] [django:282] [views:get] [INFO]- 获取服务器管理列表成功
+2019-03-01 12:14:51,684 [Thread-2:13520] [django.server:154] [basehttp:log_message] [INFO]- "GET /server_managements/?cid=12&appid=aaa HTTP/1.1" 200 1296
+2019-03-01 12:14:52,763 [Thread-2:13520] [django.db.backends:111] [utils:execute] [DEBUG]- (0.195) QUERY = "SELECT * FROM ServerManagement.dbo.[GetServerTableTest] (50, 12) WHERE appid='aaa'" - PARAMS = (); args=None
+2019-03-01 12:14:52,765 [Thread-2:13520] [django:282] [views:get] [INFO]- 获取服务器管理列表成功
+2019-03-01 12:14:52,767 [Thread-2:13520] [django.server:154] [basehttp:log_message] [INFO]- "GET /server_managements/?cid=12&appid=aaa HTTP/1.1" 200 1296
+2019-03-01 13:20:21,795 [Thread-3:6256] [django.server:154] [basehttp:log_message] [INFO]- "OPTIONS /app_channels/ HTTP/1.1" 200 0
+2019-03-01 13:20:22,266 [Thread-3:6256] [django:254] [views:get] [INFO]- 获取应用渠道列表
+2019-03-01 13:20:22,323 [Thread-3:6256] [django.db.backends:111] [utils:execute] [DEBUG]- (0.005) QUERY = "SELECT CAST(SERVERPROPERTY('ProductVersion') AS varchar)" - PARAMS = (); args=None
+2019-03-01 13:20:22,327 [Thread-3:6256] [django.db.backends:111] [utils:execute] [DEBUG]- (0.000) QUERY = 'SELECT [App_Channel_list].[CID], [App_Channel_list].[CName], [App_Channel_list].[CInfo], [App_Channel_list].[PID], [App_Channel_list].[GID], [App_Channel_list].[PCID] FROM [App_Channel_list] WHERE [App_Channel_list].[GID] = %s' - PARAMS = (50,); args=(50,)
+2019-03-01 13:20:22,349 [Thread-3:6256] [django.server:154] [basehttp:log_message] [INFO]- "GET /app_channels/ HTTP/1.1" 200 82
+2019-03-01 13:20:23,866 [Thread-3:6256] [django.server:154] [basehttp:log_message] [INFO]- "OPTIONS /app_managements/ HTTP/1.1" 200 0
+2019-03-01 13:20:23,878 [Thread-3:6256] [django:298] [views:get] [INFO]- 获取应用服务器渠道列表
+2019-03-01 13:20:23,887 [Thread-3:6256] [django.db.backends:111] [utils:execute] [DEBUG]- (0.000) QUERY = "SELECT CAST(SERVERPROPERTY('ProductVersion') AS varchar)" - PARAMS = (); args=None
+2019-03-01 13:20:23,889 [Thread-3:6256] [django.db.backends:111] [utils:execute] [DEBUG]- (0.000) QUERY = 'SELECT [app_manage].[id], [app_manage].[GameTypeno], [app_manage].[GameType], [app_manage].[Ptid], [app_manage].[ChannelId], [app_manage].[Appid], [app_manage].[Appname], [app_manage].[CallbackUrl], [app_manage].[os], [app_manage].[lable], [app_manage].[mix], [app_manage].[app_parameter], [app_manage].[del] FROM [app_manage] WHERE [app_manage].[GameTypeno] = %s' - PARAMS = (50,); args=(50,)
+2019-03-01 13:20:23,900 [Thread-3:6256] [django.server:154] [basehttp:log_message] [INFO]- "GET /app_managements/ HTTP/1.1" 200 3066
+2019-03-01 13:20:25,368 [Thread-3:6256] [django.server:154] [basehttp:log_message] [INFO]- "OPTIONS /server_managements?cid=12&appid=xjcs.com.nb HTTP/1.1" 200 0
+2019-03-01 13:20:25,380 [Thread-3:6256] [django.server:154] [basehttp:log_message] [INFO]- "OPTIONS /server_managements/?cid=12&appid=xjcs.com.nb HTTP/1.1" 200 0
+2019-03-01 13:20:25,661 [Thread-3:6256] [django.db.backends:111] [utils:execute] [DEBUG]- (0.258) QUERY = "SELECT * FROM ServerManagement.dbo.[GetServerTableTest] (50, 12) WHERE appid='xjcs.com.nb'" - PARAMS = (); args=None
+2019-03-01 13:20:25,663 [Thread-3:6256] [django:282] [views:get] [INFO]- 获取服务器管理列表成功
+2019-03-01 13:20:25,665 [Thread-3:6256] [django.server:154] [basehttp:log_message] [INFO]- "GET /server_managements/?cid=12&appid=xjcs.com.nb HTTP/1.1" 200 1759
+2019-03-01 13:26:09,873 [Thread-4:14244] [django:254] [views:get] [INFO]- 获取应用渠道列表
+2019-03-01 13:26:09,885 [Thread-4:14244] [django.db.backends:111] [utils:execute] [DEBUG]- (0.000) QUERY = 'SELECT [App_Channel_list].[CID], [App_Channel_list].[CName], [App_Channel_list].[CInfo], [App_Channel_list].[PID], [App_Channel_list].[GID], [App_Channel_list].[PCID] FROM [App_Channel_list] WHERE [App_Channel_list].[GID] = %s' - PARAMS = (50,); args=(50,)
+2019-03-01 13:26:09,892 [Thread-4:14244] [django.server:154] [basehttp:log_message] [INFO]- "GET /app_channels/ HTTP/1.1" 200 82
+2019-03-01 13:26:11,164 [Thread-4:14244] [django:298] [views:get] [INFO]- 获取应用服务器渠道列表
+2019-03-01 13:26:11,173 [Thread-4:14244] [django.db.backends:111] [utils:execute] [DEBUG]- (0.000) QUERY = 'SELECT [app_manage].[id], [app_manage].[GameTypeno], [app_manage].[GameType], [app_manage].[Ptid], [app_manage].[ChannelId], [app_manage].[Appid], [app_manage].[Appname], [app_manage].[CallbackUrl], [app_manage].[os], [app_manage].[lable], [app_manage].[mix], [app_manage].[app_parameter], [app_manage].[del] FROM [app_manage] WHERE [app_manage].[GameTypeno] = %s' - PARAMS = (50,); args=(50,)
+2019-03-01 13:26:11,186 [Thread-4:14244] [django.server:154] [basehttp:log_message] [INFO]- "GET /app_managements/ HTTP/1.1" 200 3066
+2019-03-01 13:26:12,780 [Thread-4:14244] [django.db.backends:111] [utils:execute] [DEBUG]- (0.201) QUERY = "SELECT * FROM ServerManagement.dbo.[GetServerTableTest] (50, 12) WHERE appid='xjcs.com.nb'" - PARAMS = (); args=None
+2019-03-01 13:26:12,784 [Thread-4:14244] [django:282] [views:get] [INFO]- 获取服务器管理列表成功
+2019-03-01 13:26:12,787 [Thread-4:14244] [django.server:154] [basehttp:log_message] [INFO]- "GET /server_managements/?cid=12&appid=xjcs.com.nb HTTP/1.1" 200 1759
+2019-03-01 13:26:29,295 [Thread-4:14244] [django.server:154] [basehttp:log_message] [INFO]- "OPTIONS /server_managements?cid=12&appid=xjcs.com.ts HTTP/1.1" 200 0
+2019-03-01 13:26:29,311 [Thread-4:14244] [django.server:154] [basehttp:log_message] [INFO]- "OPTIONS /server_managements/?cid=12&appid=xjcs.com.ts HTTP/1.1" 200 0
+2019-03-01 13:26:29,587 [Thread-4:14244] [django.db.backends:111] [utils:execute] [DEBUG]- (0.265) QUERY = "SELECT * FROM ServerManagement.dbo.[GetServerTableTest] (50, 12) WHERE appid='xjcs.com.ts'" - PARAMS = (); args=None
+2019-03-01 13:26:29,590 [Thread-4:14244] [django:282] [views:get] [INFO]- 获取服务器管理列表成功
+2019-03-01 13:26:29,592 [Thread-4:14244] [django.server:154] [basehttp:log_message] [INFO]- "GET /server_managements/?cid=12&appid=xjcs.com.ts HTTP/1.1" 200 892
+2019-03-01 13:26:32,297 [Thread-4:14244] [django.db.backends:111] [utils:execute] [DEBUG]- (0.240) QUERY = "SELECT * FROM ServerManagement.dbo.[GetServerTableTest] (50, 12) WHERE appid='xjcs.com.nb'" - PARAMS = (); args=None
+2019-03-01 13:26:32,302 [Thread-4:14244] [django:282] [views:get] [INFO]- 获取服务器管理列表成功
+2019-03-01 13:26:32,305 [Thread-4:14244] [django.server:154] [basehttp:log_message] [INFO]- "GET /server_managements/?cid=12&appid=xjcs.com.nb HTTP/1.1" 200 1759
+2019-03-01 13:26:34,504 [Thread-4:14244] [django.db.backends:111] [utils:execute] [DEBUG]- (0.219) QUERY = "SELECT * FROM ServerManagement.dbo.[GetServerTableTest] (50, 12) WHERE appid='xjcs.com.ts'" - PARAMS = (); args=None
+2019-03-01 13:26:34,506 [Thread-4:14244] [django:282] [views:get] [INFO]- 获取服务器管理列表成功
+2019-03-01 13:26:34,509 [Thread-4:14244] [django.server:154] [basehttp:log_message] [INFO]- "GET /server_managements/?cid=12&appid=xjcs.com.ts HTTP/1.1" 200 892
+2019-03-01 13:26:36,628 [Thread-4:14244] [django.db.backends:111] [utils:execute] [DEBUG]- (0.218) QUERY = "SELECT * FROM ServerManagement.dbo.[GetServerTableTest] (50, 12) WHERE appid='xjcs.com.nb'" - PARAMS = (); args=None
+2019-03-01 13:26:36,630 [Thread-4:14244] [django:282] [views:get] [INFO]- 获取服务器管理列表成功
+2019-03-01 13:26:36,632 [Thread-4:14244] [django.server:154] [basehttp:log_message] [INFO]- "GET /server_managements/?cid=12&appid=xjcs.com.nb HTTP/1.1" 200 1759
+2019-03-01 13:28:59,096 [Thread-4:14244] [django:254] [views:get] [INFO]- 获取应用渠道列表
+2019-03-01 13:28:59,113 [Thread-4:14244] [django.db.backends:111] [utils:execute] [DEBUG]- (0.001) QUERY = 'SELECT [App_Channel_list].[CID], [App_Channel_list].[CName], [App_Channel_list].[CInfo], [App_Channel_list].[PID], [App_Channel_list].[GID], [App_Channel_list].[PCID] FROM [App_Channel_list] WHERE [App_Channel_list].[GID] = %s' - PARAMS = (50,); args=(50,)
+2019-03-01 13:28:59,125 [Thread-4:14244] [django.server:154] [basehttp:log_message] [INFO]- "GET /app_channels/ HTTP/1.1" 200 82
+2019-03-01 13:29:00,559 [Thread-4:14244] [django:298] [views:get] [INFO]- 获取应用服务器渠道列表
+2019-03-01 13:29:00,568 [Thread-4:14244] [django.db.backends:111] [utils:execute] [DEBUG]- (0.000) QUERY = 'SELECT [app_manage].[id], [app_manage].[GameTypeno], [app_manage].[GameType], [app_manage].[Ptid], [app_manage].[ChannelId], [app_manage].[Appid], [app_manage].[Appname], [app_manage].[CallbackUrl], [app_manage].[os], [app_manage].[lable], [app_manage].[mix], [app_manage].[app_parameter], [app_manage].[del] FROM [app_manage] WHERE [app_manage].[GameTypeno] = %s' - PARAMS = (50,); args=(50,)
+2019-03-01 13:29:00,587 [Thread-4:14244] [django.server:154] [basehttp:log_message] [INFO]- "GET /app_managements/ HTTP/1.1" 200 3066
+2019-03-01 13:29:01,915 [Thread-4:14244] [django.db.backends:111] [utils:execute] [DEBUG]- (0.149) QUERY = "SELECT * FROM ServerManagement.dbo.[GetServerTableTest] (50, 12) WHERE appid='xjcs.com.nb'" - PARAMS = (); args=None
+2019-03-01 13:29:01,916 [Thread-4:14244] [django:282] [views:get] [INFO]- 获取服务器管理列表成功
+2019-03-01 13:29:01,918 [Thread-4:14244] [django.server:154] [basehttp:log_message] [INFO]- "GET /server_managements/?cid=12&appid=xjcs.com.nb HTTP/1.1" 200 1759
+2019-03-01 13:29:30,813 [Thread-4:14244] [django:254] [views:get] [INFO]- 获取应用渠道列表
+2019-03-01 13:29:30,824 [Thread-4:14244] [django.db.backends:111] [utils:execute] [DEBUG]- (0.001) QUERY = 'SELECT [App_Channel_list].[CID], [App_Channel_list].[CName], [App_Channel_list].[CInfo], [App_Channel_list].[PID], [App_Channel_list].[GID], [App_Channel_list].[PCID] FROM [App_Channel_list] WHERE [App_Channel_list].[GID] = %s' - PARAMS = (50,); args=(50,)
+2019-03-01 13:29:30,832 [Thread-4:14244] [django.server:154] [basehttp:log_message] [INFO]- "GET /app_channels/ HTTP/1.1" 200 82
+2019-03-01 13:29:32,383 [Thread-4:14244] [django:298] [views:get] [INFO]- 获取应用服务器渠道列表
+2019-03-01 13:29:32,387 [Thread-4:14244] [django.db.backends:111] [utils:execute] [DEBUG]- (0.001) QUERY = 'SELECT [app_manage].[id], [app_manage].[GameTypeno], [app_manage].[GameType], [app_manage].[Ptid], [app_manage].[ChannelId], [app_manage].[Appid], [app_manage].[Appname], [app_manage].[CallbackUrl], [app_manage].[os], [app_manage].[lable], [app_manage].[mix], [app_manage].[app_parameter], [app_manage].[del] FROM [app_manage] WHERE [app_manage].[GameTypeno] = %s' - PARAMS = (50,); args=(50,)
+2019-03-01 13:29:32,402 [Thread-4:14244] [django.server:154] [basehttp:log_message] [INFO]- "GET /app_managements/ HTTP/1.1" 200 3066
+2019-03-01 13:29:34,462 [Thread-4:14244] [django.db.backends:111] [utils:execute] [DEBUG]- (0.241) QUERY = "SELECT * FROM ServerManagement.dbo.[GetServerTableTest] (50, 12) WHERE appid='xjcs.com.nb'" - PARAMS = (); args=None
+2019-03-01 13:29:34,463 [Thread-4:14244] [django:282] [views:get] [INFO]- 获取服务器管理列表成功
+2019-03-01 13:29:34,466 [Thread-4:14244] [django.server:154] [basehttp:log_message] [INFO]- "GET /server_managements/?cid=12&appid=xjcs.com.nb HTTP/1.1" 200 1759
+2019-03-01 13:33:58,504 [Thread-4:14244] [django.server:154] [basehttp:log_message] [INFO]- "OPTIONS /app_channels/ HTTP/1.1" 200 0
+2019-03-01 13:33:58,904 [Thread-4:14244] [django:254] [views:get] [INFO]- 获取应用渠道列表
+2019-03-01 13:33:58,967 [Thread-4:14244] [django.db.backends:111] [utils:execute] [DEBUG]- (0.001) QUERY = 'SELECT [App_Channel_list].[CID], [App_Channel_list].[CName], [App_Channel_list].[CInfo], [App_Channel_list].[PID], [App_Channel_list].[GID], [App_Channel_list].[PCID] FROM [App_Channel_list] WHERE [App_Channel_list].[GID] = %s' - PARAMS = (50,); args=(50,)
+2019-03-01 13:33:58,989 [Thread-4:14244] [django.server:154] [basehttp:log_message] [INFO]- "GET /app_channels/ HTTP/1.1" 200 82
+2019-03-01 13:34:00,016 [Thread-4:14244] [django.server:154] [basehttp:log_message] [INFO]- "OPTIONS /app_managements/ HTTP/1.1" 200 0
+2019-03-01 13:34:00,069 [Thread-4:14244] [django:298] [views:get] [INFO]- 获取应用服务器渠道列表
+2019-03-01 13:34:00,142 [Thread-4:14244] [django.db.backends:111] [utils:execute] [DEBUG]- (0.001) QUERY = 'SELECT [app_manage].[id], [app_manage].[GameTypeno], [app_manage].[GameType], [app_manage].[Ptid], [app_manage].[ChannelId], [app_manage].[Appid], [app_manage].[Appname], [app_manage].[CallbackUrl], [app_manage].[os], [app_manage].[lable], [app_manage].[mix], [app_manage].[app_parameter], [app_manage].[del] FROM [app_manage] WHERE [app_manage].[GameTypeno] = %s' - PARAMS = (50,); args=(50,)
+2019-03-01 13:34:00,160 [Thread-4:14244] [django.server:154] [basehttp:log_message] [INFO]- "GET /app_managements/ HTTP/1.1" 200 3066
+2019-03-01 13:34:01,424 [Thread-4:14244] [django.server:154] [basehttp:log_message] [INFO]- "OPTIONS /server_managements?cid=12&appid=xjcs.com.nb HTTP/1.1" 200 0
+2019-03-01 13:34:01,437 [Thread-4:14244] [django.server:154] [basehttp:log_message] [INFO]- "OPTIONS /server_managements/?cid=12&appid=xjcs.com.nb HTTP/1.1" 200 0
+2019-03-01 13:34:01,667 [Thread-4:14244] [django.db.backends:111] [utils:execute] [DEBUG]- (0.216) QUERY = "SELECT * FROM ServerManagement.dbo.[GetServerTableTest] (50, 12) WHERE appid='xjcs.com.nb'" - PARAMS = (); args=None
+2019-03-01 13:34:01,669 [Thread-4:14244] [django:282] [views:get] [INFO]- 获取服务器管理列表成功
+2019-03-01 13:34:01,671 [Thread-4:14244] [django.server:154] [basehttp:log_message] [INFO]- "GET /server_managements/?cid=12&appid=xjcs.com.nb HTTP/1.1" 200 1759
+2019-03-01 13:34:45,668 [Thread-4:14244] [django:254] [views:get] [INFO]- 获取应用渠道列表
+2019-03-01 13:34:45,672 [Thread-4:14244] [django.db.backends:111] [utils:execute] [DEBUG]- (0.001) QUERY = 'SELECT [App_Channel_list].[CID], [App_Channel_list].[CName], [App_Channel_list].[CInfo], [App_Channel_list].[PID], [App_Channel_list].[GID], [App_Channel_list].[PCID] FROM [App_Channel_list] WHERE [App_Channel_list].[GID] = %s' - PARAMS = (50,); args=(50,)
+2019-03-01 13:34:45,683 [Thread-4:14244] [django.server:154] [basehttp:log_message] [INFO]- "GET /app_channels/ HTTP/1.1" 200 82
+2019-03-01 13:34:47,405 [Thread-4:14244] [django:298] [views:get] [INFO]- 获取应用服务器渠道列表
+2019-03-01 13:34:47,408 [Thread-4:14244] [django.db.backends:111] [utils:execute] [DEBUG]- (0.001) QUERY = 'SELECT [app_manage].[id], [app_manage].[GameTypeno], [app_manage].[GameType], [app_manage].[Ptid], [app_manage].[ChannelId], [app_manage].[Appid], [app_manage].[Appname], [app_manage].[CallbackUrl], [app_manage].[os], [app_manage].[lable], [app_manage].[mix], [app_manage].[app_parameter], [app_manage].[del] FROM [app_manage] WHERE [app_manage].[GameTypeno] = %s' - PARAMS = (50,); args=(50,)
+2019-03-01 13:34:47,419 [Thread-4:14244] [django.server:154] [basehttp:log_message] [INFO]- "GET /app_managements/ HTTP/1.1" 200 3066
+2019-03-01 13:34:50,336 [Thread-4:14244] [django.db.backends:111] [utils:execute] [DEBUG]- (0.243) QUERY = "SELECT * FROM ServerManagement.dbo.[GetServerTableTest] (50, 12) WHERE appid='xjcs.com.nb'" - PARAMS = (); args=None
+2019-03-01 13:34:50,338 [Thread-4:14244] [django:282] [views:get] [INFO]- 获取服务器管理列表成功
+2019-03-01 13:34:50,341 [Thread-4:14244] [django.server:154] [basehttp:log_message] [INFO]- "GET /server_managements/?cid=12&appid=xjcs.com.nb HTTP/1.1" 200 1759
+2019-03-01 13:42:10,952 [Thread-5:12688] [django.server:154] [basehttp:log_message] [INFO]- "OPTIONS /app_channels/ HTTP/1.1" 200 0
+2019-03-01 13:42:11,265 [Thread-5:12688] [django:254] [views:get] [INFO]- 获取应用渠道列表
+2019-03-01 13:42:11,295 [Thread-5:12688] [django.db.backends:111] [utils:execute] [DEBUG]- (0.000) QUERY = 'SELECT [App_Channel_list].[CID], [App_Channel_list].[CName], [App_Channel_list].[CInfo], [App_Channel_list].[PID], [App_Channel_list].[GID], [App_Channel_list].[PCID] FROM [App_Channel_list] WHERE [App_Channel_list].[GID] = %s' - PARAMS = (50,); args=(50,)
+2019-03-01 13:42:11,302 [Thread-5:12688] [django.server:154] [basehttp:log_message] [INFO]- "GET /app_channels/ HTTP/1.1" 200 82
+2019-03-01 13:42:21,019 [Thread-5:12688] [django.server:154] [basehttp:log_message] [INFO]- "OPTIONS /app_managements/ HTTP/1.1" 200 0
+2019-03-01 13:42:21,039 [Thread-5:12688] [django:298] [views:get] [INFO]- 获取应用服务器渠道列表
+2019-03-01 13:42:21,056 [Thread-5:12688] [django.db.backends:111] [utils:execute] [DEBUG]- (0.000) QUERY = 'SELECT [app_manage].[id], [app_manage].[GameTypeno], [app_manage].[GameType], [app_manage].[Ptid], [app_manage].[ChannelId], [app_manage].[Appid], [app_manage].[Appname], [app_manage].[CallbackUrl], [app_manage].[os], [app_manage].[lable], [app_manage].[mix], [app_manage].[app_parameter], [app_manage].[del] FROM [app_manage] WHERE [app_manage].[GameTypeno] = %s' - PARAMS = (50,); args=(50,)
+2019-03-01 13:42:21,077 [Thread-5:12688] [django.server:154] [basehttp:log_message] [INFO]- "GET /app_managements/ HTTP/1.1" 200 3066
+2019-03-01 13:42:22,512 [Thread-5:12688] [django.server:154] [basehttp:log_message] [INFO]- "OPTIONS /server_managements?cid=12&appid=xjcs.com.nb HTTP/1.1" 200 0
+2019-03-01 13:42:22,522 [Thread-5:12688] [django.server:154] [basehttp:log_message] [INFO]- "OPTIONS /server_managements/?cid=12&appid=xjcs.com.nb HTTP/1.1" 200 0
+2019-03-01 13:42:22,680 [Thread-5:12688] [django.db.backends:111] [utils:execute] [DEBUG]- (0.149) QUERY = "SELECT * FROM ServerManagement.dbo.[GetServerTableTest] (50, 12) WHERE appid='xjcs.com.nb'" - PARAMS = (); args=None
+2019-03-01 13:42:22,681 [Thread-5:12688] [django:282] [views:get] [INFO]- 获取服务器管理列表成功
+2019-03-01 13:42:22,704 [Thread-5:12688] [django.server:154] [basehttp:log_message] [INFO]- "GET /server_managements/?cid=12&appid=xjcs.com.nb HTTP/1.1" 200 1759
+2019-03-01 13:50:35,550 [Dummy-1:15332] [django.db.backends:111] [utils:execute] [DEBUG]- (0.017) QUERY = 'SELECT TABLE_NAME, TABLE_TYPE FROM INFORMATION_SCHEMA.TABLES WHERE TABLE_SCHEMA = SCHEMA_NAME()' - PARAMS = (); args=None
+2019-03-01 13:56:05,902 [Dummy-1:13992] [django.db.backends:111] [utils:execute] [DEBUG]- (0.013) QUERY = 'SELECT TABLE_NAME, TABLE_TYPE FROM INFORMATION_SCHEMA.TABLES WHERE TABLE_SCHEMA = SCHEMA_NAME()' - PARAMS = (); args=None
+2019-03-01 14:02:00,674 [Dummy-1:14684] [django.db.backends:111] [utils:execute] [DEBUG]- (0.015) QUERY = 'SELECT TABLE_NAME, TABLE_TYPE FROM INFORMATION_SCHEMA.TABLES WHERE TABLE_SCHEMA = SCHEMA_NAME()' - PARAMS = (); args=None
+2019-03-01 14:02:03,887 [Thread-2:1136] [django.server:154] [basehttp:log_message] [INFO]- "OPTIONS /app_channels/ HTTP/1.1" 200 0
+2019-03-01 14:02:04,308 [Thread-2:1136] [django:229] [views:get] [INFO]- 获取应用渠道列表
+2019-03-01 14:02:04,355 [Thread-2:1136] [django.db.backends:111] [utils:execute] [DEBUG]- (0.000) QUERY = "SELECT CAST(SERVERPROPERTY('ProductVersion') AS varchar)" - PARAMS = (); args=None
+2019-03-01 14:02:04,359 [Thread-2:1136] [django.db.backends:111] [utils:execute] [DEBUG]- (0.001) QUERY = 'SELECT [App_Channel_list].[CID], [App_Channel_list].[CName], [App_Channel_list].[CInfo], [App_Channel_list].[PID], [App_Channel_list].[GID], [App_Channel_list].[PCID] FROM [App_Channel_list] WHERE [App_Channel_list].[GID] = %s' - PARAMS = (50,); args=(50,)
+2019-03-01 14:02:04,376 [Thread-2:1136] [django.server:154] [basehttp:log_message] [INFO]- "GET /app_channels/ HTTP/1.1" 200 82
+2019-03-01 14:02:06,412 [Thread-2:1136] [django.server:154] [basehttp:log_message] [INFO]- "OPTIONS /app_managements/ HTTP/1.1" 200 0
+2019-03-01 14:02:06,419 [Thread-2:1136] [django:273] [views:get] [INFO]- 获取应用服务器渠道列表
+2019-03-01 14:02:06,432 [Thread-2:1136] [django.db.backends:111] [utils:execute] [DEBUG]- (0.001) QUERY = "SELECT CAST(SERVERPROPERTY('ProductVersion') AS varchar)" - PARAMS = (); args=None
+2019-03-01 14:02:06,435 [Thread-2:1136] [django.db.backends:111] [utils:execute] [DEBUG]- (0.001) QUERY = 'SELECT [app_manage].[id], [app_manage].[GameTypeno], [app_manage].[GameType], [app_manage].[Ptid], [app_manage].[ChannelId], [app_manage].[Appid], [app_manage].[Appname], [app_manage].[CallbackUrl], [app_manage].[os], [app_manage].[lable], [app_manage].[mix], [app_manage].[app_parameter], [app_manage].[del] FROM [app_manage] WHERE [app_manage].[GameTypeno] = %s' - PARAMS = (50,); args=(50,)
+2019-03-01 14:02:06,447 [Thread-2:1136] [django.server:154] [basehttp:log_message] [INFO]- "GET /app_managements/ HTTP/1.1" 200 3066
+2019-03-01 14:02:07,673 [Thread-2:1136] [django.server:154] [basehttp:log_message] [INFO]- "OPTIONS /server_managements?cid=12&appid=xjcs.com.nb HTTP/1.1" 200 0
+2019-03-01 14:02:07,689 [Thread-2:1136] [django.server:154] [basehttp:log_message] [INFO]- "OPTIONS /server_managements/?cid=12&appid=xjcs.com.nb HTTP/1.1" 200 0
+2019-03-01 14:02:07,929 [Thread-2:1136] [django.db.backends:111] [utils:execute] [DEBUG]- (0.205) QUERY = "SELECT * FROM ServerManagement.dbo.[GetServerTableTest] (50, 12) WHERE appid='xjcs.com.nb'" - PARAMS = (); args=None
+2019-03-01 14:02:07,931 [Thread-2:1136] [django:257] [views:get] [INFO]- 获取服务器管理列表成功
+2019-03-01 14:02:07,933 [Thread-2:1136] [django.server:154] [basehttp:log_message] [INFO]- "GET /server_managements/?cid=12&appid=xjcs.com.nb HTTP/1.1" 200 1759
+2019-03-01 14:02:56,467 [Thread-2:1136] [django:229] [views:get] [INFO]- 获取应用渠道列表
+2019-03-01 14:02:56,469 [Thread-2:1136] [django.db.backends:111] [utils:execute] [DEBUG]- (0.000) QUERY = 'SELECT [App_Channel_list].[CID], [App_Channel_list].[CName], [App_Channel_list].[CInfo], [App_Channel_list].[PID], [App_Channel_list].[GID], [App_Channel_list].[PCID] FROM [App_Channel_list] WHERE [App_Channel_list].[GID] = %s' - PARAMS = (50,); args=(50,)
+2019-03-01 14:02:56,479 [Thread-2:1136] [django.server:154] [basehttp:log_message] [INFO]- "GET /app_channels/ HTTP/1.1" 200 82
+2019-03-01 14:03:01,403 [Thread-2:1136] [django:273] [views:get] [INFO]- 获取应用服务器渠道列表
+2019-03-01 14:03:01,406 [Thread-2:1136] [django.db.backends:111] [utils:execute] [DEBUG]- (0.000) QUERY = 'SELECT [app_manage].[id], [app_manage].[GameTypeno], [app_manage].[GameType], [app_manage].[Ptid], [app_manage].[ChannelId], [app_manage].[Appid], [app_manage].[Appname], [app_manage].[CallbackUrl], [app_manage].[os], [app_manage].[lable], [app_manage].[mix], [app_manage].[app_parameter], [app_manage].[del] FROM [app_manage] WHERE [app_manage].[GameTypeno] = %s' - PARAMS = (50,); args=(50,)
+2019-03-01 14:03:01,414 [Thread-2:1136] [django.server:154] [basehttp:log_message] [INFO]- "GET /app_managements/ HTTP/1.1" 200 3066
+2019-03-01 14:03:02,952 [Thread-2:1136] [django.db.backends:111] [utils:execute] [DEBUG]- (0.130) QUERY = "SELECT * FROM ServerManagement.dbo.[GetServerTableTest] (50, 12) WHERE appid='xjcs.com.nb'" - PARAMS = (); args=None
+2019-03-01 14:03:02,953 [Thread-2:1136] [django:257] [views:get] [INFO]- 获取服务器管理列表成功
+2019-03-01 14:03:02,955 [Thread-2:1136] [django.server:154] [basehttp:log_message] [INFO]- "GET /server_managements/?cid=12&appid=xjcs.com.nb HTTP/1.1" 200 1759
+2019-03-01 14:03:21,161 [Thread-2:1136] [django:229] [views:get] [INFO]- 获取应用渠道列表
+2019-03-01 14:03:21,168 [Thread-2:1136] [django.db.backends:111] [utils:execute] [DEBUG]- (0.001) QUERY = 'SELECT [App_Channel_list].[CID], [App_Channel_list].[CName], [App_Channel_list].[CInfo], [App_Channel_list].[PID], [App_Channel_list].[GID], [App_Channel_list].[PCID] FROM [App_Channel_list] WHERE [App_Channel_list].[GID] = %s' - PARAMS = (50,); args=(50,)
+2019-03-01 14:03:21,173 [Thread-2:1136] [django.server:154] [basehttp:log_message] [INFO]- "GET /app_channels/ HTTP/1.1" 200 82
+2019-03-01 14:03:23,159 [Thread-2:1136] [django:273] [views:get] [INFO]- 获取应用服务器渠道列表
+2019-03-01 14:03:23,162 [Thread-2:1136] [django.db.backends:111] [utils:execute] [DEBUG]- (0.000) QUERY = 'SELECT [app_manage].[id], [app_manage].[GameTypeno], [app_manage].[GameType], [app_manage].[Ptid], [app_manage].[ChannelId], [app_manage].[Appid], [app_manage].[Appname], [app_manage].[CallbackUrl], [app_manage].[os], [app_manage].[lable], [app_manage].[mix], [app_manage].[app_parameter], [app_manage].[del] FROM [app_manage] WHERE [app_manage].[GameTypeno] = %s' - PARAMS = (50,); args=(50,)
+2019-03-01 14:03:23,174 [Thread-2:1136] [django.server:154] [basehttp:log_message] [INFO]- "GET /app_managements/ HTTP/1.1" 200 3066
+2019-03-01 14:03:25,034 [Thread-2:1136] [django.db.backends:111] [utils:execute] [DEBUG]- (0.265) QUERY = "SELECT * FROM ServerManagement.dbo.[GetServerTableTest] (50, 12) WHERE appid='xjcs.com.nb'" - PARAMS = (); args=None
+2019-03-01 14:03:25,036 [Thread-2:1136] [django:257] [views:get] [INFO]- 获取服务器管理列表成功
+2019-03-01 14:03:25,038 [Thread-2:1136] [django.server:154] [basehttp:log_message] [INFO]- "GET /server_managements/?cid=12&appid=xjcs.com.nb HTTP/1.1" 200 1759
+2019-03-01 14:08:13,494 [Thread-2:1136] [django:229] [views:get] [INFO]- 获取应用渠道列表
+2019-03-01 14:08:13,532 [Thread-2:1136] [django.db.backends:111] [utils:execute] [DEBUG]- (0.001) QUERY = 'SELECT [App_Channel_list].[CID], [App_Channel_list].[CName], [App_Channel_list].[CInfo], [App_Channel_list].[PID], [App_Channel_list].[GID], [App_Channel_list].[PCID] FROM [App_Channel_list] WHERE [App_Channel_list].[GID] = %s' - PARAMS = (50,); args=(50,)
+2019-03-01 14:08:13,541 [Thread-2:1136] [django.server:154] [basehttp:log_message] [INFO]- "GET /app_channels/ HTTP/1.1" 200 82
+2019-03-01 14:08:38,524 [Dummy-1:15300] [django.db.backends:111] [utils:execute] [DEBUG]- (0.014) QUERY = 'SELECT TABLE_NAME, TABLE_TYPE FROM INFORMATION_SCHEMA.TABLES WHERE TABLE_SCHEMA = SCHEMA_NAME()' - PARAMS = (); args=None
+2019-03-01 14:09:23,579 [Thread-2:5648] [django:229] [views:get] [INFO]- 获取应用渠道列表
+2019-03-01 14:09:23,648 [Thread-2:5648] [django.db.backends:111] [utils:execute] [DEBUG]- (0.002) QUERY = "SELECT CAST(SERVERPROPERTY('ProductVersion') AS varchar)" - PARAMS = (); args=None
+2019-03-01 14:09:23,651 [Thread-2:5648] [django.db.backends:111] [utils:execute] [DEBUG]- (0.000) QUERY = 'SELECT [App_Channel_list].[CID], [App_Channel_list].[CName], [App_Channel_list].[CInfo], [App_Channel_list].[PID], [App_Channel_list].[GID], [App_Channel_list].[PCID] FROM [App_Channel_list] WHERE [App_Channel_list].[GID] = %s' - PARAMS = (50,); args=(50,)
+2019-03-01 14:09:23,659 [Thread-2:5648] [django.server:154] [basehttp:log_message] [INFO]- "GET /app_channels/ HTTP/1.1" 200 82
+2019-03-01 14:10:36,728 [Thread-2:5648] [django:229] [views:get] [INFO]- 获取应用渠道列表
+2019-03-01 14:10:36,764 [Thread-2:5648] [django.db.backends:111] [utils:execute] [DEBUG]- (0.001) QUERY = 'SELECT [App_Channel_list].[CID], [App_Channel_list].[CName], [App_Channel_list].[CInfo], [App_Channel_list].[PID], [App_Channel_list].[GID], [App_Channel_list].[PCID] FROM [App_Channel_list] WHERE [App_Channel_list].[GID] = %s' - PARAMS = (50,); args=(50,)
+2019-03-01 14:10:36,771 [Thread-2:5648] [django.server:154] [basehttp:log_message] [INFO]- "GET /app_channels/ HTTP/1.1" 200 82
+2019-03-01 14:11:24,448 [Dummy-1:15192] [django.db.backends:111] [utils:execute] [DEBUG]- (0.015) QUERY = 'SELECT TABLE_NAME, TABLE_TYPE FROM INFORMATION_SCHEMA.TABLES WHERE TABLE_SCHEMA = SCHEMA_NAME()' - PARAMS = (); args=None
+2019-03-01 14:11:36,522 [Thread-2:10176] [django:230] [views:get] [INFO]- 获取应用渠道列表
+2019-03-01 14:11:36,952 [Thread-2:10176] [django.db.backends:111] [utils:execute] [DEBUG]- (0.000) QUERY = "SELECT CAST(SERVERPROPERTY('ProductVersion') AS varchar)" - PARAMS = (); args=None
+2019-03-01 14:11:36,956 [Thread-2:10176] [django.db.backends:111] [utils:execute] [DEBUG]- (0.000) QUERY = 'SELECT [App_Channel_list].[CID], [App_Channel_list].[CName], [App_Channel_list].[CInfo], [App_Channel_list].[PID], [App_Channel_list].[GID], [App_Channel_list].[PCID] FROM [App_Channel_list] WHERE [App_Channel_list].[GID] = %s' - PARAMS = (50,); args=(50,)
+2019-03-01 14:11:36,973 [Thread-2:10176] [django.server:154] [basehttp:log_message] [INFO]- "GET /app_channels/ HTTP/1.1" 200 82
+2019-03-01 14:11:38,788 [Thread-2:10176] [django:274] [views:get] [INFO]- 获取应用服务器渠道列表
+2019-03-01 14:11:38,815 [Thread-2:10176] [django.db.backends:111] [utils:execute] [DEBUG]- (0.000) QUERY = "SELECT CAST(SERVERPROPERTY('ProductVersion') AS varchar)" - PARAMS = (); args=None
+2019-03-01 14:11:38,818 [Thread-2:10176] [django.db.backends:111] [utils:execute] [DEBUG]- (0.000) QUERY = 'SELECT [app_manage].[id], [app_manage].[GameTypeno], [app_manage].[GameType], [app_manage].[Ptid], [app_manage].[ChannelId], [app_manage].[Appid], [app_manage].[Appname], [app_manage].[CallbackUrl], [app_manage].[os], [app_manage].[lable], [app_manage].[mix], [app_manage].[app_parameter], [app_manage].[del] FROM [app_manage] WHERE [app_manage].[GameTypeno] = %s' - PARAMS = (50,); args=(50,)
+2019-03-01 14:11:38,836 [Thread-2:10176] [django.server:154] [basehttp:log_message] [INFO]- "GET /app_managements/ HTTP/1.1" 200 3066
+2019-03-01 14:11:40,549 [Thread-2:10176] [django.db.backends:111] [utils:execute] [DEBUG]- (0.211) QUERY = "SELECT * FROM ServerManagement.dbo.[GetServerTableTest] (50, 12) WHERE appid='xjcs.com.nb'" - PARAMS = (); args=None
+2019-03-01 14:11:40,551 [Thread-2:10176] [django:258] [views:get] [INFO]- 获取服务器管理列表成功
+2019-03-01 14:11:40,554 [Thread-2:10176] [django.server:154] [basehttp:log_message] [INFO]- "GET /server_managements/?cid=12&appid=xjcs.com.nb HTTP/1.1" 200 1759
+2019-03-01 14:11:48,414 [Thread-2:10176] [django.server:154] [basehttp:log_message] [INFO]- "OPTIONS /delete_open_plan/ HTTP/1.1" 200 0
+2019-03-01 14:11:48,420 [Thread-2:10176] [django.server:154] [basehttp:log_message] [INFO]- "POST /delete_open_plan/ HTTP/1.1" 200 7
+2019-03-01 14:18:58,189 [Dummy-1:8880] [django.db.backends:111] [utils:execute] [DEBUG]- (0.013) QUERY = 'SELECT TABLE_NAME, TABLE_TYPE FROM INFORMATION_SCHEMA.TABLES WHERE TABLE_SCHEMA = SCHEMA_NAME()' - PARAMS = (); args=None
+2019-03-01 14:19:56,600 [Dummy-1:2896] [django.db.backends:111] [utils:execute] [DEBUG]- (0.015) QUERY = 'SELECT TABLE_NAME, TABLE_TYPE FROM INFORMATION_SCHEMA.TABLES WHERE TABLE_SCHEMA = SCHEMA_NAME()' - PARAMS = (); args=None
+2019-03-01 14:20:09,168 [Thread-2:14448] [django.server:154] [basehttp:log_message] [INFO]- "OPTIONS /app_channels/ HTTP/1.1" 200 0
+2019-03-01 14:20:09,225 [Thread-2:14448] [django:251] [views:get] [INFO]- 获取应用渠道列表
+2019-03-01 14:20:09,254 [Thread-2:14448] [django.db.backends:111] [utils:execute] [DEBUG]- (0.000) QUERY = "SELECT CAST(SERVERPROPERTY('ProductVersion') AS varchar)" - PARAMS = (); args=None
+2019-03-01 14:20:09,262 [Thread-2:14448] [django.db.backends:111] [utils:execute] [DEBUG]- (0.002) QUERY = 'SELECT [App_Channel_list].[CID], [App_Channel_list].[CName], [App_Channel_list].[CInfo], [App_Channel_list].[PID], [App_Channel_list].[GID], [App_Channel_list].[PCID] FROM [App_Channel_list] WHERE [App_Channel_list].[GID] = %s' - PARAMS = (50,); args=(50,)
+2019-03-01 14:20:09,269 [Thread-2:14448] [django.server:154] [basehttp:log_message] [INFO]- "GET /app_channels/ HTTP/1.1" 200 82
+2019-03-01 14:20:16,233 [Thread-2:14448] [django:251] [views:get] [INFO]- 获取应用渠道列表
+2019-03-01 14:20:16,242 [Thread-2:14448] [django.db.backends:111] [utils:execute] [DEBUG]- (0.000) QUERY = 'SELECT [App_Channel_list].[CID], [App_Channel_list].[CName], [App_Channel_list].[CInfo], [App_Channel_list].[PID], [App_Channel_list].[GID], [App_Channel_list].[PCID] FROM [App_Channel_list] WHERE [App_Channel_list].[GID] = %s' - PARAMS = (50,); args=(50,)
+2019-03-01 14:20:16,251 [Thread-2:14448] [django.server:154] [basehttp:log_message] [INFO]- "GET /app_channels/ HTTP/1.1" 200 82
+2019-03-01 14:20:17,848 [Thread-2:14448] [django.server:154] [basehttp:log_message] [INFO]- "OPTIONS /app_managements/ HTTP/1.1" 200 0
+2019-03-01 14:20:17,858 [Thread-2:14448] [django:295] [views:get] [INFO]- 获取应用服务器渠道列表
+2019-03-01 14:20:17,869 [Thread-2:14448] [django.db.backends:111] [utils:execute] [DEBUG]- (0.000) QUERY = "SELECT CAST(SERVERPROPERTY('ProductVersion') AS varchar)" - PARAMS = (); args=None
+2019-03-01 14:20:17,872 [Thread-2:14448] [django.db.backends:111] [utils:execute] [DEBUG]- (0.001) QUERY = 'SELECT [app_manage].[id], [app_manage].[GameTypeno], [app_manage].[GameType], [app_manage].[Ptid], [app_manage].[ChannelId], [app_manage].[Appid], [app_manage].[Appname], [app_manage].[CallbackUrl], [app_manage].[os], [app_manage].[lable], [app_manage].[mix], [app_manage].[app_parameter], [app_manage].[del] FROM [app_manage] WHERE [app_manage].[GameTypeno] = %s' - PARAMS = (50,); args=(50,)
+2019-03-01 14:20:17,885 [Thread-2:14448] [django.server:154] [basehttp:log_message] [INFO]- "GET /app_managements/ HTTP/1.1" 200 3066
+2019-03-01 14:20:19,138 [Thread-2:14448] [django.server:154] [basehttp:log_message] [INFO]- "OPTIONS /server_managements?cid=12&appid=xjcs.com.nb HTTP/1.1" 200 0
+2019-03-01 14:20:19,151 [Thread-2:14448] [django.server:154] [basehttp:log_message] [INFO]- "OPTIONS /server_managements/?cid=12&appid=xjcs.com.nb HTTP/1.1" 200 0
+2019-03-01 14:20:19,336 [Thread-2:14448] [django.db.backends:111] [utils:execute] [DEBUG]- (0.173) QUERY = "SELECT * FROM ServerManagement.dbo.[GetServerTableTest] (50, 12) WHERE appid='xjcs.com.nb'" - PARAMS = (); args=None
+2019-03-01 14:20:19,338 [Thread-2:14448] [django:279] [views:get] [INFO]- 获取服务器管理列表成功
+2019-03-01 14:20:19,362 [Thread-2:14448] [django.server:154] [basehttp:log_message] [INFO]- "GET /server_managements/?cid=12&appid=xjcs.com.nb HTTP/1.1" 200 1759
+2019-03-01 14:20:25,856 [Thread-2:14448] [django.db.backends:111] [utils:execute] [DEBUG]- (0.004) QUERY = 'SELECT [App_Server_Channel].[id], [App_Server_Channel].[GID], [App_Server_Channel].[zoneidx], [App_Server_Channel].[zonename], [App_Server_Channel].[PID], [App_Server_Channel].[CID], [App_Server_Channel].[appid], [App_Server_Channel].[statu], [App_Server_Channel].[server_statu], [App_Server_Channel].[server_suggest], [App_Server_Channel].[is_delete], [App_Server_Channel].[open_type], [App_Server_Channel].[open_type_value] FROM [App_Server_Channel] WHERE [App_Server_Channel].[id] = %s' - PARAMS = (7631,); args=(7631,)
+2019-03-01 14:20:25,885 [Thread-2:14448] [django.db.backends:111] [utils:execute] [DEBUG]- (0.025) QUERY = 'SET NOCOUNT OFF; UPDATE [App_Server_Channel] SET [GID] = %s, [zoneidx] = %s, [zonename] = %s, [PID] = %s, [CID] = %s, [appid] = %s, [statu] = %s, [server_statu] = %s, [server_suggest] = %s, [is_delete] = %s, [open_type] = NULL, [open_type_value] = NULL WHERE [App_Server_Channel].[id] = %s' - PARAMS = (50, 536, '畅梦测试2区', 1, 12, 'xjcs.com.nb', 0, 202, 1, 0, 7631); args=(50, 536, '畅梦测试2区', 1, 12, 'xjcs.com.nb', 0, 202, 1, 0, 7631)
+2019-03-01 14:20:25,887 [Thread-2:14448] [django:176] [views:delete_open_plan] [INFO]- 删除开区计划成功, 服务器id7631
+2019-03-01 14:20:25,907 [Thread-2:14448] [django:183] [views:delete_open_plan] [INFO]- 删除多条开区计划成功
+2019-03-01 14:20:25,908 [Thread-2:14448] [django.server:154] [basehttp:log_message] [INFO]- "POST /delete_open_plan/ HTTP/1.1" 202 32
+2019-03-01 14:24:22,829 [Thread-2:14448] [django:251] [views:get] [INFO]- 获取应用渠道列表
+2019-03-01 14:24:22,838 [Thread-2:14448] [django.db.backends:111] [utils:execute] [DEBUG]- (0.000) QUERY = 'SELECT [App_Channel_list].[CID], [App_Channel_list].[CName], [App_Channel_list].[CInfo], [App_Channel_list].[PID], [App_Channel_list].[GID], [App_Channel_list].[PCID] FROM [App_Channel_list] WHERE [App_Channel_list].[GID] = %s' - PARAMS = (50,); args=(50,)
+2019-03-01 14:24:22,844 [Thread-2:14448] [django.server:154] [basehttp:log_message] [INFO]- "GET /app_channels/ HTTP/1.1" 200 82
+2019-03-01 14:24:25,325 [Thread-2:14448] [django:295] [views:get] [INFO]- 获取应用服务器渠道列表
+2019-03-01 14:24:25,342 [Thread-2:14448] [django.db.backends:111] [utils:execute] [DEBUG]- (0.000) QUERY = 'SELECT [app_manage].[id], [app_manage].[GameTypeno], [app_manage].[GameType], [app_manage].[Ptid], [app_manage].[ChannelId], [app_manage].[Appid], [app_manage].[Appname], [app_manage].[CallbackUrl], [app_manage].[os], [app_manage].[lable], [app_manage].[mix], [app_manage].[app_parameter], [app_manage].[del] FROM [app_manage] WHERE [app_manage].[GameTypeno] = %s' - PARAMS = (50,); args=(50,)
+2019-03-01 14:24:25,364 [Thread-2:14448] [django.server:154] [basehttp:log_message] [INFO]- "GET /app_managements/ HTTP/1.1" 200 3066
+2019-03-01 14:24:26,907 [Thread-2:14448] [django.db.backends:111] [utils:execute] [DEBUG]- (0.138) QUERY = "SELECT * FROM ServerManagement.dbo.[GetServerTableTest] (50, 12) WHERE appid='xjcs.com.nb'" - PARAMS = (); args=None
+2019-03-01 14:24:26,908 [Thread-2:14448] [django:279] [views:get] [INFO]- 获取服务器管理列表成功
+2019-03-01 14:24:26,912 [Thread-2:14448] [django.server:154] [basehttp:log_message] [INFO]- "GET /server_managements/?cid=12&appid=xjcs.com.nb HTTP/1.1" 200 1763
+2019-03-01 16:15:41,358 [Thread-3:7136] [django.server:154] [basehttp:log_message] [INFO]- "OPTIONS /app_channels/ HTTP/1.1" 200 0
+2019-03-01 16:15:41,384 [Thread-3:7136] [django:251] [views:get] [INFO]- 获取应用渠道列表
+2019-03-01 16:15:41,409 [Thread-3:7136] [django.db.backends:111] [utils:execute] [DEBUG]- (0.003) QUERY = 'SELECT [App_Channel_list].[CID], [App_Channel_list].[CName], [App_Channel_list].[CInfo], [App_Channel_list].[PID], [App_Channel_list].[GID], [App_Channel_list].[PCID] FROM [App_Channel_list] WHERE [App_Channel_list].[GID] = %s' - PARAMS = (50,); args=(50,)
+2019-03-01 16:15:41,434 [Thread-3:7136] [django.server:154] [basehttp:log_message] [INFO]- "GET /app_channels/ HTTP/1.1" 200 82
+2019-03-01 16:19:25,334 [Thread-3:7136] [django:251] [views:get] [INFO]- 获取应用渠道列表
+2019-03-01 16:19:25,359 [Thread-3:7136] [django.db.backends:111] [utils:execute] [DEBUG]- (0.000) QUERY = 'SELECT [App_Channel_list].[CID], [App_Channel_list].[CName], [App_Channel_list].[CInfo], [App_Channel_list].[PID], [App_Channel_list].[GID], [App_Channel_list].[PCID] FROM [App_Channel_list] WHERE [App_Channel_list].[GID] = %s' - PARAMS = (50,); args=(50,)
+2019-03-01 16:19:25,366 [Thread-3:7136] [django.server:154] [basehttp:log_message] [INFO]- "GET /app_channels/ HTTP/1.1" 200 82
+2019-03-01 16:19:27,027 [Thread-3:7136] [django.server:154] [basehttp:log_message] [INFO]- "OPTIONS /app_managements/ HTTP/1.1" 200 0
+2019-03-01 16:19:27,040 [Thread-3:7136] [django:295] [views:get] [INFO]- 获取应用服务器渠道列表
+2019-03-01 16:19:27,066 [Thread-3:7136] [django.db.backends:111] [utils:execute] [DEBUG]- (0.003) QUERY = 'SELECT [app_manage].[id], [app_manage].[GameTypeno], [app_manage].[GameType], [app_manage].[Ptid], [app_manage].[ChannelId], [app_manage].[Appid], [app_manage].[Appname], [app_manage].[CallbackUrl], [app_manage].[os], [app_manage].[lable], [app_manage].[mix], [app_manage].[app_parameter], [app_manage].[del] FROM [app_manage] WHERE [app_manage].[GameTypeno] = %s' - PARAMS = (50,); args=(50,)
+2019-03-01 16:19:27,079 [Thread-3:7136] [django.server:154] [basehttp:log_message] [INFO]- "GET /app_managements/ HTTP/1.1" 200 3066
+2019-03-01 16:19:28,346 [Thread-3:7136] [django.server:154] [basehttp:log_message] [INFO]- "OPTIONS /server_managements?cid=12&appid=xjcs.com.nb HTTP/1.1" 200 0
+2019-03-01 16:19:28,357 [Thread-3:7136] [django.server:154] [basehttp:log_message] [INFO]- "OPTIONS /server_managements/?cid=12&appid=xjcs.com.nb HTTP/1.1" 200 0
+2019-03-01 16:19:28,650 [Thread-3:7136] [django.db.backends:111] [utils:execute] [DEBUG]- (0.253) QUERY = "SELECT * FROM ServerManagement.dbo.[GetServerTableTest] (50, 12) WHERE appid='xjcs.com.nb'" - PARAMS = (); args=None
+2019-03-01 16:19:28,652 [Thread-3:7136] [django:279] [views:get] [INFO]- 获取服务器管理列表成功
+2019-03-01 16:19:28,654 [Thread-3:7136] [django.server:154] [basehttp:log_message] [INFO]- "GET /server_managements/?cid=12&appid=xjcs.com.nb HTTP/1.1" 200 1763
+2019-03-01 16:19:46,975 [Thread-3:7136] [django:251] [views:get] [INFO]- 获取应用渠道列表
+2019-03-01 16:19:46,986 [Thread-3:7136] [django.db.backends:111] [utils:execute] [DEBUG]- (0.001) QUERY = 'SELECT [App_Channel_list].[CID], [App_Channel_list].[CName], [App_Channel_list].[CInfo], [App_Channel_list].[PID], [App_Channel_list].[GID], [App_Channel_list].[PCID] FROM [App_Channel_list] WHERE [App_Channel_list].[GID] = %s' - PARAMS = (50,); args=(50,)
+2019-03-01 16:19:47,001 [Thread-3:7136] [django.server:154] [basehttp:log_message] [INFO]- "GET /app_channels/ HTTP/1.1" 200 82
+2019-03-01 16:19:48,753 [Thread-3:7136] [django:295] [views:get] [INFO]- 获取应用服务器渠道列表
+2019-03-01 16:19:48,766 [Thread-3:7136] [django.db.backends:111] [utils:execute] [DEBUG]- (0.003) QUERY = 'SELECT [app_manage].[id], [app_manage].[GameTypeno], [app_manage].[GameType], [app_manage].[Ptid], [app_manage].[ChannelId], [app_manage].[Appid], [app_manage].[Appname], [app_manage].[CallbackUrl], [app_manage].[os], [app_manage].[lable], [app_manage].[mix], [app_manage].[app_parameter], [app_manage].[del] FROM [app_manage] WHERE [app_manage].[GameTypeno] = %s' - PARAMS = (50,); args=(50,)
+2019-03-01 16:19:48,778 [Thread-3:7136] [django.server:154] [basehttp:log_message] [INFO]- "GET /app_managements/ HTTP/1.1" 200 3066
+2019-03-01 16:19:50,184 [Thread-3:7136] [django.db.backends:111] [utils:execute] [DEBUG]- (0.143) QUERY = "SELECT * FROM ServerManagement.dbo.[GetServerTableTest] (50, 12) WHERE appid='xjcs.com.nb'" - PARAMS = (); args=None
+2019-03-01 16:19:50,186 [Thread-3:7136] [django:279] [views:get] [INFO]- 获取服务器管理列表成功
+2019-03-01 16:19:50,188 [Thread-3:7136] [django.server:154] [basehttp:log_message] [INFO]- "GET /server_managements/?cid=12&appid=xjcs.com.nb HTTP/1.1" 200 1763
+2019-03-01 16:20:57,604 [Thread-3:7136] [django:251] [views:get] [INFO]- 获取应用渠道列表
+2019-03-01 16:20:57,641 [Thread-3:7136] [django.db.backends:111] [utils:execute] [DEBUG]- (0.001) QUERY = 'SELECT [App_Channel_list].[CID], [App_Channel_list].[CName], [App_Channel_list].[CInfo], [App_Channel_list].[PID], [App_Channel_list].[GID], [App_Channel_list].[PCID] FROM [App_Channel_list] WHERE [App_Channel_list].[GID] = %s' - PARAMS = (50,); args=(50,)
+2019-03-01 16:20:57,649 [Thread-3:7136] [django.server:154] [basehttp:log_message] [INFO]- "GET /app_channels/ HTTP/1.1" 200 82
+2019-03-01 16:21:31,000 [Thread-3:7136] [django:251] [views:get] [INFO]- 获取应用渠道列表
+2019-03-01 16:21:31,010 [Thread-3:7136] [django.db.backends:111] [utils:execute] [DEBUG]- (0.001) QUERY = 'SELECT [App_Channel_list].[CID], [App_Channel_list].[CName], [App_Channel_list].[CInfo], [App_Channel_list].[PID], [App_Channel_list].[GID], [App_Channel_list].[PCID] FROM [App_Channel_list] WHERE [App_Channel_list].[GID] = %s' - PARAMS = (50,); args=(50,)
+2019-03-01 16:21:31,016 [Thread-3:7136] [django.server:154] [basehttp:log_message] [INFO]- "GET /app_channels/ HTTP/1.1" 200 82
+2019-03-01 16:21:32,780 [Thread-3:7136] [django:295] [views:get] [INFO]- 获取应用服务器渠道列表
+2019-03-01 16:21:32,791 [Thread-3:7136] [django.db.backends:111] [utils:execute] [DEBUG]- (0.000) QUERY = 'SELECT [app_manage].[id], [app_manage].[GameTypeno], [app_manage].[GameType], [app_manage].[Ptid], [app_manage].[ChannelId], [app_manage].[Appid], [app_manage].[Appname], [app_manage].[CallbackUrl], [app_manage].[os], [app_manage].[lable], [app_manage].[mix], [app_manage].[app_parameter], [app_manage].[del] FROM [app_manage] WHERE [app_manage].[GameTypeno] = %s' - PARAMS = (50,); args=(50,)
+2019-03-01 16:21:32,804 [Thread-3:7136] [django.server:154] [basehttp:log_message] [INFO]- "GET /app_managements/ HTTP/1.1" 200 3066
+2019-03-01 16:21:34,336 [Thread-3:7136] [django.db.backends:111] [utils:execute] [DEBUG]- (0.241) QUERY = "SELECT * FROM ServerManagement.dbo.[GetServerTableTest] (50, 12) WHERE appid='xjcs.com.nb'" - PARAMS = (); args=None
+2019-03-01 16:21:34,338 [Thread-3:7136] [django:279] [views:get] [INFO]- 获取服务器管理列表成功
+2019-03-01 16:21:34,343 [Thread-3:7136] [django.server:154] [basehttp:log_message] [INFO]- "GET /server_managements/?cid=12&appid=xjcs.com.nb HTTP/1.1" 200 1763
+2019-03-01 16:22:23,815 [Thread-3:7136] [django:251] [views:get] [INFO]- 获取应用渠道列表
+2019-03-01 16:22:23,841 [Thread-3:7136] [django.db.backends:111] [utils:execute] [DEBUG]- (0.000) QUERY = 'SELECT [App_Channel_list].[CID], [App_Channel_list].[CName], [App_Channel_list].[CInfo], [App_Channel_list].[PID], [App_Channel_list].[GID], [App_Channel_list].[PCID] FROM [App_Channel_list] WHERE [App_Channel_list].[GID] = %s' - PARAMS = (50,); args=(50,)
+2019-03-01 16:22:23,848 [Thread-3:7136] [django.server:154] [basehttp:log_message] [INFO]- "GET /app_channels/ HTTP/1.1" 200 82
+2019-03-01 16:22:28,568 [Thread-3:7136] [django:251] [views:get] [INFO]- 获取应用渠道列表
+2019-03-01 16:22:28,576 [Thread-3:7136] [django.db.backends:111] [utils:execute] [DEBUG]- (0.000) QUERY = 'SELECT [App_Channel_list].[CID], [App_Channel_list].[CName], [App_Channel_list].[CInfo], [App_Channel_list].[PID], [App_Channel_list].[GID], [App_Channel_list].[PCID] FROM [App_Channel_list] WHERE [App_Channel_list].[GID] = %s' - PARAMS = (50,); args=(50,)
+2019-03-01 16:22:28,585 [Thread-3:7136] [django.server:154] [basehttp:log_message] [INFO]- "GET /app_channels/ HTTP/1.1" 200 82
+2019-03-01 16:22:29,934 [Thread-3:7136] [django:295] [views:get] [INFO]- 获取应用服务器渠道列表
+2019-03-01 16:22:29,937 [Thread-3:7136] [django.db.backends:111] [utils:execute] [DEBUG]- (0.000) QUERY = 'SELECT [app_manage].[id], [app_manage].[GameTypeno], [app_manage].[GameType], [app_manage].[Ptid], [app_manage].[ChannelId], [app_manage].[Appid], [app_manage].[Appname], [app_manage].[CallbackUrl], [app_manage].[os], [app_manage].[lable], [app_manage].[mix], [app_manage].[app_parameter], [app_manage].[del] FROM [app_manage] WHERE [app_manage].[GameTypeno] = %s' - PARAMS = (50,); args=(50,)
+2019-03-01 16:22:29,945 [Thread-3:7136] [django.server:154] [basehttp:log_message] [INFO]- "GET /app_managements/ HTTP/1.1" 200 3066
+2019-03-01 16:22:31,793 [Thread-3:7136] [django.db.backends:111] [utils:execute] [DEBUG]- (0.249) QUERY = "SELECT * FROM ServerManagement.dbo.[GetServerTableTest] (50, 12) WHERE appid='xjcs.com.nb'" - PARAMS = (); args=None
+2019-03-01 16:22:31,795 [Thread-3:7136] [django:279] [views:get] [INFO]- 获取服务器管理列表成功
+2019-03-01 16:22:31,797 [Thread-3:7136] [django.server:154] [basehttp:log_message] [INFO]- "GET /server_managements/?cid=12&appid=xjcs.com.nb HTTP/1.1" 200 1763
+2019-03-01 16:23:04,162 [Thread-3:7136] [django:251] [views:get] [INFO]- 获取应用渠道列表
+2019-03-01 16:23:04,169 [Thread-3:7136] [django.db.backends:111] [utils:execute] [DEBUG]- (0.000) QUERY = 'SELECT [App_Channel_list].[CID], [App_Channel_list].[CName], [App_Channel_list].[CInfo], [App_Channel_list].[PID], [App_Channel_list].[GID], [App_Channel_list].[PCID] FROM [App_Channel_list] WHERE [App_Channel_list].[GID] = %s' - PARAMS = (50,); args=(50,)
+2019-03-01 16:23:04,172 [Thread-3:7136] [django.server:154] [basehttp:log_message] [INFO]- "GET /app_channels/ HTTP/1.1" 200 82
+2019-03-01 16:23:05,458 [Thread-3:7136] [django:295] [views:get] [INFO]- 获取应用服务器渠道列表
+2019-03-01 16:23:05,467 [Thread-3:7136] [django.db.backends:111] [utils:execute] [DEBUG]- (0.002) QUERY = 'SELECT [app_manage].[id], [app_manage].[GameTypeno], [app_manage].[GameType], [app_manage].[Ptid], [app_manage].[ChannelId], [app_manage].[Appid], [app_manage].[Appname], [app_manage].[CallbackUrl], [app_manage].[os], [app_manage].[lable], [app_manage].[mix], [app_manage].[app_parameter], [app_manage].[del] FROM [app_manage] WHERE [app_manage].[GameTypeno] = %s' - PARAMS = (50,); args=(50,)
+2019-03-01 16:23:05,498 [Thread-3:7136] [django.server:154] [basehttp:log_message] [INFO]- "GET /app_managements/ HTTP/1.1" 200 3066
+2019-03-01 16:23:06,850 [Thread-3:7136] [django.db.backends:111] [utils:execute] [DEBUG]- (0.210) QUERY = "SELECT * FROM ServerManagement.dbo.[GetServerTableTest] (50, 12) WHERE appid='xjcs.com.nb'" - PARAMS = (); args=None
+2019-03-01 16:23:06,852 [Thread-3:7136] [django:279] [views:get] [INFO]- 获取服务器管理列表成功
+2019-03-01 16:23:06,855 [Thread-3:7136] [django.server:154] [basehttp:log_message] [INFO]- "GET /server_managements/?cid=12&appid=xjcs.com.nb HTTP/1.1" 200 1763
+2019-03-01 16:24:56,485 [Thread-3:7136] [django:251] [views:get] [INFO]- 获取应用渠道列表
+2019-03-01 16:24:56,498 [Thread-3:7136] [django.db.backends:111] [utils:execute] [DEBUG]- (0.000) QUERY = 'SELECT [App_Channel_list].[CID], [App_Channel_list].[CName], [App_Channel_list].[CInfo], [App_Channel_list].[PID], [App_Channel_list].[GID], [App_Channel_list].[PCID] FROM [App_Channel_list] WHERE [App_Channel_list].[GID] = %s' - PARAMS = (50,); args=(50,)
+2019-03-01 16:24:56,505 [Thread-3:7136] [django.server:154] [basehttp:log_message] [INFO]- "GET /app_channels/ HTTP/1.1" 200 82
+2019-03-01 16:24:58,308 [Thread-3:7136] [django:295] [views:get] [INFO]- 获取应用服务器渠道列表
+2019-03-01 16:24:58,318 [Thread-3:7136] [django.db.backends:111] [utils:execute] [DEBUG]- (0.000) QUERY = 'SELECT [app_manage].[id], [app_manage].[GameTypeno], [app_manage].[GameType], [app_manage].[Ptid], [app_manage].[ChannelId], [app_manage].[Appid], [app_manage].[Appname], [app_manage].[CallbackUrl], [app_manage].[os], [app_manage].[lable], [app_manage].[mix], [app_manage].[app_parameter], [app_manage].[del] FROM [app_manage] WHERE [app_manage].[GameTypeno] = %s' - PARAMS = (50,); args=(50,)
+2019-03-01 16:24:58,345 [Thread-3:7136] [django.server:154] [basehttp:log_message] [INFO]- "GET /app_managements/ HTTP/1.1" 200 3066
+2019-03-01 16:25:00,152 [Thread-3:7136] [django.db.backends:111] [utils:execute] [DEBUG]- (0.221) QUERY = "SELECT * FROM ServerManagement.dbo.[GetServerTableTest] (50, 12) WHERE appid='xjcs.com.nb'" - PARAMS = (); args=None
+2019-03-01 16:25:00,154 [Thread-3:7136] [django:279] [views:get] [INFO]- 获取服务器管理列表成功
+2019-03-01 16:25:00,156 [Thread-3:7136] [django.server:154] [basehttp:log_message] [INFO]- "GET /server_managements/?cid=12&appid=xjcs.com.nb HTTP/1.1" 200 1763
+2019-03-01 16:25:52,955 [Thread-3:7136] [django.server:154] [basehttp:log_message] [INFO]- "OPTIONS /app_channels/ HTTP/1.1" 200 0
+2019-03-01 16:25:53,297 [Thread-3:7136] [django:251] [views:get] [INFO]- 获取应用渠道列表
+2019-03-01 16:25:53,312 [Thread-3:7136] [django.db.backends:111] [utils:execute] [DEBUG]- (0.001) QUERY = 'SELECT [App_Channel_list].[CID], [App_Channel_list].[CName], [App_Channel_list].[CInfo], [App_Channel_list].[PID], [App_Channel_list].[GID], [App_Channel_list].[PCID] FROM [App_Channel_list] WHERE [App_Channel_list].[GID] = %s' - PARAMS = (50,); args=(50,)
+2019-03-01 16:25:53,319 [Thread-3:7136] [django.server:154] [basehttp:log_message] [INFO]- "GET /app_channels/ HTTP/1.1" 200 82
+2019-03-01 16:25:54,330 [Thread-3:7136] [django:295] [views:get] [INFO]- 获取应用服务器渠道列表
+2019-03-01 16:25:54,337 [Thread-3:7136] [django.db.backends:111] [utils:execute] [DEBUG]- (0.000) QUERY = 'SELECT [app_manage].[id], [app_manage].[GameTypeno], [app_manage].[GameType], [app_manage].[Ptid], [app_manage].[ChannelId], [app_manage].[Appid], [app_manage].[Appname], [app_manage].[CallbackUrl], [app_manage].[os], [app_manage].[lable], [app_manage].[mix], [app_manage].[app_parameter], [app_manage].[del] FROM [app_manage] WHERE [app_manage].[GameTypeno] = %s' - PARAMS = (50,); args=(50,)
+2019-03-01 16:25:54,348 [Thread-3:7136] [django.server:154] [basehttp:log_message] [INFO]- "GET /app_managements/ HTTP/1.1" 200 3066
+2019-03-01 16:25:56,151 [Thread-3:7136] [django.db.backends:111] [utils:execute] [DEBUG]- (0.223) QUERY = "SELECT * FROM ServerManagement.dbo.[GetServerTableTest] (50, 12) WHERE appid='xjcs.com.nb'" - PARAMS = (); args=None
+2019-03-01 16:25:56,153 [Thread-3:7136] [django:279] [views:get] [INFO]- 获取服务器管理列表成功
+2019-03-01 16:25:56,156 [Thread-3:7136] [django.server:154] [basehttp:log_message] [INFO]- "GET /server_managements/?cid=12&appid=xjcs.com.nb HTTP/1.1" 200 1763
+2019-03-01 16:28:06,487 [Thread-3:7136] [django:251] [views:get] [INFO]- 获取应用渠道列表
+2019-03-01 16:28:06,542 [Thread-3:7136] [django.db.backends:111] [utils:execute] [DEBUG]- (0.001) QUERY = 'SELECT [App_Channel_list].[CID], [App_Channel_list].[CName], [App_Channel_list].[CInfo], [App_Channel_list].[PID], [App_Channel_list].[GID], [App_Channel_list].[PCID] FROM [App_Channel_list] WHERE [App_Channel_list].[GID] = %s' - PARAMS = (50,); args=(50,)
+2019-03-01 16:28:06,548 [Thread-3:7136] [django.server:154] [basehttp:log_message] [INFO]- "GET /app_channels/ HTTP/1.1" 200 82
+2019-03-01 16:28:39,910 [Thread-3:7136] [django:251] [views:get] [INFO]- 获取应用渠道列表
+2019-03-01 16:28:39,923 [Thread-3:7136] [django.db.backends:111] [utils:execute] [DEBUG]- (0.000) QUERY = 'SELECT [App_Channel_list].[CID], [App_Channel_list].[CName], [App_Channel_list].[CInfo], [App_Channel_list].[PID], [App_Channel_list].[GID], [App_Channel_list].[PCID] FROM [App_Channel_list] WHERE [App_Channel_list].[GID] = %s' - PARAMS = (50,); args=(50,)
+2019-03-01 16:28:39,931 [Thread-3:7136] [django.server:154] [basehttp:log_message] [INFO]- "GET /app_channels/ HTTP/1.1" 200 82
+2019-03-01 16:28:41,462 [Thread-3:7136] [django:295] [views:get] [INFO]- 获取应用服务器渠道列表
+2019-03-01 16:28:41,470 [Thread-3:7136] [django.db.backends:111] [utils:execute] [DEBUG]- (0.000) QUERY = 'SELECT [app_manage].[id], [app_manage].[GameTypeno], [app_manage].[GameType], [app_manage].[Ptid], [app_manage].[ChannelId], [app_manage].[Appid], [app_manage].[Appname], [app_manage].[CallbackUrl], [app_manage].[os], [app_manage].[lable], [app_manage].[mix], [app_manage].[app_parameter], [app_manage].[del] FROM [app_manage] WHERE [app_manage].[GameTypeno] = %s' - PARAMS = (50,); args=(50,)
+2019-03-01 16:28:41,482 [Thread-3:7136] [django.server:154] [basehttp:log_message] [INFO]- "GET /app_managements/ HTTP/1.1" 200 3066
+2019-03-01 16:28:42,955 [Thread-3:7136] [django.db.backends:111] [utils:execute] [DEBUG]- (0.250) QUERY = "SELECT * FROM ServerManagement.dbo.[GetServerTableTest] (50, 12) WHERE appid='xjcs.com.nb'" - PARAMS = (); args=None
+2019-03-01 16:28:42,957 [Thread-3:7136] [django:279] [views:get] [INFO]- 获取服务器管理列表成功
+2019-03-01 16:28:42,962 [Thread-3:7136] [django.server:154] [basehttp:log_message] [INFO]- "GET /server_managements/?cid=12&appid=xjcs.com.nb HTTP/1.1" 200 1763
+2019-03-01 16:36:47,356 [Thread-4:12300] [django.server:154] [basehttp:log_message] [INFO]- "OPTIONS /app_channels/ HTTP/1.1" 200 0
+2019-03-01 16:36:47,397 [Thread-4:12300] [django:251] [views:get] [INFO]- 获取应用渠道列表
+2019-03-01 16:36:47,424 [Thread-4:12300] [django.db.backends:111] [utils:execute] [DEBUG]- (0.002) QUERY = 'SELECT [App_Channel_list].[CID], [App_Channel_list].[CName], [App_Channel_list].[CInfo], [App_Channel_list].[PID], [App_Channel_list].[GID], [App_Channel_list].[PCID] FROM [App_Channel_list] WHERE [App_Channel_list].[GID] = %s' - PARAMS = (50,); args=(50,)
+2019-03-01 16:36:47,436 [Thread-4:12300] [django.server:154] [basehttp:log_message] [INFO]- "GET /app_channels/ HTTP/1.1" 200 82
+2019-03-01 16:36:50,190 [Thread-4:12300] [django.server:154] [basehttp:log_message] [INFO]- "OPTIONS /app_managements/ HTTP/1.1" 200 0
+2019-03-01 16:36:50,200 [Thread-4:12300] [django:295] [views:get] [INFO]- 获取应用服务器渠道列表
+2019-03-01 16:36:50,212 [Thread-4:12300] [django.db.backends:111] [utils:execute] [DEBUG]- (0.000) QUERY = 'SELECT [app_manage].[id], [app_manage].[GameTypeno], [app_manage].[GameType], [app_manage].[Ptid], [app_manage].[ChannelId], [app_manage].[Appid], [app_manage].[Appname], [app_manage].[CallbackUrl], [app_manage].[os], [app_manage].[lable], [app_manage].[mix], [app_manage].[app_parameter], [app_manage].[del] FROM [app_manage] WHERE [app_manage].[GameTypeno] = %s' - PARAMS = (50,); args=(50,)
+2019-03-01 16:36:50,221 [Thread-4:12300] [django.server:154] [basehttp:log_message] [INFO]- "GET /app_managements/ HTTP/1.1" 200 3066
+2019-03-01 16:36:51,245 [Thread-4:12300] [django.server:154] [basehttp:log_message] [INFO]- "OPTIONS /server_managements?cid=12&appid=xjcs.com.nb HTTP/1.1" 200 0
+2019-03-01 16:36:51,257 [Thread-4:12300] [django.server:154] [basehttp:log_message] [INFO]- "OPTIONS /server_managements/?cid=12&appid=xjcs.com.nb HTTP/1.1" 200 0
+2019-03-01 16:36:51,519 [Thread-4:12300] [django.db.backends:111] [utils:execute] [DEBUG]- (0.255) QUERY = "SELECT * FROM ServerManagement.dbo.[GetServerTableTest] (50, 12) WHERE appid='xjcs.com.nb'" - PARAMS = (); args=None
+2019-03-01 16:36:51,520 [Thread-4:12300] [django:279] [views:get] [INFO]- 获取服务器管理列表成功
+2019-03-01 16:36:51,523 [Thread-4:12300] [django.server:154] [basehttp:log_message] [INFO]- "GET /server_managements/?cid=12&appid=xjcs.com.nb HTTP/1.1" 200 1763
+2019-03-01 16:43:53,424 [Thread-5:13996] [django:251] [views:get] [INFO]- 获取应用渠道列表
+2019-03-01 16:43:53,435 [Thread-5:13996] [django.db.backends:111] [utils:execute] [DEBUG]- (0.000) QUERY = 'SELECT [App_Channel_list].[CID], [App_Channel_list].[CName], [App_Channel_list].[CInfo], [App_Channel_list].[PID], [App_Channel_list].[GID], [App_Channel_list].[PCID] FROM [App_Channel_list] WHERE [App_Channel_list].[GID] = %s' - PARAMS = (50,); args=(50,)
+2019-03-01 16:43:53,441 [Thread-5:13996] [django.server:154] [basehttp:log_message] [INFO]- "GET /app_channels/ HTTP/1.1" 200 82
+2019-03-01 16:44:05,766 [Thread-5:13996] [django:295] [views:get] [INFO]- 获取应用服务器渠道列表
+2019-03-01 16:44:05,788 [Thread-5:13996] [django.db.backends:111] [utils:execute] [DEBUG]- (0.005) QUERY = 'SELECT [app_manage].[id], [app_manage].[GameTypeno], [app_manage].[GameType], [app_manage].[Ptid], [app_manage].[ChannelId], [app_manage].[Appid], [app_manage].[Appname], [app_manage].[CallbackUrl], [app_manage].[os], [app_manage].[lable], [app_manage].[mix], [app_manage].[app_parameter], [app_manage].[del] FROM [app_manage] WHERE [app_manage].[GameTypeno] = %s' - PARAMS = (50,); args=(50,)
+2019-03-01 16:44:05,801 [Thread-5:13996] [django.server:154] [basehttp:log_message] [INFO]- "GET /app_managements/ HTTP/1.1" 200 3066
+2019-03-01 16:44:05,959 [Thread-5:13996] [django:251] [views:get] [INFO]- 获取应用渠道列表
+2019-03-01 16:44:05,980 [Thread-5:13996] [django.db.backends:111] [utils:execute] [DEBUG]- (0.001) QUERY = 'SELECT [App_Channel_list].[CID], [App_Channel_list].[CName], [App_Channel_list].[CInfo], [App_Channel_list].[PID], [App_Channel_list].[GID], [App_Channel_list].[PCID] FROM [App_Channel_list] WHERE [App_Channel_list].[GID] = %s' - PARAMS = (50,); args=(50,)
+2019-03-01 16:44:06,073 [Thread-5:13996] [django.server:154] [basehttp:log_message] [INFO]- "GET /app_channels/ HTTP/1.1" 200 82
+2019-03-01 16:44:08,873 [Thread-5:13996] [django:251] [views:get] [INFO]- 获取应用渠道列表
+2019-03-01 16:44:08,876 [Thread-5:13996] [django.db.backends:111] [utils:execute] [DEBUG]- (0.001) QUERY = 'SELECT [App_Channel_list].[CID], [App_Channel_list].[CName], [App_Channel_list].[CInfo], [App_Channel_list].[PID], [App_Channel_list].[GID], [App_Channel_list].[PCID] FROM [App_Channel_list] WHERE [App_Channel_list].[GID] = %s' - PARAMS = (50,); args=(50,)
+2019-03-01 16:44:08,889 [Thread-5:13996] [django.server:154] [basehttp:log_message] [INFO]- "GET /app_channels/ HTTP/1.1" 200 82
+2019-03-01 16:44:10,832 [Thread-5:13996] [django:295] [views:get] [INFO]- 获取应用服务器渠道列表
+2019-03-01 16:44:10,839 [Thread-5:13996] [django.db.backends:111] [utils:execute] [DEBUG]- (0.001) QUERY = 'SELECT [app_manage].[id], [app_manage].[GameTypeno], [app_manage].[GameType], [app_manage].[Ptid], [app_manage].[ChannelId], [app_manage].[Appid], [app_manage].[Appname], [app_manage].[CallbackUrl], [app_manage].[os], [app_manage].[lable], [app_manage].[mix], [app_manage].[app_parameter], [app_manage].[del] FROM [app_manage] WHERE [app_manage].[GameTypeno] = %s' - PARAMS = (50,); args=(50,)
+2019-03-01 16:44:10,852 [Thread-5:13996] [django.server:154] [basehttp:log_message] [INFO]- "GET /app_managements/ HTTP/1.1" 200 3066
+2019-03-01 16:44:12,421 [Thread-5:13996] [django.db.backends:111] [utils:execute] [DEBUG]- (0.130) QUERY = "SELECT * FROM ServerManagement.dbo.[GetServerTableTest] (50, 12) WHERE appid='xjcs.com.nb'" - PARAMS = (); args=None
+2019-03-01 16:44:12,422 [Thread-5:13996] [django:279] [views:get] [INFO]- 获取服务器管理列表成功
+2019-03-01 16:44:12,424 [Thread-5:13996] [django.server:154] [basehttp:log_message] [INFO]- "GET /server_managements/?cid=12&appid=xjcs.com.nb HTTP/1.1" 200 1763
+2019-03-01 16:45:55,175 [Thread-5:13996] [django:251] [views:get] [INFO]- 获取应用渠道列表
+2019-03-01 16:45:55,187 [Thread-5:13996] [django.db.backends:111] [utils:execute] [DEBUG]- (0.001) QUERY = 'SELECT [App_Channel_list].[CID], [App_Channel_list].[CName], [App_Channel_list].[CInfo], [App_Channel_list].[PID], [App_Channel_list].[GID], [App_Channel_list].[PCID] FROM [App_Channel_list] WHERE [App_Channel_list].[GID] = %s' - PARAMS = (50,); args=(50,)
+2019-03-01 16:45:55,196 [Thread-5:13996] [django.server:154] [basehttp:log_message] [INFO]- "GET /app_channels/ HTTP/1.1" 200 82
+2019-03-01 16:45:57,084 [Thread-5:13996] [django:295] [views:get] [INFO]- 获取应用服务器渠道列表
+2019-03-01 16:45:57,094 [Thread-5:13996] [django.db.backends:111] [utils:execute] [DEBUG]- (0.000) QUERY = 'SELECT [app_manage].[id], [app_manage].[GameTypeno], [app_manage].[GameType], [app_manage].[Ptid], [app_manage].[ChannelId], [app_manage].[Appid], [app_manage].[Appname], [app_manage].[CallbackUrl], [app_manage].[os], [app_manage].[lable], [app_manage].[mix], [app_manage].[app_parameter], [app_manage].[del] FROM [app_manage] WHERE [app_manage].[GameTypeno] = %s' - PARAMS = (50,); args=(50,)
+2019-03-01 16:45:57,107 [Thread-5:13996] [django.server:154] [basehttp:log_message] [INFO]- "GET /app_managements/ HTTP/1.1" 200 3066
+2019-03-01 16:45:58,365 [Thread-5:13996] [django.db.backends:111] [utils:execute] [DEBUG]- (0.138) QUERY = "SELECT * FROM ServerManagement.dbo.[GetServerTableTest] (50, 12) WHERE appid='xjcs.com.nb'" - PARAMS = (); args=None
+2019-03-01 16:45:58,366 [Thread-5:13996] [django:279] [views:get] [INFO]- 获取服务器管理列表成功
+2019-03-01 16:45:58,368 [Thread-5:13996] [django.server:154] [basehttp:log_message] [INFO]- "GET /server_managements/?cid=12&appid=xjcs.com.nb HTTP/1.1" 200 1763
+2019-03-01 16:47:24,028 [Thread-5:13996] [django.server:154] [basehttp:log_message] [INFO]- "OPTIONS /app_channels/ HTTP/1.1" 200 0
+2019-03-01 16:47:24,346 [Thread-5:13996] [django:251] [views:get] [INFO]- 获取应用渠道列表
+2019-03-01 16:47:24,372 [Thread-5:13996] [django.db.backends:111] [utils:execute] [DEBUG]- (0.000) QUERY = 'SELECT [App_Channel_list].[CID], [App_Channel_list].[CName], [App_Channel_list].[CInfo], [App_Channel_list].[PID], [App_Channel_list].[GID], [App_Channel_list].[PCID] FROM [App_Channel_list] WHERE [App_Channel_list].[GID] = %s' - PARAMS = (50,); args=(50,)
+2019-03-01 16:47:24,386 [Thread-5:13996] [django.server:154] [basehttp:log_message] [INFO]- "GET /app_channels/ HTTP/1.1" 200 82
+2019-03-01 16:47:27,313 [Thread-5:13996] [django.server:154] [basehttp:log_message] [INFO]- "OPTIONS /app_managements/ HTTP/1.1" 200 0
+2019-03-01 16:47:27,327 [Thread-5:13996] [django:295] [views:get] [INFO]- 获取应用服务器渠道列表
+2019-03-01 16:47:27,337 [Thread-5:13996] [django.db.backends:111] [utils:execute] [DEBUG]- (0.001) QUERY = 'SELECT [app_manage].[id], [app_manage].[GameTypeno], [app_manage].[GameType], [app_manage].[Ptid], [app_manage].[ChannelId], [app_manage].[Appid], [app_manage].[Appname], [app_manage].[CallbackUrl], [app_manage].[os], [app_manage].[lable], [app_manage].[mix], [app_manage].[app_parameter], [app_manage].[del] FROM [app_manage] WHERE [app_manage].[GameTypeno] = %s' - PARAMS = (50,); args=(50,)
+2019-03-01 16:47:27,348 [Thread-5:13996] [django.server:154] [basehttp:log_message] [INFO]- "GET /app_managements/ HTTP/1.1" 200 3066
+2019-03-01 16:47:28,406 [Thread-5:13996] [django.server:154] [basehttp:log_message] [INFO]- "OPTIONS /server_managements?cid=12&appid=xjcs.com.nb HTTP/1.1" 200 0
+2019-03-01 16:47:28,420 [Thread-5:13996] [django.server:154] [basehttp:log_message] [INFO]- "OPTIONS /server_managements/?cid=12&appid=xjcs.com.nb HTTP/1.1" 200 0
+2019-03-01 16:47:28,596 [Thread-5:13996] [django.db.backends:111] [utils:execute] [DEBUG]- (0.148) QUERY = "SELECT * FROM ServerManagement.dbo.[GetServerTableTest] (50, 12) WHERE appid='xjcs.com.nb'" - PARAMS = (); args=None
+2019-03-01 16:47:28,597 [Thread-5:13996] [django:279] [views:get] [INFO]- 获取服务器管理列表成功
+2019-03-01 16:47:28,600 [Thread-5:13996] [django.server:154] [basehttp:log_message] [INFO]- "GET /server_managements/?cid=12&appid=xjcs.com.nb HTTP/1.1" 200 1763
+2019-03-01 16:47:39,180 [Thread-5:13996] [django:251] [views:get] [INFO]- 获取应用渠道列表
+2019-03-01 16:47:39,183 [Thread-5:13996] [django.db.backends:111] [utils:execute] [DEBUG]- (0.000) QUERY = 'SELECT [App_Channel_list].[CID], [App_Channel_list].[CName], [App_Channel_list].[CInfo], [App_Channel_list].[PID], [App_Channel_list].[GID], [App_Channel_list].[PCID] FROM [App_Channel_list] WHERE [App_Channel_list].[GID] = %s' - PARAMS = (50,); args=(50,)
+2019-03-01 16:47:39,188 [Thread-5:13996] [django.server:154] [basehttp:log_message] [INFO]- "GET /app_channels/ HTTP/1.1" 200 82
+2019-03-01 16:47:43,340 [Thread-5:13996] [django:295] [views:get] [INFO]- 获取应用服务器渠道列表
+2019-03-01 16:47:43,344 [Thread-5:13996] [django.db.backends:111] [utils:execute] [DEBUG]- (0.001) QUERY = 'SELECT [app_manage].[id], [app_manage].[GameTypeno], [app_manage].[GameType], [app_manage].[Ptid], [app_manage].[ChannelId], [app_manage].[Appid], [app_manage].[Appname], [app_manage].[CallbackUrl], [app_manage].[os], [app_manage].[lable], [app_manage].[mix], [app_manage].[app_parameter], [app_manage].[del] FROM [app_manage] WHERE [app_manage].[GameTypeno] = %s' - PARAMS = (50,); args=(50,)
+2019-03-01 16:47:43,355 [Thread-5:13996] [django.server:154] [basehttp:log_message] [INFO]- "GET /app_managements/ HTTP/1.1" 200 3066
+2019-03-01 16:47:44,657 [Thread-5:13996] [django.db.backends:111] [utils:execute] [DEBUG]- (0.225) QUERY = "SELECT * FROM ServerManagement.dbo.[GetServerTableTest] (50, 12) WHERE appid='xjcs.com.nb'" - PARAMS = (); args=None
+2019-03-01 16:47:44,660 [Thread-5:13996] [django:279] [views:get] [INFO]- 获取服务器管理列表成功
+2019-03-01 16:47:44,665 [Thread-5:13996] [django.server:154] [basehttp:log_message] [INFO]- "GET /server_managements/?cid=12&appid=xjcs.com.nb HTTP/1.1" 200 1763
+2019-03-01 16:52:43,041 [Thread-5:13996] [django:251] [views:get] [INFO]- 获取应用渠道列表
+2019-03-01 16:52:43,051 [Thread-5:13996] [django.db.backends:111] [utils:execute] [DEBUG]- (0.000) QUERY = 'SELECT [App_Channel_list].[CID], [App_Channel_list].[CName], [App_Channel_list].[CInfo], [App_Channel_list].[PID], [App_Channel_list].[GID], [App_Channel_list].[PCID] FROM [App_Channel_list] WHERE [App_Channel_list].[GID] = %s' - PARAMS = (50,); args=(50,)
+2019-03-01 16:52:43,055 [Thread-5:13996] [django.server:154] [basehttp:log_message] [INFO]- "GET /app_channels/ HTTP/1.1" 200 82
+2019-03-01 16:52:44,645 [Thread-5:13996] [django:295] [views:get] [INFO]- 获取应用服务器渠道列表
+2019-03-01 16:52:44,663 [Thread-5:13996] [django.db.backends:111] [utils:execute] [DEBUG]- (0.001) QUERY = 'SELECT [app_manage].[id], [app_manage].[GameTypeno], [app_manage].[GameType], [app_manage].[Ptid], [app_manage].[ChannelId], [app_manage].[Appid], [app_manage].[Appname], [app_manage].[CallbackUrl], [app_manage].[os], [app_manage].[lable], [app_manage].[mix], [app_manage].[app_parameter], [app_manage].[del] FROM [app_manage] WHERE [app_manage].[GameTypeno] = %s' - PARAMS = (50,); args=(50,)
+2019-03-01 16:52:44,681 [Thread-5:13996] [django.server:154] [basehttp:log_message] [INFO]- "GET /app_managements/ HTTP/1.1" 200 3066
+2019-03-01 16:52:45,826 [Thread-5:13996] [django.db.backends:111] [utils:execute] [DEBUG]- (0.209) QUERY = "SELECT * FROM ServerManagement.dbo.[GetServerTableTest] (50, 12) WHERE appid='xjcs.com.nb'" - PARAMS = (); args=None
+2019-03-01 16:52:45,828 [Thread-5:13996] [django:279] [views:get] [INFO]- 获取服务器管理列表成功
+2019-03-01 16:52:45,830 [Thread-5:13996] [django.server:154] [basehttp:log_message] [INFO]- "GET /server_managements/?cid=12&appid=xjcs.com.nb HTTP/1.1" 200 1763
+2019-03-01 16:54:18,656 [Thread-5:13996] [django:251] [views:get] [INFO]- 获取应用渠道列表
+2019-03-01 16:54:18,699 [Thread-5:13996] [django.db.backends:111] [utils:execute] [DEBUG]- (0.010) QUERY = 'SELECT [App_Channel_list].[CID], [App_Channel_list].[CName], [App_Channel_list].[CInfo], [App_Channel_list].[PID], [App_Channel_list].[GID], [App_Channel_list].[PCID] FROM [App_Channel_list] WHERE [App_Channel_list].[GID] = %s' - PARAMS = (50,); args=(50,)
+2019-03-01 16:54:18,720 [Thread-5:13996] [django.server:154] [basehttp:log_message] [INFO]- "GET /app_channels/ HTTP/1.1" 200 82
+2019-03-01 16:54:20,250 [Thread-5:13996] [django:295] [views:get] [INFO]- 获取应用服务器渠道列表
+2019-03-01 16:54:20,264 [Thread-5:13996] [django.db.backends:111] [utils:execute] [DEBUG]- (0.000) QUERY = 'SELECT [app_manage].[id], [app_manage].[GameTypeno], [app_manage].[GameType], [app_manage].[Ptid], [app_manage].[ChannelId], [app_manage].[Appid], [app_manage].[Appname], [app_manage].[CallbackUrl], [app_manage].[os], [app_manage].[lable], [app_manage].[mix], [app_manage].[app_parameter], [app_manage].[del] FROM [app_manage] WHERE [app_manage].[GameTypeno] = %s' - PARAMS = (50,); args=(50,)
+2019-03-01 16:54:20,272 [Thread-5:13996] [django.server:154] [basehttp:log_message] [INFO]- "GET /app_managements/ HTTP/1.1" 200 3066
+2019-03-01 16:54:21,726 [Thread-5:13996] [django.db.backends:111] [utils:execute] [DEBUG]- (0.146) QUERY = "SELECT * FROM ServerManagement.dbo.[GetServerTableTest] (50, 12) WHERE appid='xjcs.com.nb'" - PARAMS = (); args=None
+2019-03-01 16:54:21,728 [Thread-5:13996] [django:279] [views:get] [INFO]- 获取服务器管理列表成功
+2019-03-01 16:54:21,731 [Thread-5:13996] [django.server:154] [basehttp:log_message] [INFO]- "GET /server_managements/?cid=12&appid=xjcs.com.nb HTTP/1.1" 200 1763
+2019-03-01 16:56:29,434 [Thread-5:13996] [django:251] [views:get] [INFO]- 获取应用渠道列表
+2019-03-01 16:56:29,449 [Thread-5:13996] [django.db.backends:111] [utils:execute] [DEBUG]- (0.000) QUERY = 'SELECT [App_Channel_list].[CID], [App_Channel_list].[CName], [App_Channel_list].[CInfo], [App_Channel_list].[PID], [App_Channel_list].[GID], [App_Channel_list].[PCID] FROM [App_Channel_list] WHERE [App_Channel_list].[GID] = %s' - PARAMS = (50,); args=(50,)
+2019-03-01 16:56:29,456 [Thread-5:13996] [django.server:154] [basehttp:log_message] [INFO]- "GET /app_channels/ HTTP/1.1" 200 82
+2019-03-01 16:56:30,986 [Thread-5:13996] [django:295] [views:get] [INFO]- 获取应用服务器渠道列表
+2019-03-01 16:56:30,996 [Thread-5:13996] [django.db.backends:111] [utils:execute] [DEBUG]- (0.000) QUERY = 'SELECT [app_manage].[id], [app_manage].[GameTypeno], [app_manage].[GameType], [app_manage].[Ptid], [app_manage].[ChannelId], [app_manage].[Appid], [app_manage].[Appname], [app_manage].[CallbackUrl], [app_manage].[os], [app_manage].[lable], [app_manage].[mix], [app_manage].[app_parameter], [app_manage].[del] FROM [app_manage] WHERE [app_manage].[GameTypeno] = %s' - PARAMS = (50,); args=(50,)
+2019-03-01 16:56:31,006 [Thread-5:13996] [django.server:154] [basehttp:log_message] [INFO]- "GET /app_managements/ HTTP/1.1" 200 3066
+2019-03-01 16:56:32,406 [Thread-5:13996] [django.db.backends:111] [utils:execute] [DEBUG]- (0.144) QUERY = "SELECT * FROM ServerManagement.dbo.[GetServerTableTest] (50, 12) WHERE appid='xjcs.com.nb'" - PARAMS = (); args=None
+2019-03-01 16:56:32,407 [Thread-5:13996] [django:279] [views:get] [INFO]- 获取服务器管理列表成功
+2019-03-01 16:56:32,409 [Thread-5:13996] [django.server:154] [basehttp:log_message] [INFO]- "GET /server_managements/?cid=12&appid=xjcs.com.nb HTTP/1.1" 200 1763
+2019-03-01 16:58:02,506 [Thread-5:13996] [django.server:154] [basehttp:log_message] [INFO]- "OPTIONS /app_channels/ HTTP/1.1" 200 0
+2019-03-01 16:58:02,886 [Thread-5:13996] [django:251] [views:get] [INFO]- 获取应用渠道列表
+2019-03-01 16:58:02,933 [Thread-5:13996] [django.db.backends:111] [utils:execute] [DEBUG]- (0.000) QUERY = 'SELECT [App_Channel_list].[CID], [App_Channel_list].[CName], [App_Channel_list].[CInfo], [App_Channel_list].[PID], [App_Channel_list].[GID], [App_Channel_list].[PCID] FROM [App_Channel_list] WHERE [App_Channel_list].[GID] = %s' - PARAMS = (50,); args=(50,)
+2019-03-01 16:58:02,941 [Thread-5:13996] [django.server:154] [basehttp:log_message] [INFO]- "GET /app_channels/ HTTP/1.1" 200 82
+2019-03-01 16:58:04,367 [Thread-5:13996] [django.server:154] [basehttp:log_message] [INFO]- "OPTIONS /app_managements/ HTTP/1.1" 200 0
+2019-03-01 16:58:04,375 [Thread-5:13996] [django:295] [views:get] [INFO]- 获取应用服务器渠道列表
+2019-03-01 16:58:04,386 [Thread-5:13996] [django.db.backends:111] [utils:execute] [DEBUG]- (0.001) QUERY = 'SELECT [app_manage].[id], [app_manage].[GameTypeno], [app_manage].[GameType], [app_manage].[Ptid], [app_manage].[ChannelId], [app_manage].[Appid], [app_manage].[Appname], [app_manage].[CallbackUrl], [app_manage].[os], [app_manage].[lable], [app_manage].[mix], [app_manage].[app_parameter], [app_manage].[del] FROM [app_manage] WHERE [app_manage].[GameTypeno] = %s' - PARAMS = (50,); args=(50,)
+2019-03-01 16:58:04,398 [Thread-5:13996] [django.server:154] [basehttp:log_message] [INFO]- "GET /app_managements/ HTTP/1.1" 200 3066
+2019-03-01 16:58:05,479 [Thread-5:13996] [django.server:154] [basehttp:log_message] [INFO]- "OPTIONS /server_managements?cid=12&appid=xjcs.com.nb HTTP/1.1" 200 0
+2019-03-01 16:58:05,488 [Thread-5:13996] [django.server:154] [basehttp:log_message] [INFO]- "OPTIONS /server_managements/?cid=12&appid=xjcs.com.nb HTTP/1.1" 200 0
+2019-03-01 16:58:05,744 [Thread-5:13996] [django.db.backends:111] [utils:execute] [DEBUG]- (0.246) QUERY = "SELECT * FROM ServerManagement.dbo.[GetServerTableTest] (50, 12) WHERE appid='xjcs.com.nb'" - PARAMS = (); args=None
+2019-03-01 16:58:05,746 [Thread-5:13996] [django:279] [views:get] [INFO]- 获取服务器管理列表成功
+2019-03-01 16:58:05,748 [Thread-5:13996] [django.server:154] [basehttp:log_message] [INFO]- "GET /server_managements/?cid=12&appid=xjcs.com.nb HTTP/1.1" 200 1763
+2019-03-01 16:58:29,169 [Thread-5:13996] [django:251] [views:get] [INFO]- 获取应用渠道列表
+2019-03-01 16:58:29,173 [Thread-5:13996] [django.db.backends:111] [utils:execute] [DEBUG]- (0.000) QUERY = 'SELECT [App_Channel_list].[CID], [App_Channel_list].[CName], [App_Channel_list].[CInfo], [App_Channel_list].[PID], [App_Channel_list].[GID], [App_Channel_list].[PCID] FROM [App_Channel_list] WHERE [App_Channel_list].[GID] = %s' - PARAMS = (50,); args=(50,)
+2019-03-01 16:58:29,181 [Thread-5:13996] [django.server:154] [basehttp:log_message] [INFO]- "GET /app_channels/ HTTP/1.1" 200 82
+2019-03-01 16:58:30,833 [Thread-5:13996] [django:295] [views:get] [INFO]- 获取应用服务器渠道列表
+2019-03-01 16:58:30,841 [Thread-5:13996] [django.db.backends:111] [utils:execute] [DEBUG]- (0.000) QUERY = 'SELECT [app_manage].[id], [app_manage].[GameTypeno], [app_manage].[GameType], [app_manage].[Ptid], [app_manage].[ChannelId], [app_manage].[Appid], [app_manage].[Appname], [app_manage].[CallbackUrl], [app_manage].[os], [app_manage].[lable], [app_manage].[mix], [app_manage].[app_parameter], [app_manage].[del] FROM [app_manage] WHERE [app_manage].[GameTypeno] = %s' - PARAMS = (50,); args=(50,)
+2019-03-01 16:58:30,874 [Thread-5:13996] [django.server:154] [basehttp:log_message] [INFO]- "GET /app_managements/ HTTP/1.1" 200 3066
+2019-03-01 16:58:32,067 [Thread-5:13996] [django.db.backends:111] [utils:execute] [DEBUG]- (0.221) QUERY = "SELECT * FROM ServerManagement.dbo.[GetServerTableTest] (50, 12) WHERE appid='xjcs.com.nb'" - PARAMS = (); args=None
+2019-03-01 16:58:32,070 [Thread-5:13996] [django:279] [views:get] [INFO]- 获取服务器管理列表成功
+2019-03-01 16:58:32,072 [Thread-5:13996] [django.server:154] [basehttp:log_message] [INFO]- "GET /server_managements/?cid=12&appid=xjcs.com.nb HTTP/1.1" 200 1763
+2019-03-01 16:59:24,434 [Thread-5:13996] [django:251] [views:get] [INFO]- 获取应用渠道列表
+2019-03-01 16:59:24,436 [Thread-5:13996] [django.db.backends:111] [utils:execute] [DEBUG]- (0.000) QUERY = 'SELECT [App_Channel_list].[CID], [App_Channel_list].[CName], [App_Channel_list].[CInfo], [App_Channel_list].[PID], [App_Channel_list].[GID], [App_Channel_list].[PCID] FROM [App_Channel_list] WHERE [App_Channel_list].[GID] = %s' - PARAMS = (50,); args=(50,)
+2019-03-01 16:59:24,447 [Thread-5:13996] [django.server:154] [basehttp:log_message] [INFO]- "GET /app_channels/ HTTP/1.1" 200 82
+2019-03-01 16:59:25,869 [Thread-5:13996] [django:295] [views:get] [INFO]- 获取应用服务器渠道列表
+2019-03-01 16:59:25,873 [Thread-5:13996] [django.db.backends:111] [utils:execute] [DEBUG]- (0.000) QUERY = 'SELECT [app_manage].[id], [app_manage].[GameTypeno], [app_manage].[GameType], [app_manage].[Ptid], [app_manage].[ChannelId], [app_manage].[Appid], [app_manage].[Appname], [app_manage].[CallbackUrl], [app_manage].[os], [app_manage].[lable], [app_manage].[mix], [app_manage].[app_parameter], [app_manage].[del] FROM [app_manage] WHERE [app_manage].[GameTypeno] = %s' - PARAMS = (50,); args=(50,)
+2019-03-01 16:59:25,883 [Thread-5:13996] [django.server:154] [basehttp:log_message] [INFO]- "GET /app_managements/ HTTP/1.1" 200 3066
+2019-03-01 16:59:27,123 [Thread-5:13996] [django.db.backends:111] [utils:execute] [DEBUG]- (0.222) QUERY = "SELECT * FROM ServerManagement.dbo.[GetServerTableTest] (50, 12) WHERE appid='xjcs.com.nb'" - PARAMS = (); args=None
+2019-03-01 16:59:27,125 [Thread-5:13996] [django:279] [views:get] [INFO]- 获取服务器管理列表成功
+2019-03-01 16:59:27,128 [Thread-5:13996] [django.server:154] [basehttp:log_message] [INFO]- "GET /server_managements/?cid=12&appid=xjcs.com.nb HTTP/1.1" 200 1763
+2019-03-01 17:00:54,604 [Thread-5:13996] [django:251] [views:get] [INFO]- 获取应用渠道列表
+2019-03-01 17:00:54,654 [Thread-5:13996] [django.db.backends:111] [utils:execute] [DEBUG]- (0.000) QUERY = 'SELECT [App_Channel_list].[CID], [App_Channel_list].[CName], [App_Channel_list].[CInfo], [App_Channel_list].[PID], [App_Channel_list].[GID], [App_Channel_list].[PCID] FROM [App_Channel_list] WHERE [App_Channel_list].[GID] = %s' - PARAMS = (50,); args=(50,)
+2019-03-01 17:00:54,659 [Thread-5:13996] [django.server:154] [basehttp:log_message] [INFO]- "GET /app_channels/ HTTP/1.1" 200 82
+2019-03-01 17:01:08,107 [Thread-5:13996] [django:295] [views:get] [INFO]- 获取应用服务器渠道列表
+2019-03-01 17:01:08,121 [Thread-5:13996] [django.db.backends:111] [utils:execute] [DEBUG]- (0.001) QUERY = 'SELECT [app_manage].[id], [app_manage].[GameTypeno], [app_manage].[GameType], [app_manage].[Ptid], [app_manage].[ChannelId], [app_manage].[Appid], [app_manage].[Appname], [app_manage].[CallbackUrl], [app_manage].[os], [app_manage].[lable], [app_manage].[mix], [app_manage].[app_parameter], [app_manage].[del] FROM [app_manage] WHERE [app_manage].[GameTypeno] = %s' - PARAMS = (50,); args=(50,)
+2019-03-01 17:01:08,135 [Thread-5:13996] [django.server:154] [basehttp:log_message] [INFO]- "GET /app_managements/ HTTP/1.1" 200 3066
+2019-03-01 17:02:04,306 [Thread-5:13996] [django:251] [views:get] [INFO]- 获取应用渠道列表
+2019-03-01 17:02:04,317 [Thread-5:13996] [django.db.backends:111] [utils:execute] [DEBUG]- (0.005) QUERY = 'SELECT [App_Channel_list].[CID], [App_Channel_list].[CName], [App_Channel_list].[CInfo], [App_Channel_list].[PID], [App_Channel_list].[GID], [App_Channel_list].[PCID] FROM [App_Channel_list] WHERE [App_Channel_list].[GID] = %s' - PARAMS = (50,); args=(50,)
+2019-03-01 17:02:04,325 [Thread-5:13996] [django.server:154] [basehttp:log_message] [INFO]- "GET /app_channels/ HTTP/1.1" 200 82
+2019-03-01 17:02:05,622 [Thread-5:13996] [django:295] [views:get] [INFO]- 获取应用服务器渠道列表
+2019-03-01 17:02:05,625 [Thread-5:13996] [django.db.backends:111] [utils:execute] [DEBUG]- (0.001) QUERY = 'SELECT [app_manage].[id], [app_manage].[GameTypeno], [app_manage].[GameType], [app_manage].[Ptid], [app_manage].[ChannelId], [app_manage].[Appid], [app_manage].[Appname], [app_manage].[CallbackUrl], [app_manage].[os], [app_manage].[lable], [app_manage].[mix], [app_manage].[app_parameter], [app_manage].[del] FROM [app_manage] WHERE [app_manage].[GameTypeno] = %s' - PARAMS = (50,); args=(50,)
+2019-03-01 17:02:05,638 [Thread-5:13996] [django.server:154] [basehttp:log_message] [INFO]- "GET /app_managements/ HTTP/1.1" 200 3066
+2019-03-01 17:02:07,152 [Thread-5:13996] [django.db.backends:111] [utils:execute] [DEBUG]- (0.233) QUERY = "SELECT * FROM ServerManagement.dbo.[GetServerTableTest] (50, 12) WHERE appid='xjcs.com.nb'" - PARAMS = (); args=None
+2019-03-01 17:02:07,175 [Thread-5:13996] [django:279] [views:get] [INFO]- 获取服务器管理列表成功
+2019-03-01 17:02:07,179 [Thread-5:13996] [django.server:154] [basehttp:log_message] [INFO]- "GET /server_managements/?cid=12&appid=xjcs.com.nb HTTP/1.1" 200 1763
+2019-03-01 17:04:58,027 [Thread-5:13996] [django:251] [views:get] [INFO]- 获取应用渠道列表
+2019-03-01 17:04:58,074 [Thread-5:13996] [django.db.backends:111] [utils:execute] [DEBUG]- (0.000) QUERY = 'SELECT [App_Channel_list].[CID], [App_Channel_list].[CName], [App_Channel_list].[CInfo], [App_Channel_list].[PID], [App_Channel_list].[GID], [App_Channel_list].[PCID] FROM [App_Channel_list] WHERE [App_Channel_list].[GID] = %s' - PARAMS = (50,); args=(50,)
+2019-03-01 17:04:58,078 [Thread-5:13996] [django.server:154] [basehttp:log_message] [INFO]- "GET /app_channels/ HTTP/1.1" 200 82
+2019-03-01 17:05:46,267 [Thread-5:13996] [django:251] [views:get] [INFO]- 获取应用渠道列表
+2019-03-01 17:05:46,273 [Thread-5:13996] [django.db.backends:111] [utils:execute] [DEBUG]- (0.004) QUERY = 'SELECT [App_Channel_list].[CID], [App_Channel_list].[CName], [App_Channel_list].[CInfo], [App_Channel_list].[PID], [App_Channel_list].[GID], [App_Channel_list].[PCID] FROM [App_Channel_list] WHERE [App_Channel_list].[GID] = %s' - PARAMS = (50,); args=(50,)
+2019-03-01 17:05:46,280 [Thread-5:13996] [django.server:154] [basehttp:log_message] [INFO]- "GET /app_channels/ HTTP/1.1" 200 82
+2019-03-01 17:05:48,234 [Thread-5:13996] [django:295] [views:get] [INFO]- 获取应用服务器渠道列表
+2019-03-01 17:05:48,246 [Thread-5:13996] [django.db.backends:111] [utils:execute] [DEBUG]- (0.000) QUERY = 'SELECT [app_manage].[id], [app_manage].[GameTypeno], [app_manage].[GameType], [app_manage].[Ptid], [app_manage].[ChannelId], [app_manage].[Appid], [app_manage].[Appname], [app_manage].[CallbackUrl], [app_manage].[os], [app_manage].[lable], [app_manage].[mix], [app_manage].[app_parameter], [app_manage].[del] FROM [app_manage] WHERE [app_manage].[GameTypeno] = %s' - PARAMS = (50,); args=(50,)
+2019-03-01 17:05:48,261 [Thread-5:13996] [django.server:154] [basehttp:log_message] [INFO]- "GET /app_managements/ HTTP/1.1" 200 3066
+2019-03-01 17:05:50,384 [Thread-5:13996] [django.db.backends:111] [utils:execute] [DEBUG]- (0.220) QUERY = "SELECT * FROM ServerManagement.dbo.[GetServerTableTest] (50, 12) WHERE appid='xjcs.com.nb'" - PARAMS = (); args=None
+2019-03-01 17:05:50,385 [Thread-5:13996] [django:279] [views:get] [INFO]- 获取服务器管理列表成功
+2019-03-01 17:05:50,388 [Thread-5:13996] [django.server:154] [basehttp:log_message] [INFO]- "GET /server_managements/?cid=12&appid=xjcs.com.nb HTTP/1.1" 200 1763
+2019-03-01 17:10:03,174 [Thread-5:13996] [django.server:154] [basehttp:log_message] [INFO]- "OPTIONS /app_channels/ HTTP/1.1" 200 0
+2019-03-01 17:10:03,451 [Thread-5:13996] [django:251] [views:get] [INFO]- 获取应用渠道列表
+2019-03-01 17:10:03,484 [Thread-5:13996] [django.db.backends:111] [utils:execute] [DEBUG]- (0.000) QUERY = 'SELECT [App_Channel_list].[CID], [App_Channel_list].[CName], [App_Channel_list].[CInfo], [App_Channel_list].[PID], [App_Channel_list].[GID], [App_Channel_list].[PCID] FROM [App_Channel_list] WHERE [App_Channel_list].[GID] = %s' - PARAMS = (50,); args=(50,)
+2019-03-01 17:10:03,492 [Thread-5:13996] [django.server:154] [basehttp:log_message] [INFO]- "GET /app_channels/ HTTP/1.1" 200 82
+2019-03-01 17:10:04,501 [Thread-5:13996] [django.server:154] [basehttp:log_message] [INFO]- "OPTIONS /app_managements/ HTTP/1.1" 200 0
+2019-03-01 17:10:04,514 [Thread-5:13996] [django:295] [views:get] [INFO]- 获取应用服务器渠道列表
+2019-03-01 17:10:04,524 [Thread-5:13996] [django.db.backends:111] [utils:execute] [DEBUG]- (0.000) QUERY = 'SELECT [app_manage].[id], [app_manage].[GameTypeno], [app_manage].[GameType], [app_manage].[Ptid], [app_manage].[ChannelId], [app_manage].[Appid], [app_manage].[Appname], [app_manage].[CallbackUrl], [app_manage].[os], [app_manage].[lable], [app_manage].[mix], [app_manage].[app_parameter], [app_manage].[del] FROM [app_manage] WHERE [app_manage].[GameTypeno] = %s' - PARAMS = (50,); args=(50,)
+2019-03-01 17:10:04,539 [Thread-5:13996] [django.server:154] [basehttp:log_message] [INFO]- "GET /app_managements/ HTTP/1.1" 200 3066
+2019-03-01 17:10:05,877 [Thread-5:13996] [django.server:154] [basehttp:log_message] [INFO]- "OPTIONS /server_managements?cid=12&appid=xjcs.com.nb HTTP/1.1" 200 0
+2019-03-01 17:10:05,890 [Thread-5:13996] [django.server:154] [basehttp:log_message] [INFO]- "OPTIONS /server_managements/?cid=12&appid=xjcs.com.nb HTTP/1.1" 200 0
+2019-03-01 17:10:06,142 [Thread-5:13996] [django.db.backends:111] [utils:execute] [DEBUG]- (0.238) QUERY = "SELECT * FROM ServerManagement.dbo.[GetServerTableTest] (50, 12) WHERE appid='xjcs.com.nb'" - PARAMS = (); args=None
+2019-03-01 17:10:06,144 [Thread-5:13996] [django:279] [views:get] [INFO]- 获取服务器管理列表成功
+2019-03-01 17:10:06,172 [Thread-5:13996] [django.server:154] [basehttp:log_message] [INFO]- "GET /server_managements/?cid=12&appid=xjcs.com.nb HTTP/1.1" 200 1763
+2019-03-01 17:11:39,924 [Thread-5:13996] [django:251] [views:get] [INFO]- 获取应用渠道列表
+2019-03-01 17:11:39,936 [Thread-5:13996] [django.db.backends:111] [utils:execute] [DEBUG]- (0.000) QUERY = 'SELECT [App_Channel_list].[CID], [App_Channel_list].[CName], [App_Channel_list].[CInfo], [App_Channel_list].[PID], [App_Channel_list].[GID], [App_Channel_list].[PCID] FROM [App_Channel_list] WHERE [App_Channel_list].[GID] = %s' - PARAMS = (50,); args=(50,)
+2019-03-01 17:11:39,943 [Thread-5:13996] [django.server:154] [basehttp:log_message] [INFO]- "GET /app_channels/ HTTP/1.1" 200 82
+2019-03-01 17:11:41,503 [Thread-5:13996] [django:295] [views:get] [INFO]- 获取应用服务器渠道列表
+2019-03-01 17:11:41,515 [Thread-5:13996] [django.db.backends:111] [utils:execute] [DEBUG]- (0.001) QUERY = 'SELECT [app_manage].[id], [app_manage].[GameTypeno], [app_manage].[GameType], [app_manage].[Ptid], [app_manage].[ChannelId], [app_manage].[Appid], [app_manage].[Appname], [app_manage].[CallbackUrl], [app_manage].[os], [app_manage].[lable], [app_manage].[mix], [app_manage].[app_parameter], [app_manage].[del] FROM [app_manage] WHERE [app_manage].[GameTypeno] = %s' - PARAMS = (50,); args=(50,)
+2019-03-01 17:11:41,525 [Thread-5:13996] [django.server:154] [basehttp:log_message] [INFO]- "GET /app_managements/ HTTP/1.1" 200 3066
+2019-03-01 17:11:42,821 [Thread-5:13996] [django.db.backends:111] [utils:execute] [DEBUG]- (0.194) QUERY = "SELECT * FROM ServerManagement.dbo.[GetServerTableTest] (50, 12) WHERE appid='xjcs.com.nb'" - PARAMS = (); args=None
+2019-03-01 17:11:42,822 [Thread-5:13996] [django:279] [views:get] [INFO]- 获取服务器管理列表成功
+2019-03-01 17:11:42,824 [Thread-5:13996] [django.server:154] [basehttp:log_message] [INFO]- "GET /server_managements/?cid=12&appid=xjcs.com.nb HTTP/1.1" 200 1763
+2019-03-01 17:11:59,757 [Thread-5:13996] [django:251] [views:get] [INFO]- 获取应用渠道列表
+2019-03-01 17:11:59,767 [Thread-5:13996] [django.db.backends:111] [utils:execute] [DEBUG]- (0.000) QUERY = 'SELECT [App_Channel_list].[CID], [App_Channel_list].[CName], [App_Channel_list].[CInfo], [App_Channel_list].[PID], [App_Channel_list].[GID], [App_Channel_list].[PCID] FROM [App_Channel_list] WHERE [App_Channel_list].[GID] = %s' - PARAMS = (50,); args=(50,)
+2019-03-01 17:11:59,773 [Thread-5:13996] [django.server:154] [basehttp:log_message] [INFO]- "GET /app_channels/ HTTP/1.1" 200 82
+2019-03-01 17:12:01,479 [Thread-5:13996] [django:295] [views:get] [INFO]- 获取应用服务器渠道列表
+2019-03-01 17:12:01,483 [Thread-5:13996] [django.db.backends:111] [utils:execute] [DEBUG]- (0.000) QUERY = 'SELECT [app_manage].[id], [app_manage].[GameTypeno], [app_manage].[GameType], [app_manage].[Ptid], [app_manage].[ChannelId], [app_manage].[Appid], [app_manage].[Appname], [app_manage].[CallbackUrl], [app_manage].[os], [app_manage].[lable], [app_manage].[mix], [app_manage].[app_parameter], [app_manage].[del] FROM [app_manage] WHERE [app_manage].[GameTypeno] = %s' - PARAMS = (50,); args=(50,)
+2019-03-01 17:12:01,493 [Thread-5:13996] [django.server:154] [basehttp:log_message] [INFO]- "GET /app_managements/ HTTP/1.1" 200 3066
+2019-03-01 17:12:03,083 [Thread-5:13996] [django.db.backends:111] [utils:execute] [DEBUG]- (0.179) QUERY = "SELECT * FROM ServerManagement.dbo.[GetServerTableTest] (50, 12) WHERE appid='xjcs.com.nb'" - PARAMS = (); args=None
+2019-03-01 17:12:03,085 [Thread-5:13996] [django:279] [views:get] [INFO]- 获取服务器管理列表成功
+2019-03-01 17:12:03,087 [Thread-5:13996] [django.server:154] [basehttp:log_message] [INFO]- "GET /server_managements/?cid=12&appid=xjcs.com.nb HTTP/1.1" 200 1763
+2019-03-01 17:13:10,489 [Thread-5:13996] [django:251] [views:get] [INFO]- 获取应用渠道列表
+2019-03-01 17:13:10,498 [Thread-5:13996] [django.db.backends:111] [utils:execute] [DEBUG]- (0.000) QUERY = 'SELECT [App_Channel_list].[CID], [App_Channel_list].[CName], [App_Channel_list].[CInfo], [App_Channel_list].[PID], [App_Channel_list].[GID], [App_Channel_list].[PCID] FROM [App_Channel_list] WHERE [App_Channel_list].[GID] = %s' - PARAMS = (50,); args=(50,)
+2019-03-01 17:13:10,504 [Thread-5:13996] [django.server:154] [basehttp:log_message] [INFO]- "GET /app_channels/ HTTP/1.1" 200 82
+2019-03-01 17:13:11,950 [Thread-5:13996] [django:295] [views:get] [INFO]- 获取应用服务器渠道列表
+2019-03-01 17:13:11,962 [Thread-5:13996] [django.db.backends:111] [utils:execute] [DEBUG]- (0.000) QUERY = 'SELECT [app_manage].[id], [app_manage].[GameTypeno], [app_manage].[GameType], [app_manage].[Ptid], [app_manage].[ChannelId], [app_manage].[Appid], [app_manage].[Appname], [app_manage].[CallbackUrl], [app_manage].[os], [app_manage].[lable], [app_manage].[mix], [app_manage].[app_parameter], [app_manage].[del] FROM [app_manage] WHERE [app_manage].[GameTypeno] = %s' - PARAMS = (50,); args=(50,)
+2019-03-01 17:13:11,971 [Thread-5:13996] [django.server:154] [basehttp:log_message] [INFO]- "GET /app_managements/ HTTP/1.1" 200 3066
+2019-03-01 17:13:13,532 [Thread-5:13996] [django.db.backends:111] [utils:execute] [DEBUG]- (0.257) QUERY = "SELECT * FROM ServerManagement.dbo.[GetServerTableTest] (50, 12) WHERE appid='xjcs.com.nb'" - PARAMS = (); args=None
+2019-03-01 17:13:13,535 [Thread-5:13996] [django:279] [views:get] [INFO]- 获取服务器管理列表成功
+2019-03-01 17:13:13,539 [Thread-5:13996] [django.server:154] [basehttp:log_message] [INFO]- "GET /server_managements/?cid=12&appid=xjcs.com.nb HTTP/1.1" 200 1763
+2019-03-01 17:13:49,474 [Thread-5:13996] [django.server:154] [basehttp:log_message] [INFO]- "OPTIONS /delete_open_plan/ HTTP/1.1" 200 0
+2019-03-01 17:13:49,494 [Thread-5:13996] [django.db.backends:111] [utils:execute] [DEBUG]- (0.003) QUERY = 'SELECT [App_Server_Channel].[id], [App_Server_Channel].[GID], [App_Server_Channel].[zoneidx], [App_Server_Channel].[zonename], [App_Server_Channel].[PID], [App_Server_Channel].[CID], [App_Server_Channel].[appid], [App_Server_Channel].[statu], [App_Server_Channel].[server_statu], [App_Server_Channel].[server_suggest], [App_Server_Channel].[is_delete], [App_Server_Channel].[open_type], [App_Server_Channel].[open_type_value] FROM [App_Server_Channel] WHERE [App_Server_Channel].[id] = %s' - PARAMS = (7631,); args=(7631,)
+2019-03-01 17:13:49,514 [Thread-5:13996] [django.db.backends:111] [utils:execute] [DEBUG]- (0.015) QUERY = 'SET NOCOUNT OFF; UPDATE [App_Server_Channel] SET [GID] = %s, [zoneidx] = %s, [zonename] = %s, [PID] = %s, [CID] = %s, [appid] = %s, [statu] = %s, [server_statu] = %s, [server_suggest] = %s, [is_delete] = %s, [open_type] = NULL, [open_type_value] = NULL WHERE [App_Server_Channel].[id] = %s' - PARAMS = (50, 536, '畅梦测试2区', 1, 12, 'xjcs.com.nb', 0, 202, 1, 0, 7631); args=(50, 536, '畅梦测试2区', 1, 12, 'xjcs.com.nb', 0, 202, 1, 0, 7631)
+2019-03-01 17:13:49,519 [Thread-5:13996] [django:176] [views:delete_open_plan] [INFO]- 删除开区计划成功, 服务器id7631
+2019-03-01 17:13:49,520 [Thread-5:13996] [django:183] [views:delete_open_plan] [INFO]- 删除多条开区计划成功
+2019-03-01 17:13:49,522 [Thread-5:13996] [django.server:154] [basehttp:log_message] [INFO]- "POST /delete_open_plan/ HTTP/1.1" 202 32
+2019-03-01 17:15:47,138 [Thread-5:13996] [django:251] [views:get] [INFO]- 获取应用渠道列表
+2019-03-01 17:15:47,148 [Thread-5:13996] [django.db.backends:111] [utils:execute] [DEBUG]- (0.000) QUERY = 'SELECT [App_Channel_list].[CID], [App_Channel_list].[CName], [App_Channel_list].[CInfo], [App_Channel_list].[PID], [App_Channel_list].[GID], [App_Channel_list].[PCID] FROM [App_Channel_list] WHERE [App_Channel_list].[GID] = %s' - PARAMS = (50,); args=(50,)
+2019-03-01 17:15:47,203 [Thread-5:13996] [django.server:154] [basehttp:log_message] [INFO]- "GET /app_channels/ HTTP/1.1" 200 82
+2019-03-01 17:15:48,679 [Thread-5:13996] [django:295] [views:get] [INFO]- 获取应用服务器渠道列表
+2019-03-01 17:15:48,700 [Thread-5:13996] [django.db.backends:111] [utils:execute] [DEBUG]- (0.001) QUERY = 'SELECT [app_manage].[id], [app_manage].[GameTypeno], [app_manage].[GameType], [app_manage].[Ptid], [app_manage].[ChannelId], [app_manage].[Appid], [app_manage].[Appname], [app_manage].[CallbackUrl], [app_manage].[os], [app_manage].[lable], [app_manage].[mix], [app_manage].[app_parameter], [app_manage].[del] FROM [app_manage] WHERE [app_manage].[GameTypeno] = %s' - PARAMS = (50,); args=(50,)
+2019-03-01 17:15:48,722 [Thread-5:13996] [django.server:154] [basehttp:log_message] [INFO]- "GET /app_managements/ HTTP/1.1" 200 3066
+2019-03-01 17:15:54,158 [Thread-5:13996] [django.db.backends:111] [utils:execute] [DEBUG]- (0.137) QUERY = "SELECT * FROM ServerManagement.dbo.[GetServerTableTest] (50, 12) WHERE appid='xjcs.com.nb'" - PARAMS = (); args=None
+2019-03-01 17:15:54,161 [Thread-5:13996] [django:279] [views:get] [INFO]- 获取服务器管理列表成功
+2019-03-01 17:15:54,163 [Thread-5:13996] [django.server:154] [basehttp:log_message] [INFO]- "GET /server_managements/?cid=12&appid=xjcs.com.nb HTTP/1.1" 200 1763
+2019-03-01 17:16:32,648 [Thread-5:13996] [django:251] [views:get] [INFO]- 获取应用渠道列表
+2019-03-01 17:16:32,658 [Thread-5:13996] [django.db.backends:111] [utils:execute] [DEBUG]- (0.001) QUERY = 'SELECT [App_Channel_list].[CID], [App_Channel_list].[CName], [App_Channel_list].[CInfo], [App_Channel_list].[PID], [App_Channel_list].[GID], [App_Channel_list].[PCID] FROM [App_Channel_list] WHERE [App_Channel_list].[GID] = %s' - PARAMS = (50,); args=(50,)
+2019-03-01 17:16:32,671 [Thread-5:13996] [django.server:154] [basehttp:log_message] [INFO]- "GET /app_channels/ HTTP/1.1" 200 82
+2019-03-01 17:16:34,244 [Thread-5:13996] [django:295] [views:get] [INFO]- 获取应用服务器渠道列表
+2019-03-01 17:16:34,247 [Thread-5:13996] [django.db.backends:111] [utils:execute] [DEBUG]- (0.000) QUERY = 'SELECT [app_manage].[id], [app_manage].[GameTypeno], [app_manage].[GameType], [app_manage].[Ptid], [app_manage].[ChannelId], [app_manage].[Appid], [app_manage].[Appname], [app_manage].[CallbackUrl], [app_manage].[os], [app_manage].[lable], [app_manage].[mix], [app_manage].[app_parameter], [app_manage].[del] FROM [app_manage] WHERE [app_manage].[GameTypeno] = %s' - PARAMS = (50,); args=(50,)
+2019-03-01 17:16:34,281 [Thread-5:13996] [django.server:154] [basehttp:log_message] [INFO]- "GET /app_managements/ HTTP/1.1" 200 3066
+2019-03-01 17:16:35,666 [Thread-5:13996] [django.db.backends:111] [utils:execute] [DEBUG]- (0.230) QUERY = "SELECT * FROM ServerManagement.dbo.[GetServerTableTest] (50, 12) WHERE appid='xjcs.com.nb'" - PARAMS = (); args=None
+2019-03-01 17:16:35,668 [Thread-5:13996] [django:279] [views:get] [INFO]- 获取服务器管理列表成功
+2019-03-01 17:16:35,669 [Thread-5:13996] [django.server:154] [basehttp:log_message] [INFO]- "GET /server_managements/?cid=12&appid=xjcs.com.nb HTTP/1.1" 200 1763
+2019-03-01 17:17:25,701 [Thread-5:13996] [django:251] [views:get] [INFO]- 获取应用渠道列表
+2019-03-01 17:17:25,704 [Thread-5:13996] [django.db.backends:111] [utils:execute] [DEBUG]- (0.000) QUERY = 'SELECT [App_Channel_list].[CID], [App_Channel_list].[CName], [App_Channel_list].[CInfo], [App_Channel_list].[PID], [App_Channel_list].[GID], [App_Channel_list].[PCID] FROM [App_Channel_list] WHERE [App_Channel_list].[GID] = %s' - PARAMS = (50,); args=(50,)
+2019-03-01 17:17:25,712 [Thread-5:13996] [django.server:154] [basehttp:log_message] [INFO]- "GET /app_channels/ HTTP/1.1" 200 82
+2019-03-01 17:17:27,961 [Thread-5:13996] [django:295] [views:get] [INFO]- 获取应用服务器渠道列表
+2019-03-01 17:17:27,964 [Thread-5:13996] [django.db.backends:111] [utils:execute] [DEBUG]- (0.000) QUERY = 'SELECT [app_manage].[id], [app_manage].[GameTypeno], [app_manage].[GameType], [app_manage].[Ptid], [app_manage].[ChannelId], [app_manage].[Appid], [app_manage].[Appname], [app_manage].[CallbackUrl], [app_manage].[os], [app_manage].[lable], [app_manage].[mix], [app_manage].[app_parameter], [app_manage].[del] FROM [app_manage] WHERE [app_manage].[GameTypeno] = %s' - PARAMS = (50,); args=(50,)
+2019-03-01 17:17:27,975 [Thread-5:13996] [django.server:154] [basehttp:log_message] [INFO]- "GET /app_managements/ HTTP/1.1" 200 3066
+2019-03-01 17:17:29,733 [Thread-5:13996] [django.db.backends:111] [utils:execute] [DEBUG]- (0.241) QUERY = "SELECT * FROM ServerManagement.dbo.[GetServerTableTest] (50, 12) WHERE appid='xjcs.com.nb'" - PARAMS = (); args=None
+2019-03-01 17:17:29,734 [Thread-5:13996] [django:279] [views:get] [INFO]- 获取服务器管理列表成功
+2019-03-01 17:17:29,737 [Thread-5:13996] [django.server:154] [basehttp:log_message] [INFO]- "GET /server_managements/?cid=12&appid=xjcs.com.nb HTTP/1.1" 200 1763
+2019-03-01 17:18:40,801 [Thread-5:13996] [django.db.backends:111] [utils:execute] [DEBUG]- (0.002) QUERY = 'SELECT TOP 21 [App_Server_Channel].[id], [App_Server_Channel].[GID], [App_Server_Channel].[zoneidx], [App_Server_Channel].[zonename], [App_Server_Channel].[PID], [App_Server_Channel].[CID], [App_Server_Channel].[appid], [App_Server_Channel].[statu], [App_Server_Channel].[server_statu], [App_Server_Channel].[server_suggest], [App_Server_Channel].[is_delete], [App_Server_Channel].[open_type], [App_Server_Channel].[open_type_value] FROM [App_Server_Channel]' - PARAMS = (); args=()
+2019-03-01 17:18:40,804 [Thread-5:13996] [django.db.backends:111] [utils:execute] [DEBUG]- (0.000) QUERY = 'SELECT TOP 21 [App_Server_Channel].[id], [App_Server_Channel].[GID], [App_Server_Channel].[zoneidx], [App_Server_Channel].[zonename], [App_Server_Channel].[PID], [App_Server_Channel].[CID], [App_Server_Channel].[appid], [App_Server_Channel].[statu], [App_Server_Channel].[server_statu], [App_Server_Channel].[server_suggest], [App_Server_Channel].[is_delete], [App_Server_Channel].[open_type], [App_Server_Channel].[open_type_value] FROM [App_Server_Channel]' - PARAMS = (); args=()
+2019-03-01 17:18:40,806 [Thread-5:13996] [django.db.backends:111] [utils:execute] [DEBUG]- (0.001) QUERY = 'SELECT TOP 21 [App_Server_Channel].[id], [App_Server_Channel].[GID], [App_Server_Channel].[zoneidx], [App_Server_Channel].[zonename], [App_Server_Channel].[PID], [App_Server_Channel].[CID], [App_Server_Channel].[appid], [App_Server_Channel].[statu], [App_Server_Channel].[server_statu], [App_Server_Channel].[server_suggest], [App_Server_Channel].[is_delete], [App_Server_Channel].[open_type], [App_Server_Channel].[open_type_value] FROM [App_Server_Channel]' - PARAMS = (); args=()
+2019-03-01 17:18:42,266 [Thread-5:13996] [django.server:154] [basehttp:log_message] [ERROR]- "POST /delete_open_plan/ HTTP/1.1" 500 22019
+2019-03-01 17:25:37,633 [Thread-6:10692] [django.server:154] [basehttp:log_message] [INFO]- "OPTIONS /app_channels/ HTTP/1.1" 200 0
+2019-03-01 17:25:37,986 [Thread-6:10692] [django:251] [views:get] [INFO]- 获取应用渠道列表
+2019-03-01 17:25:38,003 [Thread-6:10692] [django.db.backends:111] [utils:execute] [DEBUG]- (0.001) QUERY = 'SELECT [App_Channel_list].[CID], [App_Channel_list].[CName], [App_Channel_list].[CInfo], [App_Channel_list].[PID], [App_Channel_list].[GID], [App_Channel_list].[PCID] FROM [App_Channel_list] WHERE [App_Channel_list].[GID] = %s' - PARAMS = (50,); args=(50,)
+2019-03-01 17:25:38,012 [Thread-6:10692] [django.server:154] [basehttp:log_message] [INFO]- "GET /app_channels/ HTTP/1.1" 200 82
+2019-03-01 17:25:39,222 [Thread-6:10692] [django.server:154] [basehttp:log_message] [INFO]- "OPTIONS /app_managements/ HTTP/1.1" 200 0
+2019-03-01 17:25:39,233 [Thread-6:10692] [django:295] [views:get] [INFO]- 获取应用服务器渠道列表
+2019-03-01 17:25:39,247 [Thread-6:10692] [django.db.backends:111] [utils:execute] [DEBUG]- (0.000) QUERY = 'SELECT [app_manage].[id], [app_manage].[GameTypeno], [app_manage].[GameType], [app_manage].[Ptid], [app_manage].[ChannelId], [app_manage].[Appid], [app_manage].[Appname], [app_manage].[CallbackUrl], [app_manage].[os], [app_manage].[lable], [app_manage].[mix], [app_manage].[app_parameter], [app_manage].[del] FROM [app_manage] WHERE [app_manage].[GameTypeno] = %s' - PARAMS = (50,); args=(50,)
+2019-03-01 17:25:39,262 [Thread-6:10692] [django.server:154] [basehttp:log_message] [INFO]- "GET /app_managements/ HTTP/1.1" 200 3066
+2019-03-01 17:25:40,623 [Thread-6:10692] [django.server:154] [basehttp:log_message] [INFO]- "OPTIONS /server_managements?cid=12&appid=xjcs.com.nb HTTP/1.1" 200 0
+2019-03-01 17:25:40,636 [Thread-6:10692] [django.server:154] [basehttp:log_message] [INFO]- "OPTIONS /server_managements/?cid=12&appid=xjcs.com.nb HTTP/1.1" 200 0
+2019-03-01 17:25:40,897 [Thread-6:10692] [django.db.backends:111] [utils:execute] [DEBUG]- (0.246) QUERY = "SELECT * FROM ServerManagement.dbo.[GetServerTableTest] (50, 12) WHERE appid='xjcs.com.nb'" - PARAMS = (); args=None
+2019-03-01 17:25:40,899 [Thread-6:10692] [django:279] [views:get] [INFO]- 获取服务器管理列表成功
+2019-03-01 17:25:40,901 [Thread-6:10692] [django.server:154] [basehttp:log_message] [INFO]- "GET /server_managements/?cid=12&appid=xjcs.com.nb HTTP/1.1" 200 1763
+2019-03-01 17:25:54,683 [Thread-6:10692] [django:251] [views:get] [INFO]- 获取应用渠道列表
+2019-03-01 17:25:54,685 [Thread-6:10692] [django.db.backends:111] [utils:execute] [DEBUG]- (0.000) QUERY = 'SELECT [App_Channel_list].[CID], [App_Channel_list].[CName], [App_Channel_list].[CInfo], [App_Channel_list].[PID], [App_Channel_list].[GID], [App_Channel_list].[PCID] FROM [App_Channel_list] WHERE [App_Channel_list].[GID] = %s' - PARAMS = (50,); args=(50,)
+2019-03-01 17:25:54,694 [Thread-6:10692] [django.server:154] [basehttp:log_message] [INFO]- "GET /app_channels/ HTTP/1.1" 200 82
+2019-03-01 17:25:56,365 [Thread-6:10692] [django:295] [views:get] [INFO]- 获取应用服务器渠道列表
+2019-03-01 17:25:56,370 [Thread-6:10692] [django.db.backends:111] [utils:execute] [DEBUG]- (0.000) QUERY = 'SELECT [app_manage].[id], [app_manage].[GameTypeno], [app_manage].[GameType], [app_manage].[Ptid], [app_manage].[ChannelId], [app_manage].[Appid], [app_manage].[Appname], [app_manage].[CallbackUrl], [app_manage].[os], [app_manage].[lable], [app_manage].[mix], [app_manage].[app_parameter], [app_manage].[del] FROM [app_manage] WHERE [app_manage].[GameTypeno] = %s' - PARAMS = (50,); args=(50,)
+2019-03-01 17:25:56,383 [Thread-6:10692] [django.server:154] [basehttp:log_message] [INFO]- "GET /app_managements/ HTTP/1.1" 200 3066
+2019-03-01 17:25:57,638 [Thread-6:10692] [django.db.backends:111] [utils:execute] [DEBUG]- (0.234) QUERY = "SELECT * FROM ServerManagement.dbo.[GetServerTableTest] (50, 12) WHERE appid='xjcs.com.nb'" - PARAMS = (); args=None
+2019-03-01 17:25:57,640 [Thread-6:10692] [django:279] [views:get] [INFO]- 获取服务器管理列表成功
+2019-03-01 17:25:57,642 [Thread-6:10692] [django.server:154] [basehttp:log_message] [INFO]- "GET /server_managements/?cid=12&appid=xjcs.com.nb HTTP/1.1" 200 1763
+2019-03-01 17:30:00,387 [Thread-6:10692] [django:251] [views:get] [INFO]- 获取应用渠道列表
+2019-03-01 17:30:00,397 [Thread-6:10692] [django.db.backends:111] [utils:execute] [DEBUG]- (0.000) QUERY = 'SELECT [App_Channel_list].[CID], [App_Channel_list].[CName], [App_Channel_list].[CInfo], [App_Channel_list].[PID], [App_Channel_list].[GID], [App_Channel_list].[PCID] FROM [App_Channel_list] WHERE [App_Channel_list].[GID] = %s' - PARAMS = (50,); args=(50,)
+2019-03-01 17:30:00,402 [Thread-6:10692] [django.server:154] [basehttp:log_message] [INFO]- "GET /app_channels/ HTTP/1.1" 200 82
+2019-03-01 17:30:01,909 [Thread-6:10692] [django:295] [views:get] [INFO]- 获取应用服务器渠道列表
+2019-03-01 17:30:01,967 [Thread-6:10692] [django.db.backends:111] [utils:execute] [DEBUG]- (0.000) QUERY = 'SELECT [app_manage].[id], [app_manage].[GameTypeno], [app_manage].[GameType], [app_manage].[Ptid], [app_manage].[ChannelId], [app_manage].[Appid], [app_manage].[Appname], [app_manage].[CallbackUrl], [app_manage].[os], [app_manage].[lable], [app_manage].[mix], [app_manage].[app_parameter], [app_manage].[del] FROM [app_manage] WHERE [app_manage].[GameTypeno] = %s' - PARAMS = (50,); args=(50,)
+2019-03-01 17:30:01,987 [Thread-6:10692] [django.server:154] [basehttp:log_message] [INFO]- "GET /app_managements/ HTTP/1.1" 200 3066
+2019-03-01 17:30:03,336 [Thread-6:10692] [django.db.backends:111] [utils:execute] [DEBUG]- (0.273) QUERY = "SELECT * FROM ServerManagement.dbo.[GetServerTableTest] (50, 12) WHERE appid='xjcs.com.nb'" - PARAMS = (); args=None
+2019-03-01 17:30:03,339 [Thread-6:10692] [django:279] [views:get] [INFO]- 获取服务器管理列表成功
+2019-03-01 17:30:03,341 [Thread-6:10692] [django.server:154] [basehttp:log_message] [INFO]- "GET /server_managements/?cid=12&appid=xjcs.com.nb HTTP/1.1" 200 1763
+2019-03-01 17:31:26,712 [Thread-6:10692] [django:251] [views:get] [INFO]- 获取应用渠道列表
+2019-03-01 17:31:26,722 [Thread-6:10692] [django.db.backends:111] [utils:execute] [DEBUG]- (0.001) QUERY = 'SELECT [App_Channel_list].[CID], [App_Channel_list].[CName], [App_Channel_list].[CInfo], [App_Channel_list].[PID], [App_Channel_list].[GID], [App_Channel_list].[PCID] FROM [App_Channel_list] WHERE [App_Channel_list].[GID] = %s' - PARAMS = (50,); args=(50,)
+2019-03-01 17:31:26,740 [Thread-6:10692] [django.server:154] [basehttp:log_message] [INFO]- "GET /app_channels/ HTTP/1.1" 200 82
+2019-03-01 17:31:52,138 [Thread-6:10692] [django:251] [views:get] [INFO]- 获取应用渠道列表
+2019-03-01 17:31:52,140 [Thread-6:10692] [django.db.backends:111] [utils:execute] [DEBUG]- (0.000) QUERY = 'SELECT [App_Channel_list].[CID], [App_Channel_list].[CName], [App_Channel_list].[CInfo], [App_Channel_list].[PID], [App_Channel_list].[GID], [App_Channel_list].[PCID] FROM [App_Channel_list] WHERE [App_Channel_list].[GID] = %s' - PARAMS = (50,); args=(50,)
+2019-03-01 17:31:52,146 [Thread-6:10692] [django.server:154] [basehttp:log_message] [INFO]- "GET /app_channels/ HTTP/1.1" 200 82
+2019-03-01 17:31:59,022 [Thread-6:10692] [django:295] [views:get] [INFO]- 获取应用服务器渠道列表
+2019-03-01 17:31:59,043 [Thread-6:10692] [django.db.backends:111] [utils:execute] [DEBUG]- (0.001) QUERY = 'SELECT [app_manage].[id], [app_manage].[GameTypeno], [app_manage].[GameType], [app_manage].[Ptid], [app_manage].[ChannelId], [app_manage].[Appid], [app_manage].[Appname], [app_manage].[CallbackUrl], [app_manage].[os], [app_manage].[lable], [app_manage].[mix], [app_manage].[app_parameter], [app_manage].[del] FROM [app_manage] WHERE [app_manage].[GameTypeno] = %s' - PARAMS = (50,); args=(50,)
+2019-03-01 17:31:59,051 [Thread-6:10692] [django.server:154] [basehttp:log_message] [INFO]- "GET /app_managements/ HTTP/1.1" 200 3066
+2019-03-01 17:32:00,707 [Thread-6:10692] [django.db.backends:111] [utils:execute] [DEBUG]- (0.262) QUERY = "SELECT * FROM ServerManagement.dbo.[GetServerTableTest] (50, 12) WHERE appid='xjcs.com.nb'" - PARAMS = (); args=None
+2019-03-01 17:32:00,709 [Thread-6:10692] [django:279] [views:get] [INFO]- 获取服务器管理列表成功
+2019-03-01 17:32:00,712 [Thread-6:10692] [django.server:154] [basehttp:log_message] [INFO]- "GET /server_managements/?cid=12&appid=xjcs.com.nb HTTP/1.1" 200 1763
+2019-03-01 17:33:22,720 [Thread-6:10692] [django:251] [views:get] [INFO]- 获取应用渠道列表
+2019-03-01 17:33:22,733 [Thread-6:10692] [django.db.backends:111] [utils:execute] [DEBUG]- (0.000) QUERY = 'SELECT [App_Channel_list].[CID], [App_Channel_list].[CName], [App_Channel_list].[CInfo], [App_Channel_list].[PID], [App_Channel_list].[GID], [App_Channel_list].[PCID] FROM [App_Channel_list] WHERE [App_Channel_list].[GID] = %s' - PARAMS = (50,); args=(50,)
+2019-03-01 17:33:22,742 [Thread-6:10692] [django.server:154] [basehttp:log_message] [INFO]- "GET /app_channels/ HTTP/1.1" 200 82
+2019-03-01 17:34:20,848 [Thread-6:10692] [django:251] [views:get] [INFO]- 获取应用渠道列表
+2019-03-01 17:34:20,856 [Thread-6:10692] [django.db.backends:111] [utils:execute] [DEBUG]- (0.000) QUERY = 'SELECT [App_Channel_list].[CID], [App_Channel_list].[CName], [App_Channel_list].[CInfo], [App_Channel_list].[PID], [App_Channel_list].[GID], [App_Channel_list].[PCID] FROM [App_Channel_list] WHERE [App_Channel_list].[GID] = %s' - PARAMS = (50,); args=(50,)
+2019-03-01 17:34:20,860 [Thread-6:10692] [django.server:154] [basehttp:log_message] [INFO]- "GET /app_channels/ HTTP/1.1" 200 82
+2019-03-01 17:34:24,198 [Thread-6:10692] [django:251] [views:get] [INFO]- 获取应用渠道列表
+2019-03-01 17:34:24,201 [Thread-6:10692] [django.db.backends:111] [utils:execute] [DEBUG]- (0.001) QUERY = 'SELECT [App_Channel_list].[CID], [App_Channel_list].[CName], [App_Channel_list].[CInfo], [App_Channel_list].[PID], [App_Channel_list].[GID], [App_Channel_list].[PCID] FROM [App_Channel_list] WHERE [App_Channel_list].[GID] = %s' - PARAMS = (50,); args=(50,)
+2019-03-01 17:34:24,207 [Thread-6:10692] [django.server:154] [basehttp:log_message] [INFO]- "GET /app_channels/ HTTP/1.1" 200 82
+2019-03-01 17:35:40,602 [Thread-6:10692] [django.server:154] [basehttp:log_message] [INFO]- "OPTIONS /app_channels/ HTTP/1.1" 200 0
+2019-03-01 17:35:41,218 [Thread-6:10692] [django:251] [views:get] [INFO]- 获取应用渠道列表
+2019-03-01 17:35:41,298 [Thread-6:10692] [django.db.backends:111] [utils:execute] [DEBUG]- (0.001) QUERY = 'SELECT [App_Channel_list].[CID], [App_Channel_list].[CName], [App_Channel_list].[CInfo], [App_Channel_list].[PID], [App_Channel_list].[GID], [App_Channel_list].[PCID] FROM [App_Channel_list] WHERE [App_Channel_list].[GID] = %s' - PARAMS = (50,); args=(50,)
+2019-03-01 17:35:41,306 [Thread-6:10692] [django.server:154] [basehttp:log_message] [INFO]- "GET /app_channels/ HTTP/1.1" 200 82
+2019-03-01 17:35:47,311 [Thread-6:10692] [django.server:154] [basehttp:log_message] [INFO]- "OPTIONS /app_managements/ HTTP/1.1" 200 0
+2019-03-01 17:35:47,325 [Thread-6:10692] [django:295] [views:get] [INFO]- 获取应用服务器渠道列表
+2019-03-01 17:35:47,338 [Thread-6:10692] [django.db.backends:111] [utils:execute] [DEBUG]- (0.001) QUERY = 'SELECT [app_manage].[id], [app_manage].[GameTypeno], [app_manage].[GameType], [app_manage].[Ptid], [app_manage].[ChannelId], [app_manage].[Appid], [app_manage].[Appname], [app_manage].[CallbackUrl], [app_manage].[os], [app_manage].[lable], [app_manage].[mix], [app_manage].[app_parameter], [app_manage].[del] FROM [app_manage] WHERE [app_manage].[GameTypeno] = %s' - PARAMS = (50,); args=(50,)
+2019-03-01 17:35:47,352 [Thread-6:10692] [django.server:154] [basehttp:log_message] [INFO]- "GET /app_managements/ HTTP/1.1" 200 3066
+2019-03-01 17:35:48,463 [Thread-6:10692] [django.server:154] [basehttp:log_message] [INFO]- "OPTIONS /server_managements?cid=12&appid=xjcs.com.nb HTTP/1.1" 200 0
+2019-03-01 17:35:48,471 [Thread-6:10692] [django.server:154] [basehttp:log_message] [INFO]- "OPTIONS /server_managements/?cid=12&appid=xjcs.com.nb HTTP/1.1" 200 0
+2019-03-01 17:35:48,741 [Thread-6:10692] [django.db.backends:111] [utils:execute] [DEBUG]- (0.245) QUERY = "SELECT * FROM ServerManagement.dbo.[GetServerTableTest] (50, 12) WHERE appid='xjcs.com.nb'" - PARAMS = (); args=None
+2019-03-01 17:35:48,742 [Thread-6:10692] [django:279] [views:get] [INFO]- 获取服务器管理列表成功
+2019-03-01 17:35:48,745 [Thread-6:10692] [django.server:154] [basehttp:log_message] [INFO]- "GET /server_managements/?cid=12&appid=xjcs.com.nb HTTP/1.1" 200 1763
+2019-03-01 17:36:21,466 [Thread-6:10692] [django:251] [views:get] [INFO]- 获取应用渠道列表
+2019-03-01 17:36:21,470 [Thread-6:10692] [django.db.backends:111] [utils:execute] [DEBUG]- (0.001) QUERY = 'SELECT [App_Channel_list].[CID], [App_Channel_list].[CName], [App_Channel_list].[CInfo], [App_Channel_list].[PID], [App_Channel_list].[GID], [App_Channel_list].[PCID] FROM [App_Channel_list] WHERE [App_Channel_list].[GID] = %s' - PARAMS = (50,); args=(50,)
+2019-03-01 17:36:21,483 [Thread-6:10692] [django.server:154] [basehttp:log_message] [INFO]- "GET /app_channels/ HTTP/1.1" 200 82
+2019-03-01 17:36:23,582 [Thread-6:10692] [django:295] [views:get] [INFO]- 获取应用服务器渠道列表
+2019-03-01 17:36:23,586 [Thread-6:10692] [django.db.backends:111] [utils:execute] [DEBUG]- (0.001) QUERY = 'SELECT [app_manage].[id], [app_manage].[GameTypeno], [app_manage].[GameType], [app_manage].[Ptid], [app_manage].[ChannelId], [app_manage].[Appid], [app_manage].[Appname], [app_manage].[CallbackUrl], [app_manage].[os], [app_manage].[lable], [app_manage].[mix], [app_manage].[app_parameter], [app_manage].[del] FROM [app_manage] WHERE [app_manage].[GameTypeno] = %s' - PARAMS = (50,); args=(50,)
+2019-03-01 17:36:23,594 [Thread-6:10692] [django.server:154] [basehttp:log_message] [INFO]- "GET /app_managements/ HTTP/1.1" 200 3066
+2019-03-01 17:36:26,043 [Thread-6:10692] [django.db.backends:111] [utils:execute] [DEBUG]- (0.231) QUERY = "SELECT * FROM ServerManagement.dbo.[GetServerTableTest] (50, 12) WHERE appid='xjcs.com.nb'" - PARAMS = (); args=None
+2019-03-01 17:36:26,044 [Thread-6:10692] [django:279] [views:get] [INFO]- 获取服务器管理列表成功
+2019-03-01 17:36:26,046 [Thread-6:10692] [django.server:154] [basehttp:log_message] [INFO]- "GET /server_managements/?cid=12&appid=xjcs.com.nb HTTP/1.1" 200 1763
+2019-03-01 17:36:57,919 [Thread-6:10692] [django:251] [views:get] [INFO]- 获取应用渠道列表
+2019-03-01 17:36:57,929 [Thread-6:10692] [django.db.backends:111] [utils:execute] [DEBUG]- (0.001) QUERY = 'SELECT [App_Channel_list].[CID], [App_Channel_list].[CName], [App_Channel_list].[CInfo], [App_Channel_list].[PID], [App_Channel_list].[GID], [App_Channel_list].[PCID] FROM [App_Channel_list] WHERE [App_Channel_list].[GID] = %s' - PARAMS = (50,); args=(50,)
+2019-03-01 17:36:57,938 [Thread-6:10692] [django.server:154] [basehttp:log_message] [INFO]- "GET /app_channels/ HTTP/1.1" 200 82
+2019-03-01 17:36:59,440 [Thread-6:10692] [django:295] [views:get] [INFO]- 获取应用服务器渠道列表
+2019-03-01 17:36:59,445 [Thread-6:10692] [django.db.backends:111] [utils:execute] [DEBUG]- (0.000) QUERY = 'SELECT [app_manage].[id], [app_manage].[GameTypeno], [app_manage].[GameType], [app_manage].[Ptid], [app_manage].[ChannelId], [app_manage].[Appid], [app_manage].[Appname], [app_manage].[CallbackUrl], [app_manage].[os], [app_manage].[lable], [app_manage].[mix], [app_manage].[app_parameter], [app_manage].[del] FROM [app_manage] WHERE [app_manage].[GameTypeno] = %s' - PARAMS = (50,); args=(50,)
+2019-03-01 17:36:59,453 [Thread-6:10692] [django.server:154] [basehttp:log_message] [INFO]- "GET /app_managements/ HTTP/1.1" 200 3066
+2019-03-01 17:37:00,916 [Thread-6:10692] [django.db.backends:111] [utils:execute] [DEBUG]- (0.261) QUERY = "SELECT * FROM ServerManagement.dbo.[GetServerTableTest] (50, 12) WHERE appid='xjcs.com.nb'" - PARAMS = (); args=None
+2019-03-01 17:37:00,917 [Thread-6:10692] [django:279] [views:get] [INFO]- 获取服务器管理列表成功
+2019-03-01 17:37:00,919 [Thread-6:10692] [django.server:154] [basehttp:log_message] [INFO]- "GET /server_managements/?cid=12&appid=xjcs.com.nb HTTP/1.1" 200 1763
+2019-03-01 17:39:08,337 [Thread-6:10692] [django:251] [views:get] [INFO]- 获取应用渠道列表
+2019-03-01 17:39:08,364 [Thread-6:10692] [django.db.backends:111] [utils:execute] [DEBUG]- (0.000) QUERY = 'SELECT [App_Channel_list].[CID], [App_Channel_list].[CName], [App_Channel_list].[CInfo], [App_Channel_list].[PID], [App_Channel_list].[GID], [App_Channel_list].[PCID] FROM [App_Channel_list] WHERE [App_Channel_list].[GID] = %s' - PARAMS = (50,); args=(50,)
+2019-03-01 17:39:08,374 [Thread-6:10692] [django.server:154] [basehttp:log_message] [INFO]- "GET /app_channels/ HTTP/1.1" 200 82
+2019-03-01 17:39:09,709 [Thread-6:10692] [django:295] [views:get] [INFO]- 获取应用服务器渠道列表
+2019-03-01 17:39:09,718 [Thread-6:10692] [django.db.backends:111] [utils:execute] [DEBUG]- (0.000) QUERY = 'SELECT [app_manage].[id], [app_manage].[GameTypeno], [app_manage].[GameType], [app_manage].[Ptid], [app_manage].[ChannelId], [app_manage].[Appid], [app_manage].[Appname], [app_manage].[CallbackUrl], [app_manage].[os], [app_manage].[lable], [app_manage].[mix], [app_manage].[app_parameter], [app_manage].[del] FROM [app_manage] WHERE [app_manage].[GameTypeno] = %s' - PARAMS = (50,); args=(50,)
+2019-03-01 17:39:09,738 [Thread-6:10692] [django.server:154] [basehttp:log_message] [INFO]- "GET /app_managements/ HTTP/1.1" 200 3066
+2019-03-01 17:39:11,234 [Thread-6:10692] [django.db.backends:111] [utils:execute] [DEBUG]- (0.216) QUERY = "SELECT * FROM ServerManagement.dbo.[GetServerTableTest] (50, 12) WHERE appid='xjcs.com.nb'" - PARAMS = (); args=None
+2019-03-01 17:39:11,237 [Thread-6:10692] [django:279] [views:get] [INFO]- 获取服务器管理列表成功
+2019-03-01 17:39:11,240 [Thread-6:10692] [django.server:154] [basehttp:log_message] [INFO]- "GET /server_managements/?cid=12&appid=xjcs.com.nb HTTP/1.1" 200 1763
+2019-03-01 17:40:08,936 [Thread-6:10692] [django:251] [views:get] [INFO]- 获取应用渠道列表
+2019-03-01 17:40:08,940 [Thread-6:10692] [django.db.backends:111] [utils:execute] [DEBUG]- (0.000) QUERY = 'SELECT [App_Channel_list].[CID], [App_Channel_list].[CName], [App_Channel_list].[CInfo], [App_Channel_list].[PID], [App_Channel_list].[GID], [App_Channel_list].[PCID] FROM [App_Channel_list] WHERE [App_Channel_list].[GID] = %s' - PARAMS = (50,); args=(50,)
+2019-03-01 17:40:08,948 [Thread-6:10692] [django.server:154] [basehttp:log_message] [INFO]- "GET /app_channels/ HTTP/1.1" 200 82
+2019-03-01 17:40:10,113 [Thread-6:10692] [django:295] [views:get] [INFO]- 获取应用服务器渠道列表
+2019-03-01 17:40:10,141 [Thread-6:10692] [django.db.backends:111] [utils:execute] [DEBUG]- (0.000) QUERY = 'SELECT [app_manage].[id], [app_manage].[GameTypeno], [app_manage].[GameType], [app_manage].[Ptid], [app_manage].[ChannelId], [app_manage].[Appid], [app_manage].[Appname], [app_manage].[CallbackUrl], [app_manage].[os], [app_manage].[lable], [app_manage].[mix], [app_manage].[app_parameter], [app_manage].[del] FROM [app_manage] WHERE [app_manage].[GameTypeno] = %s' - PARAMS = (50,); args=(50,)
+2019-03-01 17:40:10,177 [Thread-6:10692] [django.server:154] [basehttp:log_message] [INFO]- "GET /app_managements/ HTTP/1.1" 200 3066
+2019-03-01 17:40:11,404 [Thread-6:10692] [django.db.backends:111] [utils:execute] [DEBUG]- (0.214) QUERY = "SELECT * FROM ServerManagement.dbo.[GetServerTableTest] (50, 12) WHERE appid='xjcs.com.nb'" - PARAMS = (); args=None
+2019-03-01 17:40:11,406 [Thread-6:10692] [django:279] [views:get] [INFO]- 获取服务器管理列表成功
+2019-03-01 17:40:11,408 [Thread-6:10692] [django.server:154] [basehttp:log_message] [INFO]- "GET /server_managements/?cid=12&appid=xjcs.com.nb HTTP/1.1" 200 1763

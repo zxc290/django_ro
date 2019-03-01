@@ -119,36 +119,69 @@ def server_list(request):
 
 
 @api_view(['POST'])
-def set_open(request):
+def set_open_plan(request):
     data = request.data
-    open_type = data.get('open_type')
+    gid = data.get('gid')
+    cid = data.get('cid')
+    appid = data.get('appid')
+    plans = data.get('plans')
+
+    for plan in plans:
+        id = plan.get('id')
+        by_zone = plan.get('by_zone')
+        zoneidx = plan.get('zoneidx')
+        open_type = plan.get('open_type')
+        if open_type == 1:
+            plan.update(open_type_value=plan.get('open_user'))
+            # open_type_value = plan.get('open_user')
+        elif open_type == 2:
+            plan.update(open_type_value=plan.get('open_time'))
+            # open_type_value = plan.get('open_time')
+
+        app_server_channel_list = AppServerChannel.objects.filter(zoneidx=zoneidx) if by_zone else AppServerChannel.objects.filter(id=id)
+        for each in app_server_channel_list:
+            # 更新序列器
+            update_serializer = AppServerChannelUpdateSerializer(each, data=plan)
+            if update_serializer.is_valid():
+                update_serializer.save()
+                logger.info('设置开区计划成功, 服务器id{each_id}'.format(each_id=each.id))
+            else:
+                print(update_serializer.errors)
+                logger.info('设置开区计划失败, 服务器id{each_id}'.format(each_id=each.id))
+                return Response(update_serializer.errors, status=status.HTTP_400_BAD_REQUEST)
+    # 获取序列器
+
+    # serializer = AppServerChannelSerializer(app_server_channel_list, many=True)
+    message = '设置多条开区计划成功'
+    logger.info(message)
+    return Response(message, status=status.HTTP_202_ACCEPTED)
+
+
+@api_view(['POST'])
+def delete_open_plan(request):
+    data = request.data
+    id = data.get('id')
     by_zone = data.get('by_zone')
-    selected_zone = data.get('selected_zone')
-    if open_type == 0:
-        data.update(open_type_value=0)
-    elif open_type == 1:
-        data.update(open_type_value=data.get('max_users'))
-    elif open_type == 2:
-        data.update(open_type_value=data.get('autoOpenTime'))
+    zoneidx = data.get('zoneidx')
 
-    id_list = [each.get('id') for each in selected_zone]
-    zoneidx_list = [each.get('zoneidx') for each in selected_zone]
+    data['open_type'] = None
+    data['open_type_value'] = None
 
-    app_server_channel_list = AppServerChannel.objects.filter(zoneidx__in=zoneidx_list) if by_zone else AppServerChannel.objects.filter(id__in=id_list)
+    app_server_channel_list = AppServerChannel.objects.filter(zoneidx=zoneidx) if by_zone else AppServerChannel.objects.filter(id=id)
     for each in app_server_channel_list:
-        # 更新序列器
+        # 清空序列器
         update_serializer = AppServerChannelUpdateSerializer(each, data=data)
         if update_serializer.is_valid():
             update_serializer.save()
-            logger.info('设置开区服务器成功, 服务器id{each_id}'.format(each_id=each.id))
+            logger.info('删除开区计划成功, 服务器id{each_id}'.format(each_id=each.id))
         else:
             print(update_serializer.errors)
-            logger.info('设置开区服务器失败, 服务器id{each_id}'.format(each_id=each.id))
+            logger.info('删除开区计划失败, 服务器id{each_id}'.format(each_id=each.id))
             return Response(update_serializer.errors, status=status.HTTP_400_BAD_REQUEST)
-    # 获取序列器
-    serializer = AppServerChannelSerializer(app_server_channel_list, many=True)
-    logger.info('更新多条应用服务器成功')
-    return Response(serializer.data)
+
+    message = '删除多条开区计划成功'
+    logger.info(message)
+    return Response(message, status=status.HTTP_202_ACCEPTED)
 
 
 

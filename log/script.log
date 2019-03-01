@@ -598,3 +598,46 @@ Traceback (most recent call last):
 AttributeError: 'dict' object has no attribute 'id'
 2019-02-27 15:30:57,130 [Thread-2:13172] [django.request:228] [log:log_response] [WARNING]- Bad Request: /set_open/
 2019-02-28 13:32:30,398 [Thread-5:11112] [django.request:228] [log:log_response] [WARNING]- Forbidden: /welfares/
+2019-03-01 17:18:42,227 [Thread-5:13996] [django.request:228] [log:log_response] [ERROR]- Internal Server Error: /delete_open_plan/
+Traceback (most recent call last):
+  File "E:\workspace\venv\django_ro_venv\lib\site-packages\django\core\handlers\exception.py", line 34, in inner
+    response = get_response(request)
+  File "E:\workspace\venv\django_ro_venv\lib\site-packages\django\core\handlers\base.py", line 126, in _get_response
+    response = self.process_exception_by_middleware(e, request)
+  File "E:\workspace\venv\django_ro_venv\lib\site-packages\django\core\handlers\base.py", line 124, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "E:\workspace\venv\django_ro_venv\lib\site-packages\django\views\decorators\csrf.py", line 54, in wrapped_view
+    return view_func(*args, **kwargs)
+  File "E:\workspace\venv\django_ro_venv\lib\site-packages\django\views\generic\base.py", line 68, in view
+    return self.dispatch(request, *args, **kwargs)
+  File "E:\workspace\venv\django_ro_venv\lib\site-packages\rest_framework\views.py", line 495, in dispatch
+    response = self.handle_exception(exc)
+  File "E:\workspace\venv\django_ro_venv\lib\site-packages\rest_framework\views.py", line 455, in handle_exception
+    self.raise_uncaught_exception(exc)
+  File "E:\workspace\venv\django_ro_venv\lib\site-packages\rest_framework\views.py", line 492, in dispatch
+    response = handler(request, *args, **kwargs)
+  File "E:\workspace\venv\django_ro_venv\lib\site-packages\rest_framework\decorators.py", line 54, in handler
+    return func(*args, **kwargs)
+  File "E:\workspace\project\django_ro\ro_operations\views.py", line 170, in delete_open_plan
+    app_server_channel_list = AppServerChannel.objects.filter(zoneidx=zoneidx) if by_zone else AppServerChannel.objects.filter(id=id)
+  File "E:\workspace\venv\django_ro_venv\lib\site-packages\django\db\models\manager.py", line 82, in manager_method
+    return getattr(self.get_queryset(), name)(*args, **kwargs)
+  File "E:\workspace\venv\django_ro_venv\lib\site-packages\django\db\models\query.py", line 844, in filter
+    return self._filter_or_exclude(False, *args, **kwargs)
+  File "E:\workspace\venv\django_ro_venv\lib\site-packages\django\db\models\query.py", line 862, in _filter_or_exclude
+    clone.query.add_q(Q(*args, **kwargs))
+  File "E:\workspace\venv\django_ro_venv\lib\site-packages\django\db\models\sql\query.py", line 1263, in add_q
+    clause, _ = self._add_q(q_object, self.used_aliases)
+  File "E:\workspace\venv\django_ro_venv\lib\site-packages\django\db\models\sql\query.py", line 1287, in _add_q
+    split_subq=split_subq,
+  File "E:\workspace\venv\django_ro_venv\lib\site-packages\django\db\models\sql\query.py", line 1225, in build_filter
+    condition = self.build_lookup(lookups, col, value)
+  File "E:\workspace\venv\django_ro_venv\lib\site-packages\django\db\models\sql\query.py", line 1096, in build_lookup
+    lookup = lookup_class(lhs, rhs)
+  File "E:\workspace\venv\django_ro_venv\lib\site-packages\django\db\models\lookups.py", line 20, in __init__
+    self.rhs = self.get_prep_lookup()
+  File "E:\workspace\venv\django_ro_venv\lib\site-packages\django\db\models\lookups.py", line 70, in get_prep_lookup
+    return self.lhs.output_field.get_prep_value(self.rhs)
+  File "E:\workspace\venv\django_ro_venv\lib\site-packages\django\db\models\fields\__init__.py", line 1807, in get_prep_value
+    return int(value)
+ValueError: invalid literal for int() with base 10: ''
