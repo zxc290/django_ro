@@ -126,6 +126,7 @@ def set_open_plan(request):
     appid = data.get('appid')
     plans = data.get('plans')
 
+    # 设置未开区
     for plan in plans:
         id = plan.get('id')
         by_zone = plan.get('by_zone')
@@ -158,64 +159,81 @@ def set_open_plan(request):
 
 
 @api_view(['POST'])
-def delete_open_plan(request):
+def set_open_plan(request, id):
     data = request.data
-    id = data.get('id')
     by_zone = data.get('by_zone')
-    zoneidx = data.get('zoneidx')
-
-    data['open_type'] = None
-    data['open_type_value'] = None
-
-    app_server_channel_list = AppServerChannel.objects.filter(zoneidx=zoneidx) if by_zone else AppServerChannel.objects.filter(id=id)
-    for each in app_server_channel_list:
-        # 清空序列器
-        update_serializer = AppServerChannelUpdateSerializer(each, data=data)
+    open_type = data.get('open_type')
+    app_server_channel = AppServerChannel.objects.get(id=id)
+    # 设置开区类型字段
+    if open_type == 0:
+        data.update(open_type_value=0)
+    elif open_type == 1:
+        data.update(open_type_value=data.get('open_user'))
+    elif open_type == 2:
+        data.update(open_type_value=data.get('open_time'))
+    # 如果是按区更新，多条更新
+    if by_zone:
+        app_server_channel_list = AppServerChannel.objects.filter(zoneidx=app_server_channel.zoneidx).filter(
+            server_statu__gt=200)
+        for each in app_server_channel_list:
+            # 更新序列器
+            update_serializer = AppServerChannelUpdateSerializer(each, data=data)
+            if update_serializer.is_valid():
+                update_serializer.save()
+                logger.info('设置多条开区计划之一成功, id为{each_id}'.format(each_id=each.id))
+            else:
+                logger.info('设置多条开区计划之一失败, id为{each_id}'.format(each_id=each.id))
+                return Response(update_serializer.errors, status=status.HTTP_400_BAD_REQUEST)
+        # 获取序列器
+        serializer = AppServerChannelSerializer(app_server_channel_list, many=True)
+        logger.info('设置多条开区计划成功')
+        return Response(serializer.data)
+    else:
+        # 更新序列器
+        update_serializer = AppServerChannelUpdateSerializer(app_server_channel, data=data)
         if update_serializer.is_valid():
             update_serializer.save()
-            logger.info('删除开区计划成功, 服务器id{each_id}'.format(each_id=each.id))
-        else:
-            print(update_serializer.errors)
-            logger.info('删除开区计划失败, 服务器id{each_id}'.format(each_id=each.id))
-            return Response(update_serializer.errors, status=status.HTTP_400_BAD_REQUEST)
-
-    message = '删除多条开区计划成功'
-    logger.info(message)
-    return Response(message, status=status.HTTP_202_ACCEPTED)
+            logger.info('设置单跳开区计划成功')
+            # 获取序列器
+            serializer = AppServerChannelSerializer(app_server_channel)
+            return Response(serializer.data)
+        print(update_serializer.errors)
+        logger.info('设置单条开区计划失败')
+        return Response(update_serializer.errors, status=status.HTTP_400_BAD_REQUEST)
 
 
-
-# @api_view(['POST'])
-# def set_open(request):
-#     data = request.data
-#     open_type = data.get('open_type')
-#     by_zone = data.get('by_zone')
-#     selected_zone = data.get('selected_zone')
-#     if open_type == 0:
-#         data.update(open_type_value=0)
-#     elif open_type == 1:
-#         data.update(open_type_value=data.get('max_users'))
-#     elif open_type == 2:
-#         data.update(open_type_value=data.get('autoOpenTime'))
-#
-#     id_list = [each.get('id') for each in selected_zone]
-#     zoneidx_list = [each.get('zoneidx') for each in selected_zone]
-#
-#     app_server_channel_list = AppServerChannel.objects.filter(zoneidx__in=zoneidx_list) if by_zone else AppServerChannel.objects.filter(id__in=id_list)
-#     for each in app_server_channel_list:
-#         # 更新序列器
-#         update_serializer = AppServerChannelUpdateSerializer(each, data=data)
-#         if update_serializer.is_valid():
-#             update_serializer.save()
-#             logger.info('设置开区服务器成功, 服务器id{each_id}'.format(each_id=each.id))
-#         else:
-#             print(update_serializer.errors)
-#             logger.info('设置开区服务器失败, 服务器id{each_id}'.format(each_id=each.id))
-#             return Response(update_serializer.errors, status=status.HTTP_400_BAD_REQUEST)
-#     # 获取序列器
-#     serializer = AppServerChannelSerializer(app_server_channel_list, many=True)
-#     logger.info('更新多条应用服务器成功')
-#     return Response(serializer.data)
+@api_view(['POST'])
+def delete_open_plan(request, id):
+    app_server_channel = AppServerChannel.objects.get(id=id)
+    data = request.data
+    data.update(open_type='', open_type_value='')
+    by_zone = data.get('by_zone')
+    if by_zone:
+        app_server_channel_list = AppServerChannel.objects.filter(zoneidx=app_server_channel.zoneidx).filter(server_statu__gt=200)
+        for each in app_server_channel_list:
+            # 更新序列器
+            update_serializer = AppServerChannelUpdateSerializer(each, data=data)
+            if update_serializer.is_valid():
+                update_serializer.save()
+                logger.info('删除多条开区计划之一成功, id为{each_id}'.format(each_id=each.id))
+            else:
+                print(update_serializer.errors)
+                logger.info('删除多条开区计划之一失败, id为{each_id}'.format(each_id=each.id))
+                return Response(update_serializer.errors, status=status.HTTP_400_BAD_REQUEST)
+        # 获取序列器
+        # serializer = AppServerChannelSerializer(app_server_channel_list, many=True)
+        logger.info('删除多条开区计划成功')
+        return Response(status=status.HTTP_204_NO_CONTENT)
+        # return Response(serializer.data)
+    else:
+        # 更新序列器
+        update_serializer = AppServerChannelUpdateSerializer(app_server_channel, data=data)
+        if update_serializer.is_valid():
+            update_serializer.save()
+            logger.info('删除开区计划成功')
+            return Response(status=status.HTTP_204_NO_CONTENT)
+        logger.info('删除开区计划成功失败')
+        return Response(update_serializer.errors, status=status.HTTP_400_BAD_REQUEST)
 
 
 class AppPlatformCfgList(APIView):
@@ -301,7 +319,7 @@ class AppServerChannelList(APIView):
     列出所有的AppServerChannel
     '''
     def get(self, request, format=None):
-        app_server_channel_list = AppServerChannel.objects.all().filter(gid=50)
+        app_server_channel_list = AppServerChannel.objects.all().filter(gid=50).filter(server_statu__gt=200)
         serializer = AppServerChannelSerializer(app_server_channel_list, many=True)
         logger.info('获取应用服务器渠道列表')
         return Response(serializer.data)
@@ -322,25 +340,32 @@ class AppServerChannelDetail(APIView):
 
     def put(self, request, id, format=None):
         data = request.data
+        action = data.get('action')
         by_zone = data.get('by_zone')
+        open_type = data.get('open_type')
         app_server_channel = self.get_object(id)
+        # 设置开区类型字段
+        if open_type == 0:
+            data.update(open_type_value=0)
+        elif open_type == 1:
+            data.update(open_type_value=data.get('open_user'))
+        elif open_type == 2:
+            data.update(open_type_value=data.get('open_time'))
         # 如果是按区更新，多条更新
         if by_zone:
-            zoneidx = app_server_channel.zoneidx
-            app_server_channel_list = AppServerChannel.objects.filter(zoneidx=zoneidx)
+            app_server_channel_list = AppServerChannel.objects.filter(zoneidx=app_server_channel.zoneidx).filter(server_statu__gt=200)
             for each in app_server_channel_list:
                 # 更新序列器
                 update_serializer = AppServerChannelUpdateSerializer(each, data=data)
                 if update_serializer.is_valid():
                     update_serializer.save()
-                    logger.info('更新多条应用服务器之一成功, id为{each_id}'.format(each_id=each.id))
+                    logger.info('设置多条开区计划之一成功, id为{each_id}'.format(each_id=each.id))
                 else:
-                    print(update_serializer.errors)
-                    logger.info('更新多条应用服务器之一失败, id为{each_id}'.format(each_id=each.id))
+                    logger.info('设置多条开区计划之一失败, id为{each_id}'.format(each_id=each.id))
                     return Response(update_serializer.errors, status=status.HTTP_400_BAD_REQUEST)
             # 获取序列器
             serializer = AppServerChannelSerializer(app_server_channel_list, many=True)
-            logger.info('更新多条应用服务器成功')
+            logger.info('设置多条开区计划成功')
             return Response(serializer.data)
 
         else:
@@ -348,22 +373,51 @@ class AppServerChannelDetail(APIView):
             update_serializer = AppServerChannelUpdateSerializer(app_server_channel, data=data)
             if update_serializer.is_valid():
                 update_serializer.save()
-                logger.info('更新单条应用服务器成功')
+                logger.info('设置单跳开区计划成功')
                 # 获取序列器
                 serializer = AppServerChannelSerializer(app_server_channel)
-                print('222')
-                print(serializer.data)
-                print('333')
                 return Response(serializer.data)
             print(update_serializer.errors)
-            logger.info('更新单条应用服务器失败')
+            logger.info('设置单条开区计划失败')
             return Response(update_serializer.errors, status=status.HTTP_400_BAD_REQUEST)
 
     def delete(self, request, id, format=None):
+        print(request)
         app_server_channel = self.get_object(id)
-        app_server_channel.delete()
-        logger.info('删除应用服务器成功')
-        return Response(status=status.HTTP_204_NO_CONTENT)
+        data = request.data
+        data.update(open_type='', open_type_value='')
+        by_zone = data.get('by_zone')
+        if by_zone:
+            app_server_channel_list = AppServerChannel.objects.filter(zoneidx=app_server_channel.zoneidx).filter(server_statu__gt=200)
+            for each in app_server_channel_list:
+                # 更新序列器
+                update_serializer = AppServerChannelUpdateSerializer(each, data=data)
+                if update_serializer.is_valid():
+                    update_serializer.save()
+                    logger.info('删除多条开区计划之一成功, id为{each_id}'.format(each_id=each.id))
+                else:
+                    print(update_serializer.errors)
+                    logger.info('删除多条开区计划之一失败, id为{each_id}'.format(each_id=each.id))
+                    return Response(update_serializer.errors, status=status.HTTP_400_BAD_REQUEST)
+            # 获取序列器
+            # serializer = AppServerChannelSerializer(app_server_channel_list, many=True)
+            logger.info('删除多条开区计划成功')
+            return Response(status=status.HTTP_204_NO_CONTENT)
+            # return Response(serializer.data)
+        else:
+            # 更新序列器
+            update_serializer = AppServerChannelUpdateSerializer(app_server_channel, data=data)
+            if update_serializer.is_valid():
+                update_serializer.save()
+                logger.info('删除开区计划成功')
+                return Response(status=status.HTTP_204_NO_CONTENT)
+            logger.info('删除开区计划成功失败')
+            return Response(update_serializer.errors, status=status.HTTP_400_BAD_REQUEST)
+
+        # app_server_channel = self.get_object(id)
+        # app_server_channel.delete()
+        # logger.info('删除应用服务器成功')
+        # return Response(status=status.HTTP_204_NO_CONTENT)
         # if welfare_management.status == 0:
         #     welfare_management.delete()
         #     logger.info('删除福利管理成功')

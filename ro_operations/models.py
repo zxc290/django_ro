@@ -26,6 +26,7 @@ class AppManage(models.Model):
     mix = models.IntegerField(blank=True, null=True, verbose_name='mix')
     app_parameter = models.CharField(max_length=1000, blank=True, null=True, verbose_name='app参数')
     del_field = models.IntegerField(db_column='del', verbose_name='删除')  # Field renamed because it was a Python reserved word.
+    sync = models.IntegerField(db_column='sync', verbose_name='同步')
 
     objects = AppManagementManager()
 

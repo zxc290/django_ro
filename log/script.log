@@ -641,3 +641,134 @@ Traceback (most recent call last):
   File "E:\workspace\venv\django_ro_venv\lib\site-packages\django\db\models\fields\__init__.py", line 1807, in get_prep_value
     return int(value)
 ValueError: invalid literal for int() with base 10: ''
+2019-03-02 14:45:29,635 [Thread-2:13516] [django.request:228] [log:log_response] [WARNING]- Forbidden: /welfares/
+2019-03-02 16:34:43,064 [Thread-2:14980] [django.request:228] [log:log_response] [WARNING]- Not Found: /app_server_channels/undefined/
+2019-03-02 17:02:13,909 [Thread-2:9428] [django.request:228] [log:log_response] [WARNING]- Method Not Allowed: /app_server_channels/
+2019-03-02 17:04:05,965 [Thread-2:9428] [django.request:228] [log:log_response] [ERROR]- Internal Server Error: /app_server_channels/39347/
+Traceback (most recent call last):
+  File "E:\workspace\venv\django_ro_venv\lib\site-packages\django\core\handlers\exception.py", line 34, in inner
+    response = get_response(request)
+  File "E:\workspace\venv\django_ro_venv\lib\site-packages\django\core\handlers\base.py", line 126, in _get_response
+    response = self.process_exception_by_middleware(e, request)
+  File "E:\workspace\venv\django_ro_venv\lib\site-packages\django\core\handlers\base.py", line 124, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "E:\workspace\venv\django_ro_venv\lib\site-packages\django\views\decorators\csrf.py", line 54, in wrapped_view
+    return view_func(*args, **kwargs)
+  File "E:\workspace\venv\django_ro_venv\lib\site-packages\django\views\generic\base.py", line 68, in view
+    return self.dispatch(request, *args, **kwargs)
+  File "E:\workspace\venv\django_ro_venv\lib\site-packages\rest_framework\views.py", line 497, in dispatch
+    self.response = self.finalize_response(request, response, *args, **kwargs)
+  File "E:\workspace\venv\django_ro_venv\lib\site-packages\rest_framework\views.py", line 412, in finalize_response
+    % type(response)
+AssertionError: Expected a `Response`, `HttpResponse` or `HttpStreamingResponse` to be returned from the view, but received a `<class 'NoneType'>`
+2019-03-02 17:04:41,246 [Thread-2:8188] [django.request:228] [log:log_response] [ERROR]- Internal Server Error: /app_server_channels/39347/
+Traceback (most recent call last):
+  File "E:\workspace\venv\django_ro_venv\lib\site-packages\django\core\handlers\exception.py", line 34, in inner
+    response = get_response(request)
+  File "E:\workspace\venv\django_ro_venv\lib\site-packages\django\core\handlers\base.py", line 126, in _get_response
+    response = self.process_exception_by_middleware(e, request)
+  File "E:\workspace\venv\django_ro_venv\lib\site-packages\django\core\handlers\base.py", line 124, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "E:\workspace\venv\django_ro_venv\lib\site-packages\django\views\decorators\csrf.py", line 54, in wrapped_view
+    return view_func(*args, **kwargs)
+  File "E:\workspace\venv\django_ro_venv\lib\site-packages\django\views\generic\base.py", line 68, in view
+    return self.dispatch(request, *args, **kwargs)
+  File "E:\workspace\venv\django_ro_venv\lib\site-packages\rest_framework\views.py", line 497, in dispatch
+    self.response = self.finalize_response(request, response, *args, **kwargs)
+  File "E:\workspace\venv\django_ro_venv\lib\site-packages\rest_framework\views.py", line 412, in finalize_response
+    % type(response)
+AssertionError: Expected a `Response`, `HttpResponse` or `HttpStreamingResponse` to be returned from the view, but received a `<class 'NoneType'>`
+2019-03-02 17:05:24,465 [Thread-2:11940] [django.request:228] [log:log_response] [ERROR]- Internal Server Error: /app_server_channels/39347/
+Traceback (most recent call last):
+  File "E:\workspace\venv\django_ro_venv\lib\site-packages\rest_framework\request.py", line 412, in __getattr__
+    return getattr(self._request, attr)
+AttributeError: 'WSGIRequest' object has no attribute 'DELETE'
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "E:\workspace\venv\django_ro_venv\lib\site-packages\django\core\handlers\exception.py", line 34, in inner
+    response = get_response(request)
+  File "E:\workspace\venv\django_ro_venv\lib\site-packages\django\core\handlers\base.py", line 126, in _get_response
+    response = self.process_exception_by_middleware(e, request)
+  File "E:\workspace\venv\django_ro_venv\lib\site-packages\django\core\handlers\base.py", line 124, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "E:\workspace\venv\django_ro_venv\lib\site-packages\django\views\decorators\csrf.py", line 54, in wrapped_view
+    return view_func(*args, **kwargs)
+  File "E:\workspace\venv\django_ro_venv\lib\site-packages\django\views\generic\base.py", line 68, in view
+    return self.dispatch(request, *args, **kwargs)
+  File "E:\workspace\venv\django_ro_venv\lib\site-packages\rest_framework\views.py", line 495, in dispatch
+    response = self.handle_exception(exc)
+  File "E:\workspace\venv\django_ro_venv\lib\site-packages\rest_framework\views.py", line 455, in handle_exception
+    self.raise_uncaught_exception(exc)
+  File "E:\workspace\venv\django_ro_venv\lib\site-packages\rest_framework\views.py", line 492, in dispatch
+    response = handler(request, *args, **kwargs)
+  File "E:\workspace\project\django_ro\ro_operations\views.py", line 366, in delete
+    print(request.DELETE)
+  File "E:\workspace\venv\django_ro_venv\lib\site-packages\rest_framework\request.py", line 414, in __getattr__
+    return self.__getattribute__(attr)
+AttributeError: 'Request' object has no attribute 'DELETE'
+2019-03-02 17:05:48,493 [Thread-2:11940] [django.request:228] [log:log_response] [ERROR]- Internal Server Error: /app_server_channels/39347/
+Traceback (most recent call last):
+  File "E:\workspace\venv\django_ro_venv\lib\site-packages\rest_framework\request.py", line 412, in __getattr__
+    return getattr(self._request, attr)
+AttributeError: 'WSGIRequest' object has no attribute 'DELETE'
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "E:\workspace\venv\django_ro_venv\lib\site-packages\django\core\handlers\exception.py", line 34, in inner
+    response = get_response(request)
+  File "E:\workspace\venv\django_ro_venv\lib\site-packages\django\core\handlers\base.py", line 126, in _get_response
+    response = self.process_exception_by_middleware(e, request)
+  File "E:\workspace\venv\django_ro_venv\lib\site-packages\django\core\handlers\base.py", line 124, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "E:\workspace\venv\django_ro_venv\lib\site-packages\django\views\decorators\csrf.py", line 54, in wrapped_view
+    return view_func(*args, **kwargs)
+  File "E:\workspace\venv\django_ro_venv\lib\site-packages\django\views\generic\base.py", line 68, in view
+    return self.dispatch(request, *args, **kwargs)
+  File "E:\workspace\venv\django_ro_venv\lib\site-packages\rest_framework\views.py", line 495, in dispatch
+    response = self.handle_exception(exc)
+  File "E:\workspace\venv\django_ro_venv\lib\site-packages\rest_framework\views.py", line 455, in handle_exception
+    self.raise_uncaught_exception(exc)
+  File "E:\workspace\venv\django_ro_venv\lib\site-packages\rest_framework\views.py", line 492, in dispatch
+    response = handler(request, *args, **kwargs)
+  File "E:\workspace\project\django_ro\ro_operations\views.py", line 366, in delete
+    print(request.DELETE)
+  File "E:\workspace\venv\django_ro_venv\lib\site-packages\rest_framework\request.py", line 414, in __getattr__
+    return self.__getattribute__(attr)
+AttributeError: 'Request' object has no attribute 'DELETE'
+2019-03-02 17:15:19,547 [Thread-2:11308] [django.request:228] [log:log_response] [ERROR]- Internal Server Error: /app_server_channels/39347/
+Traceback (most recent call last):
+  File "E:\workspace\venv\django_ro_venv\lib\site-packages\django\core\handlers\exception.py", line 34, in inner
+    response = get_response(request)
+  File "E:\workspace\venv\django_ro_venv\lib\site-packages\django\core\handlers\base.py", line 126, in _get_response
+    response = self.process_exception_by_middleware(e, request)
+  File "E:\workspace\venv\django_ro_venv\lib\site-packages\django\core\handlers\base.py", line 124, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "E:\workspace\venv\django_ro_venv\lib\site-packages\django\views\decorators\csrf.py", line 54, in wrapped_view
+    return view_func(*args, **kwargs)
+  File "E:\workspace\venv\django_ro_venv\lib\site-packages\django\views\generic\base.py", line 68, in view
+    return self.dispatch(request, *args, **kwargs)
+  File "E:\workspace\venv\django_ro_venv\lib\site-packages\rest_framework\views.py", line 497, in dispatch
+    self.response = self.finalize_response(request, response, *args, **kwargs)
+  File "E:\workspace\venv\django_ro_venv\lib\site-packages\rest_framework\views.py", line 412, in finalize_response
+    % type(response)
+AssertionError: Expected a `Response`, `HttpResponse` or `HttpStreamingResponse` to be returned from the view, but received a `<class 'NoneType'>`
+2019-03-02 17:15:23,841 [Thread-2:11308] [django.request:228] [log:log_response] [ERROR]- Internal Server Error: /app_server_channels/39347/
+Traceback (most recent call last):
+  File "E:\workspace\venv\django_ro_venv\lib\site-packages\django\core\handlers\exception.py", line 34, in inner
+    response = get_response(request)
+  File "E:\workspace\venv\django_ro_venv\lib\site-packages\django\core\handlers\base.py", line 126, in _get_response
+    response = self.process_exception_by_middleware(e, request)
+  File "E:\workspace\venv\django_ro_venv\lib\site-packages\django\core\handlers\base.py", line 124, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "E:\workspace\venv\django_ro_venv\lib\site-packages\django\views\decorators\csrf.py", line 54, in wrapped_view
+    return view_func(*args, **kwargs)
+  File "E:\workspace\venv\django_ro_venv\lib\site-packages\django\views\generic\base.py", line 68, in view
+    return self.dispatch(request, *args, **kwargs)
+  File "E:\workspace\venv\django_ro_venv\lib\site-packages\rest_framework\views.py", line 497, in dispatch
+    self.response = self.finalize_response(request, response, *args, **kwargs)
+  File "E:\workspace\venv\django_ro_venv\lib\site-packages\rest_framework\views.py", line 412, in finalize_response
+    % type(response)
+AssertionError: Expected a `Response`, `HttpResponse` or `HttpStreamingResponse` to be returned from the view, but received a `<class 'NoneType'>`
