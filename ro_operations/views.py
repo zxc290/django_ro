@@ -9,7 +9,7 @@ from rest_framework.response import Response
 from rest_framework.parsers import JSONParser
 from rest_framework import status
 from .models import User, AppChannelList, AppManage, AppServerList, AppPlatformCfg, AppServerChannel, WelfareManagement, RolePlayerManagement
-from .serializers import UserSerializer, AppChannelListSerializer, AppManageSerializer, AppServerListSerializer, AppPlatformCfgSerializer, AppServerChannelSerializer, AppServerChannelUpdateSerializer ,ServerManagementSerializer, WelfareManagementSerializer, RolePlayerManagementSerializer
+from .serializers import UserSerializer, AppChannelListSerializer, AppManageSerializer, AppServerListSerializer, AppPlatformCfgSerializer, AppServerChannelSerializer, AppServerChannelUpdateSerializer, AppServerChannelRecommendSerializer, ServerManagementSerializer, WelfareManagementSerializer, RolePlayerManagementSerializer
 from .tokens import gen_json_web_token
 from .decorators import token_required
 from .dbtools import dict_fetchall
@@ -119,46 +119,6 @@ def server_list(request):
 
 
 @api_view(['POST'])
-def set_open_plan(request):
-    data = request.data
-    gid = data.get('gid')
-    cid = data.get('cid')
-    appid = data.get('appid')
-    plans = data.get('plans')
-
-    # 设置未开区
-    for plan in plans:
-        id = plan.get('id')
-        by_zone = plan.get('by_zone')
-        zoneidx = plan.get('zoneidx')
-        open_type = plan.get('open_type')
-        if open_type == 1:
-            plan.update(open_type_value=plan.get('open_user'))
-            # open_type_value = plan.get('open_user')
-        elif open_type == 2:
-            plan.update(open_type_value=plan.get('open_time'))
-            # open_type_value = plan.get('open_time')
-
-        app_server_channel_list = AppServerChannel.objects.filter(zoneidx=zoneidx) if by_zone else AppServerChannel.objects.filter(id=id)
-        for each in app_server_channel_list:
-            # 更新序列器
-            update_serializer = AppServerChannelUpdateSerializer(each, data=plan)
-            if update_serializer.is_valid():
-                update_serializer.save()
-                logger.info('设置开区计划成功, 服务器id{each_id}'.format(each_id=each.id))
-            else:
-                print(update_serializer.errors)
-                logger.info('设置开区计划失败, 服务器id{each_id}'.format(each_id=each.id))
-                return Response(update_serializer.errors, status=status.HTTP_400_BAD_REQUEST)
-    # 获取序列器
-
-    # serializer = AppServerChannelSerializer(app_server_channel_list, many=True)
-    message = '设置多条开区计划成功'
-    logger.info(message)
-    return Response(message, status=status.HTTP_202_ACCEPTED)
-
-
-@api_view(['POST'])
 def set_open_plan(request, id):
     data = request.data
     by_zone = data.get('by_zone')
@@ -176,14 +136,19 @@ def set_open_plan(request, id):
         app_server_channel_list = AppServerChannel.objects.filter(zoneidx=app_server_channel.zoneidx).filter(
             server_statu__gt=200)
         for each in app_server_channel_list:
-            # 更新序列器
-            update_serializer = AppServerChannelUpdateSerializer(each, data=data)
-            if update_serializer.is_valid():
-                update_serializer.save()
-                logger.info('设置多条开区计划之一成功, id为{each_id}'.format(each_id=each.id))
+            sync = AppManage.objects.get(appid=each.appid).sync
+            # 包同步开启
+            if sync:
+                # 更新序列器
+                update_serializer = AppServerChannelUpdateSerializer(each, data=data)
+                if update_serializer.is_valid():
+                    update_serializer.save()
+                    logger.info('设置多条开区计划之一成功, id为{each_id}'.format(each_id=each.id))
+                else:
+                    logger.info('设置多条开区计划之一失败, id为{each_id}'.format(each_id=each.id))
+                    return Response(update_serializer.errors, status=status.HTTP_400_BAD_REQUEST)
             else:
-                logger.info('设置多条开区计划之一失败, id为{each_id}'.format(each_id=each.id))
-                return Response(update_serializer.errors, status=status.HTTP_400_BAD_REQUEST)
+                logger.info('未开启包同步, 设置计划不生效, id为{each_id}'.format(each_id=each.id))
         # 获取序列器
         serializer = AppServerChannelSerializer(app_server_channel_list, many=True)
         logger.info('设置多条开区计划成功')
@@ -193,7 +158,7 @@ def set_open_plan(request, id):
         update_serializer = AppServerChannelUpdateSerializer(app_server_channel, data=data)
         if update_serializer.is_valid():
             update_serializer.save()
-            logger.info('设置单跳开区计划成功')
+            logger.info('设置单条开区计划成功')
             # 获取序列器
             serializer = AppServerChannelSerializer(app_server_channel)
             return Response(serializer.data)
@@ -206,20 +171,26 @@ def set_open_plan(request, id):
 def delete_open_plan(request, id):
     app_server_channel = AppServerChannel.objects.get(id=id)
     data = request.data
-    data.update(open_type='', open_type_value='')
+    data.update(open_type=0, open_type_value=0)
+    print(data)
     by_zone = data.get('by_zone')
     if by_zone:
         app_server_channel_list = AppServerChannel.objects.filter(zoneidx=app_server_channel.zoneidx).filter(server_statu__gt=200)
         for each in app_server_channel_list:
-            # 更新序列器
-            update_serializer = AppServerChannelUpdateSerializer(each, data=data)
-            if update_serializer.is_valid():
-                update_serializer.save()
-                logger.info('删除多条开区计划之一成功, id为{each_id}'.format(each_id=each.id))
+            sync = AppManage.objects.get(appid=each.appid).sync
+            # 包同步开启
+            if sync:
+                # 更新序列器
+                update_serializer = AppServerChannelUpdateSerializer(each, data=data)
+                if update_serializer.is_valid():
+                    update_serializer.save()
+                    logger.info('删除多条开区计划之一成功, id为{each_id}'.format(each_id=each.id))
+                else:
+                    print(update_serializer.errors)
+                    logger.info('删除多条开区计划之一失败, id为{each_id}'.format(each_id=each.id))
+                    return Response(update_serializer.errors, status=status.HTTP_400_BAD_REQUEST)
             else:
-                print(update_serializer.errors)
-                logger.info('删除多条开区计划之一失败, id为{each_id}'.format(each_id=each.id))
-                return Response(update_serializer.errors, status=status.HTTP_400_BAD_REQUEST)
+                logger.info('未开启包同步, 删除计划不生效, id为{each_id}'.format(each_id=each.id))
         # 获取序列器
         # serializer = AppServerChannelSerializer(app_server_channel_list, many=True)
         logger.info('删除多条开区计划成功')
@@ -232,8 +203,22 @@ def delete_open_plan(request, id):
             update_serializer.save()
             logger.info('删除开区计划成功')
             return Response(status=status.HTTP_204_NO_CONTENT)
+        print(update_serializer.errors)
         logger.info('删除开区计划成功失败')
         return Response(update_serializer.errors, status=status.HTTP_400_BAD_REQUEST)
+
+
+@api_view(['POST'])
+def change_recommend(request, id):
+    app_server_channel = AppServerChannel.objects.get(id=id)
+    data = request.data
+    recommend_serializer = AppServerChannelRecommendSerializer(app_server_channel, data=data)
+    if recommend_serializer.is_valid():
+        recommend_serializer.save()
+        logger.info('修改推荐状态成功')
+        return Response(status=status.HTTP_204_NO_CONTENT)
+    logger.info('修改推荐状态失败')
+    return Response(recommend_serializer.errors, status=status.HTTP_400_BAD_REQUEST)
 
 
 class AppPlatformCfgList(APIView):
@@ -284,9 +269,9 @@ class ServerManagementList(APIView):
         try:
             server_management_cursor = connections['server_management'].cursor()
             if appid:
-                sql = "SELECT * FROM ServerManagement.dbo.[GetServerTableTest] (50, {cid}) WHERE appid='{appid}'".format(cid=cid, appid=appid)
+                sql = "SELECT * FROM ServerManagement.dbo.[GetServerTableTest] (50, {cid}) WHERE appid='{appid}' AND server_statu > 200".format(cid=cid, appid=appid)
             else:
-                sql = "SELECT * FROM ServerManagement.dbo.[GetServerTableTest] (50, {cid})".format(cid=cid)
+                sql = "SELECT * FROM ServerManagement.dbo.[GetServerTableTest] (50, {cid}) WHERE server_statu > 200".format(cid=cid)
             # sql = "SELECT * FROM ServerManagement.dbo.[GetServerTableTest] (50, 12)"
             # sql = "SELECT * FROM ServerManagement.dbo.[GetServerTableTest] (50, 12) WHERE appid='com.dkm.tlsj.tlsj'"
             # sql = "SELECT * FROM ServerManagementRo.dbo.[GetServerTableTest] ({gid}, {cid}) WHERE appid='{appid}'".format(gid=gid, cid=cid, appid=appid)
@@ -294,13 +279,47 @@ class ServerManagementList(APIView):
             server_management_result = dict_fetchall(server_management_cursor)
             print(server_management_result[0])
             serializer = ServerManagementSerializer(server_management_result, many=True)
-            logger.info('获取服务器管理列表成功')
+            logger.info('获取开区服务器管理列表成功')
             return Response(serializer.data)
         except Exception as e:
             print(e)
-            message = '获取服务器管理列表失败'
+            message = '获取开区服务器管理列表失败'
             logger.info(message)
-            return Response(message)
+            return Response(message, status=status.HTTP_400_BAD_REQUEST)
+
+
+class RecommendServerList(APIView):
+
+    def get(self, request, format=None):
+        data = request.GET
+        cid = data.get('cid')
+        appid = data.get('appid')
+        print(cid, appid)
+
+        now = datetime.now()
+        today = datetime.date(now).strftime('%Y-%m-%d')
+
+
+
+        try:
+            server_management_cursor = connections['server_management'].cursor()
+            sql = "SELECT * FROM ServerManagement.dbo.[GetServerTableTest] (50, {cid}) WHERE server_statu < 200 AND appid='{appid}' AND OpenDate=CONVERT(DATE, '{today}')".format(cid=cid, appid=appid, today=today)
+            # if appid:
+            #     sql = "SELECT * FROM ServerManagement.dbo.[GetServerTableTest] (50, {cid}) WHERE appid='{appid}' AND server_statu < 200".format(cid=cid, appid=appid)
+            # else:
+            #     sql = "SELECT * FROM ServerManagement.dbo.[GetServerTableTest] (50, {cid}) WHERE server_statu < 200".format(cid=cid)
+            server_management_cursor.execute(sql)
+            server_management_result = dict_fetchall(server_management_cursor)
+            # today_recommend = [each for each in server_management_result if each.get('OpenDate') == today]
+            # print(today_recommend)
+            serializer = ServerManagementSerializer(server_management_result, many=True)
+            logger.info('获取推荐服务器管理列表成功')
+            return Response(serializer.data)
+        except Exception as e:
+            print(e)
+            message = '获取推荐服务器管理列表失败'
+            logger.info(message)
+            return Response(message, status=status.HTTP_400_BAD_REQUEST)
 
 
 class AppManageList(APIView):

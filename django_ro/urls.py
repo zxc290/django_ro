@@ -33,7 +33,9 @@ urlpatterns = [
     path('role_players/', views.RolePlayerManagementList.as_view()),
     path('role_players/<int:id>/', views.RolePlayerManagementDetail.as_view()),
     path('server_managements/', views.ServerManagementList.as_view()),
+    path('recommend_server_managements/', views.RecommendServerList.as_view()),
     path('set_open_plan/<int:id>/', views.set_open_plan),
     path('delete_open_plan/<int:id>/', views.delete_open_plan),
+    path('change_recommend/<int:id>/', views.change_recommend),
 ]
 

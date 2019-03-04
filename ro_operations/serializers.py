@@ -45,6 +45,11 @@ class AppServerChannelUpdateSerializer(serializers.ModelSerializer):
         fields = ('open_type', 'open_type_value')
 
 
+class AppServerChannelRecommendSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = AppServerChannel
+        fields = ('server_suggest', )
+
 # class AppServerChannelSerializer(serializers.ModelSerializer):
 #     class Meta:
 #         model = AppServerChannel
