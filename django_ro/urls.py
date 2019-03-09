@@ -37,5 +37,6 @@ urlpatterns = [
     path('set_open_plan/<int:id>/', views.set_open_plan),
     path('delete_open_plan/<int:id>/', views.delete_open_plan),
     path('change_recommend/<int:id>/', views.change_recommend),
+    path('open_now/<int:id>/', views.open_now)
 ]
 

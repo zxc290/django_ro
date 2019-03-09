@@ -796,3 +796,344 @@ Traceback (most recent call last):
   File "E:\workspace\venv\django_ro_venv\lib\site-packages\django\middleware\common.py", line 93, in get_full_path_with_slash
     'url': request.get_host() + new_path,
 RuntimeError: You called this URL via POST, but the URL doesn't end in a slash and you have APPEND_SLASH set. Django can't redirect to the slash URL while maintaining POST data. Change your form to point to 127.0.0.1:8000/change_recommend/1389/ (note the trailing slash), or set APPEND_SLASH=False in your Django settings.
+2019-03-04 17:46:33,120 [Thread-4:13908] [django.request:228] [log:log_response] [WARNING]- Not Found: /delete_open_plan//
+2019-03-05 11:00:29,127 [Thread-9:14472] [django.request:228] [log:log_response] [WARNING]- Forbidden: /welfares/
+2019-03-05 14:00:24,575 [Thread-2:12700] [django.request:228] [log:log_response] [WARNING]- Bad Request: /server_managements/
+2019-03-05 14:10:32,606 [Thread-2:8880] [django.request:228] [log:log_response] [ERROR]- Internal Server Error: /change_recommend/1389/
+Traceback (most recent call last):
+  File "E:\workspace\venv\django_ro_venv\lib\site-packages\django\core\handlers\exception.py", line 34, in inner
+    response = get_response(request)
+  File "E:\workspace\venv\django_ro_venv\lib\site-packages\django\core\handlers\base.py", line 126, in _get_response
+    response = self.process_exception_by_middleware(e, request)
+  File "E:\workspace\venv\django_ro_venv\lib\site-packages\django\core\handlers\base.py", line 124, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "E:\workspace\venv\django_ro_venv\lib\site-packages\django\views\decorators\csrf.py", line 54, in wrapped_view
+    return view_func(*args, **kwargs)
+  File "E:\workspace\venv\django_ro_venv\lib\site-packages\django\views\generic\base.py", line 68, in view
+    return self.dispatch(request, *args, **kwargs)
+  File "E:\workspace\venv\django_ro_venv\lib\site-packages\rest_framework\views.py", line 497, in dispatch
+    self.response = self.finalize_response(request, response, *args, **kwargs)
+  File "E:\workspace\venv\django_ro_venv\lib\site-packages\rest_framework\views.py", line 412, in finalize_response
+    % type(response)
+AssertionError: Expected a `Response`, `HttpResponse` or `HttpStreamingResponse` to be returned from the view, but received a `<class 'NoneType'>`
+2019-03-05 14:58:12,072 [Thread-3:7208] [django.request:228] [log:log_response] [ERROR]- Internal Server Error: /delete_open_plan/7631/
+Traceback (most recent call last):
+  File "E:\workspace\venv\django_ro_venv\lib\site-packages\django\core\handlers\exception.py", line 34, in inner
+    response = get_response(request)
+  File "E:\workspace\venv\django_ro_venv\lib\site-packages\django\core\handlers\base.py", line 126, in _get_response
+    response = self.process_exception_by_middleware(e, request)
+  File "E:\workspace\venv\django_ro_venv\lib\site-packages\django\core\handlers\base.py", line 124, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "E:\workspace\venv\django_ro_venv\lib\site-packages\django\views\decorators\csrf.py", line 54, in wrapped_view
+    return view_func(*args, **kwargs)
+  File "E:\workspace\venv\django_ro_venv\lib\site-packages\django\views\generic\base.py", line 68, in view
+    return self.dispatch(request, *args, **kwargs)
+  File "E:\workspace\venv\django_ro_venv\lib\site-packages\rest_framework\views.py", line 495, in dispatch
+    response = self.handle_exception(exc)
+  File "E:\workspace\venv\django_ro_venv\lib\site-packages\rest_framework\views.py", line 455, in handle_exception
+    self.raise_uncaught_exception(exc)
+  File "E:\workspace\venv\django_ro_venv\lib\site-packages\rest_framework\views.py", line 492, in dispatch
+    response = handler(request, *args, **kwargs)
+  File "E:\workspace\venv\django_ro_venv\lib\site-packages\rest_framework\decorators.py", line 54, in handler
+    return func(*args, **kwargs)
+  File "E:\workspace\project\django_ro\ro_operations\views.py", line 180, in delete_open_plan
+    sync = AppManage.objects.get(appid=each.appid).sync
+  File "E:\workspace\venv\django_ro_venv\lib\site-packages\django\db\models\manager.py", line 82, in manager_method
+    return getattr(self.get_queryset(), name)(*args, **kwargs)
+  File "E:\workspace\venv\django_ro_venv\lib\site-packages\django\db\models\query.py", line 403, in get
+    (self.model._meta.object_name, num)
+ro_operations.models.AppManage.MultipleObjectsReturned: get() returned more than one AppManage -- it returned 3!
+2019-03-05 15:01:34,844 [Thread-2:8188] [django.request:228] [log:log_response] [ERROR]- Internal Server Error: /delete_open_plan/7631/
+Traceback (most recent call last):
+  File "E:\workspace\venv\django_ro_venv\lib\site-packages\django\core\handlers\exception.py", line 34, in inner
+    response = get_response(request)
+  File "E:\workspace\venv\django_ro_venv\lib\site-packages\django\core\handlers\base.py", line 126, in _get_response
+    response = self.process_exception_by_middleware(e, request)
+  File "E:\workspace\venv\django_ro_venv\lib\site-packages\django\core\handlers\base.py", line 124, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "E:\workspace\venv\django_ro_venv\lib\site-packages\django\views\decorators\csrf.py", line 54, in wrapped_view
+    return view_func(*args, **kwargs)
+  File "E:\workspace\venv\django_ro_venv\lib\site-packages\django\views\generic\base.py", line 68, in view
+    return self.dispatch(request, *args, **kwargs)
+  File "E:\workspace\venv\django_ro_venv\lib\site-packages\rest_framework\views.py", line 495, in dispatch
+    response = self.handle_exception(exc)
+  File "E:\workspace\venv\django_ro_venv\lib\site-packages\rest_framework\views.py", line 455, in handle_exception
+    self.raise_uncaught_exception(exc)
+  File "E:\workspace\venv\django_ro_venv\lib\site-packages\rest_framework\views.py", line 492, in dispatch
+    response = handler(request, *args, **kwargs)
+  File "E:\workspace\venv\django_ro_venv\lib\site-packages\rest_framework\decorators.py", line 54, in handler
+    return func(*args, **kwargs)
+  File "E:\workspace\project\django_ro\ro_operations\views.py", line 181, in delete_open_plan
+    sync = AppManage.objects.get(appid=each.appid).sync
+  File "E:\workspace\venv\django_ro_venv\lib\site-packages\django\db\models\manager.py", line 82, in manager_method
+    return getattr(self.get_queryset(), name)(*args, **kwargs)
+  File "E:\workspace\venv\django_ro_venv\lib\site-packages\django\db\models\query.py", line 403, in get
+    (self.model._meta.object_name, num)
+ro_operations.models.AppManage.MultipleObjectsReturned: get() returned more than one AppManage -- it returned 3!
+2019-03-05 15:03:23,963 [Thread-2:7256] [django.request:228] [log:log_response] [WARNING]- Not Found: /delete_open_plan//
+2019-03-05 15:10:56,071 [Thread-3:14072] [django.request:228] [log:log_response] [WARNING]- Bad Request: /change_recommend/1389/
+2019-03-06 10:50:17,762 [Thread-7:15744] [django.request:228] [log:log_response] [WARNING]- Forbidden: /welfares/
+2019-03-07 15:46:02,363 [Thread-2:2936] [django.request:228] [log:log_response] [WARNING]- Forbidden: /welfares/
+2019-03-08 16:49:32,958 [Thread-2:12276] [django.request:228] [log:log_response] [WARNING]- Forbidden: /welfares/
+2019-03-08 16:49:43,936 [Thread-2:12276] [django.request:228] [log:log_response] [WARNING]- Bad Request: /server_managements/
+2019-03-08 16:51:45,559 [Thread-2:8292] [django.request:228] [log:log_response] [WARNING]- Bad Request: /server_managements/
+2019-03-08 16:52:47,212 [Thread-2:16240] [django.request:228] [log:log_response] [WARNING]- Bad Request: /server_managements/
+2019-03-08 16:59:43,192 [Thread-7:1444] [django.request:228] [log:log_response] [WARNING]- Bad Request: /server_managements/
+2019-03-08 17:31:27,986 [Thread-2:10248] [django.request:228] [log:log_response] [WARNING]- Bad Request: /open_now/33382/
+2019-03-08 17:32:24,674 [Thread-3:17340] [django.request:228] [log:log_response] [WARNING]- Bad Request: /open_now/33382/
+2019-03-08 17:35:13,794 [Thread-3:10456] [django.request:228] [log:log_response] [WARNING]- Bad Request: /open_now/33382/
+2019-03-08 17:36:25,156 [Thread-3:14112] [django.request:228] [log:log_response] [WARNING]- Bad Request: /open_now/33382/
+2019-03-08 17:37:41,822 [Thread-3:13436] [django.request:228] [log:log_response] [WARNING]- Bad Request: /open_now/33382/
+2019-03-09 14:31:10,543 [Thread-8:17296] [django.request:228] [log:log_response] [WARNING]- Forbidden: /welfares/
+2019-03-09 15:06:13,183 [Thread-21:8740] [django.request:228] [log:log_response] [ERROR]- Internal Server Error: /set_open_plan/39347/
+Traceback (most recent call last):
+  File "E:\workspace\venv\django_ro_venv\lib\site-packages\django\core\handlers\exception.py", line 34, in inner
+    response = get_response(request)
+  File "E:\workspace\venv\django_ro_venv\lib\site-packages\django\core\handlers\base.py", line 126, in _get_response
+    response = self.process_exception_by_middleware(e, request)
+  File "E:\workspace\venv\django_ro_venv\lib\site-packages\django\core\handlers\base.py", line 124, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "E:\workspace\venv\django_ro_venv\lib\site-packages\django\views\decorators\csrf.py", line 54, in wrapped_view
+    return view_func(*args, **kwargs)
+  File "E:\workspace\venv\django_ro_venv\lib\site-packages\django\views\generic\base.py", line 68, in view
+    return self.dispatch(request, *args, **kwargs)
+  File "E:\workspace\venv\django_ro_venv\lib\site-packages\rest_framework\views.py", line 495, in dispatch
+    response = self.handle_exception(exc)
+  File "E:\workspace\venv\django_ro_venv\lib\site-packages\rest_framework\views.py", line 455, in handle_exception
+    self.raise_uncaught_exception(exc)
+  File "E:\workspace\venv\django_ro_venv\lib\site-packages\rest_framework\views.py", line 492, in dispatch
+    response = handler(request, *args, **kwargs)
+  File "E:\workspace\venv\django_ro_venv\lib\site-packages\rest_framework\decorators.py", line 54, in handler
+    return func(*args, **kwargs)
+  File "E:\workspace\project\django_ro\ro_operations\views.py", line 175, in set_open_plan
+    if update_serializer.is_valid():
+  File "E:\workspace\venv\django_ro_venv\lib\site-packages\rest_framework\serializers.py", line 236, in is_valid
+    self._validated_data = self.run_validation(self.initial_data)
+  File "E:\workspace\venv\django_ro_venv\lib\site-packages\rest_framework\serializers.py", line 434, in run_validation
+    value = self.to_internal_value(data)
+  File "E:\workspace\venv\django_ro_venv\lib\site-packages\rest_framework\serializers.py", line 485, in to_internal_value
+    fields = self._writable_fields
+  File "E:\workspace\venv\django_ro_venv\lib\site-packages\django\utils\functional.py", line 37, in __get__
+    res = instance.__dict__[self.name] = self.func(instance)
+  File "E:\workspace\venv\django_ro_venv\lib\site-packages\rest_framework\serializers.py", line 370, in _writable_fields
+    field for field in self.fields.values() if not field.read_only
+  File "E:\workspace\venv\django_ro_venv\lib\site-packages\rest_framework\serializers.py", line 363, in fields
+    for key, value in self.get_fields().items():
+  File "E:\workspace\venv\django_ro_venv\lib\site-packages\rest_framework\serializers.py", line 1050, in get_fields
+    source, info, model, depth
+  File "E:\workspace\venv\django_ro_venv\lib\site-packages\rest_framework\serializers.py", line 1195, in build_field
+    return self.build_unknown_field(field_name, model_class)
+  File "E:\workspace\venv\django_ro_venv\lib\site-packages\rest_framework\serializers.py", line 1307, in build_unknown_field
+    (field_name, model_class.__name__)
+django.core.exceptions.ImproperlyConfigured: Field name `open_type_value` is not valid for model `AppServerChannel`.
+2019-03-09 15:09:16,414 [Thread-3:11448] [django.request:228] [log:log_response] [ERROR]- Internal Server Error: /set_open_plan/39347/
+Traceback (most recent call last):
+  File "E:\workspace\venv\django_ro_venv\lib\site-packages\django\core\handlers\exception.py", line 34, in inner
+    response = get_response(request)
+  File "E:\workspace\venv\django_ro_venv\lib\site-packages\django\core\handlers\base.py", line 126, in _get_response
+    response = self.process_exception_by_middleware(e, request)
+  File "E:\workspace\venv\django_ro_venv\lib\site-packages\django\core\handlers\base.py", line 124, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "E:\workspace\venv\django_ro_venv\lib\site-packages\django\views\decorators\csrf.py", line 54, in wrapped_view
+    return view_func(*args, **kwargs)
+  File "E:\workspace\venv\django_ro_venv\lib\site-packages\django\views\generic\base.py", line 68, in view
+    return self.dispatch(request, *args, **kwargs)
+  File "E:\workspace\venv\django_ro_venv\lib\site-packages\rest_framework\views.py", line 495, in dispatch
+    response = self.handle_exception(exc)
+  File "E:\workspace\venv\django_ro_venv\lib\site-packages\rest_framework\views.py", line 455, in handle_exception
+    self.raise_uncaught_exception(exc)
+  File "E:\workspace\venv\django_ro_venv\lib\site-packages\rest_framework\views.py", line 492, in dispatch
+    response = handler(request, *args, **kwargs)
+  File "E:\workspace\venv\django_ro_venv\lib\site-packages\rest_framework\decorators.py", line 54, in handler
+    return func(*args, **kwargs)
+  File "E:\workspace\project\django_ro\ro_operations\views.py", line 178, in set_open_plan
+    if update_serializer.is_valid():
+  File "E:\workspace\venv\django_ro_venv\lib\site-packages\rest_framework\serializers.py", line 236, in is_valid
+    self._validated_data = self.run_validation(self.initial_data)
+  File "E:\workspace\venv\django_ro_venv\lib\site-packages\rest_framework\serializers.py", line 434, in run_validation
+    value = self.to_internal_value(data)
+  File "E:\workspace\venv\django_ro_venv\lib\site-packages\rest_framework\serializers.py", line 485, in to_internal_value
+    fields = self._writable_fields
+  File "E:\workspace\venv\django_ro_venv\lib\site-packages\django\utils\functional.py", line 37, in __get__
+    res = instance.__dict__[self.name] = self.func(instance)
+  File "E:\workspace\venv\django_ro_venv\lib\site-packages\rest_framework\serializers.py", line 370, in _writable_fields
+    field for field in self.fields.values() if not field.read_only
+  File "E:\workspace\venv\django_ro_venv\lib\site-packages\rest_framework\serializers.py", line 363, in fields
+    for key, value in self.get_fields().items():
+  File "E:\workspace\venv\django_ro_venv\lib\site-packages\rest_framework\serializers.py", line 1050, in get_fields
+    source, info, model, depth
+  File "E:\workspace\venv\django_ro_venv\lib\site-packages\rest_framework\serializers.py", line 1195, in build_field
+    return self.build_unknown_field(field_name, model_class)
+  File "E:\workspace\venv\django_ro_venv\lib\site-packages\rest_framework\serializers.py", line 1307, in build_unknown_field
+    (field_name, model_class.__name__)
+django.core.exceptions.ImproperlyConfigured: Field name `open_type_value` is not valid for model `AppServerChannel`.
+2019-03-09 15:10:41,218 [Thread-5:10588] [django.request:228] [log:log_response] [ERROR]- Internal Server Error: /set_open_plan/39347/
+Traceback (most recent call last):
+  File "E:\workspace\venv\django_ro_venv\lib\site-packages\django\core\handlers\exception.py", line 34, in inner
+    response = get_response(request)
+  File "E:\workspace\venv\django_ro_venv\lib\site-packages\django\core\handlers\base.py", line 126, in _get_response
+    response = self.process_exception_by_middleware(e, request)
+  File "E:\workspace\venv\django_ro_venv\lib\site-packages\django\core\handlers\base.py", line 124, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "E:\workspace\venv\django_ro_venv\lib\site-packages\django\views\decorators\csrf.py", line 54, in wrapped_view
+    return view_func(*args, **kwargs)
+  File "E:\workspace\venv\django_ro_venv\lib\site-packages\django\views\generic\base.py", line 68, in view
+    return self.dispatch(request, *args, **kwargs)
+  File "E:\workspace\venv\django_ro_venv\lib\site-packages\rest_framework\views.py", line 495, in dispatch
+    response = self.handle_exception(exc)
+  File "E:\workspace\venv\django_ro_venv\lib\site-packages\rest_framework\views.py", line 455, in handle_exception
+    self.raise_uncaught_exception(exc)
+  File "E:\workspace\venv\django_ro_venv\lib\site-packages\rest_framework\views.py", line 492, in dispatch
+    response = handler(request, *args, **kwargs)
+  File "E:\workspace\venv\django_ro_venv\lib\site-packages\rest_framework\decorators.py", line 54, in handler
+    return func(*args, **kwargs)
+  File "E:\workspace\project\django_ro\ro_operations\views.py", line 178, in set_open_plan
+    if update_serializer.is_valid():
+  File "E:\workspace\venv\django_ro_venv\lib\site-packages\rest_framework\serializers.py", line 236, in is_valid
+    self._validated_data = self.run_validation(self.initial_data)
+  File "E:\workspace\venv\django_ro_venv\lib\site-packages\rest_framework\serializers.py", line 434, in run_validation
+    value = self.to_internal_value(data)
+  File "E:\workspace\venv\django_ro_venv\lib\site-packages\rest_framework\serializers.py", line 485, in to_internal_value
+    fields = self._writable_fields
+  File "E:\workspace\venv\django_ro_venv\lib\site-packages\django\utils\functional.py", line 37, in __get__
+    res = instance.__dict__[self.name] = self.func(instance)
+  File "E:\workspace\venv\django_ro_venv\lib\site-packages\rest_framework\serializers.py", line 370, in _writable_fields
+    field for field in self.fields.values() if not field.read_only
+  File "E:\workspace\venv\django_ro_venv\lib\site-packages\rest_framework\serializers.py", line 363, in fields
+    for key, value in self.get_fields().items():
+  File "E:\workspace\venv\django_ro_venv\lib\site-packages\rest_framework\serializers.py", line 1050, in get_fields
+    source, info, model, depth
+  File "E:\workspace\venv\django_ro_venv\lib\site-packages\rest_framework\serializers.py", line 1195, in build_field
+    return self.build_unknown_field(field_name, model_class)
+  File "E:\workspace\venv\django_ro_venv\lib\site-packages\rest_framework\serializers.py", line 1307, in build_unknown_field
+    (field_name, model_class.__name__)
+django.core.exceptions.ImproperlyConfigured: Field name `open_type_value` is not valid for model `AppServerChannel`.
+2019-03-09 15:11:58,659 [Thread-3:6048] [django.request:228] [log:log_response] [ERROR]- Internal Server Error: /set_open_plan/39347/
+Traceback (most recent call last):
+  File "E:\workspace\venv\django_ro_venv\lib\site-packages\django\core\handlers\exception.py", line 34, in inner
+    response = get_response(request)
+  File "E:\workspace\venv\django_ro_venv\lib\site-packages\django\core\handlers\base.py", line 126, in _get_response
+    response = self.process_exception_by_middleware(e, request)
+  File "E:\workspace\venv\django_ro_venv\lib\site-packages\django\core\handlers\base.py", line 124, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "E:\workspace\venv\django_ro_venv\lib\site-packages\django\views\decorators\csrf.py", line 54, in wrapped_view
+    return view_func(*args, **kwargs)
+  File "E:\workspace\venv\django_ro_venv\lib\site-packages\django\views\generic\base.py", line 68, in view
+    return self.dispatch(request, *args, **kwargs)
+  File "E:\workspace\venv\django_ro_venv\lib\site-packages\rest_framework\views.py", line 495, in dispatch
+    response = self.handle_exception(exc)
+  File "E:\workspace\venv\django_ro_venv\lib\site-packages\rest_framework\views.py", line 455, in handle_exception
+    self.raise_uncaught_exception(exc)
+  File "E:\workspace\venv\django_ro_venv\lib\site-packages\rest_framework\views.py", line 492, in dispatch
+    response = handler(request, *args, **kwargs)
+  File "E:\workspace\venv\django_ro_venv\lib\site-packages\rest_framework\decorators.py", line 54, in handler
+    return func(*args, **kwargs)
+  File "E:\workspace\project\django_ro\ro_operations\views.py", line 173, in set_open_plan
+    sync = AppManage.objects.get(appid=each.appid).sync
+  File "E:\workspace\venv\django_ro_venv\lib\site-packages\django\db\models\manager.py", line 82, in manager_method
+    return getattr(self.get_queryset(), name)(*args, **kwargs)
+  File "E:\workspace\venv\django_ro_venv\lib\site-packages\django\db\models\query.py", line 403, in get
+    (self.model._meta.object_name, num)
+ro_operations.models.AppManage.MultipleObjectsReturned: get() returned more than one AppManage -- it returned 3!
+2019-03-09 15:15:03,451 [Thread-3:1740] [django.request:228] [log:log_response] [ERROR]- Internal Server Error: /set_open_plan/39347/
+Traceback (most recent call last):
+  File "E:\workspace\venv\django_ro_venv\lib\site-packages\django\core\handlers\exception.py", line 34, in inner
+    response = get_response(request)
+  File "E:\workspace\venv\django_ro_venv\lib\site-packages\django\core\handlers\base.py", line 126, in _get_response
+    response = self.process_exception_by_middleware(e, request)
+  File "E:\workspace\venv\django_ro_venv\lib\site-packages\django\core\handlers\base.py", line 124, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "E:\workspace\venv\django_ro_venv\lib\site-packages\django\views\decorators\csrf.py", line 54, in wrapped_view
+    return view_func(*args, **kwargs)
+  File "E:\workspace\venv\django_ro_venv\lib\site-packages\django\views\generic\base.py", line 68, in view
+    return self.dispatch(request, *args, **kwargs)
+  File "E:\workspace\venv\django_ro_venv\lib\site-packages\rest_framework\views.py", line 495, in dispatch
+    response = self.handle_exception(exc)
+  File "E:\workspace\venv\django_ro_venv\lib\site-packages\rest_framework\views.py", line 455, in handle_exception
+    self.raise_uncaught_exception(exc)
+  File "E:\workspace\venv\django_ro_venv\lib\site-packages\rest_framework\views.py", line 492, in dispatch
+    response = handler(request, *args, **kwargs)
+  File "E:\workspace\venv\django_ro_venv\lib\site-packages\rest_framework\decorators.py", line 54, in handler
+    return func(*args, **kwargs)
+  File "E:\workspace\project\django_ro\ro_operations\views.py", line 174, in set_open_plan
+    sync = AppManage.objects.get(appid=each.appid).sync
+  File "E:\workspace\venv\django_ro_venv\lib\site-packages\django\db\models\manager.py", line 82, in manager_method
+    return getattr(self.get_queryset(), name)(*args, **kwargs)
+  File "E:\workspace\venv\django_ro_venv\lib\site-packages\django\db\models\query.py", line 403, in get
+    (self.model._meta.object_name, num)
+ro_operations.models.AppManage.MultipleObjectsReturned: get() returned more than one AppManage -- it returned 3!
+2019-03-09 15:17:36,662 [Thread-5:15400] [django.request:228] [log:log_response] [ERROR]- Internal Server Error: /set_open_plan/39347/
+Traceback (most recent call last):
+  File "E:\workspace\venv\django_ro_venv\lib\site-packages\django\core\handlers\exception.py", line 34, in inner
+    response = get_response(request)
+  File "E:\workspace\venv\django_ro_venv\lib\site-packages\django\core\handlers\base.py", line 126, in _get_response
+    response = self.process_exception_by_middleware(e, request)
+  File "E:\workspace\venv\django_ro_venv\lib\site-packages\django\core\handlers\base.py", line 124, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "E:\workspace\venv\django_ro_venv\lib\site-packages\django\views\decorators\csrf.py", line 54, in wrapped_view
+    return view_func(*args, **kwargs)
+  File "E:\workspace\venv\django_ro_venv\lib\site-packages\django\views\generic\base.py", line 68, in view
+    return self.dispatch(request, *args, **kwargs)
+  File "E:\workspace\venv\django_ro_venv\lib\site-packages\rest_framework\views.py", line 495, in dispatch
+    response = self.handle_exception(exc)
+  File "E:\workspace\venv\django_ro_venv\lib\site-packages\rest_framework\views.py", line 455, in handle_exception
+    self.raise_uncaught_exception(exc)
+  File "E:\workspace\venv\django_ro_venv\lib\site-packages\rest_framework\views.py", line 492, in dispatch
+    response = handler(request, *args, **kwargs)
+  File "E:\workspace\venv\django_ro_venv\lib\site-packages\rest_framework\decorators.py", line 54, in handler
+    return func(*args, **kwargs)
+  File "E:\workspace\project\django_ro\ro_operations\views.py", line 190, in set_open_plan
+    scheduler.add_job(func=func, trigger='date', id='_'.join([str(gid), str(cid), str(appid), 'sync']), args=[id])
+NameError: name 'func' is not defined
+2019-03-09 15:20:59,184 [Thread-3:8340] [django.request:228] [log:log_response] [WARNING]- Bad Request: /set_open_plan/39347/
+2019-03-09 15:21:44,130 [Thread-5:11752] [django.request:228] [log:log_response] [WARNING]- Bad Request: /set_open_plan/39347/
+2019-03-09 15:28:06,869 [Thread-3:9788] [django.request:228] [log:log_response] [WARNING]- Bad Request: /set_open_plan/39347/
+2019-03-09 15:29:17,649 [Thread-3:17236] [django.request:228] [log:log_response] [WARNING]- Bad Request: /set_open_plan/39347/
+2019-03-09 15:38:04,123 [Thread-3:4380] [django.request:228] [log:log_response] [WARNING]- Bad Request: /set_open_plan/39347/
+2019-03-09 17:09:19,277 [Thread-2:4276] [django.request:228] [log:log_response] [WARNING]- Bad Request: /set_open_plan/39347/
+2019-03-09 17:11:30,526 [Thread-2:15608] [django.request:228] [log:log_response] [ERROR]- Internal Server Error: /set_open_plan/39347/
+Traceback (most recent call last):
+  File "E:\workspace\venv\django_ro_venv\lib\site-packages\django\core\handlers\exception.py", line 34, in inner
+    response = get_response(request)
+  File "E:\workspace\venv\django_ro_venv\lib\site-packages\django\core\handlers\base.py", line 126, in _get_response
+    response = self.process_exception_by_middleware(e, request)
+  File "E:\workspace\venv\django_ro_venv\lib\site-packages\django\core\handlers\base.py", line 124, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "E:\workspace\venv\django_ro_venv\lib\site-packages\django\views\decorators\csrf.py", line 54, in wrapped_view
+    return view_func(*args, **kwargs)
+  File "E:\workspace\venv\django_ro_venv\lib\site-packages\django\views\generic\base.py", line 68, in view
+    return self.dispatch(request, *args, **kwargs)
+  File "E:\workspace\venv\django_ro_venv\lib\site-packages\rest_framework\views.py", line 495, in dispatch
+    response = self.handle_exception(exc)
+  File "E:\workspace\venv\django_ro_venv\lib\site-packages\rest_framework\views.py", line 455, in handle_exception
+    self.raise_uncaught_exception(exc)
+  File "E:\workspace\venv\django_ro_venv\lib\site-packages\rest_framework\views.py", line 492, in dispatch
+    response = handler(request, *args, **kwargs)
+  File "E:\workspace\venv\django_ro_venv\lib\site-packages\rest_framework\decorators.py", line 54, in handler
+    return func(*args, **kwargs)
+  File "E:\workspace\project\django_ro\ro_operations\views.py", line 205, in set_open_plan
+    run_date=datetime.fromtimestamp(open_time))
+OSError: [Errno 22] Invalid argument
+2019-03-09 17:13:02,026 [Thread-2:9100] [django.request:228] [log:log_response] [ERROR]- Internal Server Error: /set_open_plan/39347/
+Traceback (most recent call last):
+  File "E:\workspace\venv\django_ro_venv\lib\site-packages\django\core\handlers\exception.py", line 34, in inner
+    response = get_response(request)
+  File "E:\workspace\venv\django_ro_venv\lib\site-packages\django\core\handlers\base.py", line 126, in _get_response
+    response = self.process_exception_by_middleware(e, request)
+  File "E:\workspace\venv\django_ro_venv\lib\site-packages\django\core\handlers\base.py", line 124, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "E:\workspace\venv\django_ro_venv\lib\site-packages\django\views\decorators\csrf.py", line 54, in wrapped_view
+    return view_func(*args, **kwargs)
+  File "E:\workspace\venv\django_ro_venv\lib\site-packages\django\views\generic\base.py", line 68, in view
+    return self.dispatch(request, *args, **kwargs)
+  File "E:\workspace\venv\django_ro_venv\lib\site-packages\rest_framework\views.py", line 495, in dispatch
+    response = self.handle_exception(exc)
+  File "E:\workspace\venv\django_ro_venv\lib\site-packages\rest_framework\views.py", line 455, in handle_exception
+    self.raise_uncaught_exception(exc)
+  File "E:\workspace\venv\django_ro_venv\lib\site-packages\rest_framework\views.py", line 492, in dispatch
+    response = handler(request, *args, **kwargs)
+  File "E:\workspace\venv\django_ro_venv\lib\site-packages\rest_framework\decorators.py", line 54, in handler
+    return func(*args, **kwargs)
+  File "E:\workspace\project\django_ro\ro_operations\views.py", line 206, in set_open_plan
+    run_date=datetime.fromtimestamp(open_time))
+OSError: [Errno 22] Invalid argument

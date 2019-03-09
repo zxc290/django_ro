@@ -42,7 +42,7 @@ class AppServerChannelUpdateSerializer(serializers.ModelSerializer):
     class Meta:
         model = AppServerChannel
         # fields = ('server_suggest', 'max_users', 'server_weight', 'autoOpenTime')
-        fields = ('open_type', 'open_type_value')
+        fields = ('open_type', 'open_time', 'max_user')
 
 
 class AppServerChannelRecommendSerializer(serializers.ModelSerializer):
@@ -93,7 +93,9 @@ class ServerManagementSerializer(serializers.Serializer):
     appid = serializers.CharField()
     LoginPort = serializers.CharField()
     open_type = serializers.IntegerField()
-    open_type_value = serializers.IntegerField()
+    open_time = serializers.IntegerField()
+    max_user = serializers.IntegerField()
+    sync = serializers.BooleanField()
     # max_users = serializers.IntegerField()
     # server_weight = serializers.IntegerField()
     # autoOpenTime = serializers.IntegerField()
