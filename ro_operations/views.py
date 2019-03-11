@@ -2,7 +2,9 @@ import logging
 from datetime import datetime, timedelta
 from django.db import connections
 from django.http import Http404
+from django.core.mail import send_mail
 from django.shortcuts import render
+from django.conf import settings
 from rest_framework.decorators import api_view
 from rest_framework.views import APIView
 from rest_framework.response import Response
@@ -162,6 +164,7 @@ def set_open_plan(request, id):
     gid = app_server_channel.gid
     cid = app_server_channel.cid
     appid = app_server_channel.appid
+    app_server_list = AppServerList.objects.get(id=app_server_channel.zoneidx)
     # 设置开区类型字段
     # if open_type == 0:
     #     data.update(open_type_value=0)
@@ -215,8 +218,35 @@ def set_open_plan(request, id):
             if job_ins:
                 scheduler.remove_job(job_id)
             # 添加
-            scheduler.add_job(func=open_by_user, trigger='interval', id=job_id, args=[id, job_id, max_user],
+            scheduler.add_job(func=open_by_user, trigger='interval', id=job_id, args=[id, job_id],
                               seconds=30)
+            # 查询当前区是否是最后一个区
+            try:
+                server_management_cursor = connections['server_management'].cursor()
+                if appid:
+                    sql = "SELECT * FROM ServerManagement.dbo.[GetServerTableTest] (50, {cid}) WHERE appid='{appid}' AND SID < 9000".format(
+                        cid=cid, appid=appid)
+                else:
+                    sql = "SELECT * FROM ServerManagement.dbo.[GetServerTableTest] (50, {cid}) WHERE SID < 9000".format(
+                        cid=cid)
+                # sql = "SELECT * FROM ServerManagement.dbo.[GetServerTableTest] (50, 12)"
+                # sql = "SELECT * FROM ServerManagement.dbo.[GetServerTableTest] (50, 12) WHERE appid='com.dkm.tlsj.tlsj'"
+                # sql = "SELECT * FROM ServerManagementRo.dbo.[GetServerTableTest] ({gid}, {cid}) WHERE appid='{appid}'".format(gid=gid, cid=cid, appid=appid)
+                server_management_cursor.execute(sql)
+                server_management_result = dict_fetchall(server_management_cursor)
+                # 如果此区是当前包下所有区的最后一个区，通知管理新新增区
+                if server_management_result[-1].get('id') == id:
+                    # 邮件通知配置新区
+                    subject = '游戏新区提前配置预警'
+                    msg = '{gid}项目{cid}渠道{appid}包{sid}区是最后区，无新区，请配置下一个新区'.format(gid=gid, cid=cid, appid=appid,
+                                                                         sid=app_server_list.sid)
+                    sender = settings.DEFAULT_FROM_EMAIL
+                    recepients = ['290704731@qq.com', ]
+                    send_mail(subject=subject, message=msg, from_email=sender, recipient_list=recepients)
+                    logger.info(msg)
+            except Exception as e:
+                print(e)
+                logger.info('查询是否有新区失败')
         # scheduler.add_job(func=func, trigger='date', id='_'.join([str(gid), str(cid), str(appid), 'sync']), args=[id])
         logger.info('设置多条开区计划成功')
         return Response(serializer.data)
