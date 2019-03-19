@@ -130,8 +130,8 @@ class User(models.Model):
     def check_password(self, password):
         return hashlib.md5(password.encode()).hexdigest().upper() == self.password
 
-    def is_applicant(self):
-        sql = "SELECT * FROM dbo.NAuth({user_id}, {function_id}) WHERE PID > 0 and FID = {permission}".format(user_id=self.userid, function_id=settings.FUNCTION_ID, permission=settings.APPLICANT_PERMISSION)
+    def get_user_permission(self):
+        sql = "SELECT * FROM dbo.NAuth({user_id}, {function_id}) WHERE PID > 0".format(user_id=self.userid, function_id=settings.FUNCTION_ID)
         try:
             admin_cursor = connections['default'].cursor()
             admin_cursor.execute(sql)
@@ -139,47 +139,6 @@ class User(models.Model):
             return result
         except:
             return False
-
-    def is_approver(self):
-        sql = "SELECT * FROM dbo.NAuth({user_id}, {function_id}) WHERE PID > 0 and FID = {permission}".format(user_id=self.userid, function_id=settings.FUNCTION_ID, permission=settings.APPROVE_PERMISSION)
-        try:
-            admin_cursor = connections['default'].cursor()
-            admin_cursor.execute(sql)
-            result = dict_fetchall(admin_cursor)
-            return result
-        except:
-            return False
-
-    def is_role_manager(self):
-        sql = "SELECT * FROM dbo.NAuth({user_id}, {function_id}) WHERE PID > 0 and FID = {permission}".format(user_id=self.userid, function_id=settings.FUNCTION_ID, permission=settings.USER_ROLE_PERMISSION)
-        try:
-            admin_cursor = connections['default'].cursor()
-            admin_cursor.execute(sql)
-            result = dict_fetchall(admin_cursor)
-            return result
-        except:
-            return False
-
-    def is_record_checker(self):
-        sql = "SELECT * FROM dbo.NAuth({user_id}, {function_id}) WHERE PID > 0 and FID = {permission}".format(user_id=self.userid, function_id=settings.FUNCTION_ID, permission=settings.RECORD_CHECK_PERMISSION)
-        try:
-            admin_cursor = connections['default'].cursor()
-            admin_cursor.execute(sql)
-            result = dict_fetchall(admin_cursor)
-            return result
-        except:
-            return False
-
-    # def get_user_permission(self):
-    #     sql = "SELECT * FROM dbo.NAuth({user_id}, {function_id}) WHERE PID > 0 and FID IN {fid_permission}".format(user_id=self.userid, function_id=settings.FUNCTION_ID, fid_permission=settings.FID_PERMISSION)
-    #
-    #     try:
-    #         admin_cursor = connections['default'].cursor()
-    #         admin_cursor.execute(sql)
-    #         result = dict_fetchall(admin_cursor)
-    #         return result
-    #     except:
-    #         return False
 
     def __str__(self):
         return self.useridentity
@@ -252,14 +211,9 @@ class AppServerList(models.Model):
 
     objects = ServerManagementManager()
 
-    def __str__(self):
-        return self.sid
-
     class Meta:
-        verbose_name = '应用服务器'
-        verbose_name_plural = verbose_name
         managed = False
-        db_table = 'App_Server_List'
+        db_table = 'App_Server_list'
         unique_together = (('sid', 'pid', 'gid'),)
 
 
@@ -299,6 +253,7 @@ class AppServerChannel(models.Model):
     open_type = models.IntegerField(blank=True, null=True)
     open_time = models.IntegerField(blank=True, null=True)
     max_user = models.IntegerField(blank=True, null=True)
+    server_weight = models.IntegerField(blank=True, null=True)
 
     objects = ServerManagementManager()
 

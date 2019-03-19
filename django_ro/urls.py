@@ -22,11 +22,11 @@ urlpatterns = [
     path('admin/', admin.site.urls),
     path('', views.index),
     path('login', views.login),
+    path('user_permissions/<int:id>/', views.user_permission),
     path('app_platforms', views.AppPlatformCfgList.as_view()),
     path('app_servers', views.AppServerListList.as_view()),
     path('app_channels/', views.AppChannelListList.as_view()),
     path('app_server_channels/', views.AppServerChannelList.as_view()),
-    # path('app_server_channels/<int:id>/', views.AppServerChannelDetail.as_view()),
     path('app_managements/', views.AppManageList.as_view()),
     path('welfares/', views.WelfareManagementList.as_view()),
     path('welfares/<int:id>/', views.WelfareManagementDetail.as_view()),
@@ -37,6 +37,7 @@ urlpatterns = [
     path('set_open_plan/<int:id>/', views.set_open_plan),
     path('delete_open_plan/<int:id>/', views.delete_open_plan),
     path('change_recommend/<int:id>/', views.change_recommend),
+    path('weight_recommend/', views.weight_recommend),
     path('open_now/<int:id>/', views.open_now),
     path('mock_user/', views.mock_user)
 ]

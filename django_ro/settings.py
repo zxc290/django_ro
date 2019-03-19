@@ -249,20 +249,16 @@ CORS_ORIGIN_ALLOW_ALL = True
 # 功能id
 FUNCTION_ID = 2
 
-# 提审权限
-APPLICANT_PERMISSION = 215
-
-# 审批权限
-APPROVE_PERMISSION = 216
-
-# 人员角色权限
-USER_ROLE_PERMISSION = 217
-
-# 福利记录查看
-RECORD_CHECK_PERMISSION = 218
-
-# 权限集合
-FID_PERMISSION = '(215, 216, 217, 218)'
+# 权限字典
+USER_PERMISSION = {
+    215: 'is_applicant',
+    216: 'is_approver',
+    217: 'is_role_manager',
+    218: 'is_record_checker',
+    228: 'is_open_zone_viewer',
+    229: 'is_open_zone_manager',
+    230: 'is_recommend_zone_manager',
+}
 
 # 日志
 BASE_LOG_DIR = os.path.join(BASE_DIR, "log")
@@ -271,17 +267,24 @@ LOGGING = {
     'disable_existing_loggers': False,
     'formatters': {
         'standard': {
-            'format': '%(asctime)s [%(threadName)s:%(thread)d] [%(name)s:%(lineno)d] [%(module)s:%(funcName)s] [%(levelname)s]- %(message)s'}
+            'format': '%(asctime)s [%(threadName)s:%(thread)d] [%(name)s:%(lineno)d] [%(module)s:%(funcName)s] [%(levelname)s]- %(message)s'
+        },
+        'simple': {
+            'format': '[%(levelname)s][%(asctime)s][%(filename)s:%(lineno)d]%(message)s'
+        },
     # 日志格式
     },
     'filters': {
+        'require_debug_true': {
+            '()': 'django.utils.log.RequireDebugTrue',
+        },
     },
     'handlers': {
-        'mail_admins': {
-            'level': 'ERROR',
-            'class': 'django.utils.log.AdminEmailHandler',
-            'include_html': True,
-        },
+        # 'mail_admins': {
+        #     'level': 'ERROR',
+        #     'class': 'django.utils.log.AdminEmailHandler',
+        #     'include_html': True,
+        # },
         'default': {
             'level': 'DEBUG',
             'class': 'logging.handlers.RotatingFileHandler',
@@ -289,6 +292,7 @@ LOGGING = {
             'maxBytes': 1024 * 1024 * 5,  # 文件大小
             'backupCount': 5,  # 备份份数
             'formatter': 'standard',  # 使用哪种formatters日志格式
+            'encoding': 'utf-8',
         },
         'error': {
             'level': 'ERROR',
@@ -297,11 +301,13 @@ LOGGING = {
             'maxBytes': 1024 * 1024 * 5,
             'backupCount': 5,
             'formatter': 'standard',
+            'encoding': 'utf-8',
         },
         'console': {
             'level': 'DEBUG',
+            'filters': ['require_debug_true'],
             'class': 'logging.StreamHandler',
-            'formatter': 'standard'
+            'formatter': 'standard',
         },
         'request_handler': {
             'level': 'DEBUG',
@@ -310,15 +316,26 @@ LOGGING = {
             'maxBytes': 1024 * 1024 * 5,
             'backupCount': 5,
             'formatter': 'standard',
+            'encoding': 'utf-8',
         },
-        'scprits_handler': {
+        'scripts_handler': {
             'level': 'DEBUG',
             'class': 'logging.handlers.RotatingFileHandler',
             'filename': os.path.join(BASE_LOG_DIR, "script.log"),
             'maxBytes': 1024 * 1024 * 5,
             'backupCount': 5,
             'formatter': 'standard',
-        }
+            'encoding': 'utf-8',
+        },
+        'tasks_handler': {
+            'level': 'DEBUG',
+            'class': 'logging.handlers.RotatingFileHandler',
+            'filename': os.path.join(BASE_LOG_DIR, "tasks.log"),
+            'maxBytes': 1024 * 1024 * 5,
+            'backupCount': 5,
+            'formatter': 'standard',
+            'encoding': 'utf-8',
+        },
     },
     'loggers': {
         'django': {
@@ -332,20 +349,25 @@ LOGGING = {
             'propagate': False,
         },
         'scripts': {
-            'handlers': ['scprits_handler'],
+            'handlers': ['scripts_handler'],
             'level': 'INFO',
             'propagate': False
         },
-        'sourceDns.webdns.views': {
-            'handlers': ['default', 'error'],
-            'level': 'DEBUG',
-            'propagate': True
+        'tasks': {
+            'handlers': ['tasks_handler'],
+            'level': 'INFO',
+            'propagate': False
         },
-        'sourceDns.webdns.util': {
-            'handlers': ['error'],
-            'level': 'ERROR',
-            'propagate': True
-        }
+        # 'sourceDns.webdns.views': {
+        #     'handlers': ['default', 'error'],
+        #     'level': 'DEBUG',
+        #     'propagate': True
+        # },
+        # 'sourceDns.webdns.util': {
+        #     'handlers': ['error'],
+        #     'level': 'ERROR',
+        #     'propagate': True
+        # }
     }
 }
 

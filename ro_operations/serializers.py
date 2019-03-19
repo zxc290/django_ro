@@ -95,9 +95,10 @@ class ServerManagementSerializer(serializers.Serializer):
     open_type = serializers.IntegerField()
     open_time = serializers.IntegerField()
     max_user = serializers.IntegerField()
+    server_weight = serializers.IntegerField()
     sync = serializers.BooleanField()
     # max_users = serializers.IntegerField()
-    # server_weight = serializers.IntegerField()
+
     # autoOpenTime = serializers.IntegerField()
 
 
