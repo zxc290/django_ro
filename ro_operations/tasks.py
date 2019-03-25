@@ -5,7 +5,7 @@ from django.conf import settings
 from django.core.mail import send_mail
 import requests
 import pymssql
-from django_ro import scheduler
+from . import scheduler
 from .models import AppServerChannel, AppServerList
 from ro_operations.dbtools import dict_fetchall
 
@@ -58,10 +58,10 @@ def open_by_time(id):
         try:
             server_management_cursor = connections['server_management'].cursor()
             if appid:
-                sql = "SELECT * FROM ServerManagement.dbo.[GetServerTableTest] (50, {cid}) WHERE appid='{appid}' AND SID < 9000".format(
+                sql = "SELECT * FROM ServerManagement.dbo.[roGetServerTable] (50, {cid}) WHERE appid='{appid}' AND SID < 9000".format(
                     cid=cid, appid=appid)
             else:
-                sql = "SELECT * FROM ServerManagement.dbo.[GetServerTableTest] (50, {cid}) WHERE SID < 9000".format(
+                sql = "SELECT * FROM ServerManagement.dbo.[roGetServerTable] (50, {cid}) WHERE SID < 9000".format(
                     cid=cid)
             server_management_cursor.execute(sql)
             server_management_result = dict_fetchall(server_management_cursor)
@@ -112,10 +112,10 @@ def open_by_user(id, job_id):
                 new_account_all = lastest_one.get('newaccountall')
                 if new_account_all >= max_user:
                     if appid:
-                        sql = "SELECT * FROM ServerManagement.dbo.[GetServerTableTest] (50, {cid}) WHERE appid='{appid}' AND SID < 9000".format(
+                        sql = "SELECT * FROM ServerManagement.dbo.[roGetServerTable] (50, {cid}) WHERE appid='{appid}' AND SID < 9000".format(
                             cid=cid, appid=appid)
                     else:
-                        sql = "SELECT * FROM ServerManagement.dbo.[GetServerTableTest] (50, {cid}) WHERE SID < 9000".format(
+                        sql = "SELECT * FROM ServerManagement.dbo.[roGetServerTable] (50, {cid}) WHERE SID < 9000".format(
                             cid=cid)
 
                     server_management_cursor.execute(sql)
@@ -173,10 +173,10 @@ def open_by_user(id, job_id):
 
                             # 查询当前区是否是最后一个区
                             if appid:
-                                sql = "SELECT * FROM ServerManagement.dbo.[GetServerTableTest] (50, {cid}) WHERE appid='{appid}' AND SID < 9000".format(
+                                sql = "SELECT * FROM ServerManagement.dbo.[roGetServerTable] (50, {cid}) WHERE appid='{appid}' AND SID < 9000".format(
                                     cid=next_zone.get('CID'), appid=next_zone.get('appid'))
                             else:
-                                sql = "SELECT * FROM ServerManagement.dbo.[GetServerTableTest] (50, {cid}) WHERE SID < 9000".format(
+                                sql = "SELECT * FROM ServerManagement.dbo.[roGetServerTable] (50, {cid}) WHERE SID < 9000".format(
                                     cid=next_zone.get('CID'))
 
                             server_management_cursor.execute(sql)
@@ -211,10 +211,10 @@ def open_by_user(id, job_id):
     #     try:
     #         server_management_cursor = connections['server_management'].cursor()
     #         if appid:
-    #             sql = "SELECT * FROM ServerManagement.dbo.[GetServerTableTest] (50, {cid}) WHERE appid='{appid}' AND SID < 9000".format(
+    #             sql = "SELECT * FROM ServerManagement.dbo.[roGetServerTable] (50, {cid}) WHERE appid='{appid}' AND SID < 9000".format(
     #                 cid=cid, appid=appid)
     #         else:
-    #             sql = "SELECT * FROM ServerManagement.dbo.[GetServerTableTest] (50, {cid}) WHERE SID < 9000".format(
+    #             sql = "SELECT * FROM ServerManagement.dbo.[roGetServerTable] (50, {cid}) WHERE SID < 9000".format(
     #                 cid=cid)
     #
     #         server_management_cursor.execute(sql)
@@ -280,10 +280,10 @@ def open_by_user(id, job_id):
     #                 # 查询当前区是否是最后一个区
     #                 # try:
     #                 if appid:
-    #                     sql = "SELECT * FROM ServerManagement.dbo.[GetServerTableTest] (50, {cid}) WHERE appid='{appid}' AND SID < 9000".format(
+    #                     sql = "SELECT * FROM ServerManagement.dbo.[roGetServerTable] (50, {cid}) WHERE appid='{appid}' AND SID < 9000".format(
     #                         cid=next_zone.get('CID'), appid=next_zone.get('appid'))
     #                 else:
-    #                     sql = "SELECT * FROM ServerManagement.dbo.[GetServerTableTest] (50, {cid}) WHERE SID < 9000".format(
+    #                     sql = "SELECT * FROM ServerManagement.dbo.[roGetServerTable] (50, {cid}) WHERE SID < 9000".format(
     #                         cid=next_zone.get('CID'))
     #
     #                 server_management_cursor.execute(sql)

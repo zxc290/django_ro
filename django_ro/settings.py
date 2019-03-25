@@ -80,6 +80,79 @@ WSGI_APPLICATION = 'django_ro.wsgi.application'
 # https://docs.djangoproject.com/en/2.1/ref/settings/#databases
 
 DATABASES = {
+    # 'default': {
+    #     # 数据库引擎设置
+    #     'ENGINE': 'sql_server.pyodbc',
+    #     # 要连接的数据库名
+    #     'NAME': 'ServerAdmin',
+    #     # 数据库用户名
+    #     'USER': 'DB_rwAccount!QAZ',
+    #     # 数据库密码
+    #     'PASSWORD': 'DB_dhJ15*edqdI',
+    #     # 数据库主机地址
+    #     'HOST': 'auth.xgd666.com,10097',
+    #     # 数据库端口号，默认可以不写
+    #     'PORT': '',
+    #     # 选项，这个要先在操作系统上完成ODBC的连接创建，并连接成功，注意10.0这个地方，要和自己的ODBC版本一致
+    #     'OPTIONS': {
+    #         'driver': 'SQL Server Native Client 10.0',
+    #     },
+    # },
+    # 'server_management': {
+    #     # 数据库引擎设置
+    #     'ENGINE': 'sql_server.pyodbc',
+    #     # 要连接的数据库名
+    #     'NAME': 'ServerManagement',
+    #     # 数据库用户名
+    #     'USER': 'sa',
+    #     # 数据库密码
+    #     'PASSWORD': '7cool_7COOL_7cool',
+    #     # 数据库主机地址
+    #     'HOST': '127.0.0.1',
+    #     # 数据库端口号，默认可以不写
+    #     'PORT': '',
+    #     # 选项，这个要先在操作系统上完成ODBC的连接创建，并连接成功，注意10.0这个地方，要和自己的ODBC版本一致
+    #     'OPTIONS': {
+    #         'driver': 'SQL Server Native Client 10.0',
+    #     },
+    # },
+    # 'appid_management': {
+    #     # 数据库引擎设置
+    #     'ENGINE': 'sql_server.pyodbc',
+    #     # 要连接的数据库名
+    #     'NAME': 'AppidManagement',
+    #     # 数据库用户名
+    #     'USER': 'sa',
+    #     # 数据库密码
+    #     'PASSWORD': '7cool_7COOL_7cool',
+    #     # 数据库主机地址
+    #     'HOST': '127.0.0.1',
+    #     # 数据库端口号，默认可以不写
+    #     'PORT': '',
+    #     # 选项，这个要先在操作系统上完成ODBC的连接创建，并连接成功，注意10.0这个地方，要和自己的ODBC版本一致
+    #     'OPTIONS': {
+    #         'driver': 'SQL Server Native Client 10.0',
+    #     },
+    # },
+    # 'django_ro': {
+    #     # 数据库引擎设置
+    #     'ENGINE': 'sql_server.pyodbc',
+    #     # 要连接的数据库名
+    #     'NAME': 'DjangoRo',
+    #     # 数据库用户名
+    #     'USER': 'sa',
+    #     # 数据库密码
+    #     'PASSWORD': '7cool_7COOL_7cool',
+    #     # 数据库主机地址
+    #     'HOST': '127.0.0.1',
+    #     # 数据库端口号，默认可以不写
+    #     'PORT': '',
+    #     # 选项，这个要先在操作系统上完成ODBC的连接创建，并连接成功，注意10.0这个地方，要和自己的ODBC版本一致
+    #     'OPTIONS': {
+    #         'driver': 'SQL Server Native Client 10.0',
+    #     },
+    # },
+    ############
     'default': {
         # 数据库引擎设置
         'ENGINE': 'sql_server.pyodbc',
@@ -98,53 +171,17 @@ DATABASES = {
             'driver': 'SQL Server Native Client 10.0',
         },
     },
-    # 'server_management': {
-    #     # 数据库引擎设置
-    #     'ENGINE': 'sql_server.pyodbc',
-    #     # 要连接的数据库名
-    #     'NAME': 'ServerManagement',
-    #     # 数据库用户名
-    #     'USER': 'DB_rwAccount!QAZ',
-    #     # 数据库密码
-    #     'PASSWORD': 'DB_dhJ15*edqdI',
-    #     # 数据库主机地址
-    #     'HOST': 'auth.xgd666.com,10097',
-    #     # 数据库端口号，默认可以不写
-    #     'PORT': '',
-    #     # 选项，这个要先在操作系统上完成ODBC的连接创建，并连接成功，注意10.0这个地方，要和自己的ODBC版本一致
-    #     'OPTIONS': {
-    #         'driver': 'SQL Server Native Client 10.0',
-    #     },
-    # },
-    # 'appid_management': {
-    #      # 数据库引擎设置
-    #     'ENGINE': 'sql_server.pyodbc',
-    #     # 要连接的数据库名
-    #     'NAME': 'AppidManagement',
-    #     # 数据库用户名
-    #     'USER': 'DB_rwAccount!QAZ',
-    #     # 数据库密码
-    #     'PASSWORD': 'DB_dhJ15*edqdI',
-    #     # 数据库主机地址
-    #     'HOST': 'auth.xgd666.com,10097',
-    #     # 数据库端口号，默认可以不写
-    #     'PORT': '',
-    #     # 选项，这个要先在操作系统上完成ODBC的连接创建，并连接成功，注意10.0这个地方，要和自己的ODBC版本一致
-    #     'OPTIONS': {
-    #         'driver': 'SQL Server Native Client 10.0',
-    #     },
-    # },
     'server_management': {
         # 数据库引擎设置
         'ENGINE': 'sql_server.pyodbc',
         # 要连接的数据库名
         'NAME': 'ServerManagement',
         # 数据库用户名
-        'USER': 'sa',
+        'USER': 'DB_rwAccount!QAZ',
         # 数据库密码
-        'PASSWORD': '7cool_7COOL_7cool',
+        'PASSWORD': 'DB_dhJ15*edqdI',
         # 数据库主机地址
-        'HOST': '127.0.0.1',
+        'HOST': 'auth.xgd666.com,10097',
         # 数据库端口号，默认可以不写
         'PORT': '',
         # 选项，这个要先在操作系统上完成ODBC的连接创建，并连接成功，注意10.0这个地方，要和自己的ODBC版本一致
@@ -153,16 +190,16 @@ DATABASES = {
         },
     },
     'appid_management': {
-        # 数据库引擎设置
+         # 数据库引擎设置
         'ENGINE': 'sql_server.pyodbc',
         # 要连接的数据库名
         'NAME': 'AppidManagement',
         # 数据库用户名
-        'USER': 'sa',
+        'USER': 'DB_rwAccount!QAZ',
         # 数据库密码
-        'PASSWORD': '7cool_7COOL_7cool',
+        'PASSWORD': 'DB_dhJ15*edqdI',
         # 数据库主机地址
-        'HOST': '127.0.0.1',
+        'HOST': 'auth.xgd666.com,10097',
         # 数据库端口号，默认可以不写
         'PORT': '',
         # 选项，这个要先在操作系统上完成ODBC的连接创建，并连接成功，注意10.0这个地方，要和自己的ODBC版本一致
@@ -176,11 +213,11 @@ DATABASES = {
         # 要连接的数据库名
         'NAME': 'DjangoRo',
         # 数据库用户名
-        'USER': 'sa',
+        'USER': 'DB_rwAccount!QAZ',
         # 数据库密码
-        'PASSWORD': '7cool_7COOL_7cool',
+        'PASSWORD': 'DB_dhJ15*edqdI',
         # 数据库主机地址
-        'HOST': '127.0.0.1',
+        'HOST': '212.64.7.56,10097',
         # 数据库端口号，默认可以不写
         'PORT': '',
         # 选项，这个要先在操作系统上完成ODBC的连接创建，并连接成功，注意10.0这个地方，要和自己的ODBC版本一致
@@ -188,6 +225,7 @@ DATABASES = {
             'driver': 'SQL Server Native Client 10.0',
         },
     },
+
 }
 
 # DATABASE_ROUTERS = ['django_ro.database_router.DatabaseAppsRouter']
@@ -292,7 +330,6 @@ LOGGING = {
             'maxBytes': 1024 * 1024 * 5,  # 文件大小
             'backupCount': 5,  # 备份份数
             'formatter': 'standard',  # 使用哪种formatters日志格式
-            'encoding': 'utf-8',
         },
         'error': {
             'level': 'ERROR',
@@ -301,7 +338,6 @@ LOGGING = {
             'maxBytes': 1024 * 1024 * 5,
             'backupCount': 5,
             'formatter': 'standard',
-            'encoding': 'utf-8',
         },
         'console': {
             'level': 'DEBUG',
@@ -316,7 +352,6 @@ LOGGING = {
             'maxBytes': 1024 * 1024 * 5,
             'backupCount': 5,
             'formatter': 'standard',
-            'encoding': 'utf-8',
         },
         'scripts_handler': {
             'level': 'DEBUG',
@@ -325,7 +360,6 @@ LOGGING = {
             'maxBytes': 1024 * 1024 * 5,
             'backupCount': 5,
             'formatter': 'standard',
-            'encoding': 'utf-8',
         },
         'tasks_handler': {
             'level': 'DEBUG',
@@ -334,7 +368,6 @@ LOGGING = {
             'maxBytes': 1024 * 1024 * 5,
             'backupCount': 5,
             'formatter': 'standard',
-            'encoding': 'utf-8',
         },
     },
     'loggers': {
@@ -358,16 +391,6 @@ LOGGING = {
             'level': 'INFO',
             'propagate': False
         },
-        # 'sourceDns.webdns.views': {
-        #     'handlers': ['default', 'error'],
-        #     'level': 'DEBUG',
-        #     'propagate': True
-        # },
-        # 'sourceDns.webdns.util': {
-        #     'handlers': ['error'],
-        #     'level': 'ERROR',
-        #     'propagate': True
-        # }
     }
 }
 

@@ -16,7 +16,7 @@ from .tokens import gen_json_web_token
 from .decorators import token_required
 from .dbtools import dict_fetchall
 from .tasks import open_by_time, open_by_user
-from django_ro import scheduler
+from . import scheduler
 # Create your views here.
 
 
@@ -30,6 +30,7 @@ def index(request):
 @api_view(['POST'])
 def login(request):
     data = request.data
+    print(data)
     username = data.get('username')
     password = data.get('password')
     now = datetime.now()
@@ -49,7 +50,7 @@ def login(request):
             # user_info['is_record_checker'] = True if user.is_record_checker() else False
 
             token = gen_json_web_token(user_info)
-            message = '登录成功'
+            message = '登录成功111'
             logger.info('登录成功')
             return Response({'code': 1, 'user_info': user_info, 'token': token, 'message': message})
         else:
@@ -65,6 +66,8 @@ def login(request):
                 message = '密码错误，剩余{0}次尝试次数'.format(str(5 - user.failcount))
             return Response({'code': 0, 'message': message})
     except BaseException as e:
+        logger.info('e')
+        print(e)
         message = '该用户不存在'
         return Response({'code': 0, 'message': message})
 
@@ -144,7 +147,7 @@ def open_now(request, id):
         # app_server_list.save()
 
         # server_management_cursor = connections['server_management'].cursor()
-        sql = "SELECT * FROM ServerManagement.dbo.[GetServerTableTest] (50, {cid}) WHERE id={id}".format(cid=app_server_channel.cid, id=id)
+        sql = "SELECT * FROM ServerManagement.dbo.[roGetServerTable] (50, {cid}) WHERE id={id}".format(cid=app_server_channel.cid, id=id)
         server_management_cursor.execute(sql)
         server_management_result = dict_fetchall(server_management_cursor)
         serializer = ServerManagementSerializer(server_management_result[0])
@@ -255,14 +258,14 @@ def set_open_plan(request, id):
         #     try:
         #         server_management_cursor = connections['server_management'].cursor()
         #         if appid:
-        #             sql = "SELECT * FROM ServerManagement.dbo.[GetServerTableTest] (50, {cid}) WHERE appid='{appid}' AND SID < 9000".format(
+        #             sql = "SELECT * FROM ServerManagement.dbo.[roGetServerTable] (50, {cid}) WHERE appid='{appid}' AND SID < 9000".format(
         #                 cid=cid, appid=appid)
         #         else:
-        #             sql = "SELECT * FROM ServerManagement.dbo.[GetServerTableTest] (50, {cid}) WHERE SID < 9000".format(
+        #             sql = "SELECT * FROM ServerManagement.dbo.[roGetServerTable] (50, {cid}) WHERE SID < 9000".format(
         #                 cid=cid)
-        #         # sql = "SELECT * FROM ServerManagement.dbo.[GetServerTableTest] (50, 12)"
-        #         # sql = "SELECT * FROM ServerManagement.dbo.[GetServerTableTest] (50, 12) WHERE appid='com.dkm.tlsj.tlsj'"
-        #         # sql = "SELECT * FROM ServerManagementRo.dbo.[GetServerTableTest] ({gid}, {cid}) WHERE appid='{appid}'".format(gid=gid, cid=cid, appid=appid)
+        #         # sql = "SELECT * FROM ServerManagement.dbo.[roGetServerTable] (50, 12)"
+        #         # sql = "SELECT * FROM ServerManagement.dbo.[roGetServerTable] (50, 12) WHERE appid='com.dkm.tlsj.tlsj'"
+        #         # sql = "SELECT * FROM ServerManagementRo.dbo.[roGetServerTable] ({gid}, {cid}) WHERE appid='{appid}'".format(gid=gid, cid=cid, appid=appid)
         #         server_management_cursor.execute(sql)
         #         server_management_result = dict_fetchall(server_management_cursor)
         #         # 如果此区是当前包下所有区的最后一个区，通知管理新新增区
@@ -386,18 +389,18 @@ def change_recommend(request, id):
 
     try:
         server_management_cursor = connections['server_management'].cursor()
-        sql = "SELECT * FROM ServerManagement.dbo.[GetServerTableTest] (50, {cid}) WHERE appid='{appid}' AND server_statu < 200".format(
+        sql = "SELECT * FROM ServerManagement.dbo.[roGetServerTable] (50, {cid}) WHERE appid='{appid}' AND server_statu < 200".format(
                 cid=app_server_channel.cid, appid=app_server_channel.appid)
         # print(sql)
         # if appid:
-        #     sql = "SELECT * FROM ServerManagement.dbo.[GetServerTableTest] (50, {cid}) WHERE appid='{appid}' AND server_statu > 200 AND SID < 9000".format(
+        #     sql = "SELECT * FROM ServerManagement.dbo.[roGetServerTable] (50, {cid}) WHERE appid='{appid}' AND server_statu > 200 AND SID < 9000".format(
         #         cid=cid, appid=appid)
         # else:
-        #     sql = "SELECT * FROM ServerManagement.dbo.[GetServerTableTest] (50, {cid}) WHERE server_statu > 200 AND SID < 9000".format(
+        #     sql = "SELECT * FROM ServerManagement.dbo.[roGetServerTable] (50, {cid}) WHERE server_statu > 200 AND SID < 9000".format(
         #         cid=cid)
-        # sql = "SELECT * FROM ServerManagement.dbo.[GetServerTableTest] (50, 12)"
-        # sql = "SELECT * FROM ServerManagement.dbo.[GetServerTableTest] (50, 12) WHERE appid='com.dkm.tlsj.tlsj'"
-        # sql = "SELECT * FROM ServerManagementRo.dbo.[GetServerTableTest] ({gid}, {cid}) WHERE appid='{appid}'".format(gid=gid, cid=cid, appid=appid)
+        # sql = "SELECT * FROM ServerManagement.dbo.[roGetServerTable] (50, 12)"
+        # sql = "SELECT * FROM ServerManagement.dbo.[roGetServerTable] (50, 12) WHERE appid='com.dkm.tlsj.tlsj'"
+        # sql = "SELECT * FROM ServerManagementRo.dbo.[roGetServerTable] ({gid}, {cid}) WHERE appid='{appid}'".format(gid=gid, cid=cid, appid=appid)
         server_management_cursor.execute(sql)
         server_management_result = dict_fetchall(server_management_cursor)
         # print(server_management_result[0])
@@ -436,18 +439,18 @@ def weight_recommend(request):
 
     try:
         server_management_cursor = connections['server_management'].cursor()
-        sql = "SELECT * FROM ServerManagement.dbo.[GetServerTableTest] ({gid}, {cid}) WHERE appid='{appid}' AND server_statu < 200".format(
+        sql = "SELECT * FROM ServerManagement.dbo.[roGetServerTable] ({gid}, {cid}) WHERE appid='{appid}' AND server_statu < 200".format(
                 gid=gid, cid=cid, appid=appid)
         # print(sql)
         # if appid:
-        #     sql = "SELECT * FROM ServerManagement.dbo.[GetServerTableTest] (50, {cid}) WHERE appid='{appid}' AND server_statu > 200 AND SID < 9000".format(
+        #     sql = "SELECT * FROM ServerManagement.dbo.[roGetServerTable] (50, {cid}) WHERE appid='{appid}' AND server_statu > 200 AND SID < 9000".format(
         #         cid=cid, appid=appid)
         # else:
-        #     sql = "SELECT * FROM ServerManagement.dbo.[GetServerTableTest] (50, {cid}) WHERE server_statu > 200 AND SID < 9000".format(
+        #     sql = "SELECT * FROM ServerManagement.dbo.[roGetServerTable] (50, {cid}) WHERE server_statu > 200 AND SID < 9000".format(
         #         cid=cid)
-        # sql = "SELECT * FROM ServerManagement.dbo.[GetServerTableTest] (50, 12)"
-        # sql = "SELECT * FROM ServerManagement.dbo.[GetServerTableTest] (50, 12) WHERE appid='com.dkm.tlsj.tlsj'"
-        # sql = "SELECT * FROM ServerManagementRo.dbo.[GetServerTableTest] ({gid}, {cid}) WHERE appid='{appid}'".format(gid=gid, cid=cid, appid=appid)
+        # sql = "SELECT * FROM ServerManagement.dbo.[roGetServerTable] (50, 12)"
+        # sql = "SELECT * FROM ServerManagement.dbo.[roGetServerTable] (50, 12) WHERE appid='com.dkm.tlsj.tlsj'"
+        # sql = "SELECT * FROM ServerManagementRo.dbo.[roGetServerTable] ({gid}, {cid}) WHERE appid='{appid}'".format(gid=gid, cid=cid, appid=appid)
         server_management_cursor.execute(sql)
         server_management_result = dict_fetchall(server_management_cursor)
         # print(server_management_result[0])
@@ -510,14 +513,14 @@ class ServerManagementList(APIView):
         try:
             server_management_cursor = connections['server_management'].cursor()
             if appid:
-                # sql = "SELECT * FROM ServerManagement.dbo.[GetServerTableTest] (50, {cid}) WHERE appid='{appid}' AND server_statu > 200 AND SID < 9000".format(cid=cid, appid=appid)
-                sql = "SELECT * FROM ServerManagement.dbo.[GetServerTableTest] (50, {cid}) WHERE appid='{appid}' AND SID < 9000".format(cid=cid, appid=appid)
+                # sql = "SELECT * FROM ServerManagement.dbo.[roGetServerTable] (50, {cid}) WHERE appid='{appid}' AND server_statu > 200 AND SID < 9000".format(cid=cid, appid=appid)
+                sql = "SELECT * FROM ServerManagement.dbo.[roGetServerTable] (50, {cid}) WHERE appid='{appid}' AND SID < 9000".format(cid=cid, appid=appid)
             else:
-                # sql = "SELECT * FROM ServerManagement.dbo.[GetServerTableTest] (50, {cid}) WHERE server_statu > 200 AND SID < 9000".format(cid=cid)
-                sql = "SELECT * FROM ServerManagement.dbo.[GetServerTableTest] (50, {cid}) WHERE SID < 9000".format(cid=cid)
-            # sql = "SELECT * FROM ServerManagement.dbo.[GetServerTableTest] (50, 12)"
-            # sql = "SELECT * FROM ServerManagement.dbo.[GetServerTableTest] (50, 12) WHERE appid='com.dkm.tlsj.tlsj'"
-            # sql = "SELECT * FROM ServerManagementRo.dbo.[GetServerTableTest] ({gid}, {cid}) WHERE appid='{appid}'".format(gid=gid, cid=cid, appid=appid)
+                # sql = "SELECT * FROM ServerManagement.dbo.[roGetServerTable] (50, {cid}) WHERE server_statu > 200 AND SID < 9000".format(cid=cid)
+                sql = "SELECT * FROM ServerManagement.dbo.[roGetServerTable] (50, {cid}) WHERE SID < 9000".format(cid=cid)
+            # sql = "SELECT * FROM ServerManagement.dbo.[roGetServerTable] (50, 12)"
+            # sql = "SELECT * FROM ServerManagement.dbo.[roGetServerTable] (50, 12) WHERE appid='com.dkm.tlsj.tlsj'"
+            # sql = "SELECT * FROM ServerManagementRo.dbo.[roGetServerTable] ({gid}, {cid}) WHERE appid='{appid}'".format(gid=gid, cid=cid, appid=appid)
             server_management_cursor.execute(sql)
             server_management_result = dict_fetchall(server_management_cursor)
             serializer = ServerManagementSerializer(server_management_result, many=True)
@@ -543,13 +546,13 @@ class RecommendServerList(APIView):
 
         try:
             server_management_cursor = connections['server_management'].cursor()
-            # sql = "SELECT * FROM ServerManagement.dbo.[GetServerTableTest] (50, {cid}) WHERE server_statu < 200 AND appid='{appid}' AND OpenDate=CONVERT(DATE, '{today}')".format(cid=cid, appid=appid, today=today)
-            sql = "SELECT * FROM ServerManagement.dbo.[GetServerTableTest] (50, {cid}) WHERE server_statu < 200 AND appid='{appid}'".format(cid=cid, appid=appid)
+            # sql = "SELECT * FROM ServerManagement.dbo.[roGetServerTable] (50, {cid}) WHERE server_statu < 200 AND appid='{appid}' AND OpenDate=CONVERT(DATE, '{today}')".format(cid=cid, appid=appid, today=today)
+            sql = "SELECT * FROM ServerManagement.dbo.[roGetServerTable] (50, {cid}) WHERE server_statu < 200 AND appid='{appid}'".format(cid=cid, appid=appid)
             # print(sql)
             # if appid:
-            #     sql = "SELECT * FROM ServerManagement.dbo.[GetServerTableTest] (50, {cid}) WHERE appid='{appid}' AND server_statu < 200".format(cid=cid, appid=appid)
+            #     sql = "SELECT * FROM ServerManagement.dbo.[roGetServerTable] (50, {cid}) WHERE appid='{appid}' AND server_statu < 200".format(cid=cid, appid=appid)
             # else:
-            #     sql = "SELECT * FROM ServerManagement.dbo.[GetServerTableTest] (50, {cid}) WHERE server_statu < 200".format(cid=cid)
+            #     sql = "SELECT * FROM ServerManagement.dbo.[roGetServerTable] (50, {cid}) WHERE server_statu < 200".format(cid=cid)
             server_management_cursor.execute(sql)
             server_management_result = dict_fetchall(server_management_cursor)
             # today_recommend = [each for each in server_management_result if each.get('OpenDate') == today]
@@ -696,7 +699,7 @@ class AppServerChannelDetail(APIView):
 #     def get_object(self, id):
 #         try:
 #             server_management_cursor = connections['server_management'].cursor()
-#             sql = "SELECT * FROM ServerManagement.dbo.[GetServerTableTest] (50, 12) WHERE id='{id}'".format(id=id)
+#             sql = "SELECT * FROM ServerManagement.dbo.[roGetServerTable] (50, 12) WHERE id='{id}'".format(id=id)
 #             server_management_cursor.execute(sql)
 #             server_management_result = dict_fetchall(server_management_cursor)
 #             if server_management_result:
@@ -898,9 +901,3 @@ class RolePlayerManagementDetail(APIView):
         role_player.delete()
         logger.info('删除人员角色成功')
         return Response(status=status.HTTP_204_NO_CONTENT)
-
-
-@api_view(['POST'])
-def mock_user(request):
-    data = {'user_amount': 100}
-    return Response(data)

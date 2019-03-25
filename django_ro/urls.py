@@ -39,6 +39,5 @@ urlpatterns = [
     path('change_recommend/<int:id>/', views.change_recommend),
     path('weight_recommend/', views.weight_recommend),
     path('open_now/<int:id>/', views.open_now),
-    path('mock_user/', views.mock_user)
 ]
 

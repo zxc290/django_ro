@@ -145,3 +145,223 @@ Traceback (most recent call last):
   File "E:\workspace\project\django_ro\ro_operations\views.py", line 119, in user_permission
     for k, v in settings.USER_PERMISSION:
 TypeError: 'int' object is not iterable
+2019-03-19 16:28:44,654 [Thread-2:8964] [django.request:228] [log:log_response] [WARNING]- Not Found: /favicon.ico
+2019-03-21 10:42:06,605 [Thread-7:14576] [django.request:228] [log:log_response] [WARNING]- Forbidden: /welfares/
+2019-03-21 10:51:31,011 [Thread-3:4648] [django.request:228] [log:log_response] [ERROR]- Internal Server Error: /welfares/
+Traceback (most recent call last):
+  File "E:\workspace\venv\django_ro_venv\lib\site-packages\django\db\backends\base\base.py", line 216, in ensure_connection
+    self.connect()
+  File "E:\workspace\venv\django_ro_venv\lib\site-packages\django\db\backends\base\base.py", line 194, in connect
+    self.connection = self.get_new_connection(conn_params)
+  File "E:\workspace\venv\django_ro_venv\lib\site-packages\sql_server\pyodbc\base.py", line 307, in get_new_connection
+    timeout=timeout)
+pyodbc.InterfaceError: ('28000', "[28000] [Microsoft][SQL Server Native Client 10.0][SQL Server]用户 'DB_rwAccount!QAZ' 登录失败。 (18456) (SQLDriverConnect); [28000] [Microsoft][SQL Server Native Client 10.0]无效的连接字符串属性 (0); [28000] [Microsoft][SQL Server Native Client 10.0][SQL Server]用户 'DB_rwAccount!QAZ' 登录失败。 (18456); [28000] [Microsoft][SQL Server Native Client 10.0]无效的连接字符串属性 (0)")
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "E:\workspace\venv\django_ro_venv\lib\site-packages\django\core\handlers\exception.py", line 34, in inner
+    response = get_response(request)
+  File "E:\workspace\venv\django_ro_venv\lib\site-packages\django\core\handlers\base.py", line 126, in _get_response
+    response = self.process_exception_by_middleware(e, request)
+  File "E:\workspace\venv\django_ro_venv\lib\site-packages\django\core\handlers\base.py", line 124, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "E:\workspace\venv\django_ro_venv\lib\site-packages\django\views\decorators\csrf.py", line 54, in wrapped_view
+    return view_func(*args, **kwargs)
+  File "E:\workspace\venv\django_ro_venv\lib\site-packages\django\views\generic\base.py", line 68, in view
+    return self.dispatch(request, *args, **kwargs)
+  File "E:\workspace\venv\django_ro_venv\lib\site-packages\rest_framework\views.py", line 495, in dispatch
+    response = self.handle_exception(exc)
+  File "E:\workspace\venv\django_ro_venv\lib\site-packages\rest_framework\views.py", line 455, in handle_exception
+    self.raise_uncaught_exception(exc)
+  File "E:\workspace\venv\django_ro_venv\lib\site-packages\rest_framework\views.py", line 492, in dispatch
+    response = handler(request, *args, **kwargs)
+  File "E:\workspace\project\django_ro\ro_operations\decorators.py", line 19, in wrapper
+    return func(instance, request, *args, **kwargs)
+  File "E:\workspace\project\django_ro\ro_operations\views.py", line 757, in get
+    return Response(serializer.data)
+  File "E:\workspace\venv\django_ro_venv\lib\site-packages\rest_framework\serializers.py", line 768, in data
+    ret = super(ListSerializer, self).data
+  File "E:\workspace\venv\django_ro_venv\lib\site-packages\rest_framework\serializers.py", line 262, in data
+    self._data = self.to_representation(self.instance)
+  File "E:\workspace\venv\django_ro_venv\lib\site-packages\rest_framework\serializers.py", line 686, in to_representation
+    self.child.to_representation(item) for item in iterable
+  File "E:\workspace\venv\django_ro_venv\lib\site-packages\django\db\models\query.py", line 268, in __iter__
+    self._fetch_all()
+  File "E:\workspace\venv\django_ro_venv\lib\site-packages\django\db\models\query.py", line 1186, in _fetch_all
+    self._result_cache = list(self._iterable_class(self))
+  File "E:\workspace\venv\django_ro_venv\lib\site-packages\django\db\models\query.py", line 54, in __iter__
+    results = compiler.execute_sql(chunked_fetch=self.chunked_fetch, chunk_size=self.chunk_size)
+  File "E:\workspace\venv\django_ro_venv\lib\site-packages\django\db\models\sql\compiler.py", line 1052, in execute_sql
+    sql, params = self.as_sql()
+  File "E:\workspace\venv\django_ro_venv\lib\site-packages\sql_server\pyodbc\compiler.py", line 176, in as_sql
+    supports_offset_clause = self.connection.sql_server_version >= 2012
+  File "E:\workspace\venv\django_ro_venv\lib\site-packages\django\utils\functional.py", line 37, in __get__
+    res = instance.__dict__[self.name] = self.func(instance)
+  File "E:\workspace\venv\django_ro_venv\lib\site-packages\sql_server\pyodbc\base.py", line 390, in sql_server_version
+    with self.temporary_connection() as cursor:
+  File "D:\python36\lib\contextlib.py", line 81, in __enter__
+    return next(self.gen)
+  File "E:\workspace\venv\django_ro_venv\lib\site-packages\django\db\backends\base\base.py", line 577, in temporary_connection
+    with self.cursor() as cursor:
+  File "E:\workspace\venv\django_ro_venv\lib\site-packages\django\db\backends\base\base.py", line 255, in cursor
+    return self._cursor()
+  File "E:\workspace\venv\django_ro_venv\lib\site-packages\django\db\backends\base\base.py", line 232, in _cursor
+    self.ensure_connection()
+  File "E:\workspace\venv\django_ro_venv\lib\site-packages\django\db\backends\base\base.py", line 216, in ensure_connection
+    self.connect()
+  File "E:\workspace\venv\django_ro_venv\lib\site-packages\django\db\utils.py", line 89, in __exit__
+    raise dj_exc_value.with_traceback(traceback) from exc_value
+  File "E:\workspace\venv\django_ro_venv\lib\site-packages\django\db\backends\base\base.py", line 216, in ensure_connection
+    self.connect()
+  File "E:\workspace\venv\django_ro_venv\lib\site-packages\django\db\backends\base\base.py", line 194, in connect
+    self.connection = self.get_new_connection(conn_params)
+  File "E:\workspace\venv\django_ro_venv\lib\site-packages\sql_server\pyodbc\base.py", line 307, in get_new_connection
+    timeout=timeout)
+django.db.utils.InterfaceError: ('28000', "[28000] [Microsoft][SQL Server Native Client 10.0][SQL Server]用户 'DB_rwAccount!QAZ' 登录失败。 (18456) (SQLDriverConnect); [28000] [Microsoft][SQL Server Native Client 10.0]无效的连接字符串属性 (0); [28000] [Microsoft][SQL Server Native Client 10.0][SQL Server]用户 'DB_rwAccount!QAZ' 登录失败。 (18456); [28000] [Microsoft][SQL Server Native Client 10.0]无效的连接字符串属性 (0)")
+2019-03-21 10:51:35,765 [Thread-3:4648] [django.request:228] [log:log_response] [ERROR]- Internal Server Error: /role_players/
+Traceback (most recent call last):
+  File "E:\workspace\venv\django_ro_venv\lib\site-packages\django\db\backends\base\base.py", line 216, in ensure_connection
+    self.connect()
+  File "E:\workspace\venv\django_ro_venv\lib\site-packages\django\db\backends\base\base.py", line 194, in connect
+    self.connection = self.get_new_connection(conn_params)
+  File "E:\workspace\venv\django_ro_venv\lib\site-packages\sql_server\pyodbc\base.py", line 307, in get_new_connection
+    timeout=timeout)
+pyodbc.InterfaceError: ('28000', "[28000] [Microsoft][SQL Server Native Client 10.0][SQL Server]用户 'DB_rwAccount!QAZ' 登录失败。 (18456) (SQLDriverConnect); [28000] [Microsoft][SQL Server Native Client 10.0]无效的连接字符串属性 (0); [28000] [Microsoft][SQL Server Native Client 10.0][SQL Server]用户 'DB_rwAccount!QAZ' 登录失败。 (18456); [28000] [Microsoft][SQL Server Native Client 10.0]无效的连接字符串属性 (0)")
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "E:\workspace\venv\django_ro_venv\lib\site-packages\django\core\handlers\exception.py", line 34, in inner
+    response = get_response(request)
+  File "E:\workspace\venv\django_ro_venv\lib\site-packages\django\core\handlers\base.py", line 126, in _get_response
+    response = self.process_exception_by_middleware(e, request)
+  File "E:\workspace\venv\django_ro_venv\lib\site-packages\django\core\handlers\base.py", line 124, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "E:\workspace\venv\django_ro_venv\lib\site-packages\django\views\decorators\csrf.py", line 54, in wrapped_view
+    return view_func(*args, **kwargs)
+  File "E:\workspace\venv\django_ro_venv\lib\site-packages\django\views\generic\base.py", line 68, in view
+    return self.dispatch(request, *args, **kwargs)
+  File "E:\workspace\venv\django_ro_venv\lib\site-packages\rest_framework\views.py", line 495, in dispatch
+    response = self.handle_exception(exc)
+  File "E:\workspace\venv\django_ro_venv\lib\site-packages\rest_framework\views.py", line 455, in handle_exception
+    self.raise_uncaught_exception(exc)
+  File "E:\workspace\venv\django_ro_venv\lib\site-packages\rest_framework\views.py", line 492, in dispatch
+    response = handler(request, *args, **kwargs)
+  File "E:\workspace\project\django_ro\ro_operations\decorators.py", line 19, in wrapper
+    return func(instance, request, *args, **kwargs)
+  File "E:\workspace\project\django_ro\ro_operations\views.py", line 834, in get
+    return Response(serializer.data)
+  File "E:\workspace\venv\django_ro_venv\lib\site-packages\rest_framework\serializers.py", line 768, in data
+    ret = super(ListSerializer, self).data
+  File "E:\workspace\venv\django_ro_venv\lib\site-packages\rest_framework\serializers.py", line 262, in data
+    self._data = self.to_representation(self.instance)
+  File "E:\workspace\venv\django_ro_venv\lib\site-packages\rest_framework\serializers.py", line 686, in to_representation
+    self.child.to_representation(item) for item in iterable
+  File "E:\workspace\venv\django_ro_venv\lib\site-packages\django\db\models\query.py", line 268, in __iter__
+    self._fetch_all()
+  File "E:\workspace\venv\django_ro_venv\lib\site-packages\django\db\models\query.py", line 1186, in _fetch_all
+    self._result_cache = list(self._iterable_class(self))
+  File "E:\workspace\venv\django_ro_venv\lib\site-packages\django\db\models\query.py", line 54, in __iter__
+    results = compiler.execute_sql(chunked_fetch=self.chunked_fetch, chunk_size=self.chunk_size)
+  File "E:\workspace\venv\django_ro_venv\lib\site-packages\django\db\models\sql\compiler.py", line 1052, in execute_sql
+    sql, params = self.as_sql()
+  File "E:\workspace\venv\django_ro_venv\lib\site-packages\sql_server\pyodbc\compiler.py", line 176, in as_sql
+    supports_offset_clause = self.connection.sql_server_version >= 2012
+  File "E:\workspace\venv\django_ro_venv\lib\site-packages\django\utils\functional.py", line 37, in __get__
+    res = instance.__dict__[self.name] = self.func(instance)
+  File "E:\workspace\venv\django_ro_venv\lib\site-packages\sql_server\pyodbc\base.py", line 390, in sql_server_version
+    with self.temporary_connection() as cursor:
+  File "D:\python36\lib\contextlib.py", line 81, in __enter__
+    return next(self.gen)
+  File "E:\workspace\venv\django_ro_venv\lib\site-packages\django\db\backends\base\base.py", line 577, in temporary_connection
+    with self.cursor() as cursor:
+  File "E:\workspace\venv\django_ro_venv\lib\site-packages\django\db\backends\base\base.py", line 255, in cursor
+    return self._cursor()
+  File "E:\workspace\venv\django_ro_venv\lib\site-packages\django\db\backends\base\base.py", line 232, in _cursor
+    self.ensure_connection()
+  File "E:\workspace\venv\django_ro_venv\lib\site-packages\django\db\backends\base\base.py", line 216, in ensure_connection
+    self.connect()
+  File "E:\workspace\venv\django_ro_venv\lib\site-packages\django\db\utils.py", line 89, in __exit__
+    raise dj_exc_value.with_traceback(traceback) from exc_value
+  File "E:\workspace\venv\django_ro_venv\lib\site-packages\django\db\backends\base\base.py", line 216, in ensure_connection
+    self.connect()
+  File "E:\workspace\venv\django_ro_venv\lib\site-packages\django\db\backends\base\base.py", line 194, in connect
+    self.connection = self.get_new_connection(conn_params)
+  File "E:\workspace\venv\django_ro_venv\lib\site-packages\sql_server\pyodbc\base.py", line 307, in get_new_connection
+    timeout=timeout)
+django.db.utils.InterfaceError: ('28000', "[28000] [Microsoft][SQL Server Native Client 10.0][SQL Server]用户 'DB_rwAccount!QAZ' 登录失败。 (18456) (SQLDriverConnect); [28000] [Microsoft][SQL Server Native Client 10.0]无效的连接字符串属性 (0); [28000] [Microsoft][SQL Server Native Client 10.0][SQL Server]用户 'DB_rwAccount!QAZ' 登录失败。 (18456); [28000] [Microsoft][SQL Server Native Client 10.0]无效的连接字符串属性 (0)")
+2019-03-21 11:01:04,371 [Thread-2:14640] [django.request:228] [log:log_response] [ERROR]- Internal Server Error: /welfares/
+Traceback (most recent call last):
+  File "E:\workspace\venv\django_ro_venv\lib\site-packages\django\db\backends\base\base.py", line 216, in ensure_connection
+    self.connect()
+  File "E:\workspace\venv\django_ro_venv\lib\site-packages\django\db\backends\base\base.py", line 194, in connect
+    self.connection = self.get_new_connection(conn_params)
+  File "E:\workspace\venv\django_ro_venv\lib\site-packages\sql_server\pyodbc\base.py", line 307, in get_new_connection
+    timeout=timeout)
+pyodbc.InterfaceError: ('28000', '[28000] [Microsoft][SQL Server Native Client 10.0][SQL Server]用户 \'DB_rwAccount!QAZ\' 登录失败。 (18456) (SQLDriverConnect); [28000] [Microsoft][SQL Server Native Client 10.0][SQL Server]无法打开登录所请求的数据库 "DjangoRo"。登录失败。 (4060); [28000] [Microsoft][SQL Server Native Client 10.0]无效的连接字符串属性 (0); [28000] [Microsoft][SQL Server Native Client 10.0][SQL Server]用户 \'DB_rwAccount!QAZ\' 登录失败。 (18456); [28000] [Microsoft][SQL Server Native Client 10.0][SQL Server]无法打开登录所请求的数据库 "DjangoRo"。登录失败。 (4060); [28000] [Microsoft][SQL Server Native Client 10.0]无效的连接字符串属性 (0)')
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "E:\workspace\venv\django_ro_venv\lib\site-packages\django\core\handlers\exception.py", line 34, in inner
+    response = get_response(request)
+  File "E:\workspace\venv\django_ro_venv\lib\site-packages\django\core\handlers\base.py", line 126, in _get_response
+    response = self.process_exception_by_middleware(e, request)
+  File "E:\workspace\venv\django_ro_venv\lib\site-packages\django\core\handlers\base.py", line 124, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "E:\workspace\venv\django_ro_venv\lib\site-packages\django\views\decorators\csrf.py", line 54, in wrapped_view
+    return view_func(*args, **kwargs)
+  File "E:\workspace\venv\django_ro_venv\lib\site-packages\django\views\generic\base.py", line 68, in view
+    return self.dispatch(request, *args, **kwargs)
+  File "E:\workspace\venv\django_ro_venv\lib\site-packages\rest_framework\views.py", line 495, in dispatch
+    response = self.handle_exception(exc)
+  File "E:\workspace\venv\django_ro_venv\lib\site-packages\rest_framework\views.py", line 455, in handle_exception
+    self.raise_uncaught_exception(exc)
+  File "E:\workspace\venv\django_ro_venv\lib\site-packages\rest_framework\views.py", line 492, in dispatch
+    response = handler(request, *args, **kwargs)
+  File "E:\workspace\project\django_ro\ro_operations\decorators.py", line 19, in wrapper
+    return func(instance, request, *args, **kwargs)
+  File "E:\workspace\project\django_ro\ro_operations\views.py", line 757, in get
+    return Response(serializer.data)
+  File "E:\workspace\venv\django_ro_venv\lib\site-packages\rest_framework\serializers.py", line 768, in data
+    ret = super(ListSerializer, self).data
+  File "E:\workspace\venv\django_ro_venv\lib\site-packages\rest_framework\serializers.py", line 262, in data
+    self._data = self.to_representation(self.instance)
+  File "E:\workspace\venv\django_ro_venv\lib\site-packages\rest_framework\serializers.py", line 686, in to_representation
+    self.child.to_representation(item) for item in iterable
+  File "E:\workspace\venv\django_ro_venv\lib\site-packages\django\db\models\query.py", line 268, in __iter__
+    self._fetch_all()
+  File "E:\workspace\venv\django_ro_venv\lib\site-packages\django\db\models\query.py", line 1186, in _fetch_all
+    self._result_cache = list(self._iterable_class(self))
+  File "E:\workspace\venv\django_ro_venv\lib\site-packages\django\db\models\query.py", line 54, in __iter__
+    results = compiler.execute_sql(chunked_fetch=self.chunked_fetch, chunk_size=self.chunk_size)
+  File "E:\workspace\venv\django_ro_venv\lib\site-packages\django\db\models\sql\compiler.py", line 1052, in execute_sql
+    sql, params = self.as_sql()
+  File "E:\workspace\venv\django_ro_venv\lib\site-packages\sql_server\pyodbc\compiler.py", line 176, in as_sql
+    supports_offset_clause = self.connection.sql_server_version >= 2012
+  File "E:\workspace\venv\django_ro_venv\lib\site-packages\django\utils\functional.py", line 37, in __get__
+    res = instance.__dict__[self.name] = self.func(instance)
+  File "E:\workspace\venv\django_ro_venv\lib\site-packages\sql_server\pyodbc\base.py", line 390, in sql_server_version
+    with self.temporary_connection() as cursor:
+  File "D:\python36\lib\contextlib.py", line 81, in __enter__
+    return next(self.gen)
+  File "E:\workspace\venv\django_ro_venv\lib\site-packages\django\db\backends\base\base.py", line 577, in temporary_connection
+    with self.cursor() as cursor:
+  File "E:\workspace\venv\django_ro_venv\lib\site-packages\django\db\backends\base\base.py", line 255, in cursor
+    return self._cursor()
+  File "E:\workspace\venv\django_ro_venv\lib\site-packages\django\db\backends\base\base.py", line 232, in _cursor
+    self.ensure_connection()
+  File "E:\workspace\venv\django_ro_venv\lib\site-packages\django\db\backends\base\base.py", line 216, in ensure_connection
+    self.connect()
+  File "E:\workspace\venv\django_ro_venv\lib\site-packages\django\db\utils.py", line 89, in __exit__
+    raise dj_exc_value.with_traceback(traceback) from exc_value
+  File "E:\workspace\venv\django_ro_venv\lib\site-packages\django\db\backends\base\base.py", line 216, in ensure_connection
+    self.connect()
+  File "E:\workspace\venv\django_ro_venv\lib\site-packages\django\db\backends\base\base.py", line 194, in connect
+    self.connection = self.get_new_connection(conn_params)
+  File "E:\workspace\venv\django_ro_venv\lib\site-packages\sql_server\pyodbc\base.py", line 307, in get_new_connection
+    timeout=timeout)
+django.db.utils.InterfaceError: ('28000', '[28000] [Microsoft][SQL Server Native Client 10.0][SQL Server]用户 \'DB_rwAccount!QAZ\' 登录失败。 (18456) (SQLDriverConnect); [28000] [Microsoft][SQL Server Native Client 10.0][SQL Server]无法打开登录所请求的数据库 "DjangoRo"。登录失败。 (4060); [28000] [Microsoft][SQL Server Native Client 10.0]无效的连接字符串属性 (0); [28000] [Microsoft][SQL Server Native Client 10.0][SQL Server]用户 \'DB_rwAccount!QAZ\' 登录失败。 (18456); [28000] [Microsoft][SQL Server Native Client 10.0][SQL Server]无法打开登录所请求的数据库 "DjangoRo"。登录失败。 (4060); [28000] [Microsoft][SQL Server Native Client 10.0]无效的连接字符串属性 (0)')
+2019-03-25 15:08:58,405 [Thread-2:10600] [django.request:228] [log:log_response] [WARNING]- Not Found: /user/login
+2019-03-25 15:09:00,286 [Thread-2:10600] [django.request:228] [log:log_response] [WARNING]- Not Found: /user/login
