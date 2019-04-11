@@ -48,7 +48,7 @@ class AppServerChannelUpdateSerializer(serializers.ModelSerializer):
 class AppServerChannelRecommendSerializer(serializers.ModelSerializer):
     class Meta:
         model = AppServerChannel
-        fields = ('server_suggest', )
+        fields = ('server_suggest', 'server_weight', 'weight_deadline')
 
 # class AppServerChannelSerializer(serializers.ModelSerializer):
 #     class Meta:
@@ -96,6 +96,7 @@ class ServerManagementSerializer(serializers.Serializer):
     open_time = serializers.IntegerField()
     max_user = serializers.IntegerField()
     server_weight = serializers.IntegerField()
+    weight_deadline = serializers.CharField()
     sync = serializers.BooleanField()
     # max_users = serializers.IntegerField()
 

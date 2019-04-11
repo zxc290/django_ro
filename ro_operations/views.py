@@ -1,4 +1,6 @@
 import logging
+import json
+import requests
 from datetime import datetime, timedelta
 from django.db import connections
 from django.http import Http404
@@ -345,7 +347,7 @@ def delete_open_plan(request, id):
 def change_recommend(request, id):
     app_server_channel = AppServerChannel.objects.get(id=id)
     data = request.data
-    # print(data)
+    data.update(server_weight=None, weight_deadline=None)
     server_suggest = data.get('server_suggest')
     # 设为不推荐，单条修改无互斥
     if server_suggest == 0:
@@ -369,10 +371,8 @@ def change_recommend(request, id):
 
         # 手动推荐将所有权重推荐服设为不推荐
         AppServerChannel.objects.filter(gid=app_server_channel.gid).filter(cid=app_server_channel.cid).filter(appid=app_server_channel.appid).exclude(
-            server_weight=None).exclude(id=id).update(server_weight=None, server_suggest=0)
+            server_weight=None).exclude(id=id).update(server_weight=None, server_suggest=0, weight_deadline=None)
 
-        app_server_channel.server_weight = None
-        app_server_channel.save()
 
         # # 所有与此id有同样appid包的互斥服务器，不含此id自身，设为不推荐
         # app_server_channel_list = AppServerChannel.objects.filter(appid=app_server_channel.appid).exclude(id=id)
@@ -423,18 +423,36 @@ def weight_recommend(request):
     cid = data.get('cid')
     gid = data.get('gid')
     zones = data.get('zones')
+    weight_deadline = data.get('weight_deadline')
 
     zone_id_list = [each.get('id') for each in zones]
 
+    setting = dict()
     # 设置所有计入权重的服务器
     for zone in zones:
         app_server_channel = AppServerChannel.objects.get(id=zone.get('id'))
         app_server_channel.server_suggest = 1
         app_server_channel.server_weight = zone.get('server_weight')
+        app_server_channel.weight_deadline = weight_deadline
+        # app_server_channel.weight_deadline = zone.get('')
         app_server_channel.save()
+        server_id = AppServerList.objects.get(id=app_server_channel.zoneidx).serverid
+        setting[server_id] = app_server_channel.server_weight
     logger.info('设置权重推荐成功')
+    # 通知接口修改redis
+    url = 'http://172.16.1.103:8080/50_xjcs/50-xjcsLogin-new/AppManageApi.php'
+    headers = {'Content_Type': 'application/x-www-form-urlencoded'}
+    timeout = int((datetime.strptime(weight_deadline, '%Y-%m-%d %H:%M:%S') - datetime.now()).total_seconds())
+    # timeout = 86400
+    info = json.dumps({'cid': cid, 'setting': setting, 'timeout': timeout})
+    params = {'action': 'set_counter', 'data': info}
+    res = requests.post(url=url, headers=headers, data=params).json()
+    if res.get('ErrorCode') == 0:
+        logger.info('请求权重接口成功')
+    else:
+        logger.info('请求权重接口失败')
     # 所有不算入权重的服务器，全部设为不推荐
-    AppServerChannel.objects.filter(gid=gid).filter(cid=cid).filter(appid=appid).exclude(id__in=zone_id_list).update(server_weight=None, server_suggest=0)
+    AppServerChannel.objects.filter(gid=gid).filter(cid=cid).filter(appid=appid).exclude(id__in=zone_id_list).update(server_weight=None, server_suggest=0, weight_deadline=None)
     logger.info('将不计入权重的服务器全部设为不推荐')
 
     try:

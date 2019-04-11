@@ -365,3 +365,245 @@ Traceback (most recent call last):
 django.db.utils.InterfaceError: ('28000', '[28000] [Microsoft][SQL Server Native Client 10.0][SQL Server]用户 \'DB_rwAccount!QAZ\' 登录失败。 (18456) (SQLDriverConnect); [28000] [Microsoft][SQL Server Native Client 10.0][SQL Server]无法打开登录所请求的数据库 "DjangoRo"。登录失败。 (4060); [28000] [Microsoft][SQL Server Native Client 10.0]无效的连接字符串属性 (0); [28000] [Microsoft][SQL Server Native Client 10.0][SQL Server]用户 \'DB_rwAccount!QAZ\' 登录失败。 (18456); [28000] [Microsoft][SQL Server Native Client 10.0][SQL Server]无法打开登录所请求的数据库 "DjangoRo"。登录失败。 (4060); [28000] [Microsoft][SQL Server Native Client 10.0]无效的连接字符串属性 (0)')
 2019-03-25 15:08:58,405 [Thread-2:10600] [django.request:228] [log:log_response] [WARNING]- Not Found: /user/login
 2019-03-25 15:09:00,286 [Thread-2:10600] [django.request:228] [log:log_response] [WARNING]- Not Found: /user/login
+2019-03-27 10:35:48,234 [Thread-2:7504] [django.request:228] [log:log_response] [WARNING]- Not Found: /user/info
+2019-03-27 11:09:17,808 [Thread-2:11828] [django.request:228] [log:log_response] [WARNING]- Not Found: /user/info
+2019-04-11 13:24:16,596 [Thread-5:11056] [django.request:228] [log:log_response] [ERROR]- Internal Server Error: /change_recommend/61503/
+Traceback (most recent call last):
+  File "E:\workspace\venv\django_ro_venv\lib\site-packages\django\db\backends\utils.py", line 85, in _execute
+    return self.cursor.execute(sql, params)
+  File "E:\workspace\venv\django_ro_venv\lib\site-packages\sql_server\pyodbc\base.py", line 546, in execute
+    return self.cursor.execute(sql, params)
+pyodbc.ProgrammingError: ('42S22', "[42S22] [Microsoft][SQL Server Native Client 10.0][SQL Server]列名 'weight_deadline' 无效。 (207) (SQLExecDirectW); [42S22] [Microsoft][SQL Server Native Client 10.0][SQL Server]无法预定义语句。 (8180)")
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "E:\workspace\venv\django_ro_venv\lib\site-packages\django\core\handlers\exception.py", line 34, in inner
+    response = get_response(request)
+  File "E:\workspace\venv\django_ro_venv\lib\site-packages\django\core\handlers\base.py", line 126, in _get_response
+    response = self.process_exception_by_middleware(e, request)
+  File "E:\workspace\venv\django_ro_venv\lib\site-packages\django\core\handlers\base.py", line 124, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "E:\workspace\venv\django_ro_venv\lib\site-packages\django\views\decorators\csrf.py", line 54, in wrapped_view
+    return view_func(*args, **kwargs)
+  File "E:\workspace\venv\django_ro_venv\lib\site-packages\django\views\generic\base.py", line 68, in view
+    return self.dispatch(request, *args, **kwargs)
+  File "E:\workspace\venv\django_ro_venv\lib\site-packages\rest_framework\views.py", line 495, in dispatch
+    response = self.handle_exception(exc)
+  File "E:\workspace\venv\django_ro_venv\lib\site-packages\rest_framework\views.py", line 455, in handle_exception
+    self.raise_uncaught_exception(exc)
+  File "E:\workspace\venv\django_ro_venv\lib\site-packages\rest_framework\views.py", line 492, in dispatch
+    response = handler(request, *args, **kwargs)
+  File "E:\workspace\venv\django_ro_venv\lib\site-packages\rest_framework\decorators.py", line 54, in handler
+    return func(*args, **kwargs)
+  File "E:\workspace\project\django_ro_new\ro_operations\views.py", line 346, in change_recommend
+    app_server_channel = AppServerChannel.objects.get(id=id)
+  File "E:\workspace\venv\django_ro_venv\lib\site-packages\django\db\models\manager.py", line 82, in manager_method
+    return getattr(self.get_queryset(), name)(*args, **kwargs)
+  File "E:\workspace\venv\django_ro_venv\lib\site-packages\django\db\models\query.py", line 393, in get
+    num = len(clone)
+  File "E:\workspace\venv\django_ro_venv\lib\site-packages\django\db\models\query.py", line 250, in __len__
+    self._fetch_all()
+  File "E:\workspace\venv\django_ro_venv\lib\site-packages\django\db\models\query.py", line 1186, in _fetch_all
+    self._result_cache = list(self._iterable_class(self))
+  File "E:\workspace\venv\django_ro_venv\lib\site-packages\django\db\models\query.py", line 54, in __iter__
+    results = compiler.execute_sql(chunked_fetch=self.chunked_fetch, chunk_size=self.chunk_size)
+  File "E:\workspace\venv\django_ro_venv\lib\site-packages\django\db\models\sql\compiler.py", line 1065, in execute_sql
+    cursor.execute(sql, params)
+  File "E:\workspace\venv\django_ro_venv\lib\site-packages\django\db\backends\utils.py", line 100, in execute
+    return super().execute(sql, params)
+  File "E:\workspace\venv\django_ro_venv\lib\site-packages\django\db\backends\utils.py", line 68, in execute
+    return self._execute_with_wrappers(sql, params, many=False, executor=self._execute)
+  File "E:\workspace\venv\django_ro_venv\lib\site-packages\django\db\backends\utils.py", line 77, in _execute_with_wrappers
+    return executor(sql, params, many, context)
+  File "E:\workspace\venv\django_ro_venv\lib\site-packages\django\db\backends\utils.py", line 85, in _execute
+    return self.cursor.execute(sql, params)
+  File "E:\workspace\venv\django_ro_venv\lib\site-packages\django\db\utils.py", line 89, in __exit__
+    raise dj_exc_value.with_traceback(traceback) from exc_value
+  File "E:\workspace\venv\django_ro_venv\lib\site-packages\django\db\backends\utils.py", line 85, in _execute
+    return self.cursor.execute(sql, params)
+  File "E:\workspace\venv\django_ro_venv\lib\site-packages\sql_server\pyodbc\base.py", line 546, in execute
+    return self.cursor.execute(sql, params)
+django.db.utils.ProgrammingError: ('42S22', "[42S22] [Microsoft][SQL Server Native Client 10.0][SQL Server]列名 'weight_deadline' 无效。 (207) (SQLExecDirectW); [42S22] [Microsoft][SQL Server Native Client 10.0][SQL Server]无法预定义语句。 (8180)")
+2019-04-11 13:30:59,072 [Thread-2:7108] [django.request:228] [log:log_response] [ERROR]- Internal Server Error: /change_recommend/61503/
+Traceback (most recent call last):
+  File "E:\workspace\venv\django_ro_venv\lib\site-packages\django\db\backends\utils.py", line 85, in _execute
+    return self.cursor.execute(sql, params)
+  File "E:\workspace\venv\django_ro_venv\lib\site-packages\sql_server\pyodbc\base.py", line 546, in execute
+    return self.cursor.execute(sql, params)
+pyodbc.ProgrammingError: ('42S22', "[42S22] [Microsoft][SQL Server Native Client 10.0][SQL Server]列名 'weight_deadline' 无效。 (207) (SQLExecDirectW); [42S22] [Microsoft][SQL Server Native Client 10.0][SQL Server]无法预定义语句。 (8180)")
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "E:\workspace\venv\django_ro_venv\lib\site-packages\django\core\handlers\exception.py", line 34, in inner
+    response = get_response(request)
+  File "E:\workspace\venv\django_ro_venv\lib\site-packages\django\core\handlers\base.py", line 126, in _get_response
+    response = self.process_exception_by_middleware(e, request)
+  File "E:\workspace\venv\django_ro_venv\lib\site-packages\django\core\handlers\base.py", line 124, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "E:\workspace\venv\django_ro_venv\lib\site-packages\django\views\decorators\csrf.py", line 54, in wrapped_view
+    return view_func(*args, **kwargs)
+  File "E:\workspace\venv\django_ro_venv\lib\site-packages\django\views\generic\base.py", line 68, in view
+    return self.dispatch(request, *args, **kwargs)
+  File "E:\workspace\venv\django_ro_venv\lib\site-packages\rest_framework\views.py", line 495, in dispatch
+    response = self.handle_exception(exc)
+  File "E:\workspace\venv\django_ro_venv\lib\site-packages\rest_framework\views.py", line 455, in handle_exception
+    self.raise_uncaught_exception(exc)
+  File "E:\workspace\venv\django_ro_venv\lib\site-packages\rest_framework\views.py", line 492, in dispatch
+    response = handler(request, *args, **kwargs)
+  File "E:\workspace\venv\django_ro_venv\lib\site-packages\rest_framework\decorators.py", line 54, in handler
+    return func(*args, **kwargs)
+  File "E:\workspace\project\django_ro_new\ro_operations\views.py", line 346, in change_recommend
+    app_server_channel = AppServerChannel.objects.get(id=id)
+  File "E:\workspace\venv\django_ro_venv\lib\site-packages\django\db\models\manager.py", line 82, in manager_method
+    return getattr(self.get_queryset(), name)(*args, **kwargs)
+  File "E:\workspace\venv\django_ro_venv\lib\site-packages\django\db\models\query.py", line 393, in get
+    num = len(clone)
+  File "E:\workspace\venv\django_ro_venv\lib\site-packages\django\db\models\query.py", line 250, in __len__
+    self._fetch_all()
+  File "E:\workspace\venv\django_ro_venv\lib\site-packages\django\db\models\query.py", line 1186, in _fetch_all
+    self._result_cache = list(self._iterable_class(self))
+  File "E:\workspace\venv\django_ro_venv\lib\site-packages\django\db\models\query.py", line 54, in __iter__
+    results = compiler.execute_sql(chunked_fetch=self.chunked_fetch, chunk_size=self.chunk_size)
+  File "E:\workspace\venv\django_ro_venv\lib\site-packages\django\db\models\sql\compiler.py", line 1065, in execute_sql
+    cursor.execute(sql, params)
+  File "E:\workspace\venv\django_ro_venv\lib\site-packages\django\db\backends\utils.py", line 100, in execute
+    return super().execute(sql, params)
+  File "E:\workspace\venv\django_ro_venv\lib\site-packages\django\db\backends\utils.py", line 68, in execute
+    return self._execute_with_wrappers(sql, params, many=False, executor=self._execute)
+  File "E:\workspace\venv\django_ro_venv\lib\site-packages\django\db\backends\utils.py", line 77, in _execute_with_wrappers
+    return executor(sql, params, many, context)
+  File "E:\workspace\venv\django_ro_venv\lib\site-packages\django\db\backends\utils.py", line 85, in _execute
+    return self.cursor.execute(sql, params)
+  File "E:\workspace\venv\django_ro_venv\lib\site-packages\django\db\utils.py", line 89, in __exit__
+    raise dj_exc_value.with_traceback(traceback) from exc_value
+  File "E:\workspace\venv\django_ro_venv\lib\site-packages\django\db\backends\utils.py", line 85, in _execute
+    return self.cursor.execute(sql, params)
+  File "E:\workspace\venv\django_ro_venv\lib\site-packages\sql_server\pyodbc\base.py", line 546, in execute
+    return self.cursor.execute(sql, params)
+django.db.utils.ProgrammingError: ('42S22', "[42S22] [Microsoft][SQL Server Native Client 10.0][SQL Server]列名 'weight_deadline' 无效。 (207) (SQLExecDirectW); [42S22] [Microsoft][SQL Server Native Client 10.0][SQL Server]无法预定义语句。 (8180)")
+2019-04-11 13:35:33,839 [Thread-2:10324] [django.request:228] [log:log_response] [WARNING]- Forbidden: /welfares/
+2019-04-11 14:17:47,050 [Thread-3:11760] [django.request:228] [log:log_response] [ERROR]- Internal Server Error: /weight_recommend/
+Traceback (most recent call last):
+  File "E:\workspace\venv\django_ro_venv\lib\site-packages\django\db\backends\utils.py", line 85, in _execute
+    return self.cursor.execute(sql, params)
+  File "E:\workspace\venv\django_ro_venv\lib\site-packages\sql_server\pyodbc\base.py", line 546, in execute
+    return self.cursor.execute(sql, params)
+pyodbc.DataError: ('22001', '[22001] [Microsoft][SQL Server Native Client 10.0][SQL Server]将截断字符串或二进制数据。 (8152) (SQLExecDirectW); [22001] [Microsoft][SQL Server Native Client 10.0][SQL Server]语句已终止。 (3621)')
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "E:\workspace\venv\django_ro_venv\lib\site-packages\django\core\handlers\exception.py", line 34, in inner
+    response = get_response(request)
+  File "E:\workspace\venv\django_ro_venv\lib\site-packages\django\core\handlers\base.py", line 126, in _get_response
+    response = self.process_exception_by_middleware(e, request)
+  File "E:\workspace\venv\django_ro_venv\lib\site-packages\django\core\handlers\base.py", line 124, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "E:\workspace\venv\django_ro_venv\lib\site-packages\django\views\decorators\csrf.py", line 54, in wrapped_view
+    return view_func(*args, **kwargs)
+  File "E:\workspace\venv\django_ro_venv\lib\site-packages\django\views\generic\base.py", line 68, in view
+    return self.dispatch(request, *args, **kwargs)
+  File "E:\workspace\venv\django_ro_venv\lib\site-packages\rest_framework\views.py", line 495, in dispatch
+    response = self.handle_exception(exc)
+  File "E:\workspace\venv\django_ro_venv\lib\site-packages\rest_framework\views.py", line 455, in handle_exception
+    self.raise_uncaught_exception(exc)
+  File "E:\workspace\venv\django_ro_venv\lib\site-packages\rest_framework\views.py", line 492, in dispatch
+    response = handler(request, *args, **kwargs)
+  File "E:\workspace\venv\django_ro_venv\lib\site-packages\rest_framework\decorators.py", line 54, in handler
+    return func(*args, **kwargs)
+  File "E:\workspace\project\django_ro_new\ro_operations\views.py", line 443, in weight_recommend
+    app_server_channel.save()
+  File "E:\workspace\venv\django_ro_venv\lib\site-packages\django\db\models\base.py", line 718, in save
+    force_update=force_update, update_fields=update_fields)
+  File "E:\workspace\venv\django_ro_venv\lib\site-packages\django\db\models\base.py", line 748, in save_base
+    updated = self._save_table(raw, cls, force_insert, force_update, using, update_fields)
+  File "E:\workspace\venv\django_ro_venv\lib\site-packages\django\db\models\base.py", line 812, in _save_table
+    forced_update)
+  File "E:\workspace\venv\django_ro_venv\lib\site-packages\django\db\models\base.py", line 861, in _do_update
+    return filtered._update(values) > 0
+  File "E:\workspace\venv\django_ro_venv\lib\site-packages\django\db\models\query.py", line 712, in _update
+    return query.get_compiler(self.db).execute_sql(CURSOR)
+  File "E:\workspace\venv\django_ro_venv\lib\site-packages\django\db\models\sql\compiler.py", line 1383, in execute_sql
+    cursor = super().execute_sql(result_type)
+  File "E:\workspace\venv\django_ro_venv\lib\site-packages\django\db\models\sql\compiler.py", line 1065, in execute_sql
+    cursor.execute(sql, params)
+  File "E:\workspace\venv\django_ro_venv\lib\site-packages\django\db\backends\utils.py", line 100, in execute
+    return super().execute(sql, params)
+  File "E:\workspace\venv\django_ro_venv\lib\site-packages\django\db\backends\utils.py", line 68, in execute
+    return self._execute_with_wrappers(sql, params, many=False, executor=self._execute)
+  File "E:\workspace\venv\django_ro_venv\lib\site-packages\django\db\backends\utils.py", line 77, in _execute_with_wrappers
+    return executor(sql, params, many, context)
+  File "E:\workspace\venv\django_ro_venv\lib\site-packages\django\db\backends\utils.py", line 85, in _execute
+    return self.cursor.execute(sql, params)
+  File "E:\workspace\venv\django_ro_venv\lib\site-packages\django\db\utils.py", line 89, in __exit__
+    raise dj_exc_value.with_traceback(traceback) from exc_value
+  File "E:\workspace\venv\django_ro_venv\lib\site-packages\django\db\backends\utils.py", line 85, in _execute
+    return self.cursor.execute(sql, params)
+  File "E:\workspace\venv\django_ro_venv\lib\site-packages\sql_server\pyodbc\base.py", line 546, in execute
+    return self.cursor.execute(sql, params)
+django.db.utils.DataError: ('22001', '[22001] [Microsoft][SQL Server Native Client 10.0][SQL Server]将截断字符串或二进制数据。 (8152) (SQLExecDirectW); [22001] [Microsoft][SQL Server Native Client 10.0][SQL Server]语句已终止。 (3621)')
+2019-04-11 14:19:18,144 [Thread-2:13224] [django.request:228] [log:log_response] [ERROR]- Internal Server Error: /weight_recommend/
+Traceback (most recent call last):
+  File "E:\workspace\venv\django_ro_venv\lib\site-packages\django\db\backends\utils.py", line 85, in _execute
+    return self.cursor.execute(sql, params)
+  File "E:\workspace\venv\django_ro_venv\lib\site-packages\sql_server\pyodbc\base.py", line 546, in execute
+    return self.cursor.execute(sql, params)
+pyodbc.DataError: ('22001', '[22001] [Microsoft][SQL Server Native Client 10.0][SQL Server]将截断字符串或二进制数据。 (8152) (SQLExecDirectW); [22001] [Microsoft][SQL Server Native Client 10.0][SQL Server]语句已终止。 (3621)')
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "E:\workspace\venv\django_ro_venv\lib\site-packages\django\core\handlers\exception.py", line 34, in inner
+    response = get_response(request)
+  File "E:\workspace\venv\django_ro_venv\lib\site-packages\django\core\handlers\base.py", line 126, in _get_response
+    response = self.process_exception_by_middleware(e, request)
+  File "E:\workspace\venv\django_ro_venv\lib\site-packages\django\core\handlers\base.py", line 124, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "E:\workspace\venv\django_ro_venv\lib\site-packages\django\views\decorators\csrf.py", line 54, in wrapped_view
+    return view_func(*args, **kwargs)
+  File "E:\workspace\venv\django_ro_venv\lib\site-packages\django\views\generic\base.py", line 68, in view
+    return self.dispatch(request, *args, **kwargs)
+  File "E:\workspace\venv\django_ro_venv\lib\site-packages\rest_framework\views.py", line 495, in dispatch
+    response = self.handle_exception(exc)
+  File "E:\workspace\venv\django_ro_venv\lib\site-packages\rest_framework\views.py", line 455, in handle_exception
+    self.raise_uncaught_exception(exc)
+  File "E:\workspace\venv\django_ro_venv\lib\site-packages\rest_framework\views.py", line 492, in dispatch
+    response = handler(request, *args, **kwargs)
+  File "E:\workspace\venv\django_ro_venv\lib\site-packages\rest_framework\decorators.py", line 54, in handler
+    return func(*args, **kwargs)
+  File "E:\workspace\project\django_ro_new\ro_operations\views.py", line 443, in weight_recommend
+    app_server_channel.save()
+  File "E:\workspace\venv\django_ro_venv\lib\site-packages\django\db\models\base.py", line 718, in save
+    force_update=force_update, update_fields=update_fields)
+  File "E:\workspace\venv\django_ro_venv\lib\site-packages\django\db\models\base.py", line 748, in save_base
+    updated = self._save_table(raw, cls, force_insert, force_update, using, update_fields)
+  File "E:\workspace\venv\django_ro_venv\lib\site-packages\django\db\models\base.py", line 812, in _save_table
+    forced_update)
+  File "E:\workspace\venv\django_ro_venv\lib\site-packages\django\db\models\base.py", line 861, in _do_update
+    return filtered._update(values) > 0
+  File "E:\workspace\venv\django_ro_venv\lib\site-packages\django\db\models\query.py", line 712, in _update
+    return query.get_compiler(self.db).execute_sql(CURSOR)
+  File "E:\workspace\venv\django_ro_venv\lib\site-packages\django\db\models\sql\compiler.py", line 1383, in execute_sql
+    cursor = super().execute_sql(result_type)
+  File "E:\workspace\venv\django_ro_venv\lib\site-packages\django\db\models\sql\compiler.py", line 1065, in execute_sql
+    cursor.execute(sql, params)
+  File "E:\workspace\venv\django_ro_venv\lib\site-packages\django\db\backends\utils.py", line 100, in execute
+    return super().execute(sql, params)
+  File "E:\workspace\venv\django_ro_venv\lib\site-packages\django\db\backends\utils.py", line 68, in execute
+    return self._execute_with_wrappers(sql, params, many=False, executor=self._execute)
+  File "E:\workspace\venv\django_ro_venv\lib\site-packages\django\db\backends\utils.py", line 77, in _execute_with_wrappers
+    return executor(sql, params, many, context)
+  File "E:\workspace\venv\django_ro_venv\lib\site-packages\django\db\backends\utils.py", line 85, in _execute
+    return self.cursor.execute(sql, params)
+  File "E:\workspace\venv\django_ro_venv\lib\site-packages\django\db\utils.py", line 89, in __exit__
+    raise dj_exc_value.with_traceback(traceback) from exc_value
+  File "E:\workspace\venv\django_ro_venv\lib\site-packages\django\db\backends\utils.py", line 85, in _execute
+    return self.cursor.execute(sql, params)
+  File "E:\workspace\venv\django_ro_venv\lib\site-packages\sql_server\pyodbc\base.py", line 546, in execute
+    return self.cursor.execute(sql, params)
+django.db.utils.DataError: ('22001', '[22001] [Microsoft][SQL Server Native Client 10.0][SQL Server]将截断字符串或二进制数据。 (8152) (SQLExecDirectW); [22001] [Microsoft][SQL Server Native Client 10.0][SQL Server]语句已终止。 (3621)')
+2019-04-11 14:36:04,611 [Thread-2:9252] [django.request:228] [log:log_response] [WARNING]- Bad Request: /change_recommend/39347/
+2019-04-11 14:38:19,846 [Thread-2:9252] [django.request:228] [log:log_response] [WARNING]- Bad Request: /change_recommend/39347/
+2019-04-11 14:40:04,920 [Thread-3:3252] [django.request:228] [log:log_response] [WARNING]- Bad Request: /change_recommend/39347/

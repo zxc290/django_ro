@@ -254,6 +254,7 @@ class AppServerChannel(models.Model):
     open_time = models.IntegerField(blank=True, null=True)
     max_user = models.IntegerField(blank=True, null=True)
     server_weight = models.IntegerField(blank=True, null=True)
+    weight_deadline = models.CharField(max_length=50, blank=True, null=True)
 
     objects = ServerManagementManager()
 
